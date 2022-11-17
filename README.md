@@ -35,6 +35,12 @@ pip install -r requirements.txt
 
 ## Install
 
+PyPi pip install at [pypi.org/project/star-chart-spherical-projection/](https://pypi.org/project/star-chart-spherical-projection/)
+
+```
+pip install star-chart-spherical-projection
+```
+
 ## Documentation
 
 ## Examples

@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 VERSION="0.0.1"
-DESCRIPTION="A Python package to generate star charts with spherical projection centered on +90° for Northern Hemisphere and -90° for Southern Hemisphere projections"
+DESCRIPTION="A Python package to generate star charts with spherical projection centered on +90 degrees for Northern Hemisphere and -90 degrees for Southern Hemisphere projections"
 
 with open("README.md", "r") as f:
 	long_description = f.read()
@@ -15,7 +15,7 @@ setup(
 	description=DESCRIPTION,
 	long_description=long_description,
 	url="https://github.com/cyschneck/Star-Chart-Spherical-Projection",
-	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/tarball/v_{0}.tar.gz".format(VERSION),
+	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.0.1.tar.gz",
 	author="cyschneck (C. Y. Schneck)",
 	keywords=["astronomy", "python", "star charts", "precession", "proper motion", "spherical projection"],
 	license="MIT",

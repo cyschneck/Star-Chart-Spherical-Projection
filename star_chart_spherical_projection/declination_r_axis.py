@@ -3,4 +3,3 @@
 #		Northern Hemsiphere = tan(45° - angle of inclination)
 #		Southern Hemsiphere = tan(45° + angle of inclination)
 ########################################################################
-import matplotlib.pyplot as plt

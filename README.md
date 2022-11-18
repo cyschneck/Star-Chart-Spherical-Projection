@@ -3,7 +3,7 @@
 ![PyPi](https://img.shields.io/pypi/v/star-chart-spherical-projection)
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
 
-A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [History Survival Guide Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) with declination and right ascension and proper motion
+A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) with declination and right ascension and proper motion
 
 __Star Chart in the Northern Hemisphere (centered on 90°)__
 ![north_star_chart_without_precession_without_labels+png](https://github.com/cyschneck/History-Survival-Guide/blob/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_north_without_precession_without_labels.png) 
@@ -34,6 +34,13 @@ new_declination = tan(45° + (original_declination / 2))
 
 ```
 pip install -r requirements.txt
+```
+
+```
+matplotlib
+numpy
+pandas
+
 ```
 
 ## Install

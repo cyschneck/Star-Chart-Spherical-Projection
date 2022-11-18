@@ -3,19 +3,20 @@
 # Python Package Setup
 from setuptools import setup, find_packages
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 DESCRIPTION="A Python package to generate star charts with spherical projection centered on +90 degrees for Northern Hemisphere and -90 degrees for Southern Hemisphere projections"
 
 with open("README.md", "r") as f:
-	long_description = f.read()
+	long_description_readme = f.read()
 
 setup(
 	name="star-chart-spherical-projection",
 	version=VERSION,
 	description=DESCRIPTION,
-	long_description=long_description,
+	long_description=long_description_readme,
+	long_description_content_type='text/markdown',
 	url="https://github.com/cyschneck/Star-Chart-Spherical-Projection",
-	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.0.1.tar.gz",
+	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.0.2.tar.gz",
 	author="cyschneck (C. Y. Schneck)",
 	keywords=["astronomy", "python", "star charts", "precession", "proper motion", "spherical projection"],
 	license="MIT",

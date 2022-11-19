@@ -31,25 +31,16 @@ def errorHandling(list_of_stars,
 	logger.debug("list_of_stars = '{0}'".format(list_of_stars))
 
 	# Ensure that Hemisphere selected are within options
-	northOrSouth = northOrSouth.capitalize()
-	if northOrSouth.capitalize() not in ["North", "South"]:
+	if northOrSouth not in ["North", "South"]:
 		logger.critical("\nCRITICAL ERROR, [northOrSouth]: Hemisphere options are ['North', 'South'], current option = '{0}'".format(northOrSouth))
 		exit()
 	logger.debug("northOrSouth = '{0}'".format(northOrSouth))
 
 	# Ensure that declination ranges are set and within within ranges
-	if declination_min is None:
-		if northOrSouth == "North": declination_min = int(config["declinationDefaultValues"]["northern_declination_min"])
-		if northOrSouth == "South": declination_min = int(config["declinationDefaultValues"]["southern_declination_min"])
 	if declination_min is not None and declination_min not in np.arange(-89, 90): # if defined, but not in range
 		logger.critical("\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_min))
 		exit()
 	logger.debug("declination_min = '{0}'".format(declination_min))
-
-	# Set max declination based on hemisphere selected
-	if northOrSouth == "North": declination_max = int(config["declinationDefaultValues"]["northern_declination_max"])
-	if northOrSouth == "South": declination_max = int(config["declinationDefaultValues"]["southern_declination_max"])
-	logger.debug("declination_max = '{0}'".format(declination_max))
 
 	# Ensure if a year is selected it is a float or int, set by default to 0 (the year = 2000)
 	if type(year_since_2000) != int and type(year_since_2000) != float:

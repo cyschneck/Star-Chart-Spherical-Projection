@@ -11,7 +11,6 @@ if __name__ == '__main__':
 	#print(star_chart_list)
 
 	star_chart_spherical_projection.plotStarChart(list_of_stars=star_chart_list,
-												declination_min=-25,
 												displayDeclinationNumbers=False,
 												year_since_2000=10.2,
 												displayStarNamesLabels=False,

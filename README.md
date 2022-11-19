@@ -64,3 +64,5 @@ Add README badges: tests
 Update pypi setup.py development status
 
 Update tarball download_url via VERSION tag
+
+Move constants to __init__.py instead of config.py

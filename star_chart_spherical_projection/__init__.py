@@ -5,3 +5,5 @@ from .generate_star_chart import convertRAhrtoRadians
 from .generate_star_chart import plotStarChart
 
 from .declination_r_axis import calculateRuler
+from .declination_r_axis import calculateRadiusOfCircle
+from .declination_r_axis import calculateLength

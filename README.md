@@ -6,9 +6,9 @@
 A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [this Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 
 __Star Chart in the Northern Hemisphere (centered on 90°)__
-![north_star_chart_without_precession_without_labels+png](https://github.com/cyschneck/History-Survival-Guide/blob/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_north_without_precession_without_labels.png) 
+![north_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/History-Survival-Guide/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_north_without_precession_without_labels.png) 
 __Star Chart in the Southern Hemisphere (centered on -90°)__
-![south_star_chart_without_precession_without_labels+png](https://github.com/cyschneck/History-Survival-Guide/blob/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_south_without_precession_without_labels.png)
+![south_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/History-Survival-Guide/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_south_without_precession_without_labels.png)
 
 ## Overview
 

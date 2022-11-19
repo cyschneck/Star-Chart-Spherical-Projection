@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import logging
 import csv
 
-import error_handling as error_handling_script
+import star_chart_spherical_projection
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -23,6 +23,8 @@ def getStarList(required_stars):
 	# generate a star object
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
+	import os
+	print(os.getcwd())
 	star_dataframe = pd.read_csv("star_data/star_data.csv")
 	for index, row in star_dataframe.iterrows():
 		if row["Star Name"] in required_stars:
@@ -57,15 +59,15 @@ def plotStarChart(list_of_stars=[],
 	# plot star chart as a circular graph
 
 	# Catch errors in given arguments before plotting
-	error_handling_script.errorHandling(list_of_stars, 
-										northOrSouth, 
-										declination_min,
-										year_since_2000,
-										displayStarNamesLabels,
-										displayDeclinationNumbers,
-										increment_by, 
-										figsize_n,
-										figsize_dpi)
+	star_chart_spherical_projection.errorHandling(list_of_stars, 
+													northOrSouth, 
+													declination_min,
+													year_since_2000,
+													displayStarNamesLabels,
+													displayDeclinationNumbers,
+													increment_by, 
+													figsize_n,
+													figsize_dpi)
 	
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
 	ax = fig.subplots(subplot_kw={'projection': 'polar'})

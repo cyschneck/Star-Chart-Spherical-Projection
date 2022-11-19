@@ -3,7 +3,7 @@
 ![PyPi](https://img.shields.io/pypi/v/star-chart-spherical-projection)
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
 
-A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) with declination and right ascension and proper motion
+A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [this Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 
 __Star Chart in the Northern Hemisphere (centered on 90°)__
 ![north_star_chart_without_precession_without_labels+png](https://github.com/cyschneck/History-Survival-Guide/blob/master/page_x_astrolabe/generate_star_chart_outputs/star_chart_north_without_precession_without_labels.png) 
@@ -12,13 +12,13 @@ __Star Chart in the Southern Hemisphere (centered on -90°)__
 
 ## Overview
 
- From perspective of an observer on the Earth's surface, the stars sit along the celestial sphere at a distance from the celestial equator (declination) and the position of the vernal equinox (right ascension). The stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed (if we ignore proper motion and precession for the moment).
+From the perspective of an observer on the Earth's surface, the stars apprar to sit along the surface of the celestial sphere--an imaginary sphere of arbitery radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. The stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
  
  <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Earth_within_celestial_sphere.gif" />
 </p>
 
-The first step to plot the celestial sphere onto a 2D plot is to map right ascension as hours along the plot (polar plot's theta value) and declination as the distance from the center of the circle (polar plot's radius value). However, attempting to map the right ascension and declination direclty will cause a distinct amount of distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
+The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (polar plot's theta value) and declination as the distance from the center of the circle (polar plot's radius value). However, attempting to map the right ascension and declination directly will cause a distinct amount of distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
 
 | Without Correction | With Correction |
 | ------------- | ------------- |

@@ -1,16 +1,16 @@
 import logging
+import configparser
 import numpy as np
 
-# Declination default ranges for North and South
-northern_declination_min = -30
-northern_declination_max = 90
-southern_declination_min = 30
-southern_declination_max = -90
-
+## Logging set up for .INFO
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
+
+## Declination default options from config.ini
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 def errorHandling(list_of_stars, 
 				northOrSouth, 
@@ -39,16 +39,16 @@ def errorHandling(list_of_stars,
 
 	# Ensure that declination ranges are set and within within ranges
 	if declination_min is None:
-		if northOrSouth == "North": declination_min = northern_declination_min
-		if northOrSouth == "South": declination_min = southern_declination_min
+		if northOrSouth == "North": declination_min = int(config["declinationDefaultValues"]["northern_declination_min"])
+		if northOrSouth == "South": declination_min = int(config["declinationDefaultValues"]["southern_declination_min"])
 	if declination_min is not None and declination_min not in np.arange(-89, 90): # if defined, but not in range
 		logger.critical("\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_min))
 		exit()
 	logger.debug("declination_min = '{0}'".format(declination_min))
 
 	# Set max declination based on hemisphere selected
-	if northOrSouth == "North": declination_max = northern_declination_max
-	if northOrSouth == "South": declination_max = southern_declination_max
+	if northOrSouth == "North": declination_max = int(config["declinationDefaultValues"]["northern_declination_max"])
+	if northOrSouth == "South": declination_max = int(config["declinationDefaultValues"]["southern_declination_max"])
 	logger.debug("declination_max = '{0}'".format(declination_max))
 
 	# Ensure if a year is selected it is a float or int, set by default to 0 (the year = 2000)
@@ -82,4 +82,3 @@ def errorHandling(list_of_stars,
 		logger.critical("\nCRITICAL ERROR, [figsize_dpi]: Must be a int or float, current type = '{0}'".format(type(figsize_dpi)))
 		exit()
 	logger.debug("figsize_dpi = '{0}'".format(figsize_dpi))
-	####################################################################

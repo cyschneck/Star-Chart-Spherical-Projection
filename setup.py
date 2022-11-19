@@ -32,6 +32,7 @@ setup(
 	],
 	packages=find_packages(include=['star-chart-spherical-projection', 'star-chart-spherical-projection.*']),
 	install_requires=[
+		"configparser>=5.3.0",
 		"matplotlib>=3.1.0",
 		"numpy>=1.21.6",
 		"pandas>=1.3.5"

@@ -73,3 +73,16 @@ def plotStarChart(list_of_stars=[],
 	ax = fig.subplots(subplot_kw={'projection': 'polar'})
 
 	logger.info("PLOTTING: {0}".format(list_of_stars))
+	
+	# Set Declination (astronomical 'latitude') as Y (radius of polar plot)
+
+	# Split up chart into North/South hemisphere
+	if northOrSouth == "North":
+		declination_values = np.arange(northern_declination_min, northern_declination_max+1, increment_by) # +1 to show max value in range
+		min_dec_value = northern_declination_min
+		max_dec_value = northern_declination_max
+	if northOrSouth == "South":
+		declination_values = np.arange(southern_declination_min, southern_declination_max+1, increment_by) # +1 to show max value in range
+		min_dec_value = southern_declination_min
+		max_dec_value = southern_declination_max
+

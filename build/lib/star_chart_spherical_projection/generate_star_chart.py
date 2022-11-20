@@ -1,16 +1,16 @@
 ########################################################################
-# Generate a star chart centered on:
+# Generate a star chart centered on the poles:
 #		Northern Hemsiphere = 90°
 #		Southern Hemsiphere = -90°
 ########################################################################
-import numpy as np
-import pandas as pd
+import configparser
+import csv
+import logging
 import math
 import matplotlib.pyplot as plt
-import configparser
-import logging
-import csv
+import numpy as np
 import os
+import pandas as pd
 
 import star_chart_spherical_projection
 

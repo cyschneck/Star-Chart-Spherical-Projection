@@ -1,5 +1,8 @@
-import logging
+########################################################################
+# ERROR CATCHES AND LOGGING
+########################################################################
 import configparser
+import logging
 import numpy as np
 
 ## Logging set up for .INFO
@@ -20,15 +23,15 @@ def errorHandling(userListOfStars,
 				figsize_n,
 				figsize_dpi,
 				save_plot_name):
-	####################################################################
-	# ERROR CATCHES AND LOGGING
-	####################################################################
 	# Ensure that star list is a list
 	if type(userListOfStars) != list:
 		logger.critical("\nCRITICAL ERROR, [userListOfStars]: Must be a list, current type = '{0}'".format(type(userListOfStars)))
 		exit()
+
+	###
 	## TODO: check that user list has stars that are found in current list #TODO
-	######################################################################
+	###
+
 	logger.debug("userListOfStars = '{0}'".format(userListOfStars))
 
 	# Ensure that Hemisphere selected are within options

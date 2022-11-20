@@ -12,6 +12,9 @@ The first step to plot the celestial sphere onto a 2D plot is to map the star's 
 | ------------- | ------------- |
 | ![without_correction](https://user-images.githubusercontent.com/22159116/202333014-a53f1176-182f-43c7-ab92-266d15d8c563.jpg) | ![with_correction](https://user-images.githubusercontent.com/22159116/202333015-493619f4-a5b8-4614-8b32-54225d7fad02.png) |
 
+The sphere is projected from the South Pole (via Sterographic projection):
+![sterographic_projection](https://courses.washington.edu/gis250/lessons/projection/images_av3/orthographic2.gif)
+
 _Example outputs:_
 
 __Star Chart in the Northern Hemisphere (centered on 90°)__

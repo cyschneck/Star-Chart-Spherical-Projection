@@ -3,8 +3,8 @@
 #		Northern Hemsiphere = tan(45° - angle of inclination)
 #		Southern Hemsiphere = tan(45° + angle of inclination)
 ########################################################################
-import numpy as np
 import math
+import numpy as np
 
 def calculateLength(angle_of_inclination, radius_of_circle, northOrSouth):
 	# convert angle into length of radius

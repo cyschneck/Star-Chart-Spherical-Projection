@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+star_chart_spherical_projection.egg-info/PKG-INFO
+star_chart_spherical_projection.egg-info/SOURCES.txt
+star_chart_spherical_projection.egg-info/dependency_links.txt
+star_chart_spherical_projection.egg-info/requires.txt
+star_chart_spherical_projection.egg-info/top_level.txt

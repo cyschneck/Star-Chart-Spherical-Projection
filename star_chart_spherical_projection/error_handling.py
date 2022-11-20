@@ -12,23 +12,28 @@ logger.addHandler(stream_handler)
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-def errorHandling(list_of_stars, 
+def errorHandling(userListOfStars, 
 				northOrSouth, 
 				declination_min,
-				year_since_2000,
+				yearSince2000,
 				displayStarNamesLabels,
 				displayDeclinationNumbers,
-				increment_by, 
+				incrementBy, 
+				fig_plot_title,
+				fig_plot_color,
 				figsize_n,
-				figsize_dpi):
+				figsize_dpi,
+				save_plot_name):
 	####################################################################
 	# ERROR CATCHES AND LOGGING
 	####################################################################
-	# Ensure that star list has at least one star to chart
-	if len(list_of_stars) == 0:
-		logger.critical("\nCRITICAL ERROR, [list_of_stars]: List of stars needs at least one star to chart, current list = {0}".format(full_star_list))
+	# Ensure that star list is a list
+	if type(userListOfStars) != list:
+		logger.critical("\nCRITICAL ERROR, [userListOfStars]: Must be a list, current type = '{0}'".format(type(userListOfStars)))
 		exit()
-	logger.debug("list_of_stars = '{0}'".format(list_of_stars))
+	## TODO: check that user list has stars that are found in current list #TODO
+	######################################################################
+	logger.debug("userListOfStars = '{0}'".format(userListOfStars))
 
 	# Ensure that Hemisphere selected are within options
 	if northOrSouth not in ["North", "South"]:
@@ -43,10 +48,10 @@ def errorHandling(list_of_stars,
 	logger.debug("declination_min = '{0}'".format(declination_min))
 
 	# Ensure if a year is selected it is a float or int, set by default to 0 (the year = 2000)
-	if type(year_since_2000) != int and type(year_since_2000) != float:
-		logger.critical("\nCRITICAL ERROR, [year_since_2000]: Must be a int or float, current type = '{0}'".format(type(year_since_2000)))
+	if type(yearSince2000) != int and type(yearSince2000) != float:
+		logger.critical("\nCRITICAL ERROR, [yearSince2000]: Must be a int or float, current type = '{0}'".format(type(yearSince2000)))
 		exit()
-	logger.debug("year_since_2000 = '{0}'".format(year_since_2000))
+	logger.debug("yearSince2000 = '{0}'".format(yearSince2000))
 
 	# Ensure that the display options for star names and declination numbers are booleans ["True", "False"]
 	if type(displayStarNamesLabels) != bool:
@@ -59,11 +64,23 @@ def errorHandling(list_of_stars,
 	logger.debug("displayDeclinationNumbers = '{0}'".format(displayDeclinationNumbers))
 
 	# Ensure that increment options are 1, 5, 10
-	if type(increment_by) != int or increment_by not in [1, 5, 10]:
-		logger.critical("\nCRITICAL ERROR, [increment_by]: Must be one of the options [1, 5, 10], current value = '{0}'".format(increment_by))
+	if type(incrementBy) != int or incrementBy not in [1, 5, 10]:
+		logger.critical("\nCRITICAL ERROR, [incrementBy]: Must be one of the options [1, 5, 10], current value = '{0}'".format(incrementBy))
 		exit()
-	logger.debug("increment_by = '{0}'".format(increment_by))
-	
+	logger.debug("incrementBy = '{0}'".format(incrementBy))
+
+	# Ensure that the color given is a string (matplotlib has error checking for invalid color options)
+	if type(fig_plot_color) != str:
+		logger.critical("\nCRITICAL ERROR, [fig_plot_color]: Must be a string, current type = '{0}'".format(type(fig_plot_color)))
+		exit()
+	logger.debug("fig_plot_color = '{0}'".format(fig_plot_color))
+
+	# Ensure that the user defined title of the plot is a string
+	if fig_plot_title is not None and type(fig_plot_title) != str:
+		logger.critical("\nCRITICAL ERROR, [fig_plot_title]: Must be a string, current type = '{0}'".format(type(fig_plot_title)))
+		exit()
+	logger.debug("fig_plot_title = '{0}'".format(fig_plot_title))
+
 	# Ensure that figure options are integers or floats
 	if type(figsize_n) != int and type(figsize_n) != float:
 		logger.critical("\nCRITICAL ERROR, [figsize_n]: Must be a int or float, current type = '{0}'".format(type(figsize_n)))
@@ -73,3 +90,9 @@ def errorHandling(list_of_stars,
 		logger.critical("\nCRITICAL ERROR, [figsize_dpi]: Must be a int or float, current type = '{0}'".format(type(figsize_dpi)))
 		exit()
 	logger.debug("figsize_dpi = '{0}'".format(figsize_dpi))
+
+	# Ensure that the user defined figure saved name is a string
+	if save_plot_name is not None and type(save_plot_name) != str:
+		logger.critical("\nCRITICAL ERROR, [save_plot_name]: Must be a string, current type = '{0}'".format(type(save_plot_name)))
+		exit()
+	logger.debug("save_plot_name = '{0}'".format(save_plot_name))

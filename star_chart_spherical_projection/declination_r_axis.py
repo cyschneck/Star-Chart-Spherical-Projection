@@ -50,5 +50,4 @@ def calculateRuler(declination_min, declination_max, increment, northOrSouth):
 			if n_angle <= declination_min and n_angle >= declination_max: # South
 				ruler_position_dict[n_angle] = round(ruler_position, 4)
 
-	print(ruler_position_dict)
 	return ruler_position_dict

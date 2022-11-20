@@ -15,7 +15,7 @@ import star_chart_spherical_projection
 
 ## Logging set up
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
@@ -126,28 +126,38 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 	logger.debug("Final Dec: {0} degrees ".format(star_adjusted_declination))
 	return star_adjusted_ra, star_adjusted_declination
 
-def plotStarChart(list_of_stars=[], 
-				northOrSouth="Both", 
+def plotStarChart(userListOfStars=[], 
+				northOrSouth=None, 
 				declination_min=None,
-				year_since_2000=0,
+				yearSince2000=0,
 				displayStarNamesLabels=True,
 				displayDeclinationNumbers=True,
-				increment_by=5, 
+				incrementBy=10,
+				fig_plot_title=None,
+				fig_plot_color="C0",
 				figsize_n=12,
-				figsize_dpi=100):
+				figsize_dpi=100,
+				save_plot_name=None):
 	# plot star chart as a circular graph
+	list_of_stars = getStarList(userListOfStars)
+
+	# Convert Star chart from RA hours to Radians to chart
+	list_of_stars = convertRAhrtoRadians(list_of_stars)
 
 	# Catch errors in given arguments before plotting and set default constants
-	northOrSouth = northOrSouth.capitalize()
-	star_chart_spherical_projection.errorHandling(list_of_stars, 
+	star_chart_spherical_projection.errorHandling(userListOfStars, 
 													northOrSouth, 
 													declination_min,
-													year_since_2000,
+													yearSince2000,
 													displayStarNamesLabels,
 													displayDeclinationNumbers,
-													increment_by, 
+													incrementBy, 
+													fig_plot_title,
+													fig_plot_color,
 													figsize_n,
-													figsize_dpi)
+													figsize_dpi,
+													save_plot_name)
+	northOrSouth = northOrSouth.capitalize()
 
 	# Set max declination based on hemisphere selected
 	if declination_min is None:
@@ -156,18 +166,20 @@ def plotStarChart(list_of_stars=[],
 	if northOrSouth == "North": declination_max = int(config["declinationDefaultValues"]["northern_declination_max"])
 	if northOrSouth == "South": declination_max = int(config["declinationDefaultValues"]["southern_declination_max"])
 
-	logger.debug("PLOTTING: {0}".format(list_of_stars))
-	logger.debug("list_of_stars = {0}".format(list_of_stars))
+	logger.debug("userListOfStars = {0}".format(userListOfStars))
 	logger.debug("northOrSouth = {0}".format(northOrSouth))
 	logger.debug("declination_min = {0}".format(declination_min))
 	logger.debug("declination_max = {0}".format(declination_max))
-	logger.debug("year_since_2000 = {0}".format(year_since_2000))
+	logger.debug("yearSince2000 = {0}".format(yearSince2000))
 	logger.debug("displayStarNamesLabels = {0}".format(displayStarNamesLabels))
 	logger.debug("displayDeclinationNumbers = {0}".format(displayDeclinationNumbers))
 	logger.debug("displayDeclinationNumbers = {0}".format(displayDeclinationNumbers))
-	logger.debug("increment_by = {0}".format(increment_by))
+	logger.debug("incrementBy = {0}".format(incrementBy))
+	logger.debug("fig_plot_title = {0}".format(fig_plot_title))
+	logger.debug("fig_plot_color = {0}".format(fig_plot_color))
 	logger.debug("figsize_n = {0}".format(figsize_n))
 	logger.debug("figsize_dpi = {0}".format(figsize_dpi))
+	logger.debug("save_plot_name = {0}".format(save_plot_name))
 
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
 	ax = fig.subplots(subplot_kw={'projection': 'polar'})
@@ -175,14 +187,14 @@ def plotStarChart(list_of_stars=[],
 	# Set Declination (astronomical 'latitude') as Y (radius of polar plot)
 
 	# Split up chart into North/South hemisphere
-	declination_values = np.arange(declination_min, declination_max+1, increment_by) # +1 to show max value in range
+	declination_values = np.arange(declination_min, declination_max+1, incrementBy) # +1 to show max value in range
 	min_dec_value = declination_min
 	max_dec_value = declination_max
 
 	# Store the ruler positions based on degrees and the ratio of the ruler
 	ruler_position_dict = star_chart_spherical_projection.calculateRuler(min_dec_value,
 																		max_dec_value,
-																		increment_by, 
+																		incrementBy, 
 																		northOrSouth)
 
 	# Display declination lines on the chart from -min to +max
@@ -223,7 +235,7 @@ def plotStarChart(list_of_stars=[],
 
 		# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
 		logger.debug("'{0}' original RA = {1} and Declination = {2}".format(star[0], np.rad2deg(star[1]), star[2]))
-		star_ra, star_declination = calculateRAandDeclinationViaProperMotion(year_since_2000, 
+		star_ra, star_declination = calculateRAandDeclinationViaProperMotion(yearSince2000, 
 																			star[1], 
 																			star[2], 
 																			star[3], 
@@ -265,12 +277,12 @@ def plotStarChart(list_of_stars=[],
 						horizontalalignment='center', verticalalignment='bottom', 
 						fontsize=8)
 	for i, txt in enumerate(x_star_labels):
-		logger.info("{0}: {1:05f} RA (degrees) and {2:05f} Declination (ruler)".format(txt, np.rad2deg(x_ra_values[i]), y_dec_values[i]))
+		logger.debug("{0}: {1:05f} RA (degrees) and {2:05f} Declination (ruler)".format(txt, np.rad2deg(x_ra_values[i]), y_dec_values[i]))
 		output_string = "Proper Motion"
-		logger.info("{0} for {1} Years\n".format(output_string, year_since_2000))
+		logger.debug("{0} for {1} Years\n".format(output_string, yearSince2000))
 
-	ax.scatter(x_ra_values, y_dec_values, s=10)
-	years_for_title = year_since_2000
+	ax.scatter(x_ra_values, y_dec_values, s=10, c=fig_plot_color)
+	years_for_title = yearSince2000
 	suffix = ""
 	if 1000 <  abs(years_for_title) and abs(years_for_title) < 1000000:
 		years_for_title = years_for_title / 1000
@@ -278,13 +290,20 @@ def plotStarChart(list_of_stars=[],
 	if abs(years_for_title) > 1000000:
 		years_for_title = years_for_title / 1000000
 		suffix = "M"
-	if year_since_2000 >= 0: year_bce_ce = "{0} C.E".format(year_since_2000 + 2000) # postive years for C.E
-	if year_since_2000 < 0: year_bce_ce = "{0} B.C.E".format(abs(year_since_2000 + 2000)) # negative years for B.C.E
+	if yearSince2000 >= 0: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # postive years for C.E
+	if yearSince2000 < 0: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
 
-	ax.set_title("{0}ern Hemisphere [{1}{2} Years Since 2000 ({3})]: {4}° to {5}°".format(northOrSouth,
-																							years_for_title,
-																							suffix,
-																							year_bce_ce,
-																							declination_max,
-																							declination_min))
+	if fig_plot_title is None: # by default sets title of plot
+		ax.set_title("{0}ern Hemisphere [{1}{2} Years Since 2000 ({3})]: {4}° to {5}°".format(northOrSouth,
+																								years_for_title,
+																								suffix,
+																								year_bce_ce,
+																								declination_max,
+																								declination_min))
+	else:
+		ax.set_title(fig_plot_title)
+
+	if save_plot_name is not None: 
+		fig.savefig(save_plot_name)
+
 	plt.show()

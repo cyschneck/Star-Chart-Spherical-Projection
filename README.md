@@ -32,15 +32,9 @@ new_declination = tan(45° + (original_declination / 2))
 
 ## Dependencies
 
+Python 3.7
 ```
-pip install -r requirements.txt
-```
-
-```
-matplotlib
-numpy
-pandas
-
+pip3 install -r requirements.txt
 ```
 
 ## Install
@@ -55,11 +49,17 @@ pip install star-chart-spherical-projection
 
 ## Examples
 
+```
+import star_chart_spherical_projection
+star_chart_spherical_projection.plotStarChart(northOrSouth="North", star_plot_color="red")
+```
 ## Tests
 
 ## TODO:
 
 Add README badges: tests
+
+TODO: check that user list has stars that are found in current list
 
 Update pypi setup.py development status
 

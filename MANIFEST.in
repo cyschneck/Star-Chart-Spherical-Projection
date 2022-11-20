@@ -1,1 +1,2 @@
 include star_chart_spherical_projection/data/*.csv
+include star_chart_spherical_projection/config.ini

@@ -3,8 +3,8 @@
 # Python Package Setup
 from setuptools import setup, find_packages
 
-VERSION="0.1.0"
-DESCRIPTION="A Python package to generate star charts with spherical projection centered on +90 degrees for Northern Hemisphere and -90 degrees for Southern Hemisphere projections"
+VERSION="0.1.1"
+DESCRIPTION="A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection"
 
 with open("README.md", "r") as f:
 	long_description_readme = f.read()
@@ -16,7 +16,7 @@ setup(
 	long_description=long_description_readme,
 	long_description_content_type='text/markdown',
 	url="https://github.com/cyschneck/Star-Chart-Spherical-Projection",
-	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.0.tar.gz",
+	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.1.tar.gz",
 	author="cyschneck (C. Y. Schneck)",
 	keywords=["astronomy", "python", "star charts", "precession", "proper motion", "spherical projection"],
 	license="MIT",
@@ -30,7 +30,7 @@ setup(
 		"Programming Language :: Python :: 3.7",
 		"Topic :: Scientific/Engineering :: Astronomy"
 	],
-	packages=find_packages(include=['star-chart-spherical-projection', 'star-chart-spherical-projection.*']),
+	packages=find_packages(include=['star_chart_spherical_projection', 'star_chart_spherical_projection.*']),
 	install_requires=[
 		"configparser>=5.3.0",
 		"matplotlib>=3.1.0",

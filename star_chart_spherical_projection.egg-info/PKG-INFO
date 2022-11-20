@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: star-chart-spherical-projection
 Version: 0.1.0
-Summary: A Python package to generate star charts with spherical projection centered on +90 degrees for Northern Hemisphere and -90 degrees for Southern Hemisphere projections
+Summary: A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection
 Home-page: https://github.com/cyschneck/Star-Chart-Spherical-Projection
 Download-URL: https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.0.tar.gz
 Author: cyschneck (C. Y. Schneck)

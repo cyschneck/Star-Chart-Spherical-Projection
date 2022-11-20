@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: star-chart-spherical-projection
-Version: 0.1.2
+Version: 0.1.3
 Summary: A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection
 Home-page: https://github.com/cyschneck/Star-Chart-Spherical-Projection
-Download-URL: https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.2.tar.gz
+Download-URL: https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.3.tar.gz
 Author: cyschneck (C. Y. Schneck)
 License: MIT
 Keywords: astronomy,python,star charts,precession,proper motion,spherical projection

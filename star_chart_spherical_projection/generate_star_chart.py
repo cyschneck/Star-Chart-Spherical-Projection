@@ -32,7 +32,6 @@ def getStarList(selectStars=[]):
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
 	import os
-	print(os.getcwd())
 	star_dataframe = pd.read_csv("star_data/star_data.csv")
 	for index, row in star_dataframe.iterrows():
 		if len(selectStars) > 0: # get only a subset of all stars

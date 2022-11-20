@@ -33,7 +33,7 @@ Spherical projection can overcome this difficulty by converting the position of 
 # Projected from South Pole (Northern Hemisphere)
 north_hemisphere_declination = tan(45° + (original_declination / 2))
 
-# Projected from North Pole (Northern Hemisphere)
+# Projected from North Pole (Southern Hemisphere)
 south_hemisphere_declination = tan(45° - (original_declination / 2))
 ```
 Where in the Northern Hemsiphere, projections are formed from the South Pole: 

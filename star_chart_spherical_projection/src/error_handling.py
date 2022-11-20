@@ -8,10 +8,6 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
-## Declination default options from config.ini
-config = configparser.ConfigParser()
-config.read("config.ini")
-
 def errorHandling(userListOfStars, 
 				northOrSouth, 
 				declination_min,

@@ -22,7 +22,7 @@ logger.addHandler(stream_handler)
 
 ## Constants
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
 
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
@@ -32,7 +32,7 @@ def getStarList(selectStars=[]):
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
-	star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv') 
+	star_csv_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
 	star_dataframe = pd.read_csv(star_csv_file)
 	for index, row in star_dataframe.iterrows():
 		if len(selectStars) > 0: # get only a subset of all stars

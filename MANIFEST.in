@@ -1,1 +1,1 @@
-include star_data/star_data.csv
+include star_chart_spherical_projection/data/*.csv

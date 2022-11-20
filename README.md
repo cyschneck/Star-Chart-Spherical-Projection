@@ -18,8 +18,7 @@ __Star Chart in the Northern Hemisphere (centered on 90°)__
 ![north_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_testing.png) 
 __Star Chart in the Southern Hemisphere (centered on -90°)__
 ![south_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_testing.png)
-
-*precession to be added
+_*precession to be added_
 
 ## Overview
 
@@ -31,8 +30,13 @@ From the perspective of an observer on the Earth's surface, the stars apprar to 
 
 Spherical projection can overcome this difficulty by converting the position of the declination to:
 ```
-new_declination = tan(45° + (original_declination / 2))
+# Projected from South Pole (Northern Hemisphere)
+north_hemisphere_declination = tan(45° + (original_declination / 2))
+
+# Projected from North Pole (Northern Hemisphere)
+south_hemisphere_declination = tan(45° - (original_declination / 2))
 ```
+Where in the Northern Hemsiphere, projections are formed from the South Pole: 
 ![morrisons_astrolabe](https://user-images.githubusercontent.com/22159116/202336728-dc290bfa-44f5-4947-9a08-93f70286436e.jpg)
 
 ## Dependencies

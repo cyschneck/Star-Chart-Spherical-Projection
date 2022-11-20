@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: star-chart-spherical-projection
-Version: 0.1.3
+Version: 0.1.4
 Summary: A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection
 Home-page: https://github.com/cyschneck/Star-Chart-Spherical-Projection
-Download-URL: https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.3.tar.gz
+Download-URL: https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v0.1.4.tar.gz
 Author: cyschneck (C. Y. Schneck)
 License: MIT
 Keywords: astronomy,python,star charts,precession,proper motion,spherical projection
@@ -39,8 +39,7 @@ __Star Chart in the Northern Hemisphere (centered on 90°)__
 ![north_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_testing.png) 
 __Star Chart in the Southern Hemisphere (centered on -90°)__
 ![south_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_testing.png)
-
-*precession to be added
+_*precession to be added_
 
 ## Overview
 
@@ -52,8 +51,13 @@ From the perspective of an observer on the Earth's surface, the stars apprar to 
 
 Spherical projection can overcome this difficulty by converting the position of the declination to:
 ```
-new_declination = tan(45° + (original_declination / 2))
+# Projected from South Pole (Northern Hemisphere)
+north_hemisphere_declination = tan(45° + (original_declination / 2))
+
+# Projected from North Pole (Northern Hemisphere)
+south_hemisphere_declination = tan(45° - (original_declination / 2))
 ```
+Where in the Northern Hemsiphere, projections are formed from the South Pole: 
 ![morrisons_astrolabe](https://user-images.githubusercontent.com/22159116/202336728-dc290bfa-44f5-4947-9a08-93f70286436e.jpg)
 
 ## Dependencies

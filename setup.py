@@ -3,7 +3,7 @@
 # Python Package Setup
 from setuptools import setup, find_packages
 
-VERSION="0.1.3"
+VERSION="0.1.4"
 DESCRIPTION="A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection"
 
 with open("README.md", "r") as f:
@@ -30,8 +30,8 @@ setup(
 		"Programming Language :: Python :: 3.7",
 		"Topic :: Scientific/Engineering :: Astronomy"
 	], 
-	include_package_data=True,
-	packages=find_packages(include=['star_chart_spherical_projection', 'star_chart_spherical_projection.*']),
+	packages=find_packages(include=['star_chart_spherical_projection',
+									'star_chart_spherical_projection.*']),
 	install_requires=[
 		"configparser>=5.3.0",
 		"matplotlib>=3.1.0",

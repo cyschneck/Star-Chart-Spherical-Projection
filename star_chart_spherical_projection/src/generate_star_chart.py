@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import configparser
 import logging
 import csv
+import os
 
 import star_chart_spherical_projection
 
@@ -31,8 +32,8 @@ def getStarList(selectStars=[]):
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
-	import os
-	star_dataframe = pd.read_csv("star_data/star_data.csv")
+	star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv') 
+	star_dataframe = pd.read_csv(star_csv_file)
 	for index, row in star_dataframe.iterrows():
 		if len(selectStars) > 0: # get only a subset of all stars
 			if row["Star Name"] in selectStars:

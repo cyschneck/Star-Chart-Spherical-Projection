@@ -1,8 +1,11 @@
 import pandas as pd
 
 if __name__ == '__main__':
+	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
+	# qNorthern stars (+ declination)
 	aldebaran_star = ["Aldebaran", "04.35.55", 16.30, 199.3, 161.4, 0.99]
 	algol_star = ["Algol", "03.08.10", 40.57, 3.4, 119.0, 2.11]
+	alhena_star = ["Alhena", "06.37.42", 16.24, 56.7, 165.9, 1.93]
 	alioth_star = ["Alioth", "12.54.01", 55.57, 112.2, 94.2, 1.76] # Big Dipper
 	alkaid_star = ["Alkaid", "13.47.32", 49.18, 122.1, 263.0, 1.86] # Big Dipper
 	alphecca_star = ["Alphecca", "15.34.41", 26.42, 147.8, 126.4, 2.22]
@@ -20,9 +23,12 @@ if __name__ == '__main__':
 	deneb_star = ["Deneb", "20.41.25", 45.16, 2.7, 47.4, 1.33]
 	denebola_star = ["Denebola", "11.49.03", 14.34, 510.7, 257.0, 2.13]
 	dubhe_star = ["Dubhe", "11.03.43", 61.45, 138.5, 255.5, 1.82] # Big Dipper
+	elnath_star = ["Elnath", "28.36.28", 28.36, 175.1, 172.5, 1.68]
 	hamal_star = ["Hamal", "02.07.10", 23.27, 239.7, 128.1, 2.02]
 	megrez_star = ["Megrez", "12.15.25", 57.01, 104.3, 85.5, 3.30] # Big Dipper
+	menkalinan_star = ["Menkalinan", "05.59.31", 44.57, 56.4, 269.0, 1.90]
 	merak_star = ["Merak", "11.01.50", 56.22, 88.0, 67.6, 2.35] # Big Dipper
+	mirfak_star = ["Mirfak", "03.24.19", 49.51, 35.4, 137.8, 1.81]
 	muphrid_star = ["Muphrid", "13.54.41", 18.23, 361.5, 189.7, 2.68]
 	mizar_star = ["Mizar", "13.23.55", 54.55, 124.6, 100.5, 2.22] # Big Dipper
 	navi_star = ["Navi", "00.56.42", 60.43, 25.5, 98.9, 2.18] # Gamma Cassiopeiae
@@ -48,6 +54,8 @@ if __name__ == '__main__':
 	alnilam_star = ["Alnilam", "05.36.12", -1.12, 1.6, 118.4, 1.72]
 	alnitak_star = ["Alnitak", "05.40.45", -1.56, 3.8, 57.5, 1.90]
 	ankaa_star = ["Ankaa", "00.26.17", -42.18, 425.7, 146.8, 2.38]
+	atria_star = ["Atria", "16.48.39", -69.01, 36.3, 150.3, 1.90]
+	avior_star = ["Avior", "08.22.30", -59.30, 33.7, 310.8, 1.95]
 	antares_star = ["Antares", "16.29.24", -26.25, 26.3, 207.5, 1.07]
 	beta_hydri_star = ["Beta Hydri", "00.25.45", -77.15, 2242.9, 81.6, 2.79]
 	beta_phoenicis_star = ["Beta Phoenicis", "01.06.05", -46.43, 88.1, 293.4, 3.37]
@@ -61,15 +69,18 @@ if __name__ == '__main__':
 	meissa_star = ["Meissa", "05.35.08", -9.56, 3.0, 186.6, 3.53]
 	mintaka_star = ["Mintaka", "05.32.00", -0.18, 0.9, 137.2, 2.23]
 	mimosa_star = ["Mimosa", "12.47.43", -59.41, 45.9, 249.4, 1.31] # Southern Cross
+	mirzam_star = ["Mirzam", "06.22.41", -17.57, 3.3, 256.4, 1.96]
 	rigel_star = ["Rigel", "05.14.32", -8.12, 1.4, 69.1, 0.28]
 	sadalmelik_star = ["Sadalmelik", "22.05.47", -0.19, 21.3, 119.3, 2.93]
 	saiph_star = ["Saiph", "05.47.45", -9.4, 1.9, 131.2, 2.06]
 	sirius_star = ["Sirius", "06.45.08", -16.42, 1339.4, 204.1, -1.44]
+	wezen_star = ["Wezen", "07.08.23", -26.23, 4.5, 316.7, 1.84]
 	zubeneschamali_star = ["Zubeneschamali", "15.17.00", -9.22, 100.0, 258.7, 2.61]
 
 	# add stars to total star list
 	northern_star_chart_list = [aldebaran_star,
 								algol_star,
+								alhena_star,
 								alioth_star,
 								alkaid_star,
 								alphecca_star,
@@ -87,9 +98,12 @@ if __name__ == '__main__':
 								deneb_star,
 								denebola_star,
 								dubhe_star,
+								elnath_star,
 								hamal_star,
 								megrez_star,
+								menkalinan_star,
 								merak_star,
+								mirfak_star,
 								muphrid_star,
 								mizar_star,
 								navi_star,
@@ -115,6 +129,8 @@ if __name__ == '__main__':
 								alnilam_star,
 								alnitak_star,
 								ankaa_star,
+								atria_star,
+								avior_star,
 								antares_star,
 								beta_hydri_star,
 								beta_phoenicis_star,
@@ -128,13 +144,19 @@ if __name__ == '__main__':
 								meissa_star,
 								mintaka_star,
 								mimosa_star,
+								mirzam_star,
 								rigel_star,
 								saiph_star,
 								sirius_star,
+								wezen_star,
 								zubeneschamali_star
 								]
 
 	star_chart_list = northern_star_chart_list + southern_star_chart_list
+	for star in star_chart_list:
+		if len(star) != 6:
+			print("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
+			exit()
 	header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)", "Proper Motion Speed (mas/yr)", "Proper Motion Angle (DD.SS)", "Magnitude (V, Visual)"]
 	my_df = pd.DataFrame(star_chart_list, columns=header_options)
 	my_df = my_df.sort_values(by=["Star Name"])

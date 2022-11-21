@@ -126,18 +126,18 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 	logger.debug("Final Dec: {0} degrees ".format(star_adjusted_declination))
 	return star_adjusted_ra, star_adjusted_declination
 
-def plotStarChart(userListOfStars=[], 
-				northOrSouth=None, 
-				declination_min=None,
-				yearSince2000=0,
-				displayStarNamesLabels=True,
-				displayDeclinationNumbers=True,
-				incrementBy=10,
-				fig_plot_title=None,
-				fig_plot_color="C0",
-				figsize_n=12,
-				figsize_dpi=100,
-				save_plot_name=None):
+def plotStereographicProjection(userListOfStars=[], 
+								northOrSouth=None, 
+								declination_min=None,
+								yearSince2000=0,
+								displayStarNamesLabels=True,
+								displayDeclinationNumbers=True,
+								incrementBy=10,
+								fig_plot_title=None,
+								fig_plot_color="C0",
+								figsize_n=12,
+								figsize_dpi=100,
+								save_plot_name=None):
 	# plot star chart as a circular graph
 	list_of_stars = getStarList(userListOfStars)
 

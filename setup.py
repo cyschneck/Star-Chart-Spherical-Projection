@@ -3,8 +3,8 @@
 # Python Package Setup
 from setuptools import setup, find_namespace_packages
 
-VERSION="1.0.0"
-DESCRIPTION="A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions to generate star charts with spherical projection"
+VERSION="1.0.1"
+DESCRIPTION="A Python package to generate an astronomy star chart based on spherical projection that corrects for distortions with stereographic projection"
 
 with open("README.md", "r") as f:
 	long_description_readme = f.read()
@@ -18,7 +18,7 @@ setup(
 	url="https://github.com/cyschneck/Star-Chart-Spherical-Projection",
 	download_url="https://github.com/cyschneck/Star-Chart-Spherical-Projection/archive/refs/tags/v{0}.tar.gz".format(VERSION),
 	author="cyschneck (C. Y. Schneck)",
-	keywords=["astronomy", "python", "star charts", "precession", "proper motion", "spherical projection"],
+	keywords=["astronomy", "python", "star charts", "precession", "proper motion", "spherical projection", "stereographic projection"],
 	license="MIT",
 	classifiers=[
 		"Development Status :: 4 - Beta",

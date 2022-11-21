@@ -11,7 +11,7 @@ The first step to plot the celestial sphere onto a 2D plot is to map the star's 
 | ------------- | ------------- |
 | ![without_correction](https://user-images.githubusercontent.com/22159116/202333014-a53f1176-182f-43c7-ab92-266d15d8c563.jpg) | ![with_correction](https://user-images.githubusercontent.com/22159116/202333015-493619f4-a5b8-4614-8b32-54225d7fad02.png) |
 
-The sphere is projected from the South Pole (via Sterographic projection):
+The sphere is projected from the South Pole (via [Sterographic projection](https://gisgeography.com/azimuthal-projection-orthographic-stereographic-gnomonic/)):
  <p align="center">
   <img src="https://gisgeography.com/wp-content/uploads/2016/12/Stereographic-Projection-768x421.png" />
 </p>
@@ -46,7 +46,7 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 ## Documentation
 
 ```
-plotStarChart(userListOfStars=[],  
+plotStereographicProjection(userListOfStars=[],  
 		northOrSouth=None, 
 		declination_min=None,
 		yearSince2000=0,
@@ -93,10 +93,7 @@ pip install star-chart-spherical-projection
 ```python
 import star_chart_spherical_projection
 
-star_chart_spherical_projection.plotStarChart(northOrSouth="North", 
-											displayStarNamesLabels=False,
-											yearSince2000=-31,
-											fig_plot_color="red")
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North")
 ```
 ## Tests
 

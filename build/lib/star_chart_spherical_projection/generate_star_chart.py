@@ -126,6 +126,50 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 	logger.debug("Final Dec: {0} degrees ".format(star_adjusted_declination))
 	return star_adjusted_ra, star_adjusted_declination
 
+def calculatePositionOfPolePrecession(years_since_2000, original_declination, original_ra):
+	# Calculate change in the position of the pole due to precession
+	obliquity_for_YYYY = 23.439167
+	logger.info("Years Since 2000 = {0}".format(years_since_2000))
+
+	# Rate of change of right ascension and declination of a star due to precession
+	declination_change_arcseconds_per_year = (19.9 * math.cos(original_ra)) * years_since_2000
+	ra_change_arcseconds_per_year = (46.1 * (19.9 * math.sin(original_ra) * math.tan(np.deg2rad(original_declination)))) * years_since_2000
+
+	change_in_declination = declination_change_arcseconds_per_year/3600 # degrees
+	change_in_ra = np.deg2rad(ra_change_arcseconds_per_year/3600) # degrees to radians
+
+	final_declination_due_to_precession = original_declination + change_in_declination
+	final_ra_due_to_precession = original_ra + change_in_ra
+
+	logger.debug("Dec: {0} + {1} = {2}".format(original_declination, change_in_declination, final_declination_due_to_precession))
+	logger.debug("RA:  {0} + {1} = {2}".format(original_ra, change_in_ra, final_ra_due_to_precession))
+	return final_ra_due_to_precession, final_declination_due_to_precession
+
+def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculate):
+	# Modified code from github.com/dreamalligator/vondrak
+	def position_matrix(ra=None, dec=None):
+		x = math.cos(dec) * math.cos(ra)
+		y = math.cos(dec) * math.sin(ra)
+		z = math.sin(dec)
+		return np.array([[x], [y], [z]])
+
+	def compute_star(compute_ra, compute_dec):
+		return position_matrix(ra = compute_ra, dec = compute_dec)
+
+	P = star_chart_spherical_projection.ltp_pbmat(year_to_calculate) # Precession matrix for the given year
+	p_1 = compute_star(star_ra_rad, star_dec_rad) # compute star's position matrix for given year
+	p_1 = star_chart_spherical_projection.pdp(P, p_1) # apply precession matrix for given year
+	(ra_as_rad, dec_as_rad) = star_chart_spherical_projection.ra_dec(p_1)
+	return dec_as_rad, ra_as_rad # new declination and right ascension
+
+def tempPython27PrecessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
+	# Temporary fix for vondrak plugin (will only find a smaller subsections of the stars)
+	logger.debug("INCLUDING PRECESSION VIA VONDRAK")
+	vondrak_dec, vondrak_ra = vondrakDreamalligator(star_name, star_ra, np.deg2rad(star_dec), 2000 + year_YYYY_since_2000)
+	vondrak_dec = np.rad2deg(vondrak_dec)
+	logger.debug("Precession for Star = {0}, Declination = {1}, RA = {2}".format(star_name, vondrak_dec, vondrak_ra))
+	return vondrak_dec, vondrak_ra
+
 def plotStereographicProjection(userListOfStars=[], 
 								northOrSouth=None, 
 								declination_min=None,
@@ -133,6 +177,7 @@ def plotStereographicProjection(userListOfStars=[],
 								displayStarNamesLabels=True,
 								displayDeclinationNumbers=True,
 								incrementBy=10,
+								isPrecessionIncluded=True,
 								fig_plot_title=None,
 								fig_plot_color="C0",
 								figsize_n=12,
@@ -152,6 +197,7 @@ def plotStereographicProjection(userListOfStars=[],
 													displayStarNamesLabels,
 													displayDeclinationNumbers,
 													incrementBy, 
+													isPrecessionIncluded,
 													fig_plot_title,
 													fig_plot_color,
 													figsize_n,
@@ -175,6 +221,7 @@ def plotStereographicProjection(userListOfStars=[],
 	logger.debug("displayDeclinationNumbers = {0}".format(displayDeclinationNumbers))
 	logger.debug("displayDeclinationNumbers = {0}".format(displayDeclinationNumbers))
 	logger.debug("incrementBy = {0}".format(incrementBy))
+	logger.debug("isPrecessionIncluded = {0}".format(isPrecessionIncluded))
 	logger.debug("fig_plot_title = {0}".format(fig_plot_title))
 	logger.debug("fig_plot_color = {0}".format(fig_plot_color))
 	logger.debug("figsize_n = {0}".format(figsize_n))
@@ -243,20 +290,46 @@ def plotStereographicProjection(userListOfStars=[],
 		logger.debug("Adjusted: {0} RA (radians) = {1}".format(star[1], star_ra))
 		logger.debug("Adjusted via Proper Motion: '{0}': {1} Declination (degrees) = {2} ".format(star[0], star[2], star_declination))
 
-		dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
+		# Calculate new position of star due to PRECESSION (change RA and Declination over time)
+		# Vondrak accurate up  +/- 200K years around 2000
+		################ REMOVEABLE (top) for vondrak python2.7 plugin
+		if isPrecessionIncluded:
+			star_declination, star_ra = tempPython27PrecessionVondrak(star[0], star_ra, star_declination, yearSince2000)
+			logger.debug("Precession: {0} RA (radians)\nPrecession: Declination (degrees) = {1}".format(star_ra, star_declination))
+			star_found_lst = []
+			star_not_found_lst = []
 
-		logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
-		in_range_value = False # Determine if within range of South/North Hemisphere
-		if star_declination > min_dec_value and star_declination < max_dec_value: # only display stars within range of declination values
-			in_range_value = True # North
-		if star_declination < min_dec_value and star_declination > max_dec_value: # only display stars within range of declination values
-			in_range_value = True # South
+			star_found_lst.append(star[0])
+			dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
 
-		if in_range_value:
-			x_star_labels.append(star[0])
-			x_ra_values.append(star_ra)
-			y_dec_values.append(dec_ruler_position)
-			logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+			logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+			in_range_value = False # Determine if within range of South/North Hemisphere
+			if star_declination > min_dec_value and star_declination < max_dec_value: # only display stars within range of declination values
+				in_range_value = True # North
+			if star_declination < min_dec_value and star_declination > max_dec_value: # only display stars within range of declination values
+				in_range_value = True # South
+
+			if in_range_value:
+				x_star_labels.append(star[0])
+				x_ra_values.append(star_ra)
+				y_dec_values.append(dec_ruler_position)
+				logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+		######################### REMOVEABLE (bottom)
+		if not isPrecessionIncluded: # fix for precession, this if statement can be removed
+			dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
+
+			logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+			in_range_value = False # Determine if within range of South/North Hemisphere
+			if star_declination > min_dec_value and star_declination < max_dec_value: # only display stars within range of declination values
+				in_range_value = True # North
+			if star_declination < min_dec_value and star_declination > max_dec_value: # only display stars within range of declination values
+				in_range_value = True # South
+
+			if in_range_value:
+				x_star_labels.append(star[0])
+				x_ra_values.append(star_ra)
+				y_dec_values.append(dec_ruler_position)
+				logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
 
 	# Set Right Ascension (astronomical 'longitude') as X (theta of polar plot)
 	angles_ra = np.array([0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150,
@@ -292,14 +365,16 @@ def plotStereographicProjection(userListOfStars=[],
 		suffix = "M"
 	if yearSince2000 >= 0: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # postive years for C.E
 	if yearSince2000 < 0: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
+	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot
-		ax.set_title("{0}ern Hemisphere [{1}{2} Years Since 2000 ({3})]: {4}° to {5}°".format(northOrSouth,
+		ax.set_title("{0}ern Hemisphere [{1}{2} Years Since 2000 ({3})]: {4}° to {5}° {6}".format(northOrSouth,
 																								years_for_title,
 																								suffix,
 																								year_bce_ce,
 																								declination_max,
-																								declination_min))
+																								declination_min,
+																								figure_has_precession_extra_string))
 	else:
 		ax.set_title(fig_plot_title)
 

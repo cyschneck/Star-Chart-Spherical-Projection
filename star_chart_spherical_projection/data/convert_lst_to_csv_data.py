@@ -153,6 +153,7 @@ if __name__ == '__main__':
 								]
 
 	star_chart_list = northern_star_chart_list + southern_star_chart_list
+	print("Total stars = {0}".format(len(star_chart_list)))
 	for star in star_chart_list:
 		if len(star) != 6:
 			print("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features

@@ -18,11 +18,14 @@ The sphere is projected from the South Pole (via [Sterographic projection](https
 
 _Example outputs:_
 
-__Star Chart in the Northern Hemisphere (centered on 90°)__
-![north_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_testing.png) 
-__Star Chart in the Southern Hemisphere (centered on -90°)__
-![south_star_chart_without_precession_without_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_testing.png)
-_*precession to be added_
+__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
+![north_star_chart_without_precession_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_precession.png) 
+__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
+![south_star_chart_without_precession_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_precession.png)
+__Star Chart in the Northern Hemisphere (centered on 90°) with Precession__
+![north_star_chart_without_precession_with_precessions+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_precession.png) 
+__Star Chart in the Southern Hemisphere (centered on -90°) with Precession__
+![south_star_chart_without_precession_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_precession.png)
 
 ## Overview
 
@@ -53,6 +56,7 @@ plotStereographicProjection(userListOfStars=[],
 		displayStarNamesLabels=True,
 		displayDeclinationNumbers=True,
 		incrementBy=10,
+		isPrecessionIncluded=True,
 		fig_plot_title=None,
 		fig_plot_color="C0",
 		figsize_n=12,
@@ -63,9 +67,10 @@ plotStereographicProjection(userListOfStars=[],
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
-- *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession*, defaults = 0 years
+- *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0

@@ -17,7 +17,8 @@ def errorHandling(userListOfStars,
 				yearSince2000,
 				displayStarNamesLabels,
 				displayDeclinationNumbers,
-				incrementBy, 
+				incrementBy,
+				isPrecessionIncluded,
 				fig_plot_title,
 				fig_plot_color,
 				figsize_n,
@@ -67,6 +68,13 @@ def errorHandling(userListOfStars,
 		logger.critical("\nCRITICAL ERROR, [incrementBy]: Must be one of the options [1, 5, 10], current value = '{0}'".format(incrementBy))
 		exit()
 	logger.debug("incrementBy = '{0}'".format(incrementBy))
+
+	# Ensure that precession options are booleans ["True", "False"]
+	if type(isPrecessionIncluded) != bool:
+		logger.critical("\nCRITICAL ERROR, [isPrecessionIncluded]: Must be a bool, current type = '{0}'".format(type(isPrecessionIncluded)))
+		exit()
+	logger.debug("isPrecessionIncluded = '{0}'".format(isPrecessionIncluded))
+
 
 	# Ensure that the color given is a string (matplotlib has error checking for invalid color options)
 	if type(fig_plot_color) != str:

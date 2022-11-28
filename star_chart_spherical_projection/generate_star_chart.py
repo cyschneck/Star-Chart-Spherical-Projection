@@ -162,7 +162,7 @@ def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculat
 	(ra_as_rad, dec_as_rad) = star_chart_spherical_projection.ra_dec(p_1)
 	return dec_as_rad, ra_as_rad # new declination and right ascension
 
-def tempPython27PrecessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
+def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	# Temporary fix for vondrak plugin (will only find a smaller subsections of the stars)
 	logger.debug("INCLUDING PRECESSION VIA VONDRAK")
 	vondrak_dec, vondrak_ra = vondrakDreamalligator(star_name, star_ra, np.deg2rad(star_dec), 2000 + year_YYYY_since_2000)
@@ -292,9 +292,8 @@ def plotStereographicProjection(userListOfStars=[],
 
 		# Calculate new position of star due to PRECESSION (change RA and Declination over time)
 		# Vondrak accurate up  +/- 200K years around 2000
-		################ REMOVEABLE (top) for vondrak python2.7 plugin
 		if isPrecessionIncluded:
-			star_declination, star_ra = tempPython27PrecessionVondrak(star[0], star_ra, star_declination, yearSince2000)
+			star_declination, star_ra = precessionVondrak(star[0], star_ra, star_declination, yearSince2000)
 			logger.debug("Precession: {0} RA (radians)\nPrecession: Declination (degrees) = {1}".format(star_ra, star_declination))
 			star_found_lst = []
 			star_not_found_lst = []
@@ -314,8 +313,7 @@ def plotStereographicProjection(userListOfStars=[],
 				x_ra_values.append(star_ra)
 				y_dec_values.append(dec_ruler_position)
 				logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
-		######################### REMOVEABLE (bottom)
-		if not isPrecessionIncluded: # fix for precession, this if statement can be removed
+		if not isPrecessionIncluded:
 			dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
 
 			logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))

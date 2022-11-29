@@ -81,6 +81,16 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* figsize_dpi: (int) figure DPI, default to 100
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
+Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Acrux', 'Aldebaran', 'Algol', 
+'Alhena', 'Alioth', 'Alkaid', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Ankaa', 
+'Antares', 'Arcturus', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
+'Capella', 'Caph', 'Castor', 'Celaeno', 'Chara', 'Cor-Caroli', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 
+'Dubhe', 'Elnath', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Hadar', 'Hamal', 'Megrez', 'Meissa', 'Menkalinan', 
+'Merak', 'Mimosa', 'Mintaka', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Navi', 'Phecda', 'Polaris', 'Pollux', 
+'Procyon', 'Rasalhague', 'Regulus', 'Rigel', 'Ruchbah', 'Saiph', 'Schedar', 'Segin', 'Seginus', 'Sirius', 
+'Spica', 'Vega', 'Wezen', 'Zubeneschamali']
+
+
 ## Dependencies
 
 Python 3.7
@@ -109,4 +119,4 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North"
 
 Add README badges: tests
 
-TODO: check that user list has stars that are found in current list
+Pypi tests

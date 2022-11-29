@@ -183,13 +183,10 @@ def plotStereographicProjection(userListOfStars=[],
 								figsize_n=12,
 								figsize_dpi=100,
 								save_plot_name=None):
-	# plot star chart as a circular graph
-	list_of_stars = getStarList(userListOfStars)
-
-	# Convert Star chart from RA hours to Radians to chart
-	list_of_stars = convertRAhrtoRadians(list_of_stars)
 
 	# Catch errors in given arguments before plotting and set default constants
+	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+	northOrSouth = northOrSouth.capitalize()
 	star_chart_spherical_projection.errorHandling(userListOfStars, 
 													northOrSouth, 
 													declination_min,
@@ -203,7 +200,12 @@ def plotStereographicProjection(userListOfStars=[],
 													figsize_n,
 													figsize_dpi,
 													save_plot_name)
-	northOrSouth = northOrSouth.capitalize()
+
+	# plot star chart as a circular graph
+	list_of_stars = getStarList(userListOfStars)
+
+	# Convert Star chart from RA hours to Radians to chart
+	list_of_stars = convertRAhrtoRadians(list_of_stars)
 
 	# Set max declination based on hemisphere selected
 	if declination_min is None:

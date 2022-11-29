@@ -4,7 +4,7 @@ import star_chart_spherical_projection
 
 if __name__ == '__main__':
 	## Northern Hemisphere: Without and With Precession
-	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", 
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
 																displayStarNamesLabels=True,
 																yearSince2000=11000,
 																isPrecessionIncluded=False,

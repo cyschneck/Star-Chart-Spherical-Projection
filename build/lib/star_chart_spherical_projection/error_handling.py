@@ -2,8 +2,11 @@
 # ERROR CATCHES AND LOGGING
 ########################################################################
 import configparser
+import csv
 import logging
 import numpy as np
+import os
+import pandas as pd
 
 ## Logging set up for .INFO
 logger = logging.getLogger(__name__)
@@ -28,11 +31,15 @@ def errorHandling(userListOfStars,
 	if type(userListOfStars) != list:
 		logger.critical("\nCRITICAL ERROR, [userListOfStars]: Must be a list, current type = '{0}'".format(type(userListOfStars)))
 		exit()
-
-	###
-	## TODO: check that user list has stars that are found in current list #TODO
-	###
-
+	## Check that user list has stars that are found in current list
+	if len(userListOfStars) != 0:
+		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
+		star_dataframe = pd.read_csv(star_csv_file)
+		all_star_names_in_csv = list(star_dataframe['Star Name'])
+		for star_given in userListOfStars:
+			if star_given not in all_star_names_in_csv:
+				logger.critical("\nCRITICAL ERROR, [userListOfStars]: '{0}' not a star in current list of stars, please select one of the following: {1}".format(star_given, all_star_names_in_csv))
+				exit()
 	logger.debug("userListOfStars = '{0}'".format(userListOfStars))
 
 	# Ensure that Hemisphere selected are within options

@@ -178,6 +178,7 @@ def plotStereographicProjection(userListOfStars=[],
 								displayDeclinationNumbers=True,
 								incrementBy=10,
 								isPrecessionIncluded=True,
+								showPlot=True,
 								fig_plot_title=None,
 								fig_plot_color="C0",
 								figsize_n=12,
@@ -195,6 +196,7 @@ def plotStereographicProjection(userListOfStars=[],
 													displayDeclinationNumbers,
 													incrementBy, 
 													isPrecessionIncluded,
+													showPlot,
 													fig_plot_title,
 													fig_plot_color,
 													figsize_n,
@@ -224,6 +226,7 @@ def plotStereographicProjection(userListOfStars=[],
 	logger.debug("displayDeclinationNumbers = {0}".format(displayDeclinationNumbers))
 	logger.debug("incrementBy = {0}".format(incrementBy))
 	logger.debug("isPrecessionIncluded = {0}".format(isPrecessionIncluded))
+	logger.debug("showPlot = {0}".format(showPlot))
 	logger.debug("fig_plot_title = {0}".format(fig_plot_title))
 	logger.debug("fig_plot_color = {0}".format(fig_plot_color))
 	logger.debug("figsize_n = {0}".format(figsize_n))
@@ -381,4 +384,5 @@ def plotStereographicProjection(userListOfStars=[],
 	if save_plot_name is not None: 
 		fig.savefig(save_plot_name)
 
-	plt.show()
+	if showPlot:
+		plt.show()

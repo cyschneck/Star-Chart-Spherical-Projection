@@ -52,19 +52,20 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 ## Documentation
 
 ```
-plotStereographicProjection(userListOfStars=[],  
-		northOrSouth=None, 
-		declination_min=None,
-		yearSince2000=0,
-		displayStarNamesLabels=True,
-		displayDeclinationNumbers=True,
-		incrementBy=10,
-		isPrecessionIncluded=True,
-		fig_plot_title=None,
-		fig_plot_color="C0",
-		figsize_n=12,
-		figsize_dpi=100,
-		save_plot_name=None
+plotStereographicProjection(userListOfStars=[], 
+						northOrSouth=None, 
+						declination_min=None,
+						yearSince2000=0,
+						displayStarNamesLabels=True,
+						displayDeclinationNumbers=True,
+						incrementBy=10,
+						isPrecessionIncluded=True,
+						showPlot=True,
+						fig_plot_title=None,
+						fig_plot_color="C0",
+						figsize_n=12,
+						figsize_dpi=100,
+						save_plot_name=None)
 ```
 
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
@@ -73,8 +74,9 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
-- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0
 - *[OPTIONAL]* figsize_n: (int) figure size, default to 12
@@ -114,6 +116,15 @@ import star_chart_spherical_projection
 star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North")
 ```
 ## Tests
+
+## Bibliography
+
+Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](in-the-sky.org)
+
+Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011, https://doi.org/10.1051/0004-6361/201117274.](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
+
+Precession model code adapted to Python3 from [github.com/dreamalligator/vondrak](github.com/dreamalligator/vondrak)
+
 
 ## TODO:
 

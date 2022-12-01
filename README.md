@@ -53,19 +53,19 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 ```
 plotStereographicProjection(userListOfStars=[], 
-						northOrSouth=None, 
-						declination_min=None,
-						yearSince2000=0,
-						displayStarNamesLabels=True,
-						displayDeclinationNumbers=True,
-						incrementBy=10,
-						isPrecessionIncluded=True,
-						showPlot=True,
-						fig_plot_title=None,
-						fig_plot_color="C0",
-						figsize_n=12,
-						figsize_dpi=100,
-						save_plot_name=None)
+			northOrSouth=None, 
+			declination_min=None,
+			yearSince2000=0,
+			displayStarNamesLabels=True,
+			displayDeclinationNumbers=True,
+			incrementBy=10,
+			isPrecessionIncluded=True,
+			showPlot=True,
+			fig_plot_title=None,
+			fig_plot_color="C0",
+			figsize_n=12,
+			figsize_dpi=100,
+			save_plot_name=None)
 ```
 
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere

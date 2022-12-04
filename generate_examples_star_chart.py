@@ -6,13 +6,13 @@ if __name__ == '__main__':
 	## Northern Hemisphere: Without and With Precession
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
 																displayStarNamesLabels=True,
-																yearSince2000=11000,
+																yearSince2000=11500,
 																isPrecessionIncluded=False,
 																fig_plot_color="red",
 																save_plot_name="examples/north_with_labels_without_precession")
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", 
 																displayStarNamesLabels=True,
-																yearSince2000=11000,
+																yearSince2000=11500,
 																isPrecessionIncluded=True,
 																fig_plot_color="red",
 																save_plot_name="examples/north_with_labels_with_precession")

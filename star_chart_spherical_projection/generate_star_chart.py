@@ -366,8 +366,8 @@ def plotStereographicProjection(userListOfStars=[],
 	if abs(years_for_title) > 1000000:
 		years_for_title = years_for_title / 1000000
 		suffix = "M"
-	if yearSince2000 >= 0: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # postive years for C.E
-	if yearSince2000 < 0: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
+	if yearSince2000 >= -2000: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # postive years for C.E
+	if yearSince2000 < -2000: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
 	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot

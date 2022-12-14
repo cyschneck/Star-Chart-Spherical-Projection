@@ -83,14 +83,19 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* figsize_dpi: (int) figure DPI, default to 100
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
-Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Acrux', 'Aldebaran', 'Algol', 
-'Alhena', 'Alioth', 'Alkaid', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Ankaa', 
-'Antares', 'Arcturus', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
-'Capella', 'Caph', 'Castor', 'Celaeno', 'Chara', 'Cor-Caroli', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 
-'Dubhe', 'Elnath', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Hadar', 'Hamal', 'Megrez', 'Meissa', 'Menkalinan', 
-'Merak', 'Mimosa', 'Mintaka', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Navi', 'Phecda', 'Polaris', 'Pollux', 
-'Procyon', 'Rasalhague', 'Regulus', 'Rigel', 'Ruchbah', 'Saiph', 'Schedar', 'Segin', 'Seginus', 'Sirius', 
-'Spica', 'Vega', 'Wezen', 'Zubeneschamali']
+Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
+'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 
+'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 
+'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta cdPhoenicis', 'Betelgeuse', 'Canopus', 
+'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 
+'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 
+'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 
+'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 
+'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 
+'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 
+'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
+'Zubeneschamali']
+
 
 
 ## Dependencies
@@ -111,9 +116,9 @@ pip install star-chart-spherical-projection
 ## Examples
 
 ```python
-import star_chart_spherical_projection
+import star_chart_spherical_projection as scsp
 
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North")
+scsp.plotStereographicProjection(northOrSouth="North")
 ```
 ## Tests
 

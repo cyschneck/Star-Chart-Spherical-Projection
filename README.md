@@ -60,6 +60,7 @@ plotStereographicProjection(userListOfStars=[],
 			displayDeclinationNumbers=True,
 			incrementBy=10,
 			isPrecessionIncluded=True,
+			maxMagnitudeFilter=None,
 			showPlot=True,
 			fig_plot_title=None,
 			fig_plot_color="C0",
@@ -76,6 +77,7 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* maxMagnitudeFilter: (float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0

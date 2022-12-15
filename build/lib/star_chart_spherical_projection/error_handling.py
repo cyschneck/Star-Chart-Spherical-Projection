@@ -84,9 +84,9 @@ def errorHandling(userListOfStars,
 		exit()
 	logger.debug("isPrecessionIncluded = '{0}'".format(isPrecessionIncluded))
 
-	# Ensure that maxMagnitudeFilter options are floats or integers, set by default to None
-	if maxMagnitudeFilter is not None and type(maxMagnitudeFilter) != float and type(maxMagnitudeFilter) != int:
-		logger.critical("\nCRITICAL ERROR, [maxMagnitudeFilter]: Must be a float or int, current type = '{0}'".format(type(maxMagnitudeFilter)))
+	# Ensure that maxMagnitudeFilter options is a float, set by default to None
+	if maxMagnitudeFilter is not None and type(maxMagnitudeFilter) != float:
+		logger.critical("\nCRITICAL ERROR, [maxMagnitudeFilter]: Must be a float, current type = '{0}'".format(type(maxMagnitudeFilter)))
 		exit()
 	logger.debug("maxMagnitudeFilter = '{0}'".format(maxMagnitudeFilter))
 

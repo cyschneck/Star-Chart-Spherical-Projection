@@ -3,9 +3,9 @@
 ![PyPi](https://img.shields.io/pypi/v/star-chart-spherical-projection)
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
 
-A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [this Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) based on a star's position (declination and right ascension): past, present, and future (proper motion and *precession)
+A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center (orignally based on [this Astrolabe work](https://github.com/cyschneck/History-Survival-Guide/tree/master/page_x_astrolabe)) based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 
-The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (polar plot's theta value) and declination as the distance from the center of the circle (polar plot's radius value). However, attempting to map the right ascension and declination directly will cause a distinct amount of distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
+The requires first to plot the celestial sphere onto a 2D plot by mapping the star's right ascension as hours along the plot (matplotlib polar plot's theta value) and declination as the distance from the center of the circle (matplotlib polar plot's radius value). However, attempting to map the right ascension and declination directly will cause a distinct amount of distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
 
 | Without Correction | With Correction |
 | ------------- | ------------- |
@@ -32,13 +32,13 @@ __Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
 
 ## Overview
 
-From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitery radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. The stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
+From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitery radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. During the course of a full 24 hour day, stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
  
  <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Earth_within_celestial_sphere.gif" />
 </p>
 
-Spherical projection can overcome this difficulty by converting the position of the declination to:
+Spherical projection can overcome angular distortion by converting the position of the declination to:
 ```
 # Projected from South Pole (Northern Hemisphere)
 north_hemisphere_declination = tan(45° + (original_declination / 2))
@@ -98,8 +98,6 @@ Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Ac
 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
 'Zubeneschamali']
 
-
-
 ## Dependencies
 
 Python 3.7
@@ -130,7 +128,7 @@ Star position (right ascension and declination) as well as the angle and speed o
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011, https://doi.org/10.1051/0004-6361/201117274.](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Precession model code adapted to Python3 from [github.com/dreamalligator/vondrak](github.com/dreamalligator/vondrak)
+Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](github.com/dreamalligator/vondrak)
 
 
 ## TODO:

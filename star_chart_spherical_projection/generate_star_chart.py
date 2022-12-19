@@ -27,6 +27,7 @@ config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
 
+
 def getStarList(selectStars=[]):
 	# generate a star object
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
@@ -51,12 +52,30 @@ def convertRAhrtoRadians(star_list):
 		ra_min /= 60
 		ra_sec /= 3600
 		ra_total = ra_hr + ra_min + ra_sec
-		ra_in_degrees = ra_total * 15
 
 		# convert RA from degrees to radians
+		ra_in_degrees = ra_total * 15
 		ra_in_radians = np.deg2rad(ra_in_degrees)
 		star[1] = ra_in_radians
 	return star_list
+
+def convertRadianstoRAhr(ra_in_radians):
+	# change star in radians to RA in hours
+	ra_in_degree = np.rad2deg(ra_in_radians)
+
+	if ra_in_degree > 360 or ra_in_degree < 0: # lock degrees between 0 and 360, if negative, re-write as a postive degree
+		ra_in_degree %= 360
+
+	hours = int(ra_in_degree / 15)
+	minutes = int(((ra_in_degree / 15) - hours) * 60) # measured in minutes
+	seconds = round(((((ra_in_degree / 15) - hours) * 60) - minutes) * 60) # measured in seconds
+
+	# RA in hours 'HH.MM.SS'
+	if hours < 10: hours = '0' + str(hours) # convert 6 to 06
+	if minutes < 10: minutes = '0' + str(minutes) # convert 6 to 06
+	if seconds < 10: seconds = '0' + str(seconds) # convert 6 to 06
+	ra_in_hours = "{0}.{1}.{2}".format(hours, minutes, seconds)
+	return ra_in_hours
 
 def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_angle):
 	# Calculate the RA and Declination of a star based on changes due to Proper Motion
@@ -129,7 +148,7 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 def calculatePositionOfPolePrecession(years_since_2000, original_declination, original_ra):
 	# Calculate change in the position of the pole due to precession
 	obliquity_for_YYYY = 23.439167
-	logger.info("Years Since 2000 = {0}".format(years_since_2000))
+	logger.debug("Years Since 2000 = {0}".format(years_since_2000))
 
 	# Rate of change of right ascension and declination of a star due to precession
 	declination_change_arcseconds_per_year = (19.9 * math.cos(original_ra)) * years_since_2000
@@ -170,6 +189,109 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	logger.debug("Precession for Star = {0}, Declination = {1}, RA = {2}".format(star_name, vondrak_dec, vondrak_ra))
 	return vondrak_dec, vondrak_ra
 
+def finalPositionOfStars(userListOfStars=[], 
+						yearSince2000=0,
+						isPrecessionIncluded=True,
+						declination_min=None,
+						declination_max=None):
+	# return the final position of the stars as a dictionary
+	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+
+	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
+												userListOfStars=userListOfStars,
+												yearSince2000=yearSince2000,
+												isPrecessionIncluded=isPrecessionIncluded,
+												declination_min=declination_min,
+												declination_max=declination_max)
+
+	# Set declination min values when using the generateStereographicProjection() to capture all stars if not set
+	declination_min = -90
+	declination_max = 90
+
+	x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict = generateStereographicProjection(starList=userListOfStars, 
+																										northOrSouth="North", 
+																										declination_min=declination_min,
+																										yearSince2000=yearSince2000,
+																										isPrecessionIncluded=isPrecessionIncluded,
+																										maxMagnitudeFilter=None,
+																										declination_max=declination_max)
+	return finalPositionOfStarsDict
+
+def generateStereographicProjection(starList=None, 
+									northOrSouth=None, 
+									yearSince2000=None,
+									isPrecessionIncluded=None,
+									maxMagnitudeFilter=None,
+									declination_min=None,
+									declination_max=None):
+	# Generate sterographic projections and return declination and right ascension
+
+	# Convert Star chart from RA hours to Radians to chart
+	list_of_stars = getStarList(starList)
+	list_of_stars = convertRAhrtoRadians(list_of_stars)
+
+	finalPositionOfStarsDict = {} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+	x_star_labels = []
+	x_ra_values = []
+	y_dec_values = []
+	for star in list_of_stars:
+		if maxMagnitudeFilter is None or star[5] < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
+			logger.debug("Star = '{0}'".format(star[0]))
+
+			radius_of_circle = star_chart_spherical_projection.calculateRadiusOfCircle(declination_min, northOrSouth)
+
+			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
+			logger.debug("'{0}' original RA = {1} and Declination = {2}".format(star[0], np.rad2deg(star[1]), star[2]))
+			star_ra, star_declination = calculateRAandDeclinationViaProperMotion(yearSince2000, 
+																				star[1], 
+																				star[2], 
+																				star[3], 
+																				star[4])
+			logger.debug("Adjusted: {0} RA (radians) = {1}".format(star[1], star_ra))
+			logger.debug("Adjusted via Proper Motion: '{0}': {1} Declination (degrees) = {2} ".format(star[0], star[2], star_declination))
+
+			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
+			# Vondrak accurate up  +/- 200K years around 2000
+			if isPrecessionIncluded:
+				star_declination, star_ra = precessionVondrak(star[0], star_ra, star_declination, yearSince2000)
+				logger.debug("Precession: {0} RA (radians)\nPrecession: Declination (degrees) = {1}".format(star_ra, star_declination))
+
+				# convert degree to position on radius
+				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) 
+
+				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+
+				in_range_value = False # Determine if within range of South/North Hemisphere
+				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
+					in_range_value = True # North
+				if star_declination < declination_min and star_declination > declination_max: # only display stars within range of declination values
+					in_range_value = True # South
+
+				if in_range_value:
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+					x_star_labels.append(star[0])
+					x_ra_values.append(star_ra)
+					y_dec_values.append(dec_ruler_position)
+					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+			if not isPrecessionIncluded:
+				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
+
+				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+				in_range_value = False # Determine if within range of South/North Hemisphere
+				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
+					in_range_value = True # North
+				if star_declination < declination_min and star_declination > declination_max: # only display stars within range of declination values
+					in_range_value = True # South
+
+				if in_range_value:
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+					x_star_labels.append(star[0])
+					x_ra_values.append(star_ra)
+					y_dec_values.append(dec_ruler_position)
+					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+
+	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
+
 def plotStereographicProjection(userListOfStars=[], 
 								northOrSouth=None, 
 								declination_min=None,
@@ -187,37 +309,35 @@ def plotStereographicProjection(userListOfStars=[],
 								save_plot_name=None):
 
 	# Catch errors in given arguments before plotting and set default constants
-	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 	northOrSouth = northOrSouth.capitalize()
-	star_chart_spherical_projection.errorHandling(userListOfStars, 
-													northOrSouth, 
-													declination_min,
-													yearSince2000,
-													displayStarNamesLabels,
-													displayDeclinationNumbers,
-													incrementBy, 
-													isPrecessionIncluded,
-													maxMagnitudeFilter,
-													showPlot,
-													fig_plot_title,
-													fig_plot_color,
-													figsize_n,
-													figsize_dpi,
-													save_plot_name)
+	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+	star_chart_spherical_projection.errorHandling(isPlotFunction=True,
+												userListOfStars=userListOfStars,
+												northOrSouth=northOrSouth, 
+												declination_min=declination_min,
+												yearSince2000=yearSince2000,
+												displayStarNamesLabels=displayStarNamesLabels,
+												displayDeclinationNumbers=displayDeclinationNumbers,
+												incrementBy=incrementBy, 
+												isPrecessionIncluded=isPrecessionIncluded,
+												maxMagnitudeFilter=maxMagnitudeFilter,
+												showPlot=showPlot,
+												fig_plot_title=fig_plot_title,
+												fig_plot_color=fig_plot_color,
+												figsize_n=figsize_n,
+												figsize_dpi=figsize_dpi,
+												save_plot_name=save_plot_name)
 
 	# plot star chart as a circular graph
-	list_of_stars = getStarList(userListOfStars)
 
-	# Convert Star chart from RA hours to Radians to chart
-	list_of_stars = convertRAhrtoRadians(list_of_stars)
-
-	# Set max declination based on hemisphere selected
+	# Set declination based on hemisphere selected
 	if declination_min is None:
 		if northOrSouth == "North": declination_min = int(config["declinationDefaultValues"]["northern_declination_min"])
 		if northOrSouth == "South": declination_min = int(config["declinationDefaultValues"]["southern_declination_min"])
 	if northOrSouth == "North": declination_max = int(config["declinationDefaultValues"]["northern_declination_max"])
 	if northOrSouth == "South": declination_max = int(config["declinationDefaultValues"]["southern_declination_max"])
 
+	# Polar plot figure
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
 	ax = fig.subplots(subplot_kw={'projection': 'polar'})
 
@@ -225,12 +345,10 @@ def plotStereographicProjection(userListOfStars=[],
 
 	# Split up chart into North/South hemisphere
 	declination_values = np.arange(declination_min, declination_max+1, incrementBy) # +1 to show max value in range
-	min_dec_value = declination_min
-	max_dec_value = declination_max
 
 	# Store the ruler positions based on degrees and the ratio of the ruler
-	ruler_position_dict = star_chart_spherical_projection.calculateRuler(min_dec_value,
-																		max_dec_value,
+	ruler_position_dict = star_chart_spherical_projection.calculateRuler(declination_min,
+																		declination_max,
 																		incrementBy, 
 																		northOrSouth)
 
@@ -259,66 +377,16 @@ def plotStereographicProjection(userListOfStars=[],
 	if northOrSouth == "South":
 		displayDeclinationMarksOnAxis(declination_values, int(config["declinationDefaultValues"]["southern_declination_min"]), int(config["declinationDefaultValues"]["southern_declination_max"]), True)
 
-	logger.debug("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, min_dec_value, max_dec_value))
-
-	radius_of_circle = star_chart_spherical_projection.calculateRadiusOfCircle(declination_min, northOrSouth)
+	logger.info("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
 
 	# convert to x and y values for stars
-	x_star_labels = []
-	x_ra_values = []
-	y_dec_values = []
-	for star in list_of_stars:
-		if maxMagnitudeFilter is None or star[5] < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
-			logger.debug(star[0])
-
-			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
-			logger.debug("'{0}' original RA = {1} and Declination = {2}".format(star[0], np.rad2deg(star[1]), star[2]))
-			star_ra, star_declination = calculateRAandDeclinationViaProperMotion(yearSince2000, 
-																				star[1], 
-																				star[2], 
-																				star[3], 
-																				star[4])
-			logger.debug("Adjusted: {0} RA (radians) = {1}".format(star[1], star_ra))
-			logger.debug("Adjusted via Proper Motion: '{0}': {1} Declination (degrees) = {2} ".format(star[0], star[2], star_declination))
-
-			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
-			# Vondrak accurate up  +/- 200K years around 2000
-			if isPrecessionIncluded:
-				star_declination, star_ra = precessionVondrak(star[0], star_ra, star_declination, yearSince2000)
-				logger.debug("Precession: {0} RA (radians)\nPrecession: Declination (degrees) = {1}".format(star_ra, star_declination))
-				star_found_lst = []
-				star_not_found_lst = []
-
-				star_found_lst.append(star[0])
-				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
-
-				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
-				in_range_value = False # Determine if within range of South/North Hemisphere
-				if star_declination > min_dec_value and star_declination < max_dec_value: # only display stars within range of declination values
-					in_range_value = True # North
-				if star_declination < min_dec_value and star_declination > max_dec_value: # only display stars within range of declination values
-					in_range_value = True # South
-
-				if in_range_value:
-					x_star_labels.append(star[0])
-					x_ra_values.append(star_ra)
-					y_dec_values.append(dec_ruler_position)
-					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
-			if not isPrecessionIncluded:
-				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
-
-				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
-				in_range_value = False # Determine if within range of South/North Hemisphere
-				if star_declination > min_dec_value and star_declination < max_dec_value: # only display stars within range of declination values
-					in_range_value = True # North
-				if star_declination < min_dec_value and star_declination > max_dec_value: # only display stars within range of declination values
-					in_range_value = True # South
-
-				if in_range_value:
-					x_star_labels.append(star[0])
-					x_ra_values.append(star_ra)
-					y_dec_values.append(dec_ruler_position)
-					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=userListOfStars, 
+																						northOrSouth=northOrSouth, 
+																						yearSince2000=yearSince2000,
+																						isPrecessionIncluded=isPrecessionIncluded,
+																						maxMagnitudeFilter=maxMagnitudeFilter,
+																						declination_min=declination_min,
+																						declination_max=declination_max)
 
 	# Set Right Ascension (astronomical 'longitude') as X (theta of polar plot)
 	angles_ra = np.array([0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150,

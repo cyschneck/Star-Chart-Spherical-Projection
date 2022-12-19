@@ -51,24 +51,40 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 ## Documentation
 
+*finalPositionOfStars()*: Return the final position of the stars over time (Declination and Right Ascension)
+```
+finalPositionOfStars(userListOfStars=[], 
+				northOrSouth=None, 
+				yearSince2000=0,
+				isPrecessionIncluded=True,
+				declination_min=None,
+				declination_max=None)
+``
+- **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
+- *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* declination_min: (int) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
+- *[OPTIONAL]* declination_max: (int) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
+
+*plotStereographicProjection()&: Plot stars on a Sterographic Polar Plot
 ```
 plotStereographicProjection(userListOfStars=[], 
-			northOrSouth=None, 
-			declination_min=None,
-			yearSince2000=0,
-			displayStarNamesLabels=True,
-			displayDeclinationNumbers=True,
-			incrementBy=10,
-			isPrecessionIncluded=True,
-			maxMagnitudeFilter=None,
-			showPlot=True,
-			fig_plot_title=None,
-			fig_plot_color="C0",
-			figsize_n=12,
-			figsize_dpi=100,
-			save_plot_name=None)
+							northOrSouth=None, 
+							declination_min=None,
+							yearSince2000=0,
+							displayStarNamesLabels=True,
+							displayDeclinationNumbers=True,
+							incrementBy=10,
+							isPrecessionIncluded=True,
+							maxMagnitudeFilter=None,
+							showPlot=True,
+							fig_plot_title=None,
+							fig_plot_color="C0",
+							figsize_n=12,
+							figsize_dpi=100,
+							save_plot_name=None)
 ```
-
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
@@ -78,6 +94,7 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* maxMagnitudeFilter: (float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
+- *[OPTIONAL]* returnData: (boolean) return a dictionary of stars with their final right ascension and declination ({"Vega" : [Declination (float) degrees, RA (str)]}, defaults to False
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0

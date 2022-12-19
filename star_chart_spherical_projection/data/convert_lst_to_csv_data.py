@@ -236,7 +236,7 @@ if __name__ == '__main__':
 			print("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
 			exit()
 	header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)", "Proper Motion Speed (mas/yr)", "Proper Motion Angle (DD.SS)", "Magnitude (V, Visual)"]
-	my_df = pd.DataFrame(star_chart_list, columns=header_options)
-	my_df = my_df.sort_values(by=["Star Name"])
-	print(my_df)
-	my_df.to_csv("star_data.csv", header=header_options, index=False)
+	df = pd.DataFrame(star_chart_list, columns=header_options)
+	df = df.sort_values(by=["Star Name"])
+	print(df)
+	df.to_csv("star_data.csv", header=header_options, index=False)

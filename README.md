@@ -51,15 +51,17 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 ## Documentation
 
-*finalPositionOfStars()*: Return the final position of the stars over time (Declination and Right Ascension)
+Available functions:
+
+**finalPositionOfStars()**: Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(userListOfStars=[], 
-				northOrSouth=None, 
-				yearSince2000=0,
-				isPrecessionIncluded=True,
-				declination_min=None,
-				declination_max=None)
-``
+			northOrSouth=None, 
+			yearSince2000=0,
+			isPrecessionIncluded=True,
+			declination_min=None,
+			declination_max=None)
+```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
@@ -67,23 +69,23 @@ finalPositionOfStars(userListOfStars=[],
 - *[OPTIONAL]* declination_min: (int) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
-*plotStereographicProjection()&: Plot stars on a Sterographic Polar Plot
+**plotStereographicProjection()**: Plot stars on a Sterographic Polar Plot
 ```
 plotStereographicProjection(userListOfStars=[], 
-							northOrSouth=None, 
-							declination_min=None,
-							yearSince2000=0,
-							displayStarNamesLabels=True,
-							displayDeclinationNumbers=True,
-							incrementBy=10,
-							isPrecessionIncluded=True,
-							maxMagnitudeFilter=None,
-							showPlot=True,
-							fig_plot_title=None,
-							fig_plot_color="C0",
-							figsize_n=12,
-							figsize_dpi=100,
-							save_plot_name=None)
+				northOrSouth=None, 
+				declination_min=None,
+				yearSince2000=0,
+				displayStarNamesLabels=True,
+				displayDeclinationNumbers=True,
+				incrementBy=10,
+				isPrecessionIncluded=True,
+				maxMagnitudeFilter=None,
+				showPlot=True,
+				fig_plot_title=None,
+				fig_plot_color="C0",
+				figsize_n=12,
+				figsize_dpi=100,
+				save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
@@ -131,6 +133,11 @@ pip install star-chart-spherical-projection
 ```
 
 ## Examples
+```python
+import star_chart_spherical_projection as scsp
+
+final_position_of_stars = scsp.finalPositionOfStars()
+```
 
 ```python
 import star_chart_spherical_projection as scsp

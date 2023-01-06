@@ -24,7 +24,6 @@ if __name__ == '__main__':
 																isPrecessionIncluded=False,
 																fig_plot_color="red",
 																save_plot_name="examples/north_with_labels_without_precession")
-	exit()
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", 
 																displayStarNamesLabels=True,
 																yearSince2000=year_to_calculate,

@@ -52,6 +52,7 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 ## Documentation
 
 **finalPositionOfStars()**
+
 Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(userListOfStars=[], 

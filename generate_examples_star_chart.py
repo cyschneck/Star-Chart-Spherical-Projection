@@ -8,7 +8,7 @@ if __name__ == '__main__':
 	year_to_calculate = 11500
 
 	# Generate a .csv file with final positions of stars
-	star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars()
+	star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars(yearSince2000=year_to_calculate)
 	header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 	star_chart_list = []
 	for star_name, star_position in star_final_pos_dict.items():

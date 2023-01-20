@@ -83,7 +83,7 @@ if __name__ == '__main__':
 	avior_star = ["Avior", "08.22.30", -59.30, 33.7, 310.8, 1.95]
 	antares_star = ["Antares", "16.29.24", -26.25, 26.3, 207.5, 1.07]
 	beta_hydri_star = ["Beta Hydri", "00.25.45", -77.15, 2242.9, 81.6, 2.79]
-	beta_phoenicis_star = ["Beta cdPhoenicis", "01.06.05", -46.43, 88.1, 293.4, 3.37]
+	beta_phoenicis_star = ["Beta Phoenicis", "01.06.05", -46.43, 88.1, 293.4, 3.37]
 	canopus_star = ["Canopus", "06.23.57", -51.41, 30.6, 40.6, -0.63]
 	cursa_star = ["Cursa", "05.07.51", -5.05, 112.0, 227.7, 2.79]
 	delta_crucis_star = ["Delta Crucis", "12.15.08", -58.44, 38.6, 253.0, 2.74] # Southern Cross

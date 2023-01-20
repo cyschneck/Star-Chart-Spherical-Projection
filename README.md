@@ -5,7 +5,7 @@
 
 A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 
-The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (matplotlib polar plot's theta value) and declination as the distance from the center of the circle (matplotlib polar plot's radius value). However, attempting to map the right ascension and declination directly will cause a distinct amount of distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
+The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (matplotlib polar plot's theta value) and declination as the distance from the center of the circle (matplotlib polar plot's radius value). However, attempting to map the right ascension and declination directly will cause distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape due to this distortion. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
 
 | Without Correction | With Correction |
 | ------------- | ------------- |
@@ -51,9 +51,8 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 ## Documentation
 
-Available functions:
-
-**finalPositionOfStars()**: Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+**finalPositionOfStars()**
+Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(userListOfStars=[], 
 			northOrSouth=None, 
@@ -69,7 +68,9 @@ finalPositionOfStars(userListOfStars=[],
 - *[OPTIONAL]* declination_min: (int) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
-**plotStereographicProjection()**: Plot stars on a Sterographic Polar Plot
+**plotStereographicProjection()**
+
+Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(userListOfStars=[], 
 				northOrSouth=None, 
@@ -119,7 +120,7 @@ Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Ac
 
 ## Dependencies
 
-Python 3.7
+Python 3.7+
 ```
 pip3 install -r requirements.txt
 ```
@@ -136,8 +137,9 @@ pip install star-chart-spherical-projection
 ```python
 import star_chart_spherical_projection as scsp
 
-final_position_of_stars = scsp.finalPositionOfStars()
+star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega", "Polaris", "Betelgeuse"], yearSince2000=11500)
 ```
+Returns a dictionary: `{'Betelgeuse': {'Declination': -36.342836095268325, 'RA': '16.34.28'}, 'Polaris': {'Declination': 45.08038305067079, 'RA': '17.25.11'}, 'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 
 ```python
 import star_chart_spherical_projection as scsp
@@ -160,3 +162,5 @@ Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](gith
 Add README badges: tests
 
 Pypi tests
+
+ Testing for new function finalPositionOfStars(), still needs testing

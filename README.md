@@ -55,14 +55,12 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-finalPositionOfStars(userListOfStars=[], 
-			northOrSouth=None, 
+finalPositionOfStars((userListOfStars=[], 
 			yearSince2000=0,
 			isPrecessionIncluded=True,
 			declination_min=None,
-			declination_max=None)
+			declination_max=None))
 ```
-- **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True

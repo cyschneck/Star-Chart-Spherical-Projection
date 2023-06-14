@@ -43,7 +43,8 @@ setup(
 		"configparser>=5.3.0",
 		"matplotlib>=3.1.0",
 		"numpy>=1.21.6",
-		"pandas>=1.3.5"
+		"pandas>=1.3.5",
+		"pytest>=7.2.2"
 	],
 	python_requires='>=3.7'
 )

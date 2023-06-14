@@ -55,26 +55,41 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-finalPositionOfStars(userListOfStars=[], 
-			northOrSouth=None, 
-			yearSince2000=0,
+finalPositionOfStars(yearSince2000=0, 
+			userListOfStars=[],
 			isPrecessionIncluded=True,
 			declination_min=None,
 			declination_max=None)
 ```
-- **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* declination_min: (int) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
+<details closed>
+<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
+<br>
+ ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
+'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 
+'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 
+'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
+'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 
+'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 
+'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 
+'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 
+'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 
+'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 
+'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
+'Zubeneschamali']
+</details>
+
 **plotStereographicProjection()**
 
 Plot stars on a Stereographic Polar Plot
 ```
-plotStereographicProjection(userListOfStars=[], 
-				northOrSouth=None, 
+plotStereographicProjection(northOrSouth=None, 
+				userListOfStar=[], 
 				declination_min=None,
 				yearSince2000=0,
 				displayStarNamesLabels=True,
@@ -106,10 +121,13 @@ plotStereographicProjection(userListOfStars=[],
 - *[OPTIONAL]* figsize_dpi: (int) figure DPI, default to 100
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
-Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
+<details closed>
+<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
+<br>
+ ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 
 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 
-'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta cdPhoenicis', 'Betelgeuse', 'Canopus', 
+'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 
 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 
 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 
@@ -118,6 +136,7 @@ Current list of stars (to access via userListOfStar): ['Acamar', 'Achernar', 'Ac
 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 
 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
 'Zubeneschamali']
+</details>
 
 ## Dependencies
 
@@ -147,8 +166,6 @@ import star_chart_spherical_projection as scsp
 
 scsp.plotStereographicProjection(northOrSouth="North")
 ```
-## Tests
-
 ## Bibliography
 
 Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](in-the-sky.org)
@@ -157,11 +174,6 @@ Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for
 
 Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](github.com/dreamalligator/vondrak)
 
-
 ## TODO:
 
-Add README badges: tests
-
-Pypi tests
-
- Testing for new function finalPositionOfStars(), still needs testing
+Add README badges: pypi tests

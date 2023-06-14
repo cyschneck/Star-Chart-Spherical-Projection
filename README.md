@@ -2,6 +2,7 @@
 
 ![PyPi](https://img.shields.io/pypi/v/star-chart-spherical-projection)
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
+[![pytests](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml/badge.svg?branch=main)](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml)
 
 A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 

@@ -309,8 +309,6 @@ def plotStereographicProjection(userListOfStars=[],
 								save_plot_name=None):
 
 	# Catch errors in given arguments before plotting and set default constants
-	northOrSouth = northOrSouth.capitalize()
-	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 	star_chart_spherical_projection.errorHandling(isPlotFunction=True,
 												userListOfStars=userListOfStars,
 												northOrSouth=northOrSouth, 
@@ -327,6 +325,8 @@ def plotStereographicProjection(userListOfStars=[],
 												figsize_n=figsize_n,
 												figsize_dpi=figsize_dpi,
 												save_plot_name=save_plot_name)
+	northOrSouth = northOrSouth.capitalize()
+	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 
 	# plot star chart as a circular graph
 

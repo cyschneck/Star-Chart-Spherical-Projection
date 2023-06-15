@@ -90,7 +90,7 @@ finalPositionOfStars(yearSince2000=0,
 Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(northOrSouth=None, 
-				userListOfStar=[], 
+				userListOfStars=[], 
 				declination_min=None,
 				yearSince2000=0,
 				displayStarNamesLabels=True,
@@ -106,20 +106,19 @@ plotStereographicProjection(northOrSouth=None,
 				save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
-- *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
-- *[OPTIONAL]* declination_min: (int) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
-- *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* userListOfStars: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
+- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* maxMagnitudeFilter: (float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
-- *[OPTIONAL]* returnData: (boolean) return a dictionary of stars with their final right ascension and declination ({"Vega" : [Declination (float) degrees, RA (str)]}, defaults to False
+- *[OPTIONAL]* maxMagnitudeFilter: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0
-- *[OPTIONAL]* figsize_n: (int) figure size, default to 12
-- *[OPTIONAL]* figsize_dpi: (int) figure DPI, default to 100
+- *[OPTIONAL]* figsize_n: (int/float) figure size, default to 12
+- *[OPTIONAL]* figsize_dpi: (int/float) figure DPI, default to 100
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
 <details closed>

@@ -39,6 +39,7 @@ def errorHandling(isPlotFunction=None,
 		exit()
 	## Check that user list has stars that are found in current list
 	if len(userListOfStars) != 0:
+		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		all_star_names_in_csv = list(star_dataframe['Star Name'])
@@ -47,6 +48,16 @@ def errorHandling(isPlotFunction=None,
 				logger.critical("\nCRITICAL ERROR, [userListOfStars]: '{0}' not a star in current list of stars, please select one of the following: {1}".format(star_given, all_star_names_in_csv))
 				exit()
 	logger.debug("userListOfStars = '{0}'".format(userListOfStars))
+
+	# Ensure that declination ranges are set and within within ranges
+	if declination_min is not None:
+		if type(declination_min) != int and type(declination_min) != float:
+			logger.critical("\nCRITICAL ERROR, [declination_min]: Must be a int or float, current type = '{0}'".format(type(declination_min)))
+			exit()
+		if declination_min not in np.arange(-89, 90): # if defined, but not in range
+			logger.critical("\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_min))
+			exit()
+	logger.debug("declination_min = '{0}'".format(declination_min))
 
 	# Ensure if a year is selected it is a float or int, set by default to 0 (the year = 2000)
 	if type(yearSince2000) != int and type(yearSince2000) != float:
@@ -60,12 +71,6 @@ def errorHandling(isPlotFunction=None,
 		exit()
 	logger.debug("isPrecessionIncluded = '{0}'".format(isPrecessionIncluded))
 
-	# Ensure that declination ranges are set and within within ranges
-	if declination_min is not None and declination_min not in np.arange(-89, 90): # if defined, but not in range
-		logger.critical("\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_min))
-		exit()
-	logger.debug("declination_min = '{0}'".format(declination_min))
-
 	# Error Handling for finalPositionOfStars() function
 	if not isPlotFunction:
 		# Ensure that declination ranges are set and within within ranges
@@ -77,15 +82,20 @@ def errorHandling(isPlotFunction=None,
 	# Error Handling for plotStereographicProjection() function
 	if isPlotFunction:
 		# Ensure that Hemisphere selected are within options
-		if northOrSouth not in ["North", "South"]:
-			logger.critical("\nCRITICAL ERROR, [northOrSouth]: Hemisphere options are ['North', 'South'], current option = '{0}'".format(northOrSouth))
-			exit()
 		logger.debug("northOrSouth = '{0}'".format(northOrSouth))
+		if type(northOrSouth) != str:
+			logger.critical("\nCRITICAL ERROR, [northOrSouth]: Must be a str, current type = '{0}'".format(type(northOrSouth)))
+			exit()
+		else:
+			if northOrSouth not in ["North", "South"]:
+				logger.critical("\nCRITICAL ERROR, [northOrSouth]: Hemisphere options are ['North', 'South'], current option = '{0}'".format(northOrSouth))
+				exit()
 
 		# Ensure that maxMagnitudeFilter options is a float, set by default to None
-		if maxMagnitudeFilter is not None and type(maxMagnitudeFilter) != float:
-			logger.critical("\nCRITICAL ERROR, [maxMagnitudeFilter]: Must be a float, current type = '{0}'".format(type(maxMagnitudeFilter)))
-			exit()
+		if maxMagnitudeFilter is not None:
+			if type(maxMagnitudeFilter) != int and type(maxMagnitudeFilter) != float:
+				logger.critical("\nCRITICAL ERROR, [maxMagnitudeFilter]: Must be a int or float, current type = '{0}'".format(type(maxMagnitudeFilter)))
+				exit()
 		logger.debug("maxMagnitudeFilter = '{0}'".format(maxMagnitudeFilter))
 
 		# Ensure that the display options for star names and declination numbers are booleans ["True", "False"]
@@ -99,7 +109,10 @@ def errorHandling(isPlotFunction=None,
 		logger.debug("displayDeclinationNumbers = '{0}'".format(displayDeclinationNumbers))
 
 		# Ensure that increment options are 1, 5, 10
-		if type(incrementBy) != int or incrementBy not in [1, 5, 10]:
+		if type(incrementBy) != int:
+			logger.critical("\nCRITICAL ERROR, [incrementBy]: Must be a int, current type = '{0}'".format(type(incrementBy)))
+			exit()
+		if incrementBy not in [1, 5, 10]:
 			logger.critical("\nCRITICAL ERROR, [incrementBy]: Must be one of the options [1, 5, 10], current value = '{0}'".format(incrementBy))
 			exit()
 		logger.debug("incrementBy = '{0}'".format(incrementBy))

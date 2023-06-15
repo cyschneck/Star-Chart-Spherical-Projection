@@ -63,10 +63,10 @@ finalPositionOfStars(yearSince2000=0,
 			declination_max=None)
 ```
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
-- *[OPTIONAL]* yearSince2000: (float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* declination_min: (int) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
-- *[OPTIONAL]* declination_max: (int) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
+- *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
+- *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
 <details closed>
 <summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>

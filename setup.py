@@ -42,7 +42,7 @@ setup(
 	install_requires=[
 		"configparser>=5.3.0",
 		"matplotlib>=3.1.0",
-		"numpy>=1.21.6",
+		"numpy>=1.24.3",
 		"pandas>=1.3.5",
 		"pytest>=7.2.2"
 	],

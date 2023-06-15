@@ -195,7 +195,6 @@ def finalPositionOfStars(userListOfStars=[],
 						declination_min=None,
 						declination_max=None):
 	# return the final position of the stars as a dictionary
-	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
 												userListOfStars=userListOfStars,
@@ -203,6 +202,7 @@ def finalPositionOfStars(userListOfStars=[],
 												isPrecessionIncluded=isPrecessionIncluded,
 												declination_min=declination_min,
 												declination_max=declination_max)
+	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
 
 	# Set declination min values when using the generateStereographicProjection() to capture all stars if not set
 	declination_min = -90

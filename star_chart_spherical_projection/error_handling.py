@@ -74,9 +74,13 @@ def errorHandling(isPlotFunction=None,
 	# Error Handling for finalPositionOfStars() function
 	if not isPlotFunction:
 		# Ensure that declination ranges are set and within within ranges
-		if declination_max is not None and declination_max not in np.arange(-89, 90): # if defined, but not in range
-			logger.critical("\nCRITICAL ERROR, [declination_max]: Maximum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_max))
-			exit()
+		if declination_max is not None:
+			if type(declination_max) != int and type(declination_max) != float:
+				logger.critical("\nCRITICAL ERROR, [declination_max]: Must be a int or float, current type = '{0}'".format(type(declination_max)))
+				exit()
+			if declination_max not in np.arange(-89, 90): # if defined, but not in range
+				logger.critical("\nCRITICAL ERROR, [declination_max]: Maximum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_max))
+				exit()
 		logger.debug("declination_max = '{0}'".format(declination_max))
 
 	# Error Handling for plotStereographicProjection() function

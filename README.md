@@ -31,6 +31,21 @@ __Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
 ![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
 ![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
 
+## Install
+
+PyPi pip install at [pypi.org/project/star-chart-spherical-projection/](https://pypi.org/project/star-chart-spherical-projection/)
+
+```
+pip install star-chart-spherical-projection
+```
+
+## Requirements
+
+Python 3.7+
+```
+pip3 install -r requirements.txt
+```
+
 ## Overview
 
 From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitrary radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. During the course of a full 24 hour day, stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
@@ -137,21 +152,6 @@ plotStereographicProjection(northOrSouth=None,
 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
 'Zubeneschamali']
 </details>
-
-## Dependencies
-
-Python 3.7+
-```
-pip3 install -r requirements.txt
-```
-
-## Install
-
-PyPi pip install at [pypi.org/project/star-chart-spherical-projection/](https://pypi.org/project/star-chart-spherical-projection/)
-
-```
-pip install star-chart-spherical-projection
-```
 
 ## Examples
 ```python

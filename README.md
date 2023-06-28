@@ -6,6 +6,11 @@
 
 A Python package to generate an astronomy star chart based on spherical projection with +90/-90° in the center based on a star's position (declination and right ascension): past, present, and future (proper motion and precession)
 
+* **Plot Stars on a Polar Chart**
+	* plotStereographicProjection()
+* **Return Final Position of Stars**
+	* finalPositionOfStars()
+
 The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (matplotlib polar plot's theta value) and declination as the distance from the center of the circle (matplotlib polar plot's radius value). However, attempting to map the right ascension and declination directly will cause distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape due to this distortion. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
 
 | Without Correction | With Correction |
@@ -17,19 +22,24 @@ The sphere is projected from the South Pole (via [Sterographic projection](https
   <img src="https://gisgeography.com/wp-content/uploads/2016/12/Stereographic-Projection-768x421.png" />
 </p>
 
-_Example outputs:_
 
-__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
-![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
-![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
-![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
-![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
+## Quickstart: Star-Chart-Spherical-Projection
+Plot stars in the Southern Hemisphere for the year 2023 (without stars labels)
+```python
+import star_chart_spherical_projection as scsp
 
-__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
-![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
-![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
-![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
-![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
+scsp.plotStereographicProjection(northOrSouth="South",
+								displayStarNamesLabels=False,
+								yearSince2000=23)
+```
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_2023.png) 
+
+```python
+import star_chart_spherical_projection as scsp
+
+star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega", "Polaris", "Betelgeuse"], yearSince2000=11500)
+```
+Returns a dictionary: `{'Betelgeuse': {'Declination': -36.342836095268325, 'RA': '16.34.28'}, 'Polaris': {'Declination': 45.08038305067079, 'RA': '17.25.11'}, 'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 
 ## Install
 
@@ -43,8 +53,9 @@ pip install star-chart-spherical-projection
 
 Python 3.7+
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
+Requirements will also be downloaded as part of the pip download
 
 ## Overview
 
@@ -65,41 +76,7 @@ south_hemisphere_declination = tan(45° - (original_declination / 2))
 Where in the Northern Hemsiphere, projections are formed from the South Pole: 
 ![morrisons_astrolabe](https://user-images.githubusercontent.com/22159116/202336728-dc290bfa-44f5-4947-9a08-93f70286436e.jpg)
 
-## Documentation
-
-**finalPositionOfStars()**
-
-Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
-```
-finalPositionOfStars(yearSince2000=0, 
-			userListOfStars=[],
-			isPrecessionIncluded=True,
-			declination_min=None,
-			declination_max=None)
-```
-- *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
-- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
-- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
-- *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
-
-<details closed>
-<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
-<br>
- ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
-'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 
-'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 
-'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
-'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 
-'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 
-'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 
-'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 
-'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 
-'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 
-'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
-'Zubeneschamali']
-</details>
-
+## Return Final Position of Stars
 **plotStereographicProjection()**
 
 Plot stars on a Stereographic Polar Plot
@@ -139,41 +116,129 @@ plotStereographicProjection(northOrSouth=None,
 <details closed>
 <summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
 <br>
- ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 
-'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 
-'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 
-'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 
-'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 
-'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 
-'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 
-'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 
-'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 
-'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 
-'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 
-'Zubeneschamali']
+['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 
+'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 
+'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 
+'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 
+'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 
+'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 
+'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 
+'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 
+'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 
+'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 
+'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
 
-## Examples
-```python
-import star_chart_spherical_projection as scsp
+## Plot Stars on a Polar Chart
+**finalPositionOfStars()**
 
-star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega", "Polaris", "Betelgeuse"], yearSince2000=11500)
+Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-Returns a dictionary: `{'Betelgeuse': {'Declination': -36.342836095268325, 'RA': '16.34.28'}, 'Polaris': {'Declination': 45.08038305067079, 'RA': '17.25.11'}, 'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
-
-```python
-import star_chart_spherical_projection as scsp
-
-scsp.plotStereographicProjection(northOrSouth="North")
+finalPositionOfStars(yearSince2000=0, 
+			userListOfStars=[],
+			isPrecessionIncluded=True,
+			declination_min=None,
+			declination_max=None)
 ```
+- *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
+- *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
+
+<details closed>
+<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
+<br>
+['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 
+'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 
+'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 
+'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 
+'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 
+'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 
+'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 
+'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 
+'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 
+'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 
+'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
+</details>
+
+
+__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+															displayStarNamesLabels=False,
+															yearSince2000=11500,
+															isPrecessionIncluded=False,
+															fig_plot_color="red")
+```
+![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+															displayStarNamesLabels=True,
+															yearSince2000=11500,
+															isPrecessionIncluded=False,
+															fig_plot_color="red")
+```
+![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+															displayStarNamesLabels=False,
+															yearSince2000=11500,
+															isPrecessionIncluded=True,
+															fig_plot_color="red")
+```
+![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+															displayStarNamesLabels=True,
+															yearSince2000=11500,
+															isPrecessionIncluded=True,
+															fig_plot_color="red")
+```
+![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
+
+__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+															displayStarNamesLabels=False,
+															yearSince2000=11500,
+															isPrecessionIncluded=False,
+															fig_plot_color="cornflowerblue")
+```
+![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+															displayStarNamesLabels=True,
+															yearSince2000=11500,
+															isPrecessionIncluded=False,
+															fig_plot_color="cornflowerblue")
+```
+![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+															displayStarNamesLabels=False,
+															yearSince2000=11500,
+															isPrecessionIncluded=True,
+															fig_plot_color="cornflowerblue")
+```
+![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+															displayStarNamesLabels=True,
+															yearSince2000=11500,
+															isPrecessionIncluded=True,
+															fig_plot_color="cornflowerblue")
+```
+![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
+
 ## Bibliography
 
-Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](in-the-sky.org)
+Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](https://in-the-sky.org/)
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011, https://doi.org/10.1051/0004-6361/201117274.](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](github.com/dreamalligator/vondrak)
+Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
 
-## TODO:
+## Bug and Feature Request
 
-Add README badges: pypi tests
+Submit a bug fix, question, or feature request as a [Github Issue](https://github.com/cyschneck/Star-Chart-Spherical-Projection/issues) or to cyschneck@gmail.com

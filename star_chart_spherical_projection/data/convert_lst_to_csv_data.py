@@ -60,6 +60,7 @@ if __name__ == '__main__':
 	sheraton_star = ["Sheratan", "01.54.38", 20.48, 148.1, 138.2, 2.66]
 	spica_star = ["Spica", "13.25.11", -11.09, 52.3, 234.1, 1.06]
 	tarazed_star = ["Tarazed", "19.46.15", 10.36, 16.3, 94.8, 2.69]
+	thuban_star = ["Thuban", "14.04.23", 64.22, 58.9, 287.0, 3.65]
 	unukalhai_star = ["Unukalhai", "15.44.16", 6.25, 141.5, 71.2, 2.63]
 	vega_star = ["Vega", "18.36.56", 38.47, 349.7, 35.1, 0.03]
 	zosma_star = ["Zosma", "11.14.06", 20.31, 193.5, 132.2, 2.56]
@@ -174,6 +175,7 @@ if __name__ == '__main__':
 								sheraton_star,
 								spica_star,
 								tarazed_star,
+								thuban_star,
 								unukalhai_star,
 								vega_star,
 								zosma_star

@@ -27,7 +27,6 @@ config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
 
-
 def getStarList(selectStars=[]):
 	# generate a star object
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
@@ -377,7 +376,7 @@ def plotStereographicProjection(userListOfStars=[],
 	if northOrSouth == "South":
 		displayDeclinationMarksOnAxis(declination_values, int(config["declinationDefaultValues"]["southern_declination_min"]), int(config["declinationDefaultValues"]["southern_declination_max"]), True)
 
-	logger.info("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
+	logger.debug("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
 
 	# convert to x and y values for stars
 	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=userListOfStars, 

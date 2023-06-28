@@ -1,4 +1,11 @@
 import pandas as pd
+import logging
+
+## Logging set up
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+stream_handler = logging.StreamHandler()
+logger.addHandler(stream_handler)
 
 if __name__ == '__main__':
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
@@ -232,10 +239,10 @@ if __name__ == '__main__':
 								]
 
 	star_chart_list = northern_star_chart_list + southern_star_chart_list
-	print("Total stars = {0}".format(len(star_chart_list)))
+	logger.info("Total stars = {0}".format(len(star_chart_list)))
 	for star in star_chart_list:
 		if len(star) != 6:
-			print("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
+			logger.info("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
 			exit()
 	header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)", "Proper Motion Speed (mas/yr)", "Proper Motion Angle (DD.SS)", "Magnitude (V, Visual)"]
 	df = pd.DataFrame(star_chart_list, columns=header_options)

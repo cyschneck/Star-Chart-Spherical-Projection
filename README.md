@@ -29,8 +29,8 @@ Plot stars in the Southern Hemisphere for the year 2023 (without stars labels)
 import star_chart_spherical_projection as scsp
 
 scsp.plotStereographicProjection(northOrSouth="South",
-								displayStarNamesLabels=False,
-								yearSince2000=23)
+				displayStarNamesLabels=False,
+				yearSince2000=23)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_2023.png) 
 
@@ -129,6 +129,75 @@ plotStereographicProjection(northOrSouth=None,
 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
 
+__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+							displayStarNamesLabels=False,
+							yearSince2000=11500,
+							isPrecessionIncluded=False,
+							fig_plot_color="red")
+```
+![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+							displayStarNamesLabels=True,
+							yearSince2000=11500,
+							isPrecessionIncluded=False,
+							fig_plot_color="red")
+```
+![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
+__Star Chart in the Northern Hemisphere (centered on 90°) with Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+							displayStarNamesLabels=False,
+							yearSince2000=11500,
+							isPrecessionIncluded=True,
+							fig_plot_color="red")
+```
+![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+							displayStarNamesLabels=True,
+							yearSince2000=11500,
+							isPrecessionIncluded=True,
+							fig_plot_color="red")
+```
+![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
+__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+							displayStarNamesLabels=False,
+							yearSince2000=11500,
+							isPrecessionIncluded=False,
+							fig_plot_color="cornflowerblue")
+```
+![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+							displayStarNamesLabels=True,
+							yearSince2000=11500,
+							isPrecessionIncluded=False,
+							fig_plot_color="cornflowerblue")
+```
+![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
+__Star Chart in the Southern Hemisphere (centered on -90°) with Precession__
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+							displayStarNamesLabels=False,
+							yearSince2000=11500,
+							isPrecessionIncluded=True,
+							fig_plot_color="cornflowerblue")
+```
+![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
+```
+star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
+							displayStarNamesLabels=True,
+							yearSince2000=11500,
+							isPrecessionIncluded=True,
+							fig_plot_color="cornflowerblue")
+```
+![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
+
 ## Plot Stars on a Polar Chart
 **finalPositionOfStars()**
 
@@ -161,75 +230,6 @@ finalPositionOfStars(yearSince2000=0,
 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 
 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
-
-
-__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
-															displayStarNamesLabels=False,
-															yearSince2000=11500,
-															isPrecessionIncluded=False,
-															fig_plot_color="red")
-```
-![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
-															displayStarNamesLabels=True,
-															yearSince2000=11500,
-															isPrecessionIncluded=False,
-															fig_plot_color="red")
-```
-![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
-															displayStarNamesLabels=False,
-															yearSince2000=11500,
-															isPrecessionIncluded=True,
-															fig_plot_color="red")
-```
-![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
-															displayStarNamesLabels=True,
-															yearSince2000=11500,
-															isPrecessionIncluded=True,
-															fig_plot_color="red")
-```
-![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
-
-__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
-															displayStarNamesLabels=False,
-															yearSince2000=11500,
-															isPrecessionIncluded=False,
-															fig_plot_color="cornflowerblue")
-```
-![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
-															displayStarNamesLabels=True,
-															yearSince2000=11500,
-															isPrecessionIncluded=False,
-															fig_plot_color="cornflowerblue")
-```
-![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
-															displayStarNamesLabels=False,
-															yearSince2000=11500,
-															isPrecessionIncluded=True,
-															fig_plot_color="cornflowerblue")
-```
-![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
-```
-star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
-															displayStarNamesLabels=True,
-															yearSince2000=11500,
-															isPrecessionIncluded=True,
-															fig_plot_color="cornflowerblue")
-```
-![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
 
 ## Bibliography
 

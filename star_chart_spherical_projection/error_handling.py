@@ -8,6 +8,8 @@ import numpy as np
 import os
 import pandas as pd
 
+import star_chart_spherical_projection
+
 ## Logging set up for .INFO
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.CRITICAL)
@@ -69,10 +71,13 @@ def errorHandling(isPlotFunction=None,
 		logger.critical("\nCRITICAL ERROR, [isPrecessionIncluded]: Must be a bool, current type = '{0}'".format(type(isPrecessionIncluded)))
 		exit()
 
-
 	if type(userDefinedStars) != list:
 		logger.critical("\nCRITICAL ERROR, [userDefinedStars]: Must be a list, current type = '{0}'".format(type(userDefinedStars)))
 		exit()
+	for user_star in userDefinedStars:
+		if type(user_star) != star_chart_spherical_projection.newStar:
+			logger.critical("\nCRITICAL ERROR, [userDefinedStars]: {0} is not a valid starClass object (see: star_chart_spherical_projection.newStar".format(type(user_star)))
+			exit()
 
 	if type(onlyDisplayUserStars) != bool:
 		logger.critical("\nCRITICAL ERROR, [onlyDisplayUserStars]: Must be a bool, current type = '{0}'".format(type(onlyDisplayUserStars)))
@@ -149,4 +154,138 @@ def errorHandling(isPlotFunction=None,
 		# Ensure that the user defined figure saved name is a string
 		if save_plot_name is not None and type(save_plot_name) != str:
 			logger.critical("\nCRITICAL ERROR, [save_plot_name]: Must be a string, current type = '{0}'".format(type(save_plot_name)))
+			exit()
+
+def errorHandlingStarClass(starName=None,
+						ra=None,
+						dec=None,
+						properMotionSpeed=None,
+						properMotionAngle=None,
+						properMotionSpeedRA=None,
+						properMotionSpeedDec=None,
+						magnitudeVisual=None):
+	
+	if starName is None:
+		logger.critical("\nCRITICAL ERROR, [starName]: starName is required")
+		exit()
+	else:
+		if type(starName) != str:
+			logger.critical("\nCRITICAL ERROR, [starName]: Must be a str, current type = '{0}'".format(type(starName)))
+			exit()
+
+	if ra is None:
+		logger.critical("\nCRITICAL ERROR, [ra]: Right Ascension is required")
+		exit()
+	else:
+		if type(ra) != str:
+			logger.critical("\nCRITICAL ERROR, [ra]: Must be a str, current type = '{0}'".format(type(ra)))
+			exit()
+		ra_items = ra.split('.')
+		if len(ra_items) != 3:
+			logger.critical("\nCRITICAL ERROR, [ra]: Right Ascension must be three parts '[HH, MM, SS]' (Hours, Minutes, Seconds), currently  = '{0}'".format(ra_items))
+			exit()
+		for ra_time in ra_items:
+			if not ra_time.isdigit():
+				logger.critical("\nCRITICAL ERROR, [ra]: Each part of the Right Ascension must be an integar, '{0}' current type = {1}".format(ra_time, type(ra_time)))
+				exit()
+
+	if dec is None:
+		logger.critical("\nCRITICAL ERROR, [dec]: Declination is required")
+		exit()
+	else:
+		if type(dec) != int and type(dec) != float:
+			logger.critical("\nCRITICAL ERROR, [dec]: Must be a int or float, current type = '{0}'".format(type(dec)))
+			exit()
+
+	if properMotionSpeed is not None:
+		if type(properMotionSpeed) != int and type(properMotionSpeed) != float:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeed]: Must be a int or float, current type = '{0}'".format(type(properMotionSpeed)))
+			exit()
+
+	if properMotionAngle is not None:
+		if type(properMotionAngle) != int and type(properMotionAngle) != float:
+			logger.critical("\nCRITICAL ERROR, [properMotionAngle]: Must be a int or float, current type = '{0}'".format(type(properMotionAngle)))
+			exit()
+
+	if properMotionSpeedRA is not None:
+		if type(properMotionSpeedRA) != int and type(properMotionSpeedRA) != float:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedRA]: Must be a int or float, current type = '{0}'".format(type(properMotionSpeedRA)))
+			exit()
+
+	if properMotionSpeedDec is not None:
+		if type(properMotionSpeedDec) != int and type(properMotionSpeedDec) != float:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedDec]: Must be a int or float, current type = '{0}'".format(type(properMotionSpeedDec)))
+			exit()
+
+	# Verify at least one pair is set
+	if properMotionSpeedRA is None and properMotionSpeedDec is None:
+		# Neither pairs are set
+		if properMotionSpeed is None and properMotionAngle is None:
+			logger.critical("\nCRITICAL ERROR, Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required")
+			exit()
+
+	# Verify when only one value is set, make sure to set up its pair
+	if properMotionSpeedRA is not None:
+		if properMotionSpeedDec is None and properMotionSpeed is None and properMotionAngle is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedDec]: With properMotionSpeedRA set, properMotionSpeedDec is required")
+			exit()
+	if properMotionSpeedDec is not None:
+		if properMotionSpeedRA is None and properMotionSpeed is None and properMotionAngle is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedRA]: With properMotionSpeedDec set, properMotionSpeedRA is required")
+			exit()
+	if properMotionSpeed is not None:
+		if properMotionSpeedRA is None and properMotionSpeedDec is None and properMotionAngle is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionAngle]: With properMotionSpeed set, properMotionAngle is required")
+			exit()
+	if properMotionAngle is not None:
+		if properMotionSpeedRA is None and properMotionSpeedDec is None and properMotionSpeed is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeed]: With properMotionAngle set, properMotionSpeed is required")
+			exit()
+
+	# Remove the invalid extra options when properMotionSpeed/properMotionAngle should be the only pair set
+	if properMotionSpeed is not None and properMotionAngle is not None:
+		if properMotionSpeedRA is not None and properMotionSpeedDec is not None:
+			logger.critical("\nCRITICAL ERROR, Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required, not both")
+			exit()
+		if properMotionSpeedRA is not None and properMotionSpeedDec is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedRA]: With properMotionSpeed/properMotionAngle set, properMotionSpeedRA should be None")
+			exit()
+		if properMotionSpeedRA is None and properMotionSpeedDec is not None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeedDec]: With properMotionSpeed/properMotionAngle set, properMotionSpeedDec should be None")
+			exit()
+
+	# Remove the invalid extra options when properMotionSpeedRA/properMotionSpeedDec should be the only pair set
+	if properMotionSpeedRA is not None and properMotionSpeedDec is not None:
+		if properMotionSpeed is None and properMotionAngle is not None:
+			logger.critical("\nCRITICAL ERROR, [properMotionAngle]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionAngle should be None")
+			exit()
+		if properMotionSpeed is not None and properMotionAngle is None:
+			logger.critical("\nCRITICAL ERROR, [properMotionSpeed]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionSpeed should be None")
+			exit()
+
+	# Verify the non-None values are the correct pairs: properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle
+	if properMotionSpeed is None and properMotionSpeedDec is None:
+		if properMotionSpeedRA is not None and properMotionAngle is not None:
+			logger.critical("\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedRA")
+			exit()
+	if properMotionSpeed is None and properMotionSpeedRA is None:
+		if properMotionAngle is not None and properMotionSpeedDec is not None:
+			logger.critical("\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedDec")
+			exit()
+	if properMotionAngle is None and properMotionSpeedRA is None:
+		if properMotionSpeed is not None and properMotionSpeedDec is not None:
+			logger.critical("\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedDec")
+			exit()
+	if properMotionAngle is None and properMotionSpeedDec is None:
+		if properMotionSpeed is not None and properMotionSpeedRA is not None:
+			logger.critical("\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedRA")
+			exit()
+
+
+	if magnitudeVisual is None:
+		logger.critical("\nCRITICAL ERROR, [magnitudeVisual]: magnitudeVisual is required")
+		exit()
+	else:
+		if type(magnitudeVisual) != int and type(magnitudeVisual) != float:
+			logger.critical("\nCRITICAL ERROR, [magnitudeVisual]: Must be a int or float, current type = '{0}'".format(type(magnitudeVisual)))
 			exit()

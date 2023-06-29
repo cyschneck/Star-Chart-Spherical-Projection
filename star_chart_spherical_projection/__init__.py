@@ -1,4 +1,5 @@
 from .error_handling import errorHandling
+from .error_handling import errorHandlingStarClass
 
 from .generate_star_chart import getStarList
 from .generate_star_chart import plotStereographicProjection

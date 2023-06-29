@@ -51,21 +51,21 @@ def test_plotStereographicProjection_northOrSouthInvalidTypes(caplog, invalid_in
 	assert log_record.message == "\nCRITICAL ERROR, [northOrSouth]: Must be a str, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
-def test_plotStereographicProjection_userListOfStarsInvalidTypes(caplog, invalid_input, error_output):
+def test_plotStereographicProjection_builtInStarsInvalidTypes(caplog, invalid_input, error_output):
 	# Test:
 	with pytest.raises(SystemExit):
-		scsp.plotStereographicProjection(northOrSouth="North", userListOfStars=invalid_input)
+		scsp.plotStereographicProjection(northOrSouth="North", builtInStars=invalid_input)
 	log_record = caplog.records[0]
 	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [userListOfStars]: Must be a list, current type = '{0}'".format(error_output)
+	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: Must be a list, current type = '{0}'".format(error_output)
 
-def test_plotStereographicProjection_userListOfStarsInvalidStar(caplog):
+def test_plotStereographicProjection_builtInStarsInvalidStar(caplog):
 	# Test:
 	with pytest.raises(SystemExit):
-		scsp.plotStereographicProjection(northOrSouth="North", userListOfStars=["Fake star", "VEga"])
+		scsp.plotStereographicProjection(northOrSouth="North", builtInStars=["Fake star", "VEga"])
 	log_record = caplog.records[0]
 	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [userListOfStars]: 'Fake Star' not a star in current list of stars, please select one of the following: ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']"
+	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_plotStereographicProjection_declinationMinInvalidTypes(caplog, invalid_input, error_output):

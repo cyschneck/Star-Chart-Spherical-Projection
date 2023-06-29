@@ -15,7 +15,7 @@ stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
 def errorHandling(isPlotFunction=None,
-				userListOfStars=None,
+				builtInStars=None,
 				northOrSouth=None, 
 				yearSince2000=None,
 				isPrecessionIncluded=None,
@@ -36,18 +36,18 @@ def errorHandling(isPlotFunction=None,
 	# Error Handling for Variables shared beween finalPositionOfStars() and plotStereographicProjection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
-	if type(userListOfStars) != list:
-		logger.critical("\nCRITICAL ERROR, [userListOfStars]: Must be a list, current type = '{0}'".format(type(userListOfStars)))
+	if type(builtInStars) != list:
+		logger.critical("\nCRITICAL ERROR, [builtInStars]: Must be a list, current type = '{0}'".format(type(builtInStars)))
 		exit()
 	## Check that user list has stars that are found in current list
-	if len(userListOfStars) != 0:
-		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+	if len(builtInStars) != 0:
+		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		all_star_names_in_csv = list(star_dataframe['Star Name'])
-		for star_given in userListOfStars:
+		for star_given in builtInStars:
 			if star_given not in all_star_names_in_csv:
-				logger.critical("\nCRITICAL ERROR, [userListOfStars]: '{0}' not a star in current list of stars, please select one of the following: {1}".format(star_given, all_star_names_in_csv))
+				logger.critical("\nCRITICAL ERROR, [builtInStars]: '{0}' not a star in current list of stars, please select one of the following: {1}".format(star_given, all_star_names_in_csv))
 				exit()
 
 	# Ensure that declination ranges are set and within within ranges

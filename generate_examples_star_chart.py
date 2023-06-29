@@ -27,13 +27,12 @@ if __name__ == '__main__':
 	print("new_star_object.magnitudeVisual = {0}".format(new_star_object.magnitudeVisual))
 
 
-	star_chart_spherical_projection.plotStereographicProjection(userListOfStars=["Vega"],
+	star_chart_spherical_projection.plotStereographicProjection(builtInStars=["Vega"],
 																userDefinedStars=[new_star_object],
 																northOrSouth="North",
 																onlyDisplayUserStars=False,
 																displayStarNamesLabels=True,
 																yearSince2000=23)
-
 	exit()
 	# Generate a .csv file with final positions of stars
 	#star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars(yearSince2000=year_to_calculate)

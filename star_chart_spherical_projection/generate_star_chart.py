@@ -188,7 +188,7 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	logger.debug("Precession for Star = {0}, Declination = {1}, RA = {2}".format(star_name, vondrak_dec, vondrak_ra))
 	return vondrak_dec, vondrak_ra
 
-def finalPositionOfStars(userListOfStars=[], 
+def finalPositionOfStars(builtInStars=[], 
 						yearSince2000=0,
 						isPrecessionIncluded=True,
 						userDefinedStars=[],
@@ -198,7 +198,7 @@ def finalPositionOfStars(userListOfStars=[],
 	# return the final position of the stars as a dictionary
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
-												userListOfStars=userListOfStars,
+												builtInStars=builtInStars,
 												yearSince2000=yearSince2000,
 												isPrecessionIncluded=isPrecessionIncluded,
 												userDefinedStars=userDefinedStars,
@@ -206,8 +206,8 @@ def finalPositionOfStars(userListOfStars=[],
 												declination_min=declination_min,
 												declination_max=declination_max)
 	if not onlyDisplayUserStars:
-		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
-		listOfStars = getStarList(userListOfStars)
+		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
+		listOfStars = getStarList(builtInStars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,
@@ -231,7 +231,7 @@ def finalPositionOfStars(userListOfStars=[],
 	declination_min = -90
 	declination_max = 90
 
-	x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict = generateStereographicProjection(starList=userListOfStars, 
+	x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict = generateStereographicProjection(starList=listOfStars, 
 																										northOrSouth="North", 
 																										declination_min=declination_min,
 																										yearSince2000=yearSince2000,
@@ -314,7 +314,7 @@ def generateStereographicProjection(starList=None,
 
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
-def plotStereographicProjection(userListOfStars=[], 
+def plotStereographicProjection(builtInStars=[], 
 								northOrSouth=None, 
 								declination_min=None,
 								yearSince2000=0,
@@ -334,7 +334,7 @@ def plotStereographicProjection(userListOfStars=[],
 
 	# Catch errors in given arguments before plotting and set default constants
 	star_chart_spherical_projection.errorHandling(isPlotFunction=True,
-												userListOfStars=userListOfStars,
+												builtInStars=builtInStars,
 												northOrSouth=northOrSouth, 
 												declination_min=declination_min,
 												yearSince2000=yearSince2000,
@@ -353,8 +353,8 @@ def plotStereographicProjection(userListOfStars=[],
 												save_plot_name=save_plot_name)
 	northOrSouth = northOrSouth.capitalize()
 	if not onlyDisplayUserStars:
-		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
-		listOfStars = getStarList(userListOfStars)
+		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
+		listOfStars = getStarList(builtInStars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

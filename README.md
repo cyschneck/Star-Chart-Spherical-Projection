@@ -38,7 +38,7 @@ Return the final position of a star (or list of stars) after 11,500 years when V
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega"], yearSince2000=11500)
+star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500)
 ```
 Returns a dictionary: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 
@@ -83,7 +83,7 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(northOrSouth=None, 
-			userListOfStars=[], 
+			builtInStars=[], 
 			declination_min=None,
 			yearSince2000=0,
 			displayStarNamesLabels=True,
@@ -101,7 +101,7 @@ plotStereographicProjection(northOrSouth=None,
 			save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
-- *[OPTIONAL]* userListOfStars: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
@@ -119,7 +119,7 @@ plotStereographicProjection(northOrSouth=None,
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
 <details closed>
-<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
+<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
 <br>
 ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 
 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 
@@ -208,15 +208,15 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South"
 
 Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-finalPositionOfStars(yearSince2000=0, 
-		userListOfStars=[],
+finalPositionOfStars(builtInStars=[],
+		yearSince2000=0, 
 		isPrecessionIncluded=True,
 		userDefinedStars=[],
 		onlyDisplayUserStars=False,
 		declination_min=None,
 		declination_max=None)
 ```
-- *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* userDefinedStars: (list)
@@ -225,7 +225,7 @@ finalPositionOfStars(yearSince2000=0,
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
 <details closed>
-<summary>Stars that will be included by default when userListOfStars = [] (Click to view all)</summary>
+<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
 <br>
 ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 
 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 

@@ -34,12 +34,13 @@ scsp.plotStereographicProjection(northOrSouth="South",
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_2023.png) 
 
+Return the final position of a star (or list of stars) after 11,500 years when Vega is the new North Pole Star (star closest to +90°)
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega", "Polaris", "Betelgeuse"], yearSince2000=11500)
+star_final_pos_dict = scsp.finalPositionOfStars(userListOfStars=["Vega"], yearSince2000=11500)
 ```
-Returns a dictionary: `{'Betelgeuse': {'Declination': -36.342836095268325, 'RA': '16.34.28'}, 'Polaris': {'Declination': 45.08038305067079, 'RA': '17.25.11'}, 'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
+Returns a dictionary: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 
 ## Install
 
@@ -82,20 +83,22 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(northOrSouth=None, 
-				userListOfStars=[], 
-				declination_min=None,
-				yearSince2000=0,
-				displayStarNamesLabels=True,
-				displayDeclinationNumbers=True,
-				incrementBy=10,
-				isPrecessionIncluded=True,
-				maxMagnitudeFilter=None,
-				showPlot=True,
-				fig_plot_title=None,
-				fig_plot_color="C0",
-				figsize_n=12,
-				figsize_dpi=100,
-				save_plot_name=None)
+			userListOfStars=[], 
+			declination_min=None,
+			yearSince2000=0,
+			displayStarNamesLabels=True,
+			displayDeclinationNumbers=True,
+			incrementBy=10,
+			isPrecessionIncluded=True,
+			maxMagnitudeFilter=None,
+			userDefinedStars=[],
+			onlyDisplayUserStars=False,
+			showPlot=True,
+			fig_plot_title=None,
+			fig_plot_color="C0",
+			figsize_n=12,
+			figsize_dpi=100,
+			save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* userListOfStars: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
@@ -106,6 +109,8 @@ plotStereographicProjection(northOrSouth=None,
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* maxMagnitudeFilter: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
+- *[OPTIONAL]* userDefinedStars: (list)
+- *[OPTIONAL]* onlyDisplayUserStars: (bool)
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0
@@ -204,14 +209,18 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South"
 Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(yearSince2000=0, 
-			userListOfStars=[],
-			isPrecessionIncluded=True,
-			declination_min=None,
-			declination_max=None)
+		userListOfStars=[],
+		isPrecessionIncluded=True,
+		userDefinedStars=[],
+		onlyDisplayUserStars=False,
+		declination_min=None,
+		declination_max=None)
 ```
 - *[OPTIONAL]* userListOfStar: (list) a list of star names to include, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* userDefinedStars: (list)
+- *[OPTIONAL]* onlyDisplayUserStars: (bool)
 - *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 
@@ -235,9 +244,9 @@ finalPositionOfStars(yearSince2000=0,
 
 Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](https://in-the-sky.org/)
 
-Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011, https://doi.org/10.1051/0004-6361/201117274.](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
+Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Precession code adapted to Python3 from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
+Preecession code adapted to Python3 from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
 
 ## Bug and Feature Request
 

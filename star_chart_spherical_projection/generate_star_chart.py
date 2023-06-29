@@ -191,6 +191,8 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 def finalPositionOfStars(userListOfStars=[], 
 						yearSince2000=0,
 						isPrecessionIncluded=True,
+						userDefinedStars=[],
+						onlyDisplayUserStars=False,
 						declination_min=None,
 						declination_max=None):
 	# return the final position of the stars as a dictionary
@@ -199,10 +201,32 @@ def finalPositionOfStars(userListOfStars=[],
 												userListOfStars=userListOfStars,
 												yearSince2000=yearSince2000,
 												isPrecessionIncluded=isPrecessionIncluded,
+												userDefinedStars=userDefinedStars,
+												onlyDisplayUserStars=onlyDisplayUserStars,
 												declination_min=declination_min,
 												declination_max=declination_max)
-	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
-
+	if not onlyDisplayUserStars:
+		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+		listOfStars = getStarList(userListOfStars)
+		for star_object in userDefinedStars:
+			star_row = [star_object.starName,
+						star_object.ra,
+						star_object.dec,
+						star_object.properMotionSpeed,
+						star_object.properMotionAngle,
+						star_object.magnitudeVisual]
+			listOfStars.append(star_row)
+	else:
+		listOfStars = []
+		for star_object in userDefinedStars:
+			star_row = [star_object.starName,
+						star_object.ra,
+						star_object.dec,
+						star_object.properMotionSpeed,
+						star_object.properMotionAngle,
+						star_object.magnitudeVisual]
+			listOfStars.append(star_row)
+	
 	# Set declination min values when using the generateStereographicProjection() to capture all stars if not set
 	declination_min = -90
 	declination_max = 90
@@ -226,8 +250,7 @@ def generateStereographicProjection(starList=None,
 	# Generate sterographic projections and return declination and right ascension
 
 	# Convert Star chart from RA hours to Radians to chart
-	list_of_stars = getStarList(starList)
-	list_of_stars = convertRAhrtoRadians(list_of_stars)
+	list_of_stars = convertRAhrtoRadians(starList)
 
 	finalPositionOfStarsDict = {} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 	x_star_labels = []
@@ -300,6 +323,8 @@ def plotStereographicProjection(userListOfStars=[],
 								incrementBy=10,
 								isPrecessionIncluded=True,
 								maxMagnitudeFilter=None,
+								userDefinedStars=[],
+								onlyDisplayUserStars=False,
 								showPlot=True,
 								fig_plot_title=None,
 								fig_plot_color="C0",
@@ -318,6 +343,8 @@ def plotStereographicProjection(userListOfStars=[],
 												incrementBy=incrementBy, 
 												isPrecessionIncluded=isPrecessionIncluded,
 												maxMagnitudeFilter=maxMagnitudeFilter,
+												userDefinedStars=userDefinedStars,
+												onlyDisplayUserStars=onlyDisplayUserStars,
 												showPlot=showPlot,
 												fig_plot_title=fig_plot_title,
 												fig_plot_color=fig_plot_color,
@@ -325,8 +352,27 @@ def plotStereographicProjection(userListOfStars=[],
 												figsize_dpi=figsize_dpi,
 												save_plot_name=save_plot_name)
 	northOrSouth = northOrSouth.capitalize()
-	userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
-
+	if not onlyDisplayUserStars:
+		userListOfStars = [x.title() for x in userListOfStars] # convert all names to capitalized
+		listOfStars = getStarList(userListOfStars)
+		for star_object in userDefinedStars:
+			star_row = [star_object.starName,
+						star_object.ra,
+						star_object.dec,
+						star_object.properMotionSpeed,
+						star_object.properMotionAngle,
+						star_object.magnitudeVisual]
+			listOfStars.append(star_row)
+	else:
+		listOfStars = []
+		for star_object in userDefinedStars:
+			star_row = [star_object.starName,
+						star_object.ra,
+						star_object.dec,
+						star_object.properMotionSpeed,
+						star_object.properMotionAngle,
+						star_object.magnitudeVisual]
+			listOfStars.append(star_row)
 	# plot star chart as a circular graph
 
 	# Set declination based on hemisphere selected
@@ -379,7 +425,7 @@ def plotStereographicProjection(userListOfStars=[],
 	logger.debug("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
 
 	# convert to x and y values for stars
-	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=userListOfStars, 
+	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=listOfStars, 
 																						northOrSouth=northOrSouth, 
 																						yearSince2000=yearSince2000,
 																						isPrecessionIncluded=isPrecessionIncluded,

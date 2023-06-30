@@ -241,15 +241,15 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_1100.png) |
 
-| displayStarNamesLabels=True (default) | declination_min=False |
+| displayStarNamesLabels=True (default) | displayStarNamesLabels=False |
 | ------------- | ------------- |
-| ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |
+| ![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |
 
 | displayDeclinationNumbers=True (default) | displayDeclinationNumbers=False |
 | ------------- | ------------- |
-| ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
+| ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
 
-| incrementBy=10 (default) | declination_min=5 |
+| incrementBy=10 (default) | incrementBy=5 |
 | ------------- | ------------- |
 | ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
 
@@ -271,8 +271,9 @@ plotStereographicProjection(northOrSouth=None,
 
 | fig_plot_color="C0" (default) | fig_plot_color="darkorchid" |
 | ------------- | ------------- |
-| ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
+| ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
 
+### Star Chart Examples:
 __Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
 ```
 star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",

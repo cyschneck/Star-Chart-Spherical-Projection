@@ -194,7 +194,8 @@ def finalPositionOfStars(builtInStars=[],
 						userDefinedStars=[],
 						onlyDisplayUserStars=False,
 						declination_min=None,
-						declination_max=None):
+						declination_max=None,
+						save_to_csv=None):
 	# return the final position of the stars as a dictionary
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
@@ -204,7 +205,8 @@ def finalPositionOfStars(builtInStars=[],
 												userDefinedStars=userDefinedStars,
 												onlyDisplayUserStars=onlyDisplayUserStars,
 												declination_min=declination_min,
-												declination_max=declination_max)
+												declination_max=declination_max,
+												save_to_csv=save_to_csv)
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
 		listOfStars = getStarList(builtInStars)
@@ -238,6 +240,15 @@ def finalPositionOfStars(builtInStars=[],
 																										isPrecessionIncluded=isPrecessionIncluded,
 																										maxMagnitudeFilter=None,
 																										declination_max=declination_max)
+	# Generate a .csv file with final positions of stars
+	if save_to_csv is not None:
+		header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
+		star_chart_list = []
+		for star_name, star_position in finalPositionOfStarsDict.items():
+			star_chart_list.append([star_name, star_position["RA"], star_position["Declination"]])
+		df = pd.DataFrame(star_chart_list, columns=header_options)
+		df = df.sort_values(by=["Star Name"])
+		df.to_csv(save_to_csv, header=header_options, index=False)
 	return finalPositionOfStarsDict
 
 def generateStereographicProjection(starList=None, 

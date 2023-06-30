@@ -34,7 +34,8 @@ def errorHandling(isPlotFunction=None,
 				fig_plot_color=None,
 				figsize_n=None,
 				figsize_dpi=None,
-				save_plot_name=None):
+				save_plot_name=None,
+				save_to_csv=None):
 	# Error Handling for Variables shared beween finalPositionOfStars() and plotStereographicProjection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
@@ -92,6 +93,13 @@ def errorHandling(isPlotFunction=None,
 				exit()
 			if declination_max not in np.arange(-89, 90): # if defined, but not in range
 				logger.critical("\nCRITICAL ERROR, [declination_max]: Maximum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{0}'".format(declination_max))
+				exit()
+		if save_to_csv is not None:
+			if type(save_to_csv) != str:
+				logger.critical("\nCRITICAL ERROR, [save_to_csv]: Must be a str, current type = '{0}'".format(type(save_to_csv)))
+				exit()
+			if not save_to_csv.lower().endswith(".csv"):
+				logger.critical("\nCRITICAL ERROR, [save_to_csv]: Extension must be a .csv file, current extension = '{0}'".format(save_to_csv.split(".")[1]))
 				exit()
 
 	# Error Handling for plotStereographicProjection() function
@@ -280,7 +288,6 @@ def errorHandlingStarClass(starName=None,
 		if properMotionSpeed is not None and properMotionSpeedRA is not None:
 			logger.critical("\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedRA")
 			exit()
-
 
 	if magnitudeVisual is None:
 		logger.critical("\nCRITICAL ERROR, [magnitudeVisual]: magnitudeVisual is required")

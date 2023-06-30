@@ -10,7 +10,7 @@ A Python package to generate an astronomy star chart based on spherical projecti
 	* plotStereographicProjection()
 * **Return Final Position of Stars**
 	* finalPositionOfStars()
-* **Add a New Star**
+* **Add a New Star to Plot**
 	* newStar()
 
 The first step to plot the celestial sphere onto a 2D plot is to map the star's right ascension as hours along the plot (matplotlib polar plot's theta value) and declination as the distance from the center of the circle (matplotlib polar plot's radius value). However, attempting to map the right ascension and declination directly will cause distortion since the angles between the stars along the declination are no longer conserved. On the left, the constellation of the Big Dipper is stretched into an unfamiliar shape due to this distortion. By accounting for the spherical transformation, the star chart can be corrected as seen on the right.
@@ -41,11 +41,11 @@ Plot some built-in stars as well as two new user defined stars in the Northern H
 import star_chart_spherical_projection as scsp
 
 exalibur_star = scsp.newStar(starName="Exalibur",
-				ra="14.04.23",
-				dec=64.22,
-				properMotionSpeed=12.3,
-				properMotionAngle=83,
-				magnitudeVisual=1.2)
+			ra="14.04.23",
+			dec=64.22,
+			properMotionSpeed=12.3,
+			properMotionAngle=83,
+			magnitudeVisual=1.2)
 karaboudjan_star = scsp.newStar(starName="Karaboudjan",
 				ra="3.14.15",
 				dec=10.13,
@@ -66,9 +66,11 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500)
+star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500, save_to_csv="final_star_positions.csv")
 ```
 Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
+
+The final position of the stars are saved in `final_star_positions.csv` with the headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
 ## Install
 
@@ -249,7 +251,7 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
 
-| incrementBy=10 (default) | incrementBy=5 |
+| incrementBy=10 (default) (without star labels) | incrementBy=5 (without star labels) |
 | ------------- | ------------- |
 | ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
 
@@ -265,7 +267,7 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![onlyDisplayUserStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_default.png) | ![onlyDisplayUserStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_true.png) |
 
-| fig_plot_title=<default> | fig_plot_title="This is a Example Title for a Star Chart" |
+| fig_plot_title=(default) | fig_plot_title="This is a Example Title for a Star Chart" |
 | ------------- | ------------- |
 | ![fig_plot_title_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_title+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_example.png) |
 
@@ -354,7 +356,8 @@ finalPositionOfStars(builtInStars=[],
 		userDefinedStars=[],
 		onlyDisplayUserStars=False,
 		declination_min=None,
-		declination_max=None)
+		declination_max=None,
+		save_to_csv=None)
 ```
 - *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
@@ -363,6 +366,7 @@ finalPositionOfStars(builtInStars=[],
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (userDefinedStars)
 - *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
+- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
 <details closed>
 <summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
@@ -382,11 +386,11 @@ finalPositionOfStars(builtInStars=[],
 
 ## Bibliography
 
-Star position (right ascension and declination) as well as the angle and speed of proper motion taken from [in-the-sky.org](https://in-the-sky.org/)
+Star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/)
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Preecession code adapted to Python 3+ from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
+Preecession code adapted to Python 3+ from [Github Repo: vondrak](https://github.com/dreamalligator/vondrak)
 
 ## Bug and Feature Request
 

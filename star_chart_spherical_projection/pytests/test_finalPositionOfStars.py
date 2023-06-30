@@ -128,10 +128,18 @@ def test_finalPositionOfStars_userDefinedStarsInvalidTypes(caplog, invalid_input
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_finalPositionOfStars_onlyDisplayUserStarsInvalidTypes(caplog, invalid_input, error_output):
-	#userDefinedStars
 	# Test:
 	with pytest.raises(SystemExit):
 		scsp.finalPositionOfStars(onlyDisplayUserStars=invalid_input)
 	log_record = caplog.records[0]
 	assert log_record.levelno == logging.CRITICAL
 	assert log_record.message == "\nCRITICAL ERROR, [onlyDisplayUserStars]: Must be a bool, current type = '{0}'".format(error_output)
+
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
+def test_finalPositionOfStars_saveToCsvInvalidTypes(caplog, invalid_input, error_output):
+	# Test:
+	with pytest.raises(SystemExit):
+		scsp.finalPositionOfStars(save_to_csv=invalid_input)
+	log_record = caplog.records[0]
+	assert log_record.levelno == logging.CRITICAL
+	assert log_record.message == "\nCRITICAL ERROR, [save_to_csv]: Must be a str, current type = '{0}'".format(error_output)

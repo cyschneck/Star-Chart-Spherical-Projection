@@ -7,28 +7,35 @@ import star_chart_spherical_projection
 if __name__ == '__main__':
 	year_to_calculate = 11500
 
-	new_star_object = star_chart_spherical_projection.newStar(starName="testing star",
-																ra="1.2.3",
-																dec=10.45,
-																properMotionSpeed=1200.0,
-																properMotionAngle=56.3,
-																magnitudeVisual=1.2)
-	#new_star_object = star_chart_spherical_projection.newStar(starName="testing star2",
+	#new_star_object = star_chart_spherical_projection.newStar(starName="testing star",
 	#															ra="1.2.3",
-	#															dec=65.45,
-	#															properMotionRA=12.14,
-	#															properMotionDec=14.15,
+	#															dec=10.45,
+	#															properMotionSpeed=1200.0,
+	#															properMotionAngle=56.3,
 	#															magnitudeVisual=1.2)
+	new_star_object = star_chart_spherical_projection.newStar(starName="testing star2",
+																ra="14.04.23",
+																dec=64.22,
+																properMotionSpeed=1,
+																properMotionAngle=2,
+																properMotionSpeedRA=None,
+																properMotionSpeedDec=None,
+																magnitudeVisual=1.2)
+
 	print("new_star_object.starName = {0}".format(new_star_object.starName))
 	print("new_star_object.ra = {0}".format(new_star_object.ra))
 	print("new_star_object.dec = {0}".format(new_star_object.dec))
 	print("new_star_object.properMotionSpeed = {0}".format(new_star_object.properMotionSpeed))
 	print("new_star_object.properMotionAngle = {0}".format(new_star_object.properMotionAngle))
+	print("new_star_object.properMotionSpeedRA = {0}".format(new_star_object.properMotionSpeedRA))
+	print("new_star_object.properMotionSpeedDec = {0}".format(new_star_object.properMotionSpeedDec))
 	print("new_star_object.magnitudeVisual = {0}".format(new_star_object.magnitudeVisual))
 
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", fig_plot_title="Example Figure Title")
+	exit()
 
 	star_chart_spherical_projection.plotStereographicProjection(builtInStars=["Vega"],
-																userDefinedStars=[new_star_object],
+																userDefinedStars=["Vega"],
 																northOrSouth="North",
 																onlyDisplayUserStars=False,
 																displayStarNamesLabels=True,
@@ -44,6 +51,26 @@ if __name__ == '__main__':
 	#df = df.sort_values(by=["Star Name"])
 	#df.to_csv("examples/star_final_position_data.csv", header=header_options, index=False)
 	#print(df['Star Name'].tolist())
+
+	exalibur_star = star_chart_spherical_projection.newStar(starName="Exalibur",
+													ra="14.04.23",
+													dec=64.22,
+													properMotionSpeed=12.3,
+													properMotionAngle=83,
+													magnitudeVisual=1.2)
+	karaboudjan_star = star_chart_spherical_projection.newStar(starName="Karaboudjan",
+														ra="3.14.15",
+														dec=10.13,
+														properMotionSpeedRA=57.6,
+														properMotionSpeedDec=60.1,
+														magnitudeVisual=0.3)
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+									builtInStars=["Vega", "Arcturus", "Altair"],
+									userDefinedStars=[exalibur_star, karaboudjan_star],
+									displayStarNamesLabels=True,
+									yearSince2000=-39,
+									fig_plot_color="red",
+									save_plot_name="examples/quickstart_newstar_example")
 
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South",
 																displayStarNamesLabels=False,

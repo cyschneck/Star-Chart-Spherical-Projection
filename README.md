@@ -225,9 +225,9 @@ plotStereographicProjection(northOrSouth=None,
 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
 
-| northOrSouth="North" (-30° to 90°) | northOrSouth="South" (30° to -90°)|
+| northOrSouth="North" (-30° to 90°) (without star labels) | northOrSouth="South" (30° to -90°) (without star labels) |
 | ------------- | ------------- |
-| ![north_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |  ![south_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) |
+| ![northOrSouth+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/northOrSouth_north.png) |  ![northOrSouth+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/northOrSouth_south.png) |
 
 | builtInStars=[] (Includes all stars, default) | builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
 | ------------- | ------------- |
@@ -243,9 +243,9 @@ plotStereographicProjection(northOrSouth=None,
 
 | displayStarNamesLabels=True (default) | displayStarNamesLabels=False |
 | ------------- | ------------- |
-| ![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |
+| ![displayStarNamesLabels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayStarNamesLabels_default.png)  | ![displayStarNamesLabels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayStarNamesLabels_false.png) |
 
-| displayDeclinationNumbers=True (default) | displayDeclinationNumbers=False |
+| displayDeclinationNumbers=True (default) (without star labels) | displayDeclinationNumbers=False (without star labels) |
 | ------------- | ------------- |
 | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
 

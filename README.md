@@ -41,23 +41,23 @@ Plot some built-in stars as well as two new user defined stars in the Northern H
 import star_chart_spherical_projection as scsp
 
 exalibur_star = scsp.newStar(starName="Exalibur",
-			ra="14.04.23",
-			dec=64.22,
-			properMotionSpeed=12.3,
-			properMotionAngle=83,
-			magnitudeVisual=1.2)
+				ra="14.04.23",
+				dec=64.22,
+				properMotionSpeed=12.3,
+				properMotionAngle=83,
+				magnitudeVisual=1.2)
 karaboudjan_star = scsp.newStar(starName="Karaboudjan",
-			ra="3.14.15",
-			dec=10.13,
-			properMotionSpeedRA=57.6,
-			properMotionSpeedDec=60.1,
-			magnitudeVisual=0.3)
+				ra="3.14.15",
+				dec=10.13,
+				properMotionSpeedRA=57.6,
+				properMotionSpeedDec=60.1,
+				magnitudeVisual=0.3)
 scsp.plotStereographicProjection(northOrSouth="North",
-			builtInStars=["Vega", "Arcturus", "Altair"],
-			userDefinedStars=[exalibur_star, karaboudjan_star],
-			displayStarNamesLabels=True,
-			fig_plot_color="red",
-			yearSince2000=-39)
+				builtInStars=["Vega", "Arcturus", "Altair"],
+				userDefinedStars=[exalibur_star, karaboudjan_star],
+				displayStarNamesLabels=True,
+				fig_plot_color="red",
+				yearSince2000=-39)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_newstar_example.png) 
 
@@ -137,11 +137,11 @@ As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star)
 
 ```
 star_chart_spherical_projection.newStar(starName=None,
-					ra=None,
-					dec=None,
-					properMotionSpeedRA=None,
-					properMotionSpeedDec=None,
-					magnitudeVisual=None)
+						ra=None,
+						dec=None,
+						properMotionSpeedRA=None,
+						properMotionSpeedDec=None,
+						magnitudeVisual=None)
 ```
 * **[REQUIRED]** starName (string): A star name to be displayed as a label
 * **[REQUIRED]** ra (string): Right Ascension as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
@@ -174,22 +174,22 @@ Important Note: RA/Dec proper motion will be converted from speed along the righ
 Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(northOrSouth=None, 
-			builtInStars=[], 
-			declination_min=None,
-			yearSince2000=0,
-			displayStarNamesLabels=True,
-			displayDeclinationNumbers=True,
-			incrementBy=10,
-			isPrecessionIncluded=True,
-			maxMagnitudeFilter=None,
-			userDefinedStars=[],
-			onlyDisplayUserStars=False,
-			showPlot=True,
-			fig_plot_title=None,
-			fig_plot_color="C0",
-			figsize_n=12,
-			figsize_dpi=100,
-			save_plot_name=None)
+				builtInStars=[], 
+				declination_min=None,
+				yearSince2000=0,
+				displayStarNamesLabels=True,
+				displayDeclinationNumbers=True,
+				incrementBy=10,
+				isPrecessionIncluded=True,
+				maxMagnitudeFilter=None,
+				userDefinedStars=[],
+				onlyDisplayUserStars=False,
+				showPlot=True,
+				fig_plot_title=None,
+				fig_plot_color="C0",
+				figsize_n=12,
+				figsize_dpi=100,
+				save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
@@ -265,11 +265,11 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![onlyDisplayUserStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_default.png) | ![onlyDisplayUserStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_true.png) |
 
-| fig_plot_title=(default) | fig_plot_title="Example Figure Title" |
+| fig_plot_title=<default> | fig_plot_title="This is a Example Title for a Star Chart" |
 | ------------- | ------------- |
 | ![fig_plot_title_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_title+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_example.png) |
 
-| fig_plot_color="C0" (default) | fig_plot_color="darkorchid" |
+| fig_plot_color="C0" (default) (without star labels) | fig_plot_color="darkorchid" (without star labels) |
 | ------------- | ------------- |
 | ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
 

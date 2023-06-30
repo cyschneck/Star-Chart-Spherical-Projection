@@ -31,7 +31,7 @@ if __name__ == '__main__':
 	print("new_star_object.properMotionSpeedDec = {0}".format(new_star_object.properMotionSpeedDec))
 	print("new_star_object.magnitudeVisual = {0}".format(new_star_object.magnitudeVisual))
 
-	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", fig_plot_title="Example Figure Title")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North")
 	exit()
 
 	star_chart_spherical_projection.plotStereographicProjection(builtInStars=["Vega"],

@@ -19,7 +19,7 @@ The first step to plot the celestial sphere onto a 2D plot is to map the star's 
 | ------------- | ------------- |
 | ![without_correction](https://user-images.githubusercontent.com/22159116/202333014-a53f1176-182f-43c7-ab92-266d15d8c563.jpg) | ![with_correction](https://user-images.githubusercontent.com/22159116/202333015-493619f4-a5b8-4614-8b32-54225d7fad02.png) |
 
-The sphere is projected from the South Pole (via [Sterographic projection](https://gisgeography.com/azimuthal-projection-orthographic-stereographic-gnomonic/)):
+The sphere is projected from the South Pole (via [Stereographic projection](https://gisgeography.com/azimuthal-projection-orthographic-stereographic-gnomonic/)):
  <p align="center">
   <img src="https://gisgeography.com/wp-content/uploads/2016/12/Stereographic-Projection-768x421.png" />
 </p>
@@ -36,16 +36,16 @@ scsp.plotStereographicProjection(northOrSouth="South",
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_2023.png) 
 
-Plot some built-in stars as well as two new user defined stars in the Northern Hemisphere for the year 1961 (2000-39) (with stars labels and in the color red). This uses both methods to define the proper motion for new stars: with a given proper motion and angle and with the proper motion speed in the declination and right ascension
+Plot a few built-in stars as well as two new user defined stars in the Northern Hemisphere for the year 1961 (2000-39) (with stars labels and in red). This uses both methods to define the proper motion for new stars: with a given proper motion and angle and with the proper motion speed in the declination and right ascension
 ```python
 import star_chart_spherical_projection as scsp
 
 exalibur_star = scsp.newStar(starName="Exalibur",
-			ra="14.04.23",
-			dec=64.22,
-			properMotionSpeed=12.3,
-			properMotionAngle=83,
-			magnitudeVisual=1.2)
+				ra="14.04.23",
+				dec=64.22,
+				properMotionSpeed=12.3,
+				properMotionAngle=83,
+				magnitudeVisual=1.2)
 karaboudjan_star = scsp.newStar(starName="Karaboudjan",
 				ra="3.14.15",
 				dec=10.13,
@@ -90,7 +90,7 @@ Requirements will also be downloaded as part of the pip download
 
 ## Overview
 
-From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitrary radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. During the course of a full 24 hour day, stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
+From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitrary radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. During the course of a full 24-hour day, stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
  
  <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Earth_within_celestial_sphere.gif" />
@@ -104,7 +104,7 @@ north_hemisphere_declination = tan(45° + (original_declination / 2))
 # Projected from North Pole (Southern Hemisphere)
 south_hemisphere_declination = tan(45° - (original_declination / 2))
 ```
-Where in the Northern Hemsiphere, projections are formed from the South Pole: 
+Where in the Northern Hemisphere, projections are formed from the South Pole: 
 ![morrisons_astrolabe](https://user-images.githubusercontent.com/22159116/202336728-dc290bfa-44f5-4947-9a08-93f70286436e.jpg)
 
 ## Add a New Star
@@ -120,34 +120,34 @@ This allows for the creation of a new star in two ways:
 As seen in [in-the-sky.org for Pollux](https://in-the-sky.org/data/object.php?id=TYC1920-2194-1)
 ```
 star_chart_spherical_projection.newStar(starName=None,
-				ra=None,
-				dec=None,
-				properMotionSpeed=None,
-				properMotionAngle=None,
-				magnitudeVisual=None)
+					ra=None,
+					dec=None,
+					properMotionSpeed=None,
+					properMotionAngle=None,
+					magnitudeVisual=None)
 ```
 * **[REQUIRED]** starName (string): A star name to be displayed as a label
-* **[REQUIRED]** ra (string): Right Ascension as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
-* **[REQUIRED]** dec (int/float): Declination as a postive or negative value
+* **[REQUIRED]** ra (string): Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
+* **[REQUIRED]** dec (int/float): Declination of star (a positive or negative value)
 * **[REQUIRED]** properMotionSpeed (int/float): Proper motion speed as a single value (in mas/year)
 * **[REQUIRED]** properMotionAngle (int/float): Proper motion positive angle (between 0° and 360°)
 * **[REQUIRED]** magnitudeVisual (int/float): Absolute Visual Magnitude
 
-**With the Proper Motion sppeed along the Right Ascension and Declination**
+**With the Proper Motion speed along the Right Ascension and Declination**
 
 As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
 
 ```
 star_chart_spherical_projection.newStar(starName=None,
-						ra=None,
-						dec=None,
-						properMotionSpeedRA=None,
-						properMotionSpeedDec=None,
-						magnitudeVisual=None)
+					ra=None,
+					dec=None,
+					properMotionSpeedRA=None,
+					properMotionSpeedDec=None,
+					magnitudeVisual=None)
 ```
 * **[REQUIRED]** starName (string): A star name to be displayed as a label
-* **[REQUIRED]** ra (string): Right Ascension as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
-* **[REQUIRED]** dec (int/float): Declination as a postive or negative value
+* **[REQUIRED]** ra (string): Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
+* **[REQUIRED]** dec (int/float): Declination of star (a positive or negative value)
 * **[REQUIRED]** properMotionSpeedRA (int/float): Speed of Proper Motion along the Right Ascension
 * **[REQUIRED]** properMotionSpeedDec (int/float): Speed of Proper Motion along the Declination
 * **[REQUIRED]** magnitudeVisual (int/float):
@@ -176,22 +176,22 @@ Important Note: RA/Dec proper motion will be converted from speed along the righ
 Plot stars on a Stereographic Polar Plot
 ```
 plotStereographicProjection(northOrSouth=None, 
-				builtInStars=[], 
-				declination_min=None,
-				yearSince2000=0,
-				displayStarNamesLabels=True,
-				displayDeclinationNumbers=True,
-				incrementBy=10,
-				isPrecessionIncluded=True,
-				maxMagnitudeFilter=None,
-				userDefinedStars=[],
-				onlyDisplayUserStars=False,
-				showPlot=True,
-				fig_plot_title=None,
-				fig_plot_color="C0",
-				figsize_n=12,
-				figsize_dpi=100,
-				save_plot_name=None)
+			builtInStars=[], 
+			declination_min=None,
+			yearSince2000=0,
+			displayStarNamesLabels=True,
+			displayDeclinationNumbers=True,
+			incrementBy=10,
+			isPrecessionIncluded=True,
+			maxMagnitudeFilter=None,
+			userDefinedStars=[],
+			onlyDisplayUserStars=False,
+			showPlot=True,
+			fig_plot_title=None,
+			fig_plot_color="C0",
+			figsize_n=12,
+			figsize_dpi=100,
+			save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]

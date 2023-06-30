@@ -41,23 +41,23 @@ Plot some built-in stars as well as two new user defined stars in the Northern H
 import star_chart_spherical_projection as scsp
 
 exalibur_star = scsp.newStar(starName="Exalibur",
-						ra="14.04.23",
-						dec=64.22,
-						properMotionSpeed=12.3,
-						properMotionAngle=83,
-						magnitudeVisual=1.2)
+			ra="14.04.23",
+			dec=64.22,
+			properMotionSpeed=12.3,
+			properMotionAngle=83,
+			magnitudeVisual=1.2)
 karaboudjan_star = scsp.newStar(starName="Karaboudjan",
-						ra="3.14.15",
-						dec=10.13,
-						properMotionSpeedRA=57.6,
-						properMotionSpeedDec=60.1,
-						magnitudeVisual=0.3)
+			ra="3.14.15",
+			dec=10.13,
+			properMotionSpeedRA=57.6,
+			properMotionSpeedDec=60.1,
+			magnitudeVisual=0.3)
 scsp.plotStereographicProjection(northOrSouth="North",
-						builtInStars=["Vega", "Arcturus", "Altair"],
-						userDefinedStars=[exalibur_star, karaboudjan_star],
-						displayStarNamesLabels=True,
-						fig_plot_color="red",
-						yearSince2000=-39)
+			builtInStars=["Vega", "Arcturus", "Altair"],
+			userDefinedStars=[exalibur_star, karaboudjan_star],
+			displayStarNamesLabels=True,
+			fig_plot_color="red",
+			yearSince2000=-39)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_newstar_example.png) 
 
@@ -109,11 +109,11 @@ Where in the Northern Hemsiphere, projections are formed from the South Pole:
 
 ### newStar Object
 
-The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a star can be easily added for plotting or calculations by creating a newStar object. The newStar object will require a few important features that plotStereographicProjection() and finalPositionOfStars() can now accept as an additional argument.
+The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a newStar object. The newStar object will require a few important features that plotStereographicProjection() and finalPositionOfStars() can now accept as an additional argument.
 
 This allows for the creation of a new star in two ways:
 
-**With a Proper Motion Speed and a Proper Motion Angle**
+**1. With a Proper Motion Speed and a Proper Motion Angle**
 
 As seen in [in-the-sky.org for Pollux](https://in-the-sky.org/data/object.php?id=TYC1920-2194-1)
 ```
@@ -127,8 +127,8 @@ star_chart_spherical_projection.newStar(starName=None,
 * **[REQUIRED]** starName (string): A star name to be displayed as a label
 * **[REQUIRED]** ra (string): Right Ascension as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec (int/float): Declination as a postive or negative value
-* **[REQUIRED/OPTIONAL]** properMotionSpeed (int/float): Proper motion speed as a single value (in mas/year)
-* **[REQUIRED/OPTIONAL]** properMotionAngle (int/float): Proper motion postive angle (between 0° and 360°)
+* **[REQUIRED]** properMotionSpeed (int/float): Proper motion speed as a single value (in mas/year)
+* **[REQUIRED]** properMotionAngle (int/float): Proper motion positive angle (between 0° and 360°)
 * **[REQUIRED]** magnitudeVisual (int/float): Absolute Visual Magnitude
 
 **With the Proper Motion sppeed along the Right Ascension and Declination**
@@ -137,20 +137,20 @@ As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star)
 
 ```
 star_chart_spherical_projection.newStar(starName=None,
-				ra=None,
-				dec=None,
-				properMotionSpeedRA=None,
-				properMotionSpeedDec=None,
-				magnitudeVisual=None)
+					ra=None,
+					dec=None,
+					properMotionSpeedRA=None,
+					properMotionSpeedDec=None,
+					magnitudeVisual=None)
 ```
 * **[REQUIRED]** starName (string): A star name to be displayed as a label
 * **[REQUIRED]** ra (string): Right Ascension as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec (int/float): Declination as a postive or negative value
-* **[REQUIRED/OPTIONAL]** properMotionSpeedRA (int/float): Speed of Proper Motion along the Right Ascension
-* **[REQUIRED/OPTIONAL]** properMotionSpeedDec (int/float): Speed of Proper Motion along the Declination
+* **[REQUIRED]** properMotionSpeedRA (int/float): Speed of Proper Motion along the Right Ascension
+* **[REQUIRED]** properMotionSpeedDec (int/float): Speed of Proper Motion along the Declination
 * **[REQUIRED]** magnitudeVisual (int/float):
 
-Important Note: This proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`properMotionSpeed`) and an angle (`properMotionAngle`) for further calculations
+Important Note: RA/Dec proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`properMotionSpeed`) and an angle (`properMotionAngle`) for further calculations
 
 <details closed>
 <summary>Stars Built-in (Click to view all)</summary>
@@ -224,6 +224,54 @@ plotStereographicProjection(northOrSouth=None,
 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 
 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
+
+| northOrSouth="North" (-30° to 90°) | northOrSouth="South" (30° to -90°)|
+| ------------- | ------------- |
+| ![north_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |  ![south_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) |
+
+| builtInStars=[] (Includes all stars, default) | builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
+| ------------- | ------------- |
+| ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
+
+| declination_min=-30° (default) | declination_min=10° |
+| ------------- | ------------- |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_20.png) |
+
+| yearSince2000=0 (default) | yearSince2000=-3100 |
+| ------------- | ------------- |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_1100.png) |
+
+| displayStarNamesLabels=True (default) | declination_min=False |
+| ------------- | ------------- |
+| ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) |
+
+| displayDeclinationNumbers=True (default) | displayDeclinationNumbers=False |
+| ------------- | ------------- |
+| ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
+
+| incrementBy=10 (default) | declination_min=5 |
+| ------------- | ------------- |
+| ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
+
+| isPrecessionIncluded=True (default) | isPrecessionIncluded=False |
+| ------------- | ------------- |
+| ![isPrecessionIncluded_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_default.png) | ![isPrecessionIncluded_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_false.png) |
+
+| maxMagnitudeFilter=None (default) | maxMagnitudeFilter=1 |
+| ------------- | ------------- |
+| ![maxMagnitudeFilter_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_default.png) | ![maxMagnitudeFilter+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_1.png) |
+
+| onlyDisplayUserStars=False (default) with userDefinedStars | onlyDisplayUserStars=True with userDefined Stars |
+| ------------- | ------------- |
+| ![onlyDisplayUserStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_default.png) | ![onlyDisplayUserStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_true.png) |
+
+| fig_plot_title=(default) | fig_plot_title="Example Figure Title" |
+| ------------- | ------------- |
+| ![fig_plot_title_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_title+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_example.png) |
+
+| fig_plot_color="C0" (default) | fig_plot_color="darkorchid" |
+| ------------- | ------------- |
+| ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
 
 __Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
 ```
@@ -337,7 +385,7 @@ Star position (right ascension and declination) as well as the angle and speed o
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Preecession code adapted to Python3 from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
+Preecession code adapted to Python 3+ from [github.com/dreamalligator/vondrak](https://github.com/dreamalligator/vondrak)
 
 ## Bug and Feature Request
 

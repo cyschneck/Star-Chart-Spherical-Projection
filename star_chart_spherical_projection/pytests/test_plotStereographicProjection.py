@@ -32,7 +32,6 @@ invalid_non_num_options = [([], "<class 'list'>"),
 						("string", "<class 'str'>"),
 						(False, "<class 'bool'>")]
 
-
 def test_plotStereographicProjection_northOrSouthInvalidOptions(caplog):
 	# Test:
 	with pytest.raises(SystemExit):
@@ -207,3 +206,22 @@ def test_plotStereographicProjection_savePlotNameInvalidTypes(caplog, invalid_in
 	log_record = caplog.records[0]
 	assert log_record.levelno == logging.CRITICAL
 	assert log_record.message == "\nCRITICAL ERROR, [save_plot_name]: Must be a string, current type = '{0}'".format(error_output)
+
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
+def test_plotStereographicProjection_userDefinedStarsInvalidTypes(caplog, invalid_input, error_output):
+	# Test:
+	with pytest.raises(SystemExit):
+		scsp.plotStereographicProjection(northOrSouth="North", userDefinedStars=[invalid_input])
+	log_record = caplog.records[0]
+	assert log_record.levelno == logging.CRITICAL
+	assert log_record.message == "\nCRITICAL ERROR, [userDefinedStars]: {0} is not a valid newStar object (see: star_chart_spherical_projection.newStar)".format(error_output)
+
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
+def test_plotStereographicProjection_onlyDisplayUserStarsInvalidTypes(caplog, invalid_input, error_output):
+	#userDefinedStars
+	# Test:
+	with pytest.raises(SystemExit):
+		scsp.plotStereographicProjection(northOrSouth="North", onlyDisplayUserStars=invalid_input)
+	log_record = caplog.records[0]
+	assert log_record.levelno == logging.CRITICAL
+	assert log_record.message == "\nCRITICAL ERROR, [onlyDisplayUserStars]: Must be a bool, current type = '{0}'".format(error_output)

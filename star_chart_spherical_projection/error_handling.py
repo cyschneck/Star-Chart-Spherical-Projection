@@ -76,7 +76,7 @@ def errorHandling(isPlotFunction=None,
 		exit()
 	for user_star in userDefinedStars:
 		if type(user_star) != star_chart_spherical_projection.newStar:
-			logger.critical("\nCRITICAL ERROR, [userDefinedStars]: {0} is not a valid starClass object (see: star_chart_spherical_projection.newStar".format(type(user_star)))
+			logger.critical("\nCRITICAL ERROR, [userDefinedStars]: {0} is not a valid newStar object (see: star_chart_spherical_projection.newStar)".format(type(user_star)))
 			exit()
 
 	if type(onlyDisplayUserStars) != bool:

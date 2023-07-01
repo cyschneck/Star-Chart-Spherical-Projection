@@ -10,6 +10,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 	* plotStereographicProjection()
 * **Return Final Position of Stars**
 	* finalPositionOfStars()
+	* starPositionOverTime()
 * **Add a New Star to Plot**
 	* newStar()
 
@@ -204,7 +205,7 @@ plotStereographicProjection(northOrSouth=None,
 - *[OPTIONAL]* maxMagnitudeFilter: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* userDefinedStars: (list) List of newStar objects of stars the user has added
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only display the stars defined by the users (userDefinedStars)
-- *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()) when finished running, defaults to True
+- *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0
 - *[OPTIONAL]* figsize_n: (int/float) figure size, default to 12
@@ -348,7 +349,7 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South"
 ## Return Final Position of Stars
 **finalPositionOfStars()**
 
-Returns a dictionary for the final positions of the stars in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+Returns a dictionary for the final positions of the stars for a specific year in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(builtInStars=[],
 		yearSince2000=0, 
@@ -383,6 +384,9 @@ finalPositionOfStars(builtInStars=[],
 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 
 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
+
+## Return A Star's Position over Time
+**starPositionOverTime()**
 
 ## Bibliography
 

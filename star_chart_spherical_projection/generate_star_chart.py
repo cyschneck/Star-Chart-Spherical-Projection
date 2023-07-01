@@ -164,7 +164,7 @@ def calculatePositionOfPolePrecession(years_since_2000, original_declination, or
 	return final_ra_due_to_precession, final_declination_due_to_precession
 
 def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculate):
-	# Modified code from github.com/dreamalligator/vondrak
+	# Modified code from github.com/dreamalligator/vondrak to calculate precession
 	def position_matrix(ra=None, dec=None):
 		x = math.cos(dec) * math.cos(ra)
 		y = math.cos(dec) * math.sin(ra)
@@ -187,69 +187,6 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	vondrak_dec = np.rad2deg(vondrak_dec)
 	logger.debug("Precession for Star = {0}, Declination = {1}, RA = {2}".format(star_name, vondrak_dec, vondrak_ra))
 	return vondrak_dec, vondrak_ra
-
-def finalPositionOfStars(builtInStars=[], 
-						yearSince2000=0,
-						isPrecessionIncluded=True,
-						userDefinedStars=[],
-						onlyDisplayUserStars=False,
-						declination_min=None,
-						declination_max=None,
-						save_to_csv=None):
-	# return the final position of the stars as a dictionary
-
-	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
-												builtInStars=builtInStars,
-												yearSince2000=yearSince2000,
-												isPrecessionIncluded=isPrecessionIncluded,
-												userDefinedStars=userDefinedStars,
-												onlyDisplayUserStars=onlyDisplayUserStars,
-												declination_min=declination_min,
-												declination_max=declination_max,
-												save_to_csv=save_to_csv)
-	if not onlyDisplayUserStars:
-		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = getStarList(builtInStars)
-		for star_object in userDefinedStars:
-			star_row = [star_object.starName,
-						star_object.ra,
-						star_object.dec,
-						star_object.properMotionSpeed,
-						star_object.properMotionAngle,
-						star_object.magnitudeVisual]
-			listOfStars.append(star_row)
-	else:
-		listOfStars = []
-		for star_object in userDefinedStars:
-			star_row = [star_object.starName,
-						star_object.ra,
-						star_object.dec,
-						star_object.properMotionSpeed,
-						star_object.properMotionAngle,
-						star_object.magnitudeVisual]
-			listOfStars.append(star_row)
-	
-	# Set declination min values when using the generateStereographicProjection() to capture all stars if not set
-	declination_min = -90
-	declination_max = 90
-
-	x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict = generateStereographicProjection(starList=listOfStars, 
-																										northOrSouth="North", 
-																										declination_min=declination_min,
-																										yearSince2000=yearSince2000,
-																										isPrecessionIncluded=isPrecessionIncluded,
-																										maxMagnitudeFilter=None,
-																										declination_max=declination_max)
-	# Generate a .csv file with final positions of stars
-	if save_to_csv is not None:
-		header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
-		star_chart_list = []
-		for star_name, star_position in finalPositionOfStarsDict.items():
-			star_chart_list.append([star_name, star_position["RA"], star_position["Declination"]])
-		df = pd.DataFrame(star_chart_list, columns=header_options)
-		df = df.sort_values(by=["Star Name"])
-		df.to_csv(save_to_csv, header=header_options, index=False)
-	return finalPositionOfStarsDict
 
 def generateStereographicProjection(starList=None, 
 									northOrSouth=None, 

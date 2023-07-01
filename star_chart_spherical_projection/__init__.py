@@ -2,8 +2,15 @@ from .error_handling import errorHandling
 from .error_handling import errorHandlingStarClass
 
 from .generate_star_chart import getStarList
+from .generate_star_chart import convertRAhrtoRadians
+from .generate_star_chart import convertRadianstoRAhr
+from .generate_star_chart import generateStereographicProjection
+from .generate_star_chart import calculateRAandDeclinationViaProperMotion
+from .generate_star_chart import precessionVondrak
 from .generate_star_chart import plotStereographicProjection
-from .generate_star_chart import finalPositionOfStars
+
+from .position_of_stars import finalPositionOfStars
+from .position_of_stars import starPositionOverTime
 
 from .starClass import newStar
 

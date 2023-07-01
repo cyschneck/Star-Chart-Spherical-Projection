@@ -244,7 +244,12 @@ if __name__ == '__main__':
 		if len(star) != 6:
 			logger.info("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
 			exit()
-	header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)", "Proper Motion Speed (mas/yr)", "Proper Motion Angle (DD.SS)", "Magnitude (V, Visual)"]
+	header_options = ["Star Name",
+					"Right Ascension (HH.MM.SS)",
+					"Declination (DD.SS)",
+					"Proper Motion Speed (mas/yr)",
+					"Proper Motion Angle (DD.SS)",
+					"Magnitude (V, Visual)"]
 	df = pd.DataFrame(star_chart_list, columns=header_options)
 	df = df.sort_values(by=["Star Name"])
 	print(df)

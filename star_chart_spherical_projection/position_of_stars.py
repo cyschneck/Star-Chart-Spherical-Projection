@@ -81,8 +81,8 @@ def finalPositionOfStars(builtInStars=[],
 
 def starPositionOverTime(builtInStarName=None,
 						newStar=None,
-						startYear=None,
-						endYear=None,
+						startYearSince2000=None,
+						endYearSince2000=None,
 						incrementYear=None,
 						isPrecessionIncluded=True,
 						save_to_csv=None):
@@ -101,11 +101,11 @@ def starPositionOverTime(builtInStarName=None,
 		star_pm_angle = newStar.properMotionAngle
 		star_mag = newStar.magnitudeVisual
 
-	endYear += 1 # inclusive of endYear
-	years_to_calculate = np.arange(startYear, endYear, incrementYear).tolist()
+	endYearSince2000 += 1 # inclusive of endYear
+	years_to_calculate = np.arange(startYearSince2000, endYearSince2000, incrementYear).tolist()
 	position_over_time = {}
 	for year in years_to_calculate:
-		star_right_ascension_radians, star_declination = star_chart_spherical_projection.calculateRAandDeclinationViaProperMotion(years_since_2000=year-2000, 
+		star_right_ascension_radians, star_declination = star_chart_spherical_projection.calculateRAandDeclinationViaProperMotion(years_since_2000=year, 
 																														star_ra=star_right_ascension_radians, 
 																														star_dec=star_declination, 
 																														star_pm_speed=star_pm_speed, 
@@ -114,9 +114,9 @@ def starPositionOverTime(builtInStarName=None,
 			star_declination, star_right_ascension_radians = star_chart_spherical_projection.precessionVondrak(star_name=star_name,
 																									star_ra=star_right_ascension_radians,
 																									star_dec=star_declination,
-																									year_YYYY_since_2000=year-2000)			
+																									year_YYYY_since_2000=year)			
 		star_right_ascension_hours = star_chart_spherical_projection.convertRadianstoRAhr(star_right_ascension_radians)
-		position_over_time[year] = {"RA (radians)": star_right_ascension_radians, 
+		position_over_time[year+2000] = {"RA (radians)": star_right_ascension_radians, 
 									"RA (hours)" : star_right_ascension_hours, 
 									"Dec (degrees)" : star_declination}
 	
@@ -134,8 +134,8 @@ def starPositionOverTime(builtInStarName=None,
 
 def plotStarPositionOverTime(builtInStarName=[], 
 							newStar=None,
-							startYear=None,
-							endYear=None,
+							startYearSince2000=None,
+							endYearSince2000=None,
 							incrementYear=10,
 							isPrecessionIncluded=True,
 							DecOrRA="Declination",
@@ -148,8 +148,8 @@ def plotStarPositionOverTime(builtInStarName=[],
 
 	position_over_time_dict = starPositionOverTime(builtInStarName=builtInStarName,
 													newStar=newStar,
-													startYear=startYear,
-													endYear=endYear,
+													startYearSince2000=startYearSince2000,
+													endYearSince2000=endYearSince2000,
 													incrementYear=incrementYear,
 													isPrecessionIncluded=isPrecessionIncluded)
 
@@ -161,7 +161,6 @@ def plotStarPositionOverTime(builtInStarName=[],
 	if newStar is not None:
 		star_name = newStar.starName
 	
-
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
 	ax = fig.subplots()
 
@@ -178,7 +177,7 @@ def plotStarPositionOverTime(builtInStarName=[],
 		y_label = "Declination (Degrees)"
 	if DecOrRA == "Right Ascension":
 		plot_y = ra_radians_lst
-		y_label = "Right Acension (Radians)"
+		y_label = "Right Ascension (Radians)"
 
 	if isPrecessionIncluded:
 		precession_label = "(With Precession)"
@@ -190,8 +189,10 @@ def plotStarPositionOverTime(builtInStarName=[],
 	plt.xlabel("Year (B.C.E)")
 	plt.ylabel(y_label)
 
-	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, 1000))
+	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, 10))
 	ax.set_yticks(np.arange(min(plot_y), max(plot_y)+1, 3))
+	plt.axvline(2023, linewidth=0.5, color="black", linestyle="dashed")
+	plt.text(x=2023+10, y=min(plot_y)+10, s="Year 2023", fontsize=10, rotation=90) # add label on figure
 	plt.xticks(rotation=90)
 
 	plt.show()

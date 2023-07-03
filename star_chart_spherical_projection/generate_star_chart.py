@@ -172,12 +172,13 @@ def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculat
 		return np.array([[x], [y], [z]])
 
 	def compute_star(compute_ra, compute_dec):
-		return position_matrix(ra = compute_ra, dec = compute_dec)
+		return position_matrix(ra=compute_ra, dec=compute_dec)
 
-	P = star_chart_spherical_projection.ltp_pbmat(year_to_calculate) # Precession matrix for the given year
+	precession_matrix = star_chart_spherical_projection.ltp_pbmat(year_to_calculate) # Precession matrix for the given year
 	p_1 = compute_star(star_ra_rad, star_dec_rad) # compute star's position matrix for given year
-	p_1 = star_chart_spherical_projection.pdp(P, p_1) # apply precession matrix for given year
+	p_1 = star_chart_spherical_projection.pdp(precession_matrix, p_1) # apply precession matrix for given year
 	(ra_as_rad, dec_as_rad) = star_chart_spherical_projection.ra_dec(p_1)
+
 	return dec_as_rad, ra_as_rad # new declination and right ascension
 
 def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):

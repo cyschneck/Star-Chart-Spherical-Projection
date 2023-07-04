@@ -3,6 +3,7 @@
 ########################################################################
 import logging
 import os
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -138,8 +139,9 @@ def plotStarPositionOverTime(builtInStarName=[],
 							endYearSince2000=None,
 							incrementYear=10,
 							isPrecessionIncluded=True,
-							DecOrRA="Declination",
+							DecOrRA="D",
 							showPlot=True,
+							showYearMarker=True,
 							fig_plot_title=None,
 							fig_plot_color="C0",
 							figsize_n=12,
@@ -172,11 +174,13 @@ def plotStarPositionOverTime(builtInStarName=[],
 		dec_lst.append(position_dict["Dec (degrees)"])
 		ra_radians_lst.append(position_dict["RA (radians)"])
 
-	if DecOrRA == "Declination":
+	if DecOrRA == "D":
 		plot_y = dec_lst
+		title = "Declination"
 		y_label = "Declination (Degrees)"
-	if DecOrRA == "Right Ascension":
+	if DecOrRA == "R":
 		plot_y = ra_radians_lst
+		title = "Right Ascension"
 		y_label = "Right Ascension (Radians)"
 
 	if isPrecessionIncluded:
@@ -184,16 +188,21 @@ def plotStarPositionOverTime(builtInStarName=[],
 	else:
 		precession_label = "(Without Precession)"
 
-	plt.title("{0}'s {1} {2}".format(star_name, DecOrRA, precession_label))
+	plt.title("{0}'s {1} {2}".format(star_name, title, precession_label))
 	plt.plot(year_lst, plot_y)
 	plt.xlabel("Year (B.C.E)")
 	plt.ylabel(y_label)
 
 	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, 10))
 	ax.set_yticks(np.arange(min(plot_y), max(plot_y)+1, 3))
-	plt.axvline(2023, linewidth=0.5, color="black", linestyle="dashed")
-	plt.text(x=2023+10, y=min(plot_y)+10, s="Year 2023", fontsize=10, rotation=90) # add label on figure
+	if showYearMarker:
+		current_year = datetime.now().year
+		plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
+		plt.text(x=current_year+10, y=min(plot_y)+10, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
 	plt.xticks(rotation=90)
 
-	plt.show()
-	#fig.savefig('test_precession_vondrak_example.png', dpi=fig.dpi)
+	if showPlot:
+		plt.show()
+
+	if save_plot_name is not None:
+		fig.savefig(save_plot_name, dpi=fig.dpi)

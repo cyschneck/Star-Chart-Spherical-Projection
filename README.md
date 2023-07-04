@@ -388,6 +388,35 @@ finalPositionOfStars(builtInStars=[],
 ## Return A Star's Position over Time
 **starPositionOverTime()**
 
+```
+starPositionOverTime(builtInStarName=None,
+						newStar=None,
+						startYearSince2000=None,
+						endYearSince2000=None,
+						incrementYear=None,
+						isPrecessionIncluded=True,
+						save_to_csv=None
+```
+
+# Plot a Star's Position over TIme
+
+```
+plotStarPositionOverTime(builtInStarName=[], 
+							newStar=None,
+							startYearSince2000=None,
+							endYearSince2000=None,
+							incrementYear=10,
+							isPrecessionIncluded=True,
+							DecOrRA="D",
+							showPlot=True,
+							showYearMarker=True,
+							fig_plot_title=None,
+							fig_plot_color="C0",
+							figsize_n=12,
+							figsize_dpi=100,
+							save_plot_name=None)
+```
+
 ## Bibliography
 
 Star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/)

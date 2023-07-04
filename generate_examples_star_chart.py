@@ -36,11 +36,11 @@ if __name__ == '__main__':
 														save_to_csv="testing_final_positions.csv")
 	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 														newStar=None,
-														startYearSince2000=-14000,
+														startYearSince2000=0,
 														endYearSince2000=14000,
 														isPrecessionIncluded=True,
 														incrementYear=100,
-														DecOrRA="Declination")
+														DecOrRA="D")
 	# note, includes endYear (0 to 9, every three = [0, 3, 6, 9], inclusive of start, inclusive of end
 	exit()
 	year_to_calculate = 11500

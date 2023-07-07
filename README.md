@@ -214,15 +214,15 @@ plotStereographicProjection(northOrSouth=None,
 
 | builtInStars=[] (Includes all stars, default) | builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
 | ------------- | ------------- |
-| ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
+| ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
 
 | declination_min=-30° (default) | declination_min=10° |
 | ------------- | ------------- |
-| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_20.png) |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_10.png) |
 
 | yearSince2000=0 (default) | yearSince2000=-3100 |
 | ------------- | ------------- |
-| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_1100.png) |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_negative_3100.png) |
 
 | displayStarNamesLabels=True (default) | displayStarNamesLabels=False |
 | ------------- | ------------- |
@@ -236,7 +236,7 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
 
-| isPrecessionIncluded=True (default) | isPrecessionIncluded=False |
+| isPrecessionIncluded=True (default) (yearSince2000=11500) | isPrecessionIncluded=False (yearSince2000=11500) |
 | ------------- | ------------- |
 | ![isPrecessionIncluded_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_default.png) | ![isPrecessionIncluded_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_false.png) |
 
@@ -244,7 +244,11 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![maxMagnitudeFilter_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_default.png) | ![maxMagnitudeFilter+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_1.png) |
 
-| onlyDisplayUserStars=False (default) with userDefinedStars | onlyDisplayUserStars=True with userDefined Stars |
+| userDefinedStars=[] (default) (with just "Vega") | userDefinedStars=[exalibur_star, karaboudjan_star] (from Quickstart with "Vega") |
+| ------------- | ------------- |
+| ![userDefinedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/userDefinedStars_none.png) | ![userDefinedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/userDefinedStars_included.png) |
+
+| onlyDisplayUserStars=False (default) with userDefinedStars | onlyDisplayUserStars=True with userDefinedStars=[exalibur_star, karaboudjan_star] (from Quickstart) |
 | ------------- | ------------- |
 | ![onlyDisplayUserStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_default.png) | ![onlyDisplayUserStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_true.png) |
 

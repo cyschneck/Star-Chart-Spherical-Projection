@@ -5,18 +5,50 @@ import pandas as pd
 import star_chart_spherical_projection
 
 if __name__ == '__main__':
-	exalibur_star = star_chart_spherical_projection.newStar(starName="Exalibur",
-					ra="14.04.23",
-					dec=64.22,
-					properMotionSpeed=12.3,
-					properMotionAngle=83,
-					magnitudeVisual=1.2)
-	karaboudjan_star = star_chart_spherical_projection.newStar(starName="Karaboudjan",
-					ra="3.14.15",
-					dec=10.13,
-					properMotionSpeedRA=57.6,
-					properMotionSpeedDec=60.1,
-					magnitudeVisual=0.3)
+	"""
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North", 
+																builtInStars=["Vega",
+																			"Arcturus",
+																			"Altair",
+																			"Spica",
+																			"Sirius",
+																			"Procyon",
+																			"Alnilam",
+																			"Pollux",
+																			"Alnitak",
+																			"Mintaka",
+																			"Castor",
+																			"Rigel",
+																			"Betelgeuse",
+																			"Capella",
+																			"Saiph",
+																			"Meissa",
+																			"Deneb",
+																			"Formalhaut",
+																			"Zubeneschamali",
+																			"Alphard",
+																			"Bellatrix",
+																			"Achernar",
+																			"Canopus",
+																			"Hadar",
+																			"Dubhe",
+																			"Sabik",
+																			"Alkaid",
+																			"Alnitak",
+																			"Merak",
+																			"Polaris",
+																			"Hamal",
+																			"Diphda",
+																			"Alpheratz",
+																			"Navi",
+																			"Ruchbah"],
+																yearSince2000=-31,
+																displayStarNamesLabels=False,
+																displayDeclinationNumbers=False,
+																fig_plot_title=None,
+																fig_plot_color="#7192bd",
+																save_plot_name="rete_2.jpg")
+	exit()
 	#star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
 	#				builtInStars=["Vega", "Arcturus", "Altair"],
 	#				userDefinedStars=[exalibur_star, karaboudjan_star],
@@ -43,12 +75,150 @@ if __name__ == '__main__':
 														DecOrRA="D")
 	# note, includes endYear (0 to 9, every three = [0, 3, 6, 9], inclusive of start, inclusive of end
 	exit()
-	year_to_calculate = 11500
-
+	"""
+	# Quickstart Graphs
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South",
 																displayStarNamesLabels=False,
 																yearSince2000=23,
-																save_plot_name="examples/quickstart_south_2023")
+																save_plot_name="examples/quickstart_south_2023.png")
+	exalibur_star = star_chart_spherical_projection.newStar(starName="Exalibur",
+															ra="14.04.23",
+															dec=64.22,
+															properMotionSpeed=12.3,
+															properMotionAngle=83,
+															magnitudeVisual=1.2)
+	karaboudjan_star = star_chart_spherical_projection.newStar(starName="Karaboudjan",
+																ra="3.14.15",
+																dec=10.13,
+																properMotionSpeedRA=57.6,
+																properMotionSpeedDec=60.1,
+																magnitudeVisual=0.3)
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																builtInStars=["Vega", "Arcturus", "Altair"],
+																userDefinedStars=[exalibur_star, karaboudjan_star],
+																displayStarNamesLabels=True,
+																fig_plot_color="red",
+																yearSince2000=-39,
+																save_plot_name="examples/quickstart_newstar_example.png")
+	## Graphs for each plot Arguments
+	# northOrSouth
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																save_plot_name="examples/northOrSouth_north.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South",
+																displayStarNamesLabels=False,
+																save_plot_name="examples/northOrSouth_south.png")
+	# builtInStars
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																builtInStars=[],
+																save_plot_name="examples/builtInStars_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"],
+																save_plot_name="examples/builtInStars_subset.png")
+	# declination_min
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																declination_min=-30,
+																save_plot_name="examples/declination_min_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																declination_min=10,
+																save_plot_name="examples/declination_min_10.png")
+	# yearSince2000
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																yearSince2000=0,
+																save_plot_name="examples/yearSince2000_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																yearSince2000=-3100,
+																save_plot_name="examples/yearSince2000_negative_3100.png")
+	# displayStarNamesLabels
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=True,
+																save_plot_name="examples/displayStarNamesLabels_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																save_plot_name="examples/displayStarNamesLabels_false.png")
+	# displayDeclinationNumbers
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																displayDeclinationNumbers=True,
+																save_plot_name="examples/displayDeclinationNumbers_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																displayDeclinationNumbers=False,
+																save_plot_name="examples/displayDeclinationNumbers_false.png")
+	# incrementBy
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																incrementBy=10,
+																save_plot_name="examples/incrementBy_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																displayStarNamesLabels=False,
+																incrementBy=5,
+																save_plot_name="examples/incrementBy_5.png")
+	# isPrecessionIncluded
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																isPrecessionIncluded=True,
+																yearSince2000=11500,
+																save_plot_name="examples/isPrecessionIncluded_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																isPrecessionIncluded=False,
+																yearSince2000=11500,
+																save_plot_name="examples/isPrecessionIncluded_false.png")
+	# maxMagnitudeFilter
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																maxMagnitudeFilter=None,
+																save_plot_name="examples/maxMagnitudeFilter_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																maxMagnitudeFilter=1,
+																save_plot_name="examples/maxMagnitudeFilter_1.png")
+	# userDefinedStars
+	exalibur_star = star_chart_spherical_projection.newStar(starName="Exalibur",
+															ra="14.04.23",
+															dec=64.22,
+															properMotionSpeed=12.3,
+															properMotionAngle=83,
+															magnitudeVisual=1.2)
+	karaboudjan_star = star_chart_spherical_projection.newStar(starName="Karaboudjan",
+															ra="3.14.15",
+															dec=10.13,
+															properMotionSpeedRA=57.6,
+															properMotionSpeedDec=60.1,
+															magnitudeVisual=0.3)
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																builtInStars=["Vega"],
+																userDefinedStars=[],
+																save_plot_name="examples/userDefinedStars_none.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																builtInStars=["Vega"],
+																userDefinedStars=[exalibur_star, karaboudjan_star],
+																save_plot_name="examples/userDefinedStars_included.png")
+	# onlyDisplayUserStars
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																onlyDisplayUserStars=False,
+																userDefinedStars=[exalibur_star, karaboudjan_star],
+																save_plot_name="examples/onlyDisplayUserStars_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																onlyDisplayUserStars=True,
+																userDefinedStars=[exalibur_star, karaboudjan_star],
+																save_plot_name="examples/onlyDisplayUserStars_true.png")
+	# fig_plot_title
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																fig_plot_title=None,
+																save_plot_name="examples/fig_plot_title_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																fig_plot_title="This is a Example Title for a Star Chart",
+																save_plot_name="examples/fig_plot_title_example.png")
+	# fig_plot_color
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																fig_plot_color="C0",
+																displayStarNamesLabels=False,
+																save_plot_name="examples/fig_plot_color_default.png")
+	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
+																fig_plot_color="darkorchid",
+																displayStarNamesLabels=False,
+																save_plot_name="examples/fig_plot_color_darkorchid.png")
+	# Example Outputs:
+	year_to_calculate = 11500
+
 	## Northern Hemisphere: Graph Without and With Precession
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
 																displayStarNamesLabels=True,

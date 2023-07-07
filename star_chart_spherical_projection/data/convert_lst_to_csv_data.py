@@ -80,6 +80,7 @@ if __name__ == '__main__':
 	acrux_star = ["Acrux", "12.26.35", -63.05, 38.8, 247.5, 1.28] # Southern Cross
 	adhara_star = ["Adhara", "06.58.37", -28.58, 3.5, 67.7, 1.53]
 	alphard_star = ["Alphard", "09.27.35", -8.39, 37.6, 336.1, 1.98]
+	alnair_star = ["Alnair", "22.08.13", -46.57, 194.4, 139.3, -0.68]
 	alnilam_star = ["Alnilam", "05.36.12", -1.12, 1.6, 118.4, 1.72]
 	alnitak_star = ["Alnitak", "05.40.45", -1.56, 3.8, 57.5, 1.90]
 	aludra_star = ["Aludra", "07.24.05", -29.18, 7.1, 324.5, 2.46]
@@ -95,6 +96,7 @@ if __name__ == '__main__':
 	canopus_star = ["Canopus", "06.23.57", -51.41, 30.6, 40.6, -0.63]
 	cursa_star = ["Cursa", "05.07.51", -5.05, 112.0, 227.7, 2.79]
 	delta_crucis_star = ["Delta Crucis", "12.15.08", -58.44, 38.6, 253.0, 2.74] # Southern Cross
+	delta_velorum_star = ["Delta Velorum", "08.44.42", -54.42, 107.3, 164.3, -0.02]
 	diphda_star = ["Diphda", "00.43.35", -17.59, 234.7, 82.2, 2.05]
 	dschubba_star = ["Dschubba", "16.00.20", -22.37, 36.9, 196.1, 2.30]
 	formalhaut_star = ["Formalhaut", "22.57.38", -29.37, 367.9, 116.6, 1.23]
@@ -102,6 +104,7 @@ if __name__ == '__main__':
 	gamma_phoenicis_star = ["Gamma Phoenicis", "01.28.21", -43.19, 207.6, 184.9, 3.44]
 	gienah_star = ["Gienah", "12.15.48", -17.32, 160.1, 277.8, 2.59]
 	hadar_star = ["Hadar", "14.03.49", -60.22, 40.5, 235.2, 0.64]
+	kaus_australis_star = ["Kaus Australis", "18.24.10", -34.23, 130.3, 197.6, -1.40]
 	lesath_star = ["Lesath", "17.20.45", -37.17, 30.2, 184.5, 2.64]
 	meissa_star = ["Meissa", "05.35.08", -9.56, 3.0, 186.6, 3.53]
 	menkent_star = ["Menkent", "14.06.40", -36.22, 734.4, 225.1, 2.05]
@@ -121,6 +124,7 @@ if __name__ == '__main__':
 	shaula_star = ["Shaula", "17.33.36", -37.06, 32.0, 195.5, 1.63]
 	sirius_star = ["Sirius", "06.45.08", -16.42, 1339.4, 204.1, -1.44]
 	suhail_star = ["Suhail", "09.07.59", -43.26, 27.6, 299.4, 2.20]
+	tureis_star = ["Tureis", "08.07.32", -24.18, 95.2, 299.5, 1.38]
 	wezen_star = ["Wezen", "07.08.23", -26.23, 4.5, 316.7, 1.84]
 	zubeneschamali_star = ["Zubeneschamali", "15.17.00", -9.22, 100.0, 258.7, 2.61]
 
@@ -194,6 +198,7 @@ if __name__ == '__main__':
 								acrux_star,
 								adhara_star,
 								alphard_star,
+								alnair_star,
 								alnilam_star,
 								alnitak_star,
 								aludra_star,
@@ -209,6 +214,7 @@ if __name__ == '__main__':
 								canopus_star,
 								cursa_star,
 								delta_crucis_star,
+								delta_velorum_star,
 								diphda_star,
 								dschubba_star,
 								formalhaut_star,
@@ -216,6 +222,7 @@ if __name__ == '__main__':
 								gamma_phoenicis_star,
 								gienah_star,
 								hadar_star,
+								kaus_australis_star,
 								lesath_star,
 								meissa_star,
 								menkent_star,
@@ -234,6 +241,7 @@ if __name__ == '__main__':
 								shaula_star,
 								sirius_star,
 								suhail_star,
+								tureis_star,
 								wezen_star,
 								zubeneschamali_star
 								]
@@ -252,5 +260,5 @@ if __name__ == '__main__':
 					"Magnitude (V, Visual)"]
 	df = pd.DataFrame(star_chart_list, columns=header_options)
 	df = df.sort_values(by=["Star Name"])
-	print(df)
+	print(df["Star Name"].tolist())
 	df.to_csv("star_data.csv", header=header_options, index=False)

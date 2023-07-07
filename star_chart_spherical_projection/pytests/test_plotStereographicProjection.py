@@ -1,9 +1,11 @@
 # Pytest for plotStereographicProjection()
 # centerline-width/: python3 -m pytest -v
 import logging
+import os
 
 # External Python libraries (installed via pip install)
 import pytest
+import pandas as pd
 
 # Internal star_chart_spherical_projection reference to access functions, global variables, and error handling
 import star_chart_spherical_projection as scsp
@@ -31,6 +33,12 @@ invalid_non_int_options = [([], "<class 'list'>"),
 invalid_non_num_options = [([], "<class 'list'>"),
 						("string", "<class 'str'>"),
 						(False, "<class 'bool'>")]
+
+filepath_one_level_above = os.path.dirname(os.path.dirname(__file__))
+star_csv_file = os.path.join(filepath_one_level_above, 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
+star_dataframe = pd.read_csv(star_csv_file)
+star_dataframe = star_dataframe.sort_values(by=["Star Name"])
+lst_of_current_stars = star_dataframe["Star Name"].tolist()
 
 def test_plotStereographicProjection_northOrSouthInvalidOptions(caplog):
 	# Test:
@@ -64,7 +72,7 @@ def test_plotStereographicProjection_builtInStarsInvalidStar(caplog):
 		scsp.plotStereographicProjection(northOrSouth="North", builtInStars=["Fake star", "VEga"])
 	log_record = caplog.records[0]
 	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']"
+	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: {0}".format(lst_of_current_stars)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_plotStereographicProjection_declinationMinInvalidTypes(caplog, invalid_input, error_output):

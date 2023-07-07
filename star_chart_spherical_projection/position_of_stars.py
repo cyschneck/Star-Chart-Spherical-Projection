@@ -188,17 +188,23 @@ def plotStarPositionOverTime(builtInStarName=[],
 	else:
 		precession_label = "(Without Precession)"
 
+	x_increment = incrementYear
+	x_plot_len = np.arange(year_lst[0], year_lst[-1]+1, x_increment)
+	while len(x_plot_len) > 71:
+		x_increment *= 5
+		x_plot_len = np.arange(year_lst[0], year_lst[-1]+1, x_increment)
+
 	plt.title("{0}'s {1} {2}".format(star_name, title, precession_label))
 	plt.plot(year_lst, plot_y)
 	plt.xlabel("Year (B.C.E)")
 	plt.ylabel(y_label)
 
-	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, 10))
+	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, x_increment))
 	ax.set_yticks(np.arange(min(plot_y), max(plot_y)+1, 3))
 	if showYearMarker:
 		current_year = datetime.now().year
 		plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
-		plt.text(x=current_year+10, y=min(plot_y)+10, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
+		plt.text(x=current_year+x_increment, y=min(plot_y)+x_increment, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
 	plt.xticks(rotation=90)
 
 	if showPlot:

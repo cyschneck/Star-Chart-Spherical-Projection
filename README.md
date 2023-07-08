@@ -25,7 +25,6 @@ The sphere is projected from the South Pole (via [Stereographic projection](http
   <img src="https://gisgeography.com/wp-content/uploads/2016/12/Stereographic-Projection-768x421.png" />
 </p>
 
-
 ## Quickstart: Star-Chart-Spherical-Projection
 Plot stars in the Southern Hemisphere for the year 2023 (without stars labels)
 ```python
@@ -364,32 +363,78 @@ finalPositionOfStars(builtInStars=[],
 
 ```
 starPositionOverTime(builtInStarName=None,
-						newStar=None,
-						startYearSince2000=None,
-						endYearSince2000=None,
-						incrementYear=None,
-						isPrecessionIncluded=True,
-						save_to_csv=None
+			newStar=None,
+			startYearSince2000=None,
+			endYearSince2000=None,
+			incrementYear=None,
+			isPrecessionIncluded=True,
+			save_to_csv=None)
 ```
+- **[REQUIRED]** builtInStarName: (string)
+- **[REQUIRED]** newStar: (newStar object)
+- **[REQUIRED]** startYearSince2000: (float/int)
+- **[REQUIRED]** endYearSince2000: (float/int)
+- **[REQUIRED]** incrementYear: (float/int)
+- *[OPTIONAL]* isPrecessionIncluded: (boolean)
+- *[OPTIONAL]* save_to_csv: (string)
+
 
 # Plot a Star's Position over Time
+**plotStarPositionOverTime()**
 
 ```
-plotStarPositionOverTime(builtInStarName=[], 
-							newStar=None,
-							startYearSince2000=None,
-							endYearSince2000=None,
-							incrementYear=10,
-							isPrecessionIncluded=True,
-							DecOrRA="D",
-							showPlot=True,
-							showYearMarker=True,
-							fig_plot_title=None,
-							fig_plot_color="C0",
-							figsize_n=12,
-							figsize_dpi=100,
-							save_plot_name=None)
+plotStarPositionOverTime(builtInStarName=None, 
+			newStar=None,
+			startYearSince2000=None,
+			endYearSince2000=None,
+			incrementYear=10,
+			isPrecessionIncluded=True,
+			DecOrRA="D",
+			showPlot=True,
+			showYearMarker=True,
+			fig_plot_title=None,
+			fig_plot_color="C0",
+			figsize_n=12,
+			figsize_dpi=100,
+			save_plot_name=None)
 ```
+- **[REQUIRED]** builtInStarName: (string)
+- **[REQUIRED]** newStar: (newStar object)
+- **[REQUIRED]** startYearSince2000: (float/int)
+- **[REQUIRED]** endYearSince2000: (float/int)
+- **[REQUIRED]** DecOrRA: (string)
+- **[REQUIRED]** incrementYear: (float/int)
+- *[OPTIONAL]* isPrecessionIncluded: (boolean)
+- *[OPTIONAL]* showPlot: (boolean)
+- *[OPTIONAL]* showYearMarker: (boolean)
+- *[OPTIONAL]* fig_plot_title: (string)
+- *[OPTIONAL]* fig_plot_color: (string)
+- *[OPTIONAL]* figsize_n: (float/int)
+- *[OPTIONAL]* figsize_dpi: (float/int)
+- *[OPTIONAL]* save_to_csv: (string)
+
+**Declination:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+														newStar=None,
+														startYearSince2000=startYear,
+														endYearSince2000=endYear,
+														isPrecessionIncluded=True,
+														incrementYear=incrementYear,
+														DecOrRA="D")
+```
+![plot_star_declination_example+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination.png) 
+**Right Ascension:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+														newStar=None,
+														startYearSince2000=startYear,
+														endYearSince2000=endYear,
+														isPrecessionIncluded=True,
+														incrementYear=incrementYear,
+														DecOrRA="R")
+```
+![plot_star_RA_example+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension.png) 
 
 ## Bibliography
 

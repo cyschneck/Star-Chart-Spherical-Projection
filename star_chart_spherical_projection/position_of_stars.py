@@ -133,7 +133,7 @@ def starPositionOverTime(builtInStarName=None,
 
 	return position_over_time
 
-def plotStarPositionOverTime(builtInStarName=[], 
+def plotStarPositionOverTime(builtInStarName=None, 
 							newStar=None,
 							startYearSince2000=None,
 							endYearSince2000=None,
@@ -204,7 +204,7 @@ def plotStarPositionOverTime(builtInStarName=[],
 	if showYearMarker:
 		current_year = datetime.now().year
 		plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
-		plt.text(x=current_year+x_increment, y=min(plot_y)+x_increment, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
+		#plt.text(x=current_year+x_increment, y=min(plot_y)+x_increment, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
 	plt.xticks(rotation=90)
 
 	if showPlot:

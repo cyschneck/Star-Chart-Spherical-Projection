@@ -413,28 +413,50 @@ plotStarPositionOverTime(builtInStarName=None,
 - *[OPTIONAL]* figsize_dpi: (float/int)
 - *[OPTIONAL]* save_to_csv: (string)
 
-**Declination:**
+**Declination with Precession:**
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-														newStar=None,
-														startYearSince2000=startYear,
-														endYearSince2000=endYear,
-														isPrecessionIncluded=True,
-														incrementYear=incrementYear,
-														DecOrRA="D")
+							newStar=None,
+							startYearSince2000=-2000,
+							endYearSince2000=2001,
+							isPrecessionIncluded=True,
+							incrementYear=5,
+							DecOrRA="D")
 ```
-![plot_star_declination_example+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination.png) 
+![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
+**Declination without Precession:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-2000,
+							endYearSince2000=2001,
+							isPrecessionIncluded=False,
+							incrementYear=5,
+							DecOrRA="D")
+```
+![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension:**
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-														newStar=None,
-														startYearSince2000=startYear,
-														endYearSince2000=endYear,
-														isPrecessionIncluded=True,
-														incrementYear=incrementYear,
-														DecOrRA="R")
+							newStar=None,
+							startYearSince2000=-2000,
+							endYearSince2000=2001,
+							isPrecessionIncluded=True,
+							incrementYear=5,
+							DecOrRA="R")
 ```
-![plot_star_RA_example+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension.png) 
+![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
+**Right Ascension:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-2000,
+							endYearSince2000=2001,
+							isPrecessionIncluded=False,
+							incrementYear=5,
+							DecOrRA="R")
+```
+![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
 
 ## Bibliography
 

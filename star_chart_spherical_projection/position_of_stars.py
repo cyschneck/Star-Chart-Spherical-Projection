@@ -102,7 +102,6 @@ def starPositionOverTime(builtInStarName=None,
 		star_pm_angle = newStar.properMotionAngle
 		star_mag = newStar.magnitudeVisual
 
-	endYearSince2000 += 1 # inclusive of endYear
 	years_to_calculate = np.arange(startYearSince2000, endYearSince2000, incrementYear).tolist()
 	position_over_time = {}
 	for year in years_to_calculate:
@@ -190,13 +189,24 @@ def plotStarPositionOverTime(builtInStarName=None,
 
 	x_increment = incrementYear
 	x_plot_len = np.arange(year_lst[0], year_lst[-1]+1, x_increment)
+	# prevent the x-axis from populate more than 70 elements (to prevent overlapping)
 	while len(x_plot_len) > 71:
 		x_increment *= 5
 		x_plot_len = np.arange(year_lst[0], year_lst[-1]+1, x_increment)
 
-	plt.title("{0}'s {1} {2}".format(star_name, title, precession_label))
+	if year_lst[0] >= -2000: startYear_bce_ce = "{0} C.E".format(year_lst[0]) # postive years for C.E
+	if year_lst[0] < -2000: startYear_bce_ce = "{0} B.C.E".format(abs(year_lst[0])) # negative years for B.C.E
+	if year_lst[-1] >= -2000: endYear_bce_ce = "{0} C.E".format(year_lst[-1]) # postive years for C.E
+	if year_lst[-1] < -2000: endYear_bce_ce = "{0} B.C.E".format(abs(year_lst[-1])) # negative years for B.C.E
+	
+	plt.title("{0}'s {1} {2} from {3} to {4}, Every {5} Years".format(star_name,
+																	title,
+																	precession_label,
+																	startYear_bce_ce,
+																	endYear_bce_ce,
+																	incrementYear))
 	plt.plot(year_lst, plot_y)
-	plt.xlabel("Year (B.C.E)")
+	plt.xlabel("Years")
 	plt.ylabel(y_label)
 
 	ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, x_increment))
@@ -204,7 +214,6 @@ def plotStarPositionOverTime(builtInStarName=None,
 	if showYearMarker:
 		current_year = datetime.now().year
 		plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
-		#plt.text(x=current_year+x_increment, y=min(plot_y)+x_increment, s="Year {0}".format(current_year), fontsize=10, rotation=90) # add label on figure
 	plt.xticks(rotation=90)
 
 	if showPlot:

@@ -103,7 +103,7 @@ def starPositionOverTime(builtInStarName=None,
 		star_pm_angle = newStar.properMotionAngle
 		star_mag = newStar.magnitudeVisual
 
-	years_to_calculate = np.arange(startYearSince2000, endYearSince2000, incrementYear).tolist()
+	years_to_calculate = np.arange(startYearSince2000, endYearSince2000+1, incrementYear).tolist()
 	position_over_time = {}
 	for year in years_to_calculate:
 		star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
@@ -177,7 +177,7 @@ def plotStarPositionOverTime(builtInStarName=None,
 	if DecOrRA == "R":
 		plot_y = ra_radians_lst
 		title = "Right Ascension"
-		y_label = "Right Ascension (Hours)"
+		y_label = "Right Ascension (Radians)"
 
 	if isPrecessionIncluded:
 		precession_label = "(With Precession)"

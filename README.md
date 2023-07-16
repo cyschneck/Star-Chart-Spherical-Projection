@@ -417,8 +417,8 @@ plotStarPositionOverTime(builtInStarName=None,
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 							newStar=None,
-							startYearSince2000=-2000,
-							endYearSince2000=2001,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
 							isPrecessionIncluded=True,
 							incrementYear=5,
 							DecOrRA="D")
@@ -428,8 +428,8 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 							newStar=None,
-							startYearSince2000=-2000,
-							endYearSince2000=2001,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
 							isPrecessionIncluded=False,
 							incrementYear=5,
 							DecOrRA="D")
@@ -439,8 +439,8 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 							newStar=None,
-							startYearSince2000=-2000,
-							endYearSince2000=2001,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
 							isPrecessionIncluded=True,
 							incrementYear=5,
 							DecOrRA="R")
@@ -450,8 +450,8 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ```python
 star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 							newStar=None,
-							startYearSince2000=-2000,
-							endYearSince2000=2001,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
 							isPrecessionIncluded=False,
 							incrementYear=5,
 							DecOrRA="R")

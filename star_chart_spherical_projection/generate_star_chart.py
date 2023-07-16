@@ -322,6 +322,7 @@ def plotStereographicProjection(builtInStars=[],
 						star_object.properMotionAngle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
+
 	# plot star chart as a circular graph
 
 	# Set declination based on hemisphere selected

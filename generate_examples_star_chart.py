@@ -62,18 +62,25 @@ if __name__ == '__main__':
 	#				showPlot=True)
 	#exit()
 	"""
+	#star_chart_spherical_projection.plotStereographicProjection(builtInStars=["Polaris", "Vega", "Thuban", "Altair"],
+	#						northOrSouth="North",
+	#						displayStarNamesLabels=True,
+	#						yearSince2000=13500,
+	#						isPrecessionIncluded=True,
+	#						fig_plot_color="red")
+	#exit()
 	#star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500, save_to_csv="final_star_positions.csv")
 	#print(star_final_pos_dict)
-	startYear = -2000
-	endYear = 2000
-	incrementYear = 3
+	startYear = -15000
+	endYear = 15000
+	incrementYear = 5
 	star_chart_spherical_projection.starPositionOverTime(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,
 														isPrecessionIncluded=True,
 														incrementYear=incrementYear,
-														save_to_csv="testing_final_positions.csv")
+														save_to_csv=None)
 	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
@@ -81,7 +88,7 @@ if __name__ == '__main__':
 														isPrecessionIncluded=True,
 														incrementYear=incrementYear,
 														DecOrRA="D",
-														save_plot_name="examples/plot_star_vega_declination.png")
+														save_plot_name="examples/plot_star_vega_declination_with_precession.png")
 	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
@@ -89,7 +96,23 @@ if __name__ == '__main__':
 														isPrecessionIncluded=True,
 														incrementYear=incrementYear,
 														DecOrRA="R",
-														save_plot_name="examples/plot_star_vega_right_ascension.png")
+														save_plot_name="examples/plot_star_vega_right_ascension_with_precession.png")
+	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+														newStar=None,
+														startYearSince2000=startYear,
+														endYearSince2000=endYear,
+														isPrecessionIncluded=False,
+														incrementYear=incrementYear,
+														DecOrRA="D",
+														save_plot_name="examples/plot_star_vega_declination_without_precession.png")
+	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+														newStar=None,
+														startYearSince2000=startYear,
+														endYearSince2000=endYear,
+														isPrecessionIncluded=False,
+														incrementYear=incrementYear,
+														DecOrRA="R",
+														save_plot_name="examples/plot_star_vega_right_ascension_without_precession.png")
 	# note, includes endYear (0 to 9, every three = [0, 3, 6, 9], inclusive of start, inclusive of end
 	exit()
 	# Quickstart Graphs

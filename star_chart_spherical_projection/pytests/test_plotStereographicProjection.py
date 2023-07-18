@@ -1,5 +1,5 @@
 # Pytest for plotStereographicProjection()
-# centerline-width/: python3 -m pytest -v
+# star_chart_spherical_projection/: python3 -m pytest -v
 import logging
 import os
 

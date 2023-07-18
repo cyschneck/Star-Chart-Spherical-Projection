@@ -296,3 +296,22 @@ def errorHandlingStarClass(starName=None,
 		if type(magnitudeVisual) != int and type(magnitudeVisual) != float:
 			logger.critical("\nCRITICAL ERROR, [magnitudeVisual]: Must be a int or float, current type = '{0}'".format(type(magnitudeVisual)))
 			exit()
+
+def errorHandlingPredictPoleStar(yearSince2000=None, northOrSouth=None):
+	# Error Handling for predictPoleStar()
+	if yearSince2000 is None:
+		logger.critical("\nCRITICAL ERROR, [yearSince2000]: yearSince2000 is required")
+		exit()
+	else:
+		if type(yearSince2000) != int and type(yearSince2000) != float:
+			logger.critical("\nCRITICAL ERROR, [yearSince2000]: Must be a int or float, current type = '{0}'".format(type(yearSince2000)))
+			exit()
+	
+	if northOrSouth is not None:
+		if type(northOrSouth) != str:
+			logger.critical("\nCRITICAL ERROR, [northOrSouth]: Must be a str, current type = '{0}'".format(type(northOrSouth)))
+			exit()
+		else:
+			if northOrSouth.title() not in ["North", "South"]:
+				logger.critical("\nCRITICAL ERROR, [northOrSouth]: Must be a 'North' or 'South', currently = '{0}'".format(northOrSouth))
+				exit()

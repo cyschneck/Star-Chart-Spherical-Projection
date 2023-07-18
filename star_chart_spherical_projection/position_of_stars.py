@@ -226,6 +226,10 @@ def plotStarPositionOverTime(builtInStarName=None,
 
 def predictPoleStar(yearSince2000=None, northOrSouth="North"):
 	# Find the next North/South Pole Star
+
+	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, northOrSouth=northOrSouth)
+	northOrSouth = northOrSouth.title()
+
 	final_position_builtin_stars = star_chart_spherical_projection.finalPositionOfStars(yearSince2000=yearSince2000,
 																						isPrecessionIncluded=True)
 	# Set the pole declination based on either North/South

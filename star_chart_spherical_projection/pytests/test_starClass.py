@@ -1,5 +1,5 @@
 # Pytest for starClass()
-# centerline-width/: python3 -m pytest -v
+# star_chart_spherical_projection/: python3 -m pytest -v
 import logging
 
 # External Python libraries (installed via pip install)

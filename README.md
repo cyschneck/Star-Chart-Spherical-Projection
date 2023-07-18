@@ -127,12 +127,12 @@ star_chart_spherical_projection.newStar(starName=None,
 					properMotionAngle=None,
 					magnitudeVisual=None)
 ```
-* **[REQUIRED]** starName (string): A star name to be displayed as a label
-* **[REQUIRED]** ra (string): Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
-* **[REQUIRED]** dec (int/float): Declination of star (a positive or negative value)
-* **[REQUIRED]** properMotionSpeed (int/float): Proper motion speed as a single value (in mas/year)
-* **[REQUIRED]** properMotionAngle (int/float): Proper motion positive angle (between 0° and 360°)
-* **[REQUIRED]** magnitudeVisual (int/float): Absolute Visual Magnitude
+* **[REQUIRED]** starName: (string) A star name to be displayed as a label
+* **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
+* **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
+* **[REQUIRED]** properMotionSpeed: (int/float) Proper motion speed as a single value (in mas/year)
+* **[REQUIRED]** properMotionAngle: (int/float) Proper motion positive angle (between 0° and 360°)
+* **[REQUIRED]** magnitudeVisual: (int/float) Absolute Visual Magnitude
 
 **With the Proper Motion speed along the Right Ascension and Declination**
 
@@ -146,12 +146,12 @@ star_chart_spherical_projection.newStar(starName=None,
 					properMotionSpeedDec=None,
 					magnitudeVisual=None)
 ```
-* **[REQUIRED]** starName (string): A star name to be displayed as a label
-* **[REQUIRED]** ra (string): Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
-* **[REQUIRED]** dec (int/float): Declination of star (a positive or negative value)
-* **[REQUIRED]** properMotionSpeedRA (int/float): Speed of Proper Motion along the Right Ascension
-* **[REQUIRED]** properMotionSpeedDec (int/float): Speed of Proper Motion along the Declination
-* **[REQUIRED]** magnitudeVisual (int/float):
+* **[REQUIRED]** starName: (string) A star name to be displayed as a label
+* **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
+* **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
+* **[REQUIRED]** properMotionSpeedRA: (int/float) Speed of Proper Motion along the Right Ascension
+* **[REQUIRED]** properMotionSpeedDec: (int/float) Speed of Proper Motion along the Declination
+* **[REQUIRED]** magnitudeVisual: (int/float) Absolute Visual Magnitude
 
 Important Note: RA/Dec proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`properMotionSpeed`) and an angle (`properMotionAngle`) for further calculations
 
@@ -260,7 +260,146 @@ plotStereographicProjection(northOrSouth=None,
 | ------------- | ------------- |
 | ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
 
-### Star Chart Examples:
+## Return Final Position of Stars
+**finalPositionOfStars()**
+
+Returns a dictionary for the final positions of the stars for a specific year in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+```
+finalPositionOfStars(builtInStars=[],
+		yearSince2000=0, 
+		isPrecessionIncluded=True,
+		userDefinedStars=[],
+		onlyDisplayUserStars=False,
+		declination_min=None,
+		declination_max=None,
+		save_to_csv=None)
+```
+- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* userDefinedStars: (list): List of newStar objects of stars the user has added
+- *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (userDefinedStars)
+- *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
+- *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
+- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
+
+<details closed>
+<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
+<br>
+['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnair', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Delta Velorum', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kaus Australis', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Tureis', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
+</details>
+
+## Return A Star's Position over Time
+**starPositionOverTime()**
+Returns a single star's position over time
+
+```
+starPositionOverTime(builtInStarName=None,
+			newStar=None,
+			startYearSince2000=None,
+			endYearSince2000=None,
+			incrementYear=5,
+			isPrecessionIncluded=True,
+			save_to_csv=None)
+```
+- **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
+- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar objct
+- **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** incrementYear: (float/int) number of year to increment from start to end by, defaults to `5` years
+- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save star's position over time with headers ["Year", "Declination (DD.SS)", "Right Ascension (HH.MM.SS)", "Right Ascension (radians)"]
+
+## Predict Past and Future Pole Stars
+**predictPoleStar**
+Return the North/South Pole star for a given year since 2000
+```
+predictPoleStar(yearSince2000=0, northOrSouth="North")
+```
+- **[REQUIRED]** yearSince2000 (int/float): ear since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- *[OPTIONAL]* northOrSouth (string): North or South Pole where `North` = 90° and `South` = -90°, defaults to `North`
+
+## Plot a Star's Position over Time
+**plotStarPositionOverTime()**
+Plot a star's declination and right ascension position over time
+
+```
+plotStarPositionOverTime(builtInStarName=None, 
+			newStar=None,
+			startYearSince2000=None,
+			endYearSince2000=None,
+			incrementYear=10,
+			isPrecessionIncluded=True,
+			DecOrRA="D",
+			showPlot=True,
+			showYearMarker=True,
+			fig_plot_title=None,
+			fig_plot_color="C0",
+			figsize_n=12,
+			figsize_dpi=100,
+			save_plot_name=None)
+```
+- **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
+- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar objct
+- **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** DecOrRA: (string) Plot the Declination `D` or Right Ascension `RA`, defaults to `D`
+- **[REQUIRED]** incrementYear: (float/int)  number of year to increment from start to end by, defaults to `10` years
+- *[OPTIONAL]* isPrecessionIncluded: (boolean)  when calculating star positions include predictions for precession, defaults to True
+- *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
+- *[OPTIONAL]* showYearMarker: (boolean) show dotted line for current year
+- *[OPTIONAL]* fig_plot_title: (string) figure plot title, defaults to `<STAR NAME> <DECLINATION/RA> (<With/Without> Precession) from <START BCE/CE> to <END BCE/CE>, every <YEAR INCREMENT> Years`
+- *[OPTIONAL]* fig_plot_color: (string) figure plot color, defaults to blue `C0`
+- *[OPTIONAL]* figsize_n: (float/int) figure plot size NxN, `12`
+- *[OPTIONAL]* figsize_dpi: (float/int) figure dpi, defaults to `100`
+- *[OPTIONAL]* save_plot_name: (string) save plot name and location
+
+**Declination with Precession:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
+							isPrecessionIncluded=True,
+							incrementYear=5,
+							DecOrRA="D")
+```
+![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
+**Declination without Precession:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
+							isPrecessionIncluded=False,
+							incrementYear=5,
+							DecOrRA="D")
+```
+![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
+**Right Ascension with Precession:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
+							isPrecessionIncluded=True,
+							incrementYear=5,
+							DecOrRA="R")
+```
+![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
+**Right Ascension without Precession:**
+```python
+star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+							newStar=None,
+							startYearSince2000=-15000,
+							endYearSince2000=15000,
+							isPrecessionIncluded=False,
+							incrementYear=5,
+							DecOrRA="R")
+```
+![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
+
+# Star Chart Examples:
 __Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
 ```
 star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
@@ -329,142 +468,6 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South"
 							fig_plot_color="cornflowerblue")
 ```
 ![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
-
-## Return Final Position of Stars
-**finalPositionOfStars()**
-
-Returns a dictionary for the final positions of the stars for a specific year in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
-```
-finalPositionOfStars(builtInStars=[],
-		yearSince2000=0, 
-		isPrecessionIncluded=True,
-		userDefinedStars=[],
-		onlyDisplayUserStars=False,
-		declination_min=None,
-		declination_max=None,
-		save_to_csv=None)
-```
-- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in star_data.csv). Example: ["Vega", "Merak", "Dubhe"]
-- *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
-- *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* userDefinedStars: (list) List of newStar objects of stars the user has added
-- *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (userDefinedStars)
-- *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
-- *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
-- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
-
-<details closed>
-<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
-<br>
-['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnair', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Delta Velorum', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kaus Australis', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Tureis', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
-</details>
-
-## Return A Star's Position over Time
-**starPositionOverTime()**
-
-```
-starPositionOverTime(builtInStarName=None,
-			newStar=None,
-			startYearSince2000=None,
-			endYearSince2000=None,
-			incrementYear=None,
-			isPrecessionIncluded=True,
-			save_to_csv=None)
-```
-- **[REQUIRED]** builtInStarName: (string)
-- **[REQUIRED]** newStar: (newStar object)
-- **[REQUIRED]** startYearSince2000: (float/int)
-- **[REQUIRED]** endYearSince2000: (float/int)
-- **[REQUIRED]** incrementYear: (float/int)
-- *[OPTIONAL]* isPrecessionIncluded: (boolean)
-- *[OPTIONAL]* save_to_csv: (string)
-
-# Predict Past and Future Pole Stars
-**predictPoleStar**
-```
-predictPoleStar(yearSince2000=None, northOrSouth="North")
-```
-- **[REQUIRED]** yearSince2000: (int/float)
-- *[OPTIONAL]* northOrSouth: (string)
-
-# Plot a Star's Position over Time
-**plotStarPositionOverTime()**
-
-```
-plotStarPositionOverTime(builtInStarName=None, 
-			newStar=None,
-			startYearSince2000=None,
-			endYearSince2000=None,
-			incrementYear=10,
-			isPrecessionIncluded=True,
-			DecOrRA="D",
-			showPlot=True,
-			showYearMarker=True,
-			fig_plot_title=None,
-			fig_plot_color="C0",
-			figsize_n=12,
-			figsize_dpi=100,
-			save_plot_name=None)
-```
-- **[REQUIRED]** builtInStarName: (string)
-- **[REQUIRED]** newStar: (newStar object)
-- **[REQUIRED]** startYearSince2000: (float/int)
-- **[REQUIRED]** endYearSince2000: (float/int)
-- **[REQUIRED]** DecOrRA: (string)
-- **[REQUIRED]** incrementYear: (float/int)
-- *[OPTIONAL]* isPrecessionIncluded: (boolean)
-- *[OPTIONAL]* showPlot: (boolean)
-- *[OPTIONAL]* showYearMarker: (boolean)
-- *[OPTIONAL]* fig_plot_title: (string)
-- *[OPTIONAL]* fig_plot_color: (string)
-- *[OPTIONAL]* figsize_n: (float/int)
-- *[OPTIONAL]* figsize_dpi: (float/int)
-- *[OPTIONAL]* save_to_csv: (string)
-
-**Declination with Precession:**
-```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							isPrecessionIncluded=True,
-							incrementYear=5,
-							DecOrRA="D")
-```
-![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
-**Declination without Precession:**
-```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							isPrecessionIncluded=False,
-							incrementYear=5,
-							DecOrRA="D")
-```
-![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
-**Right Ascension:**
-```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							isPrecessionIncluded=True,
-							incrementYear=5,
-							DecOrRA="R")
-```
-![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
-**Right Ascension:**
-```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							isPrecessionIncluded=False,
-							incrementYear=5,
-							DecOrRA="R")
-```
-![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
 
 ## Bibliography
 

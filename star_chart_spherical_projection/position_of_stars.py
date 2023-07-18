@@ -85,7 +85,7 @@ def starPositionOverTime(builtInStarName=None,
 						newStar=None,
 						startYearSince2000=None,
 						endYearSince2000=None,
-						incrementYear=None,
+						incrementYear=5,
 						isPrecessionIncluded=True,
 						save_to_csv=None):
 
@@ -93,12 +93,10 @@ def starPositionOverTime(builtInStarName=None,
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		star_data = star_dataframe.loc[star_dataframe["Star Name"] == builtInStarName].values.flatten().tolist()
-		#star_data = star_chart_spherical_projection.convertRAhrtoRadians([star_data])[0]
 		star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag = star_data
 	if newStar is not None:
 		star_name = newStar.starName
 		star_ra = newStar.ra
-		#star_right_ascension_radians = star_chart_spherical_projection.convertRAhrtoRadians([[None, newStar.ra]])[0][1]
 		star_declination = newStar.dec
 		star_pm_speed = newStar.properMotionSpeed
 		star_pm_angle = newStar.properMotionAngle
@@ -224,7 +222,7 @@ def plotStarPositionOverTime(builtInStarName=None,
 	if save_plot_name is not None:
 		fig.savefig(save_plot_name, dpi=fig.dpi)
 
-def predictPoleStar(yearSince2000=None, northOrSouth="North"):
+def predictPoleStar(yearSince2000=0, northOrSouth="North"):
 	# Find the next North/South Pole Star
 
 	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, northOrSouth=northOrSouth)

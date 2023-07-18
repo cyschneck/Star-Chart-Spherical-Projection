@@ -36,6 +36,7 @@ def finalPositionOfStars(builtInStars=[],
 												declination_min=declination_min,
 												declination_max=declination_max,
 												save_to_csv=save_to_csv)
+
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
 		listOfStars = star_chart_spherical_projection.getStarList(builtInStars)
@@ -222,3 +223,27 @@ def plotStarPositionOverTime(builtInStarName=None,
 
 	if save_plot_name is not None:
 		fig.savefig(save_plot_name, dpi=fig.dpi)
+
+def predictPoleStar(yearSince2000=None, northOrSouth="North"):
+	# Find the next North/South Pole Star
+	final_position_builtin_stars = star_chart_spherical_projection.finalPositionOfStars(yearSince2000=yearSince2000,
+																						isPrecessionIncluded=True)
+	# Set the pole declination based on either North/South
+	if northOrSouth == "North":
+		pole_declination = 90
+	if northOrSouth == "South":
+		pole_declination = -90
+
+	# Find the closest star in builtin stars
+	closest_pole_star = None
+	closest_pole_declination = None
+	for star, star_data in final_position_builtin_stars.items():
+		if closest_pole_star is None:
+			closest_pole_star = star
+			closest_pole_declination = star_data["Declination"]
+		else:
+			if abs(float(star_data["Declination"]) - pole_declination) < abs(closest_pole_declination - pole_declination):
+				closest_pole_star = star
+				closest_pole_declination = star_data["Declination"]
+	
+	return closest_pole_star

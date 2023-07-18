@@ -11,6 +11,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 * **Return Final Position of Stars**
 	* finalPositionOfStars()
 	* starPositionOverTime()
+	* predictPoleStar()
 * **Add a New Star to Plot**
 	* newStar()
 
@@ -378,6 +379,13 @@ starPositionOverTime(builtInStarName=None,
 - *[OPTIONAL]* isPrecessionIncluded: (boolean)
 - *[OPTIONAL]* save_to_csv: (string)
 
+# Predict Past and Future Pole Stars
+**predictPoleStar**
+```
+predictPoleStar(yearSince2000=None, northOrSouth="North")
+```
+- **[REQUIRED]** yearSince2000: (int/float)
+- *[OPTIONAL]* northOrSouth: (string)
 
 # Plot a Star's Position over Time
 **plotStarPositionOverTime()**

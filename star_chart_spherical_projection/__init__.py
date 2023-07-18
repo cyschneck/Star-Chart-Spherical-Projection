@@ -12,6 +12,7 @@ from .generate_star_chart import plotStereographicProjection
 from .position_of_stars import finalPositionOfStars
 from .position_of_stars import starPositionOverTime
 from .position_of_stars import plotStarPositionOverTime
+from .position_of_stars import predictPoleStar
 
 from .starClass import newStar
 

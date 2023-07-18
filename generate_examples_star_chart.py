@@ -71,6 +71,9 @@ if __name__ == '__main__':
 	#exit()
 	#star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500, save_to_csv="final_star_positions.csv")
 	#print(star_final_pos_dict)
+	next_pole_star = star_chart_spherical_projection.predictPoleStar(yearSince2000=8000, northOrSouth="North")
+	print(next_pole_star)
+	exit()
 	startYear = -15000
 	endYear = 15000
 	incrementYear = 5

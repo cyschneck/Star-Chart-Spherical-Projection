@@ -3,7 +3,6 @@
 #		Northern Hemsiphere = 90°
 #		Southern Hemsiphere = -90°
 ########################################################################
-import configparser
 import csv
 import logging
 import math
@@ -21,8 +20,10 @@ stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
 ## Constants
-config = configparser.ConfigParser()
-config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
+northern_declination_min = -30
+northern_declination_max = 90
+southern_declination_min = 30
+southern_declination_max = -90
 
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
@@ -327,10 +328,10 @@ def plotStereographicProjection(builtInStars=[],
 
 	# Set declination based on hemisphere selected
 	if declination_min is None:
-		if northOrSouth == "North": declination_min = int(config["declinationDefaultValues"]["northern_declination_min"])
-		if northOrSouth == "South": declination_min = int(config["declinationDefaultValues"]["southern_declination_min"])
-	if northOrSouth == "North": declination_max = int(config["declinationDefaultValues"]["northern_declination_max"])
-	if northOrSouth == "South": declination_max = int(config["declinationDefaultValues"]["southern_declination_max"])
+		if northOrSouth == "North": declination_min = northern_declination_min
+		if northOrSouth == "South": declination_min = southern_declination_min
+	if northOrSouth == "North": declination_max = northern_declination_max
+	if northOrSouth == "South": declination_max = southern_declination_max
 
 	# Polar plot figure
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
@@ -368,9 +369,9 @@ def plotStereographicProjection(builtInStars=[],
 
 	# Display declination lines based on hemisphere
 	if northOrSouth == "North":
-		displayDeclinationMarksOnAxis(declination_values, int(config["declinationDefaultValues"]["northern_declination_min"]), int(config["declinationDefaultValues"]["northern_declination_max"]), False)
+		displayDeclinationMarksOnAxis(declination_values, northern_declination_min, northern_declination_max, False)
 	if northOrSouth == "South":
-		displayDeclinationMarksOnAxis(declination_values, int(config["declinationDefaultValues"]["southern_declination_min"]), int(config["declinationDefaultValues"]["southern_declination_max"]), True)
+		displayDeclinationMarksOnAxis(declination_values, southern_declination_min, southern_declination_max, True)
 
 	logger.debug("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
 

@@ -1,7 +1,6 @@
 ########################################################################
 # ERROR CATCHES AND LOGGING
 ########################################################################
-import configparser
 import csv
 import logging
 import numpy as np

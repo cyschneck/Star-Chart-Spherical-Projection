@@ -1,4 +1,4 @@
-# Test generate_star_chart functions
+# Generate chart examples plots
 # python test_generate_star_chart.py
 
 import star_chart_spherical_projection

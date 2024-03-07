@@ -57,8 +57,8 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 import star_chart_spherical_projection as scsp
 
 star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"],
-								yearSince2000=11500,
-								save_to_csv="final_star_positions.csv")
+						yearSince2000=11500,
+						save_to_csv="final_star_positions.csv")
 ```
 Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 

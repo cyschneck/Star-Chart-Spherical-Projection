@@ -16,15 +16,15 @@ A Python package to generate circular astronomy star charts (past, present, and 
 	* newStar()
 
 ## Quickstart: Star-Chart-Spherical-Projection
-Plot stars in the Southern Hemisphere for the year 2023 (without stars labels)
+Plot stars in the Southern Hemisphere for the year 2024 (without stars labels)
 ```python
 import star_chart_spherical_projection as scsp
 
 scsp.plotStereographicProjection(northOrSouth="South",
 				displayStarNamesLabels=False,
-				yearSince2000=23)
+				yearSince2000=24)
 ```
-![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_2023.png) 
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_years.png) 
 
 Plot a few built-in stars as well as two new user defined stars in the Northern Hemisphere for the year 1961 (2000-39) (with stars labels and in red). This uses both methods to define the proper motion for new stars: with a given proper motion and angle and with the proper motion speed in the declination and right ascension
 ```python
@@ -56,7 +56,9 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500, save_to_csv="final_star_positions.csv")
+star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"],
+								yearSince2000=11500,
+								save_to_csv="final_star_positions.csv")
 ```
 Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 

@@ -1,82 +1,13 @@
 # Test generate_star_chart functions
-# python3 test_generate_star_chart.py
-import pandas as pd
+# python test_generate_star_chart.py
 
 import star_chart_spherical_projection
 
 if __name__ == '__main__':
-	"""
-	chart_stars = ["Vega",
-					"Arcturus",
-					"Altair",
-					"Spica",
-					"Sirius",
-					"Procyon",
-					"Alnilam",
-					"Pollux",
-					"Alnitak",
-					"Mintaka",
-					"Castor",
-					"Rigel",
-					"Betelgeuse",
-					"Capella",
-					"Saiph",
-					"Meissa",
-					"Deneb",
-					"Formalhaut",
-					"Zubeneschamali",
-					"Alphard",
-					"Bellatrix",
-					"Achernar",
-					"Canopus",
-					"Hadar",
-					"Dubhe",
-					"Sabik",
-					"Alkaid",
-					"Merak",
-					"Polaris",
-					"Hamal",
-					"Diphda",
-					"Alpheratz",
-					"Muphrid",
-					"Wezen",
-					"Arneb",
-					"Mirzam",
-					"Navi",
-					"Ruchbah"]
-	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South", 
-																builtInStars=chart_stars,
-																yearSince2000=-31,
-																displayStarNamesLabels=True,
-																displayDeclinationNumbers=True,
-																fig_plot_title=None,
-																fig_plot_color="darkorchid",
-																save_plot_name="rete_2.png")
-	exit()
-	#star_chart_spherical_projection.plotStereographicProjection(northOrSouth="North",
-	#				builtInStars=["Vega", "Arcturus", "Altair"],
-	#				userDefinedStars=[exalibur_star, karaboudjan_star],
-	#				displayStarNamesLabels=True,
-	#				fig_plot_color="red",
-	#				yearSince2000=-44000,
-	#				showPlot=True)
-	#exit()
-	"""
-	#star_chart_spherical_projection.plotStereographicProjection(builtInStars=["Polaris", "Vega", "Thuban", "Altair"],
-	#						northOrSouth="North",
-	#						displayStarNamesLabels=True,
-	#						yearSince2000=13500,
-	#						isPrecessionIncluded=True,
-	#						fig_plot_color="red")
-	#exit()
-	#star_final_pos_dict = star_chart_spherical_projection.finalPositionOfStars(builtInStars=["Vega"], yearSince2000=11500, save_to_csv="final_star_positions.csv")
-	#print(star_final_pos_dict)
-	next_pole_star = star_chart_spherical_projection.predictPoleStar(yearSince2000=2000, northOrSouth="North")
-	print(next_pole_star)
-	exit()
 	startYear = -15000
 	endYear = 15000
 	incrementYear = 5
+	year_since_example = 24 # 2024
 	star_chart_spherical_projection.starPositionOverTime(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
@@ -117,12 +48,12 @@ if __name__ == '__main__':
 														DecOrRA="R",
 														save_plot_name="examples/plot_star_vega_right_ascension_without_precession.png")
 	# note, includes endYear (0 to 9, every three = [0, 3, 6, 9], inclusive of start, inclusive of end
-	exit()
+
 	# Quickstart Graphs
 	star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South",
 																displayStarNamesLabels=False,
-																yearSince2000=23,
-																save_plot_name="examples/quickstart_south_2023.png")
+																yearSince2000=year_since_example,
+																save_plot_name="examples/quickstart_south_years.png")
 	exalibur_star = star_chart_spherical_projection.newStar(starName="Exalibur",
 															ra="14.04.23",
 															dec=64.22,

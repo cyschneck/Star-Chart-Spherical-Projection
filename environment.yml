@@ -1,0 +1,11 @@
+name: star_chart
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9,<3.13  # minimum support 3.9, maximum support 3.12
+  - numpy
+  - pandas
+  - pytest
+  - pip
+  - pip:
+    - matplotlib # avoid warning "QApplication: invalid style override passed, ignoring it."

@@ -122,7 +122,7 @@ def test_plotStereographicProjection_figPlotColorInvalidTypes(invalid_input, err
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_plotStereographicProjection_figsizeNInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"figsize_n]: Must be a int or float, current type = '{error_output}'")):
+	with pytest.raises(ValueError, match=re.escape(f"[figsize_n]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", figsize_n=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)

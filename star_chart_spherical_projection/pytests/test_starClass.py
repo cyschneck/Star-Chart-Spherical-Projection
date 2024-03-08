@@ -246,3 +246,22 @@ def test_starClass_properMotionAnglevsRA():
 					properMotionAngle=12.3,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=34.5)
+
+def test_starClass_magnitudeVisualRequired():
+	with pytest.raises(ValueError, match=re.escape("[magnitudeVisual]: magnitudeVisual is required")):
+		scsp.newStar(starName="Testing Star",
+					ra="1.2.3",
+					dec=12.3,
+					magnitudeVisual=None,
+					properMotionSpeed=12.3,
+					properMotionAngle=32.1)
+
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
+def test_starClass_magnitudeVisualRequired(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[magnitudeVisual]: Must be a int or float, current type = '{error_output}'")):
+		scsp.newStar(starName="Testing Star",
+					ra="1.2.3",
+					dec=12.3,
+					magnitudeVisual=invalid_input,
+					properMotionSpeed=12.3,
+					properMotionAngle=32.1)

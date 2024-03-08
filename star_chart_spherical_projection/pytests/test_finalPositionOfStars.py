@@ -85,8 +85,13 @@ def test_finalPositionOfStars_isPrecessionIncludedInvalidTypes(invalid_input, er
 	with pytest.raises(ValueError, match=re.escape(f"[isPrecessionIncluded]: Must be a bool, current type = '{error_output}'")):
 		scsp.finalPositionOfStars(isPrecessionIncluded=invalid_input)
 
-@pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
 def test_finalPositionOfStars_userDefinedStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: Must be a list, current type = '{error_output}'")):
+		scsp.finalPositionOfStars(userDefinedStars=invalid_input)
+
+@pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
+def test_finalPositionOfStars_userDefinedStarsInvalidStarTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: {error_output} is not a valid newStar object (see: star_chart_spherical_projection.newStar)")):
 		scsp.finalPositionOfStars(userDefinedStars=[invalid_input])
 

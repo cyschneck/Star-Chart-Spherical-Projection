@@ -1,6 +1,6 @@
 # Pytest for starClass()
-# star_chart_spherical_projection/: python3 -m pytest -v
-import logging
+# star_chart_spherical_projection/: python -m pytest -v
+import re
 
 # External Python libraries (installed via pip install)
 import pytest
@@ -17,134 +17,84 @@ invalid_non_num_options = [([], "<class 'list'>"),
 						("string", "<class 'str'>"),
 						(False, "<class 'bool'>")]
 
-def test_starClass_starNameRequired(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_starNameRequired():
+	with pytest.raises(ValueError, match=re.escape("[starName]: starName is required")):
 		scsp.newStar(starName=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [starName]: starName is required"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_starClass_starNameInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_starNameInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[starName]: Must be a str, current type = '{error_output}'")):
 		scsp.newStar(starName=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [starName]: Must be a str, current type = '{0}'".format(error_output)
 
-def test_starClass_RARequired(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_RARequired():
+	with pytest.raises(ValueError, match=re.escape("[ra]: Right Ascension is required")):
 		scsp.newStar(starName="testing Star",
 					ra=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [ra]: Right Ascension is required"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_starClass_RAInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_RAInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[ra]: Must be a str, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [ra]: Must be a str, current type = '{0}'".format(error_output)
 
-def test_starClass_RAInvalidFormat(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_RAInvalidFormat():
+	with pytest.raises(ValueError, match=re.escape("[ra]: Right Ascension must be three parts '[HH, MM, SS]' (Hours, Minutes, Seconds), currently  = '['1', '2', '3', '4']'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3.4")
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [ra]: Right Ascension must be three parts '[HH, MM, SS]' (Hours, Minutes, Seconds), currently  = '['1', '2', '3', '4']'"
 
-def test_starClass_RAInvalidTimeFormat(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_RAInvalidTimeFormat():
+	with pytest.raises(ValueError, match=re.escape("[ra]: Each part of the Right Ascension must be an integar, 'a' current type = <class 'str'>")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.a")
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [ra]: Each part of the Right Ascension must be an integar, 'a' current type = <class 'str'>"
 
-
-def test_starClass_DecRequired(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_DecRequired():
+	with pytest.raises(ValueError, match=re.escape("[dec]: Declination is required")):
 		scsp.newStar(starName="testing Star",
 					ra="1.2.3",
 					dec=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [dec]: Declination is required"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_starClass_DECInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_DECInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[dec]: Must be a int or float, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [dec]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_starClass_properMotionSpeedInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeed]: Must be a int or float, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeed=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeed]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_starClass_properMotionAngleInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionAngleInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[properMotionAngle]: Must be a int or float, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeed=123.4,
 					properMotionAngle=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionAngle]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_starClass_properMotionSpeedRAInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedRAInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeedRA]: Must be a int or float, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeedRA=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedRA]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_starClass_properMotionSpeedDecInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedDecInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeedDec]: Must be a int or float, current type = '{error_output}'")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeedDec=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedDec]: Must be a int or float, current type = '{0}'".format(error_output)
 
-def test_starClass_properMotionSpeedAngleOrRADecRequired(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedAngleOrRADecRequired():
+	with pytest.raises(ValueError, match=re.escape("Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -153,13 +103,9 @@ def test_starClass_properMotionSpeedAngleOrRADecRequired(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required"
 
-def test_starClass_properMotionSpeedAngleOrRADecOnlyOneRequired(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedAngleOrRADecOnlyOneRequired():
+	with pytest.raises(ValueError, match=re.escape("Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required, not both")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -168,13 +114,9 @@ def test_starClass_properMotionSpeedAngleOrRADecOnlyOneRequired(caplog):
 					properMotionAngle=32.1,
 					properMotionSpeedDec=45.6,
 					properMotionSpeedRA=65.4)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required, not both"
 
-def test_starClass_properMotionSpeedDecExtra(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedDecExtra():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedDec]: With properMotionSpeed/properMotionAngle set, properMotionSpeedDec should be None")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -183,13 +125,9 @@ def test_starClass_properMotionSpeedDecExtra(caplog):
 					properMotionAngle=32.1,
 					properMotionSpeedDec=45.6,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedDec]: With properMotionSpeed/properMotionAngle set, properMotionSpeedDec should be None"
 
-def test_starClass_properMotionSpeedRAExtra(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedRAExtra():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedRA]: With properMotionSpeed/properMotionAngle set, properMotionSpeedRA should be None")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -198,13 +136,9 @@ def test_starClass_properMotionSpeedRAExtra(caplog):
 					properMotionAngle=32.1,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=65.4)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedRA]: With properMotionSpeed/properMotionAngle set, properMotionSpeedRA should be None"
 
-def test_starClass_properMotionSpeedExtra(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedExtra():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeed]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionSpeed should be None")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -213,13 +147,9 @@ def test_starClass_properMotionSpeedExtra(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=45.6,
 					properMotionSpeedRA=65.4)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeed]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionSpeed should be None"
 
-def test_starClass_properMotionAngleExtra(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionAngleExtra():
+	with pytest.raises(ValueError, match=re.escape("[properMotionAngle]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionAngle should be None")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -228,13 +158,9 @@ def test_starClass_properMotionAngleExtra(caplog):
 					properMotionAngle=32.1,
 					properMotionSpeedDec=45.6,
 					properMotionSpeedRA=65.4)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionAngle]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionAngle should be None"
 
-def test_starClass_properMotionSpeedDecRequiredWithRA(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedDecRequiredWithRA():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedDec]: With properMotionSpeedRA set, properMotionSpeedDec is required")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -243,13 +169,9 @@ def test_starClass_properMotionSpeedDecRequiredWithRA(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=65.4)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedDec]: With properMotionSpeedRA set, properMotionSpeedDec is required"
 
-def test_starClass_properMotionSpeedDecRequiredWithRA(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedDecRequiredWithRA():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedRA]: With properMotionSpeedDec set, properMotionSpeedRA is required")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -258,13 +180,9 @@ def test_starClass_properMotionSpeedDecRequiredWithRA(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=45.6,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeedRA]: With properMotionSpeedDec set, properMotionSpeedRA is required"
 
-def test_starClass_properMotionAngleRequiredWithSpeed(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionAngleRequiredWithSpeed():
+	with pytest.raises(ValueError, match=re.escape("[properMotionAngle]: With properMotionSpeed set, properMotionAngle is required")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -273,13 +191,9 @@ def test_starClass_properMotionAngleRequiredWithSpeed(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionAngle]: With properMotionSpeed set, properMotionAngle is required"
 
-def test_starClass_properMotionSpeedRequiredWithAngle(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedRequiredWithAngle():
+	with pytest.raises(ValueError, match=re.escape("[properMotionSpeed]: With properMotionAngle set, properMotionSpeed is required")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -288,13 +202,9 @@ def test_starClass_properMotionSpeedRequiredWithAngle(caplog):
 					properMotionAngle=32.1,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [properMotionSpeed]: With properMotionAngle set, properMotionSpeed is required"
 
-def test_starClass_properMotionSpeedvsDec(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedvsDec():
+	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedDec")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -303,13 +213,9 @@ def test_starClass_properMotionSpeedvsDec(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=34.5,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedDec"
 
-def test_starClass_properMotionSpeedvsRA(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionSpeedvsRA():
+	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedRA")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -318,13 +224,9 @@ def test_starClass_properMotionSpeedvsRA(caplog):
 					properMotionAngle=None,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=34.5)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedRA"
 
-def test_starClass_properMotionAnglevsDec(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionAnglevsDec():
+	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedDec")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -333,13 +235,9 @@ def test_starClass_properMotionAnglevsDec(caplog):
 					properMotionAngle=12.3,
 					properMotionSpeedDec=34.5,
 					properMotionSpeedRA=None)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedDec"
 
-def test_starClass_properMotionAnglevsRA(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_starClass_properMotionAnglevsRA():
+	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedRA")):
 		scsp.newStar(starName="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
@@ -348,6 +246,3 @@ def test_starClass_properMotionAnglevsRA(caplog):
 					properMotionAngle=12.3,
 					properMotionSpeedDec=None,
 					properMotionSpeedRA=34.5)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedRA"

@@ -1,6 +1,6 @@
 # Pytest for plotStereographicProjection()
 # star_chart_spherical_projection/: python3 -m pytest -v
-import logging
+import re
 import os
 
 # External Python libraries (installed via pip install)
@@ -40,196 +40,107 @@ star_dataframe = pd.read_csv(star_csv_file)
 star_dataframe = star_dataframe.sort_values(by=["Star Name"])
 lst_of_current_stars = star_dataframe["Star Name"].tolist()
 
-def test_plotStereographicProjection_northOrSouthInvalidOptions(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_northOrSouthInvalidOptions():
+	with pytest.raises(ValueError, match=re.escape("[northOrSouth]: Hemisphere options are ['North', 'South'], current option = 'Invalid'")):
 		scsp.plotStereographicProjection(northOrSouth="Invalid")
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [northOrSouth]: Hemisphere options are ['North', 'South'], current option = 'Invalid'"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_plotStereographicProjection_northOrSouthInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_northOrSouthInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[northOrSouth]: Must be a str, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [northOrSouth]: Must be a str, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
-def test_plotStereographicProjection_builtInStarsInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_builtInStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: Must be a list, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", builtInStars=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: Must be a list, current type = '{0}'".format(error_output)
 
-def test_plotStereographicProjection_builtInStarsInvalidStar(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_builtInStarsInvalidStar():
+	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
 		scsp.plotStereographicProjection(northOrSouth="North", builtInStars=["Fake star", "VEga"])
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: {0}".format(lst_of_current_stars)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_declinationMinInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_declinationMinInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[declination_min]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", declination_min=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [declination_min]: Must be a int or float, current type = '{0}'".format(error_output)
 
-def test_plotStereographicProjection_declinationMinInvalidRangeMin(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_declinationMinInvalidRangeMin():
+	with pytest.raises(ValueError, match=re.escape("[declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '-90'")):
 		scsp.plotStereographicProjection(northOrSouth="North", declination_min=-90)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '-90'"
 
-def test_plotStereographicProjection_declinationMinInvalidRangeMax(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_declinationMinInvalidRangeMax():
+	with pytest.raises(ValueError, match=re.escape("[declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '90'")):
 		scsp.plotStereographicProjection(northOrSouth="North", declination_min=90)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '90'"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_yearSince2000InvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_yearSince2000InvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[yearSince2000]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", yearSince2000=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [yearSince2000]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_displayStarNamesLabelsInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_displayStarNamesLabelsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[displayStarNamesLabels]: Must be a bool, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", displayStarNamesLabels=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [displayStarNamesLabels]: Must be a bool, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_displayDeclinationNumbersInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_displayDeclinationNumbersInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[displayDeclinationNumbers]: Must be a bool, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", displayDeclinationNumbers=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [displayDeclinationNumbers]: Must be a bool, current type = '{0}'".format(error_output)
 
-def test_plotStereographicProjection_incrementByInvalidOptions(caplog):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_incrementByInvalidOptions():
+	with pytest.raises(ValueError, match=re.escape("[incrementBy]: Must be one of the options [1, 5, 10], current value = '2'")):
 		scsp.plotStereographicProjection(northOrSouth="North", incrementBy=2)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [incrementBy]: Must be one of the options [1, 5, 10], current value = '2'"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_int_options)
-def test_plotStereographicProjection_incrementByInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_incrementByInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[incrementBy]: Must be a int, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", incrementBy=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [incrementBy]: Must be a int, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_isPrecessionIncludedInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_isPrecessionIncludedInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[isPrecessionIncluded]: Must be a bool, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", isPrecessionIncluded=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [isPrecessionIncluded]: Must be a bool, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_maxMagnitudeFilterInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_maxMagnitudeFilterInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[maxMagnitudeFilter]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", maxMagnitudeFilter=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [maxMagnitudeFilter]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_showPlotInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_showPlotInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[showPlot]: Must be a bool, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", showPlot=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [showPlot]: Must be a bool, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_plotStereographicProjection_figPlotTitleInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_figPlotTitleInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[fig_plot_title]: Must be a string, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", fig_plot_title=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [fig_plot_title]: Must be a string, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_plotStereographicProjection_figPlotColorInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_figPlotColorInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[fig_plot_color]: Must be a string, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", fig_plot_color=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [fig_plot_color]: Must be a string, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_figsizeNInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_figsizeNInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"figsize_n]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", figsize_n=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [figsize_n]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_figsizeDPIInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_figsizeDPIInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[figsize_dpi]: Must be a int or float, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", figsize_dpi=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [figsize_dpi]: Must be a int or float, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_plotStereographicProjection_savePlotNameInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_savePlotNameInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[save_plot_name]: Must be a string, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", save_plot_name=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [save_plot_name]: Must be a string, current type = '{0}'".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_userDefinedStarsInvalidTypes(caplog, invalid_input, error_output):
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_userDefinedStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: {error_output} is not a valid newStar object (see: star_chart_spherical_projection.newStar)")):
 		scsp.plotStereographicProjection(northOrSouth="North", userDefinedStars=[invalid_input])
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [userDefinedStars]: {0} is not a valid newStar object (see: star_chart_spherical_projection.newStar)".format(error_output)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_onlyDisplayUserStarsInvalidTypes(caplog, invalid_input, error_output):
-	#userDefinedStars
-	# Test:
-	with pytest.raises(SystemExit):
+def test_plotStereographicProjection_onlyDisplayUserStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[onlyDisplayUserStars]: Must be a bool, current type = '{error_output}'")):
 		scsp.plotStereographicProjection(northOrSouth="North", onlyDisplayUserStars=invalid_input)
-	log_record = caplog.records[0]
-	assert log_record.levelno == logging.CRITICAL
-	assert log_record.message == "\nCRITICAL ERROR, [onlyDisplayUserStars]: Must be a bool, current type = '{0}'".format(error_output)

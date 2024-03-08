@@ -80,7 +80,7 @@ def errorHandling(isPlotFunction=None,
 			if type(save_to_csv) != str:
 				raise ValueError(f"[save_to_csv]: Must be a str, current type = '{type(save_to_csv)}'")
 			if not save_to_csv.lower().endswith(".csv"):
-				raise ValueError(f"[save_to_csv]: Extension must be a .csv file, current extension = '{save_to_csv.split(".")[1]}'")
+				raise ValueError(f"[save_to_csv]: Extension must be a .csv file, current extension = '{save_to_csv.split('.')[1]}'")
 
 	# Error Handling for plotStereographicProjection() function
 	if isPlotFunction:

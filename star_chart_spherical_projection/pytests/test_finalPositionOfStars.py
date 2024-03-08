@@ -99,3 +99,7 @@ def test_finalPositionOfStars_onlyDisplayUserStarsInvalidTypes(invalid_input, er
 def test_finalPositionOfStars_saveToCsvInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[save_to_csv]: Must be a str, current type = '{error_output}'")):
 		scsp.finalPositionOfStars(save_to_csv=invalid_input)
+
+def test_finalPositionOfStars_saveToCsvInvalidExtension():
+	with pytest.raises(ValueError, match=re.escape(f"[save_to_csv]: Extension must be a .csv file, current extension = 'txt'")):
+		scsp.finalPositionOfStars(save_to_csv="output_file.txt")

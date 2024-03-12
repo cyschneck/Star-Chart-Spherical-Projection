@@ -10,6 +10,13 @@ logger.addHandler(stream_handler)
 if __name__ == '__main__':
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	# Northern stars (+ declination)
+	absolutno_star = ["Absolutno", "07.46.51", 39.05, 32.17, 42.0, 12.13] #  Wiki: XO-5
+	achird_star = ["Achird", "00.49.06", 57.48, 1237.30, 292.31, 3.44] #  Wiki: Eta Cassiopeiae
+	acubens_star = ["Acubens", "08.58.29", 11.51, 52.44, 306.45, 4.20] #  Wiki: Acubens
+	adhafera_star = ["Adhafera", "10.16.41", 23.25, 19.62, 290.40, 3.33] #  Wiki: Zeta Leonis
+	adhil_star = ["Adhil", "01.22.20", 45.31, 32.94, 74.10, 4.90] #  Wiki: Xi Andromedae
+	ain_star = ["Ain", "04.28.37", 19.10, 113.46, 288.61, 3.53] #  Wiki: Epsilon Tauri
+	aladfar_star = ["Aladfar", "19.13.45", 39.09, 1.4, 25.46, -3.71] # Wiki: Eta Lyrae
 	aldebaran_star = ["Aldebaran", "04.35.55", 16.30, 199.3, 161.4, 0.99]
 	alderamin_star = ["Alderamin", "21.18.34", 62.35, 158.4, 71.9, 2.47]
 	algieba_star = ["Algieba", "10.19.58", 19.50, 341.2, 116.9, 2.23]
@@ -79,6 +86,10 @@ if __name__ == '__main__':
 	acrab_star = ["Acrab", "16.05.26", -19.48, 24.6, 192.2, 2.62]
 	acrux_star = ["Acrux", "12.26.35", -63.05, 38.8, 247.5, 1.28] # Southern Cross
 	adhara_star = ["Adhara", "06.58.37", -28.58, 3.5, 67.7, 1.53]
+	ainalrami_star = ["Ainalrami", "18.54.10", -22.44, 8.89, 331.14, 4.86] #  Wiki: Nu1 Sagittarii
+	alasia_star = ["Alasia", "18.21.49", -11.55, 17.15, 18.56, 4.78] # Wiki: HD 168746
+	albaldah_star = ["Albaldah", "19.09.45", -21.01, 36.48, 2.14, 2.89] # Wiki: Pi Sagittarii
+	albali_star = ["Albali", "20.47.40", -9.29, 48.62, 315.66, 2.89] # Wiki: Epsilon Aquarii
 	alphard_star = ["Alphard", "09.27.35", -8.39, 37.6, 336.1, 1.98]
 	alnair_star = ["Alnair", "22.08.13", -46.57, 194.4, 139.3, -0.68]
 	alnilam_star = ["Alnilam", "05.36.12", -1.12, 1.6, 118.4, 1.72]
@@ -129,7 +140,14 @@ if __name__ == '__main__':
 	zubeneschamali_star = ["Zubeneschamali", "15.17.00", -9.22, 100.0, 258.7, 2.61]
 
 	# add stars to total star list
-	northern_star_chart_list = [aldebaran_star,
+	northern_star_chart_list = [absolutno_star,
+								achird_star,
+								acubens_star,
+								adhafera_star,
+								adhil_star,
+								ain_star,
+								aladfar_star,
+								aldebaran_star,
 								alderamin_star,
 								algieba_star,
 								algol_star,
@@ -197,6 +215,10 @@ if __name__ == '__main__':
 								acrab_star,
 								acrux_star,
 								adhara_star,
+								ainalrami_star,
+								alasia_star,
+								albaldah_star,
+								albali_star,
 								alphard_star,
 								alnair_star,
 								alnilam_star,
@@ -247,10 +269,10 @@ if __name__ == '__main__':
 								]
 
 	star_chart_list = northern_star_chart_list + southern_star_chart_list
-	logger.info("Total stars = {0}".format(len(star_chart_list)))
+	logger.info(f"Total stars = {len(star_chart_list)}")
 	for star in star_chart_list:
 		if len(star) != 6:
-			logger.info("ERROR: MISSING A VALUE = {0}".format(star[0])) # ensure that all stars have features
+			logger.info(f"ERROR: MISSING A VALUE = {star[0]}") # ensure that all stars have features
 			exit()
 	header_options = ["Star Name",
 					"Right Ascension (HH.MM.SS)",

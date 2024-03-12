@@ -17,8 +17,13 @@ if __name__ == '__main__':
 	adhil_star = ["Adhil", "01.22.20", 45.31, 32.94, 74.10, 4.90] #  Wiki: Xi Andromedae
 	ain_star = ["Ain", "04.28.37", 19.10, 113.46, 288.61, 3.53] #  Wiki: Epsilon Tauri
 	aladfar_star = ["Aladfar", "19.13.45", 39.09, 1.4, 25.46, -3.71] # Wiki: Eta Lyrae
+	albireo_star = ["Albireo", "19.30.45", 27.58, 6.24, 9.94, 5.11] # Wiki: Albireo B
+	alcor_star = ["Alcor", "13.25.13", 54.59, 121.3, 97.6, 3.99]
+	alcyone_star = ["Alcyone", "03.47.29", 24.06, 47.8, 156.1, 2.88]
 	aldebaran_star = ["Aldebaran", "04.35.55", 16.30, 199.3, 161.4, 0.99]
 	alderamin_star = ["Alderamin", "21.18.34", 62.35, 158.4, 71.9, 2.47]
+	aldhibah_star = ["Aldhibah", "17.08.47", 65.43, 28.32, 313.83, 3.17] # Wiki: Zeta Draconis
+	aldulfin_star = ["Aldulfin", "20.33.13", 11.18, 34.32, 337.57, 4.03] # Wiki: Epsilon Delphini
 	algieba_star = ["Algieba", "10.19.58", 19.50, 341.2, 116.9, 2.23]
 	algol_star = ["Algol", "03.08.10", 40.57, 3.4, 119.0, 2.11]
 	alhena_star = ["Alhena", "06.37.42", 16.24, 56.7, 165.9, 1.93]
@@ -90,6 +95,8 @@ if __name__ == '__main__':
 	alasia_star = ["Alasia", "18.21.49", -11.55, 17.15, 18.56, 4.78] # Wiki: HD 168746
 	albaldah_star = ["Albaldah", "19.09.45", -21.01, 36.48, 2.14, 2.89] # Wiki: Pi Sagittarii
 	albali_star = ["Albali", "20.47.40", -9.29, 48.62, 315.66, 2.89] # Wiki: Epsilon Aquarii
+	alchiba_star = ["Alchiba", "12.08.24", -24.43, 106.96, 291.49, 4.03] # Wiki: Alpha Corvi
+	aldhanab_star = ["Aldhanab", "21.53.55", -37.22, 98.96, 277.68, 3.003] # Wiki: Gamma Gruis
 	alphard_star = ["Alphard", "09.27.35", -8.39, 37.6, 336.1, 1.98]
 	alnair_star = ["Alnair", "22.08.13", -46.57, 194.4, 139.3, -0.68]
 	alnilam_star = ["Alnilam", "05.36.12", -1.12, 1.6, 118.4, 1.72]
@@ -147,8 +154,13 @@ if __name__ == '__main__':
 								adhil_star,
 								ain_star,
 								aladfar_star,
+								albireo_star,
+								alcor_star,
+								alcyone_star,
 								aldebaran_star,
 								alderamin_star,
+								aldhibah_star,
+								aldulfin_star,
 								algieba_star,
 								algol_star,
 								alhena_star,
@@ -219,6 +231,8 @@ if __name__ == '__main__':
 								alasia_star,
 								albaldah_star,
 								albali_star,
+								alchiba_star,
+								aldhanab_star,
 								alphard_star,
 								alnair_star,
 								alnilam_star,

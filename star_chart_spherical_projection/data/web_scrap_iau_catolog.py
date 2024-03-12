@@ -4,6 +4,14 @@ from urllib import request, error
 
 import random
 
+import logging
+
+## Logging set up
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+stream_handler = logging.StreamHandler()
+logger.addHandler(stream_handler)
+
 def checkIAUForUpdates(save_csv=False):
 	user_agents = [
 		'Mozilla/6.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',

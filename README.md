@@ -4,7 +4,7 @@
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
 [![pytests](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml/badge.svg?branch=main)](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml)
 
-A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with more than a hundred named stars accurate over 400,000 years with proper motion and precession of the equinoxes
+A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with all IAU named stars accurate over 400,000 years with proper motion and precession of the equinoxes
 
 * **Plot Stars on a Polar Chart**
 	* plotStereographicProjection()
@@ -479,13 +479,32 @@ star_chart_spherical_projection.plotStereographicProjection(northOrSouth="South"
 ```
 ![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
 
+## Development Environment
+To run or test against `star-chart-spherical-projection` github repo/fork, a development environment can be created via conda/miniconda
+
+First, [install Miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html)
+
+Then, using the existing `environment.yml`, a new conda environment can be create to run/test scripts against
+
+```
+conda env create --file environment.yml
+```
+Once the environment has been built, activate the environment:
+```
+conda activate star_chart
+```
+To run existing and new tests from the root directory:
+```
+python -m pytest
+```
+
 ## Bibliography
 
-Star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/) and Wikipedia where indicated
+Named stars specified by ["IAU Catalog of Star Names"](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt) with the star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/) and Wikipedia where indicated
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Preecession code adapted to Python 3+ from [Github Repo: vondrak](https://github.com/dreamalligator/vondrak)
+Precession code adapted to Python 3+ from [the Vondrak long term precession model Github repo 'vondrak')](https://github.com/dreamalligator/vondrak)
 
 ## Bug and Feature Request
 

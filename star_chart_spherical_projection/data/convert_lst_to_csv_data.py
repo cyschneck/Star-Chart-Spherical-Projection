@@ -33,6 +33,9 @@ if __name__ == '__main__':
 	aljanah_star = ["Aljanah", "20.46.13", 33.58, 485.58, 47.09, 2.48] # Wiki: Epsilon Cygni
 	alkaid_star = ["Alkaid", "13.47.32", 49.18, 122.1, 263.0, 1.86] # Big Dipper
 	alkalurops_star = ["Alkalurops", "15.24.29", 37.23, 174.65, 300.86, 4.31] # Wiki: Mu Bootis A
+	alkaphrah_star = ["Alkaphrah", "09.03.37", 47.09, 66.17, 33.15, 3.56] # Wiki: Kappa Ursae Majoris
+	alkarab_star = ["Alkarab", "24.25.23", 23.24, 195.55, 79.36, 4.4] # Wiki: Upsilon Pegasi
+	almaaz_star = ["Almaaz", "05.01.58", 43.49, 2.8, 17.92, 2.92] # Wiki: Epsilon Aurigae
 	almach_star = ["Almach", "02.03.53", 42.19, 65.0, 139.4, 2.17]
 	alphecca_star = ["Alphecca", "15.34.41", 26.42, 147.8, 126.4, 2.22]
 	alpheratz_star = ["Alpheratz", "00.08.23", 29.05, 213.6, 139.9, 2.06]
@@ -103,8 +106,10 @@ if __name__ == '__main__':
 	aldhanab_star = ["Aldhanab", "21.53.55", -37.22, 98.96, 277.68, 3.003] # Wiki: Gamma Gruis
 	algedi_star = ["Algedi", "20.18.03", -12.32, 61.3, 87.7, 3.58]
 	algorab_star = ["Algorab", "12.29.51", -16.31, 251.3, 236.4, 2.97]
+	alkes_star = ["Alkes", "10.59.46", -18.18, 480.05, 285.65, 4.07] # Wiki: Alpha Crateris
 	alphard_star = ["Alphard", "09.27.35", -8.39, 37.6, 336.1, 1.98]
 	alnair_star = ["Alnair", "22.08.13", -46.57, 194.4, 139.3, -0.68]
+	alnasl_star = ["Alnasl", "18.05.48", -30.25, 188.8, 196.6, 2.96]
 	alnilam_star = ["Alnilam", "05.36.12", -1.12, 1.6, 118.4, 1.72]
 	alnitak_star = ["Alnitak", "05.40.45", -1.56, 3.8, 57.5, 1.90]
 	aludra_star = ["Aludra", "07.24.05", -29.18, 7.1, 324.5, 2.46]
@@ -176,6 +181,9 @@ if __name__ == '__main__':
 								aljanah_star,
 								alkaid_star,
 								alkalurops_star,
+								alkaphrah_star,
+								alkarab_star,
+								almaaz_star,
 								almach_star,
 								alphecca_star,
 								alpheratz_star,
@@ -245,8 +253,10 @@ if __name__ == '__main__':
 								aldhanab_star,
 								algedi_star,
 								algorab_star,
+								alkes_star,
 								alphard_star,
 								alnair_star,
+								alnasl_star,
 								alnilam_star,
 								alnitak_star,
 								aludra_star,

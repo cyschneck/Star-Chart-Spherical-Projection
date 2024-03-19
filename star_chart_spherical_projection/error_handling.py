@@ -28,7 +28,7 @@ def errorHandling(isPlotFunction=None,
 				figsize_dpi=None,
 				save_plot_name=None,
 				save_to_csv=None):
-	# Error Handling for Variables shared beween finalPositionOfStars() and plotStereographicProjection() (defined by isPlotFunction)
+	# Error Handling for Variables shared between finalPositionOfStars() and plotStereographicProjection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
 	if type(builtInStars) != list:

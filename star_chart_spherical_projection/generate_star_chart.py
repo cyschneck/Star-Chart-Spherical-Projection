@@ -63,7 +63,7 @@ def convertRadianstoRAhr(ra_in_radians):
 	# change star in radians to RA in hours
 	ra_in_degree = np.rad2deg(ra_in_radians)
 
-	if ra_in_degree > 360 or ra_in_degree < 0: # lock degrees between 0 and 360, if negative, re-write as a postive degree
+	if ra_in_degree > 360 or ra_in_degree < 0: # lock degrees between 0 and 360, if negative, re-write as a positive degree
 		ra_in_degree %= 360
 
 	hours = int(ra_in_degree / 15)
@@ -98,10 +98,10 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 	star_adjusted_declination = star_dec + np.rad2deg(dec_y_difference_component) # in degrees new with proper motion
 
 	dec_x = star_adjusted_declination
-	# remap within -90 and 90 for postive declinations
-	if star_adjusted_declination > 0: # Postive declinations
+	# remap within -90 and 90 for positive declinations
+	if star_adjusted_declination > 0: # Positive declinations
 		dec_x = star_adjusted_declination % 360
-		# map from 0 to 90 (postive declinations)
+		# map from 0 to 90 (positive declinations)
 		if dec_x > 90 and dec_x <= 180: 
 			dec_x = 90 + (90 - dec_x)
 		# map from 0 to -90 (negative declinations)
@@ -114,7 +114,7 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 		# map from 0 to -90 (negative declinations)
 		if dec_x < -90 and dec_x >= -180: 
 			dec_x = -90 - (90 + dec_x)
-		# map from 0 to 90 (postive declinations)
+		# map from 0 to 90 (positive declinations)
 		if dec_x >= -270 and dec_x <= -180:
 			dec_x = 180 + dec_x
 			dec_x = abs(dec_x)
@@ -126,7 +126,7 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 	# flip over RA by rotating 180
 	is_flipped_across_pole = False
 	star_over_ninety_ra = star_adjusted_declination
-	if star_over_ninety_ra >= 0: # postive declinations
+	if star_over_ninety_ra >= 0: # positive declinations
 		while (star_over_ninety_ra > 90):
 			star_over_ninety_ra -= 90
 			is_flipped_across_pole = not is_flipped_across_pole # flip across the center by 180
@@ -396,7 +396,7 @@ def plotStereographicProjection(builtInStars=[],
 						'$21^h$', '$22^h$','$23^h$'])
 	ax.set_xticklabels(labels_ra, fontsize=10)
 
-	# Optiona: Label the stars with names
+	# Optional: Label the stars with names
 	if displayStarNamesLabels:
 		for i, txt in enumerate(x_star_labels):
 			ax.annotate(txt, (x_ra_values[i], y_dec_values[i]), 
@@ -418,7 +418,7 @@ def plotStereographicProjection(builtInStars=[],
 	if abs(years_for_title) > 1000000:
 		years_for_title = years_for_title / 1000000
 		suffix = "M"
-	if yearSince2000 >= -2000: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # postive years for C.E
+	if yearSince2000 >= -2000: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # positive years for C.E
 	if yearSince2000 < -2000: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
 	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 

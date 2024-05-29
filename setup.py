@@ -3,7 +3,7 @@
 # Python Package Setup
 from setuptools import setup, find_namespace_packages
 
-VERSION="1.5.0"
+VERSION="1.6.0"
 DESCRIPTION="A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with more than a hundred named stars accurate over 400,000 years with proper motion and precession of the equinoxes"
 
 with open("README.md", "r") as f:
@@ -41,11 +41,11 @@ setup(
 											'star_chart_spherical_projection.*']),
 	include_package_data=True,
 	install_requires=[
-		"beautifulsoup4>=4.11.1",
-		"matplotlib>=3.1.0",
-		"numpy>=1.24.3",
-		"pandas>=1.3.5",
-		"pytest>=7.2.2"
+		"beautifulsoup4",
+		"matplotlib",
+		"numpy",
+		"pandas",
+		"pytest"
 	],
 	python_requires='>=3.9'
 )

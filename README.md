@@ -12,6 +12,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 * **Return Final Position of Stars**
 	* finalPositionOfStars()
 	* starPositionOverTime()
+	* plotStarPositionOverTime()
 	* predictPoleStar()
 * **Add a New Star to Plot**
 	* newStar()

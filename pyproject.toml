@@ -1,0 +1,61 @@
+[project]
+name = "star-chart-spherical-projection"
+version = "v1.6.0"
+authors = [
+  { name="Cora Schneck", email="cyschneck@gmail.com" }
+  ]
+
+description = "A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with more than a hundred named stars accurate over 400,000 years with proper motion and precession of the equinoxes"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+
+dependencies = [
+    "beautifulsoup4",
+    "matplotlib",
+    "numpy",
+    "pandas"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Scientific/Engineering :: Astronomy"
+]
+
+keywords = [
+        "astronomy", "python", "star charts", "precession", "proper motion", "spherical projection", "stereographic projection"
+    ]
+
+[project.urls]
+Repository = "https://github.com/cyschneck/Star-Chart-Spherical-Projection"
+Issues = "https://github.com/cyschneck/Star-Chart-Spherical-Projection/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["star_chart_spherical_projection"]
+exclude = ["star_chart_spherical_projection/pytests*"]

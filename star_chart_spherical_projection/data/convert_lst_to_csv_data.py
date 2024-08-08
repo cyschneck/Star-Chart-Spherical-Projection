@@ -128,7 +128,7 @@ if __name__ == '__main__':
 	delta_velorum_star = ["Delta Velorum", "08.44.42", -54.42, 107.3, 164.3, -0.02]
 	diphda_star = ["Diphda", "00.43.35", -17.59, 234.7, 82.2, 2.05]
 	dschubba_star = ["Dschubba", "16.00.20", -22.37, 36.9, 196.1, 2.30]
-	formalhaut_star = ["Formalhaut", "22.57.38", -29.37, 367.9, 116.6, 1.23]
+	fomalhaut_star = ["Fomalhaut", "22.57.38", -29.37, 367.9, 116.6, 1.23]
 	gacrux_star = ["Gacrux", "12.31.09", -57.06, 266.6, 173.9, 1.65] # Southern Cross
 	gamma_phoenicis_star = ["Gamma Phoenicis", "01.28.21", -43.19, 207.6, 184.9, 3.44]
 	gienah_star = ["Gienah", "12.15.48", -17.32, 160.1, 277.8, 2.59]
@@ -275,7 +275,7 @@ if __name__ == '__main__':
 								delta_velorum_star,
 								diphda_star,
 								dschubba_star,
-								formalhaut_star,
+								fomalhaut_star,
 								gacrux_star,
 								gamma_phoenicis_star,
 								gienah_star,

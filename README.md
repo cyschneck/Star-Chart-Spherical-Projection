@@ -301,7 +301,7 @@ starPositionOverTime(builtInStarName=None,
 			save_to_csv=None)
 ```
 - **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
-- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar objct
+- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
 - **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** incrementYear: (float/int) number of year to increment from start to end by, defaults to `5` years
@@ -346,7 +346,7 @@ plotStarPositionOverTime(builtInStarName=None,
 			save_plot_name=None)
 ```
 - **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
-- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar objct
+- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
 - **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** DecOrRA: (string) Plot the Declination `D` or Right Ascension `RA`, defaults to `D`

@@ -193,17 +193,12 @@ def plotStarPositionOverTime(builtInStarName=None,
 	while y_increment > 20:
 		y_increment = 20
 
-	if year_lst[0] >= -2000: startYear_bce_ce = "{0} C.E".format(year_lst[0]) # positive years for C.E
-	if year_lst[0] < -2000: startYear_bce_ce = "{0} B.C.E".format(abs(year_lst[0])) # negative years for B.C.E
-	if year_lst[-1] >= -2000: endYear_bce_ce = "{0} C.E".format(year_lst[-1]) # positive years for C.E
-	if year_lst[-1] < -2000: endYear_bce_ce = "{0} B.C.E".format(abs(year_lst[-1])) # negative years for B.C.E
+	if year_lst[0] >= -2000: startYear_bce_ce = f"{year_lst[0]} C.E" # positive years for C.E
+	if year_lst[0] < -2000: startYear_bce_ce = f"{abs(year_lst[0])} B.C.E" # negative years for B.C.E
+	if year_lst[-1] >= -2000: endYear_bce_ce = f"{year_lst[-1]} C.E" # positive years for C.E
+	if year_lst[-1] < -2000: endYear_bce_ce = f"{abs(year_lst[-1])} B.C.E" # negative years for B.C.E
 	
-	plt.title("{0}'s {1} {2} from {3} to {4}, Every {5} Years".format(star_name,
-																	title,
-																	precession_label,
-																	startYear_bce_ce,
-																	endYear_bce_ce,
-																	incrementYear))
+	plt.title(f"{star_name}'s {title} {precession_label} from {startYear_bce_ce} to {endYear_bce_ce}, Every {incrementYear} Years")
 	plt.plot(year_lst, plot_y)
 	plt.xlabel("Year")
 	plt.ylabel(y_label)

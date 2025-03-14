@@ -74,25 +74,25 @@ def convertRadianstoRAhr(ra_in_radians):
 	if hours < 10: hours = '0' + str(hours) # convert 6 to 06
 	if minutes < 10: minutes = '0' + str(minutes) # convert 6 to 06
 	if seconds < 10: seconds = '0' + str(seconds) # convert 6 to 06
-	ra_in_hours = "{0}.{1}.{2}".format(hours, minutes, seconds)
+	ra_in_hours = f"{hours}.{minutes}.{seconds}"
 	return ra_in_hours
 
 def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_angle):
 	# Calculate the RA and Declination of a star based on changes due to Proper Motion
 	# returns calculated RA and Declination
 
-	logger.debug("Proper Motion for {0} Years".format(years_since_2000))
-	logger.debug("Date {0}, RA = {1}, Dec = {2}, PM Speed = {3}, PM Angle = {4}".format(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_angle))
+	logger.debug(f"Proper Motion for {years_since_2000} Years")
+	logger.debug(f"Date {years_since_2000}, RA = {star_ra}, Dec = {star_dec}, PM Speed = {star_pm_speed}, PM Angle = {star_pm_angle}")
 
 	star_pm_speed_degrees = 0.00000027777776630942 * star_pm_speed # convert mas/yr to degrees/yr
 	star_pm_speed_radains = np.deg2rad(star_pm_speed_degrees) # radains/yr
 	star_movement_radains_per_year = star_pm_speed_radains * years_since_2000
-	logger.debug("Movement Over Time = {0} (rad), {1} (deg)".format(star_movement_radains_per_year, np.rad2deg(star_movement_radains_per_year)))
+	logger.debug(f"Movement Over Time = {star_movement_radains_per_year} (rad), {star_movement_radains_per_year} (deg)")
 
 	ra_x_difference_component = star_movement_radains_per_year * math.cos(np.deg2rad(star_pm_angle))
 	dec_y_difference_component = star_movement_radains_per_year * math.sin(np.deg2rad(star_pm_angle))
-	logger.debug("(RA)  x Difference = {0} (rad) = {1} degrees".format(ra_x_difference_component, np.rad2deg(ra_x_difference_component)))
-	logger.debug("(DEC) y Difference = {0} (rad) = {1} degrees".format(dec_y_difference_component, np.rad2deg(dec_y_difference_component)))
+	logger.debug(f"(RA)  x Difference = {ra_x_difference_component} (rad) = {np.rad2deg(ra_x_difference_component)} degrees"))
+	logger.debug(f"(DEC) y Difference = {dec_y_difference_component} (rad) = {np.rad2deg(dec_y_difference_component)} degrees")
 
 	star_adjusted_ra = star_ra + ra_x_difference_component # in radians with proper motion (potentionally will be flipped 180 based on new declination)
 	star_adjusted_declination = star_dec + np.rad2deg(dec_y_difference_component) # in degrees new with proper motion
@@ -120,8 +120,8 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 			dec_x = abs(dec_x)
 		if dec_x > -360 and dec_x < -270:
 			dec_x = 90 + (dec_x + 270)
-	logger.debug("New mapped dec = {0}".format(dec_x))
-	logger.debug("Original Dec = {0}, New Dec = {1}".format(star_dec, star_adjusted_declination))
+	logger.debug(f"New mapped dec = {dec_x}")
+	logger.debug(f"Original Dec = {star_dec}, New Dec = {star_adjusted_declination}")
 
 	# flip over RA by rotating 180
 	is_flipped_across_pole = False
@@ -134,21 +134,21 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 		while (star_over_ninety_ra < -90):
 			star_over_ninety_ra += 90
 			is_flipped_across_pole = not is_flipped_across_pole # flip across the center by 180
-	logger.debug("Original RA = {0}, New RA = {1}, Flipped = {2} (if true +180?)".format(np.rad2deg(star_ra), np.rad2deg(star_adjusted_ra), is_flipped_across_pole))
+	logger.debug(f"Original RA = {np.rad2deg(star_ra)}, New RA = {np.rad2deg(star_adjusted_ra)}, Flipped = {is_flipped_across_pole} (if true +180?)")
 
 	# If declination goes over ninety, flip over by 180
 	if is_flipped_across_pole:
 		star_adjusted_ra = star_adjusted_ra + np.deg2rad(180)
 
 	star_adjusted_declination = dec_x
-	logger.debug("Final RA: {0} degrees".format(np.rad2deg(star_adjusted_ra)))
-	logger.debug("Final Dec: {0} degrees ".format(star_adjusted_declination))
+	logger.debug(f"Final RA: {np.rad2deg(star_adjusted_ra)} degrees")
+	logger.debug(f"Final Dec: {star_adjusted_declination} degrees")
 	return star_adjusted_ra, star_adjusted_declination
 
 def calculatePositionOfPolePrecession(years_since_2000, original_declination, original_ra):
 	# Calculate change in the position of the pole due to precession
 	obliquity_for_YYYY = 23.439167
-	logger.debug("Years Since 2000 = {0}".format(years_since_2000))
+	logger.debug(f"Years Since 2000 = {years_since_2000}")
 
 	# Rate of change of right ascension and declination of a star due to precession
 	declination_change_arcseconds_per_year = (19.9 * math.cos(original_ra)) * years_since_2000
@@ -160,8 +160,8 @@ def calculatePositionOfPolePrecession(years_since_2000, original_declination, or
 	final_declination_due_to_precession = original_declination + change_in_declination
 	final_ra_due_to_precession = original_ra + change_in_ra
 
-	logger.debug("Dec: {0} + {1} = {2}".format(original_declination, change_in_declination, final_declination_due_to_precession))
-	logger.debug("RA:  {0} + {1} = {2}".format(original_ra, change_in_ra, final_ra_due_to_precession))
+	logger.debug(f"Dec: {original_declination} + {change_in_declination} = {final_declination_due_to_precession}")
+	logger.debug(f"RA:  {original_ra} + {change_in_ra} = {final_ra_due_to_precession}")
 	return final_ra_due_to_precession, final_declination_due_to_precession
 
 def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculate):
@@ -187,7 +187,7 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	logger.debug("INCLUDING PRECESSION VIA VONDRAK")
 	vondrak_dec, vondrak_ra = vondrakDreamalligator(star_name, star_ra, np.deg2rad(star_dec), 2000 + year_YYYY_since_2000)
 	vondrak_dec = np.rad2deg(vondrak_dec)
-	logger.debug("Precession for Star = {0}, Declination = {1}, RA = {2}".format(star_name, vondrak_dec, vondrak_ra))
+	logger.debug(f"Precession for Star = {star_name}, Declination = {vondrak_dec}, RA = {vondrak_ra}")
 	return vondrak_dec, vondrak_ra
 
 def generateStereographicProjection(starList=None, 
@@ -208,30 +208,30 @@ def generateStereographicProjection(starList=None,
 	y_dec_values = []
 	for star in list_of_stars:
 		if maxMagnitudeFilter is None or star[5] < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
-			logger.debug("Star = '{0}'".format(star[0]))
+			logger.debug(f"Star = '{star[0]}'")
 
 			radius_of_circle = star_chart_spherical_projection.calculateRadiusOfCircle(declination_min, northOrSouth)
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
-			logger.debug("'{0}' original RA = {1} and Declination = {2}".format(star[0], np.rad2deg(star[1]), star[2]))
+			logger.debug(f"'{star[0]}' original RA = {np.rad2deg(star[1])} and Declination = {star[2]}")
 			star_ra, star_declination = calculateRAandDeclinationViaProperMotion(yearSince2000, 
 																				star[1], 
 																				star[2], 
 																				star[3], 
 																				star[4])
-			logger.debug("Adjusted: {0} RA (radians) = {1}".format(star[1], star_ra))
-			logger.debug("Adjusted via Proper Motion: '{0}': {1} Declination (degrees) = {2} ".format(star[0], star[2], star_declination))
+			logger.debug(f"Adjusted: {star[1]} RA (radians) = {star_ra}")
+			logger.debug(f"Adjusted via Proper Motion: '{star[1]}': {star[2]} Declination (degrees) = {star_declination} ")
 
 			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
 			# Vondrak accurate up  +/- 200K years around 2000
 			if isPrecessionIncluded:
 				star_declination, star_ra = precessionVondrak(star[0], star_ra, star_declination, yearSince2000)
-				logger.debug("Precession: {0} RA (radians)\nPrecession: Declination (degrees) = {1}".format(star_ra, star_declination))
+				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius
 				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) 
 
-				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 
 				in_range_value = False # Determine if within range of South/North Hemisphere
 				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
@@ -244,11 +244,11 @@ def generateStereographicProjection(starList=None,
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
-					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+					logger.debug(f"Original: '{star[0]}': {np.rad2deg(star[1])} RA (degrees) and {star[2]} Declination (degrees)")
 			if not isPrecessionIncluded:
 				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
 
-				logger.debug("{0}: {1} declination = {2:.4f} cm".format(star[0], star_declination, dec_ruler_position))
+				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 				in_range_value = False # Determine if within range of South/North Hemisphere
 				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
 					in_range_value = True # North
@@ -260,7 +260,7 @@ def generateStereographicProjection(starList=None,
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
-					logger.debug("Original: '{0}': {1} RA (degrees) and {2} Declination (degrees)".format(star[0], np.rad2deg(star[1]), star[2]))
+					logger.debug(f"Original: '{star[0]}': {np.rad2deg(star[1])} RA (degrees) and {star[2]} Declination (degrees)")
 
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
@@ -358,7 +358,7 @@ def plotStereographicProjection(builtInStars=[],
 
 		# Display Axis
 		if displayDeclinationNumbers:
-			ruler_declination_labels = ["{0}°".format(deg) for deg in ruler_declination_labels]
+			ruler_declination_labels = [f"{deg}°" for deg in ruler_declination_labels]
 			plt.yticks(ruler_declination_position, fontsize=7)
 			ax.set_yticklabels(ruler_declination_labels)
 			ax.set_rlabel_position(120) # declination labels position
@@ -373,7 +373,7 @@ def plotStereographicProjection(builtInStars=[],
 	if northOrSouth == "South":
 		displayDeclinationMarksOnAxis(declination_values, southern_declination_min, southern_declination_max, True)
 
-	logger.debug("\n{0}ern Range of Declination: {1} to {2}".format(northOrSouth, declination_min, declination_max))
+	logger.debug(f"\n{northOrSouth}ern Range of Declination: {declination_min} to {declination_max}")
 
 	# convert to x and y values for stars
 	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=listOfStars, 
@@ -403,9 +403,9 @@ def plotStereographicProjection(builtInStars=[],
 						horizontalalignment='center', verticalalignment='bottom', 
 						fontsize=8)
 	for i, txt in enumerate(x_star_labels):
-		logger.debug("{0}: {1:05f} RA (degrees) and {2:05f} Declination (ruler)".format(txt, np.rad2deg(x_ra_values[i]), y_dec_values[i]))
+		logger.debug(f"{txt}: {np.rad2deg(x_ra_values[i]):05f} RA (degrees) and {y_dec_values[i]:05f} Declination (ruler)")
 		output_string = "Proper Motion"
-		logger.debug("{0} for {1} Years\n".format(output_string, yearSince2000))
+		logger.debug(f"{output_string} for {yearSince2000} Years\n")
 
 	ax.scatter(x_ra_values, y_dec_values, s=10, c=fig_plot_color)
 
@@ -418,18 +418,12 @@ def plotStereographicProjection(builtInStars=[],
 	if abs(years_for_title) > 1000000:
 		years_for_title = years_for_title / 1000000
 		suffix = "M"
-	if yearSince2000 >= -2000: year_bce_ce = "{0} C.E".format(yearSince2000 + 2000) # positive years for C.E
-	if yearSince2000 < -2000: year_bce_ce = "{0} B.C.E".format(abs(yearSince2000 + 2000)) # negative years for B.C.E
+	if yearSince2000 >= -2000: year_bce_ce = f"{yearSince2000 + 2000} C.E" # positive years for C.E
+	if yearSince2000 < -2000: year_bce_ce = f"{abs(yearSince2000 + 2000)} B.C.E" # negative years for B.C.E
 	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot
-		ax.set_title("{0}ern Hemisphere [{1}{2} Years Since 2000 ({3})]: {4}° to {5}° {6}".format(northOrSouth,
-																								years_for_title,
-																								suffix,
-																								year_bce_ce,
-																								declination_max,
-																								declination_min,
-																								figure_has_precession_extra_string))
+		ax.set_title(f"{northOrSouth}ern Hemisphere [{years_for_title}{suffix} Years Since 2000 ({year_bce_ce})]: {declination_max}° to {declination_min}° {figure_has_precession_extra_string}")
 	else:
 		ax.set_title(fig_plot_title)
 
@@ -440,3 +434,5 @@ def plotStereographicProjection(builtInStars=[],
 	# Optional: Show the plot when it has been calculated
 	if showPlot:
 		plt.show()
+	elseS:
+		plt.close()

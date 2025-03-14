@@ -91,7 +91,7 @@ def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec
 
 	ra_x_difference_component = star_movement_radains_per_year * math.cos(np.deg2rad(star_pm_angle))
 	dec_y_difference_component = star_movement_radains_per_year * math.sin(np.deg2rad(star_pm_angle))
-	logger.debug(f"(RA)  x Difference = {ra_x_difference_component} (rad) = {np.rad2deg(ra_x_difference_component)} degrees"))
+	logger.debug(f"(RA)  x Difference = {ra_x_difference_component} (rad) = {np.rad2deg(ra_x_difference_component)} degrees")
 	logger.debug(f"(DEC) y Difference = {dec_y_difference_component} (rad) = {np.rad2deg(dec_y_difference_component)} degrees")
 
 	star_adjusted_ra = star_ra + ra_x_difference_component # in radians with proper motion (potentionally will be flipped 180 based on new declination)
@@ -434,5 +434,5 @@ def plotStereographicProjection(builtInStars=[],
 	# Optional: Show the plot when it has been calculated
 	if showPlot:
 		plt.show()
-	elseS:
+	else:
 		plt.close()

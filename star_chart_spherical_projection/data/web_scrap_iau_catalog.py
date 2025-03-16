@@ -121,6 +121,7 @@ def inTheSkyStarPage(page_link=None):
 	for div in all_divs:
 		span = div.find("span", "formlabel")
 		if span.text == "Other names":
+			# get all alternative names
 			other_names = div.find("div")
 			names = other_names.get_text("\n").split("\n")
 			all_names = []
@@ -130,6 +131,29 @@ def inTheSkyStarPage(page_link=None):
 				if name[0] == " ":
 					all_names[-1] = all_names[-1] + name
 			print(all_names)
+	table_body = full_body.find("table", "objinfo stripy")
+	rows = table_body.find_all("tr")
+	star_values = {}
+	for row in rows:
+		name_value = row.find_all("td")
+		#print(name_value[1])
+		#value = re.sub(r"\(.*?\)|\[.*?\]","",name_value[1].text) # remove links in brackets
+		value = re.sub(r"\[.*?\]","",name_value[1].text) # remove links in brackets
+		value = value.replace("\\", "") # replace random string in declination
+		value = value.replace("−", "-")
+		value = value.strip()
+		if "Right ascension" in name_value[0].text:
+			star_values["Right Ascension"] = value
+		if "Declination" in name_value[0].text:
+			print(value)
+			star_values["Declination"] = value
+		if "Magnitude" in name_value[0].text:
+			star_values["Magnitude"] = value
+		if "Proper Motion (speed)" in name_value[0].text:
+			star_value["Proper Motion (Speed)"] = value
+		if "Proper Motion (pos ang)" in name_value[0].text:
+			star_value["Proper Motion (Angle)"] = value
+	print(star_values)
 	
 if __name__ == '__main__':
 	#checkIAU_CSN(save_csv=False) # set to True if changes require updating existing script

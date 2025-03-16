@@ -97,7 +97,7 @@ def inTheSkyAllStars(page_links=None, save_csv=False):
 	random_agent = random.choice(user_agents)
 	# iterate through all pages
 	for num_page in page_links:
-		print(num_page)
+		#print(num_page)
 		req_with_headers = request.Request(url=num_page, headers={'User-Agent': random_agent})
 		catalog_html = request.urlopen(req_with_headers).read()
 		full_body = BeautifulSoup(catalog_html, 'html.parser')
@@ -107,9 +107,7 @@ def inTheSkyAllStars(page_links=None, save_csv=False):
 		for star_link in all_stars_links:
 			if "object" in star_link and "constellation" not in star_link:
 				print(star_link)
-				#inTheSkyStarPage(star_link)
-				break
-			break
+				inTheSkyStarPage(star_link)
 		break
 
 def inTheSkyStarPage(page_link=None):
@@ -117,8 +115,8 @@ def inTheSkyStarPage(page_link=None):
 	req_with_headers = request.Request(url=page_link, headers={'User-Agent': random_agent})
 	star_html = request.urlopen(req_with_headers).read()
 	full_body = BeautifulSoup(star_html, 'html.parser')
+	print(full_body.find("p", "widetitle").text)
 	all_names = full_body.find_all("div")
-	print(all_names)
 
 	
 if __name__ == '__main__':

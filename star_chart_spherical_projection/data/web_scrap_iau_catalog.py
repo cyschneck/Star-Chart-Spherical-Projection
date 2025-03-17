@@ -126,7 +126,7 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 	
 	# if either the common name is found or the desgination is found in the list of possible
 	common_name = list(set(iau_names["Common Name"]).intersection(all_names))
-	desgination = list(set(iau_names["Desgination"]).intersection(all_names))
+	desgination = list(set(iau_names["Designation"]).intersection(all_names))
 	# if star is a valid IAU star, with a value shared name
 	data = []
 	if len(common_name) == 1 or len(desgination) == 1: 
@@ -179,7 +179,7 @@ def compareOutputs():
 	
 if __name__ == '__main__':
 	iau_dataframe = IAU_CSN(save_csv=True)
-	#all_pages = inTheSkyAllPages()
-	#inTheSkyAllStars(all_pages, iau_dataframe, True)
+	all_pages = inTheSkyAllPages()
+	inTheSkyAllStars(all_pages, iau_dataframe, True)
 	compareOutputs()
 

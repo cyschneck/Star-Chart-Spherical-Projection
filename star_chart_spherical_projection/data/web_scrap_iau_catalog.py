@@ -114,14 +114,22 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				if name[0] == " ":
 					all_names[-1] = all_names[-1] + name
 	
-	common_name = list(set(iau_names).intersection(all_names))
-	#hip_designation = 
+	# if either the common name is found or the HR desgination is found in the list of possible
+	common_name = list(set(iau_names["Common Name"]).intersection(all_names))
+	hr_desgination = list(set(iau_names["HR"]).intersection(all_names))
 	# if star is a valid IAU star, with a value shared name
 	data = []
-	if len(common_name) == 1:
-		common_name = common_name[0]
-		print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name}")
-		star_values["Common Name"] = common_name
+	if len(common_name) == 1 or len(hr_desgination) == 1: 
+		if len(common_name) == 1:
+			common_name = common_name[0]
+			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({hr_desgination[0]})")
+			star_values["Common Name"] = common_name
+		else:
+			# get common name used by IAU, not used in website
+			iau_name = iau_names.loc[iau_names["HR"] == hr_desgination[0]]["Common Name"]
+			common_name = iau_name.item()
+			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({hr_desgination[0]})")
+			
 		star_values["Alternative Names"] = all_names
 
 		# star position properties
@@ -158,10 +166,8 @@ def compareOutputs():
 	print(list(set(IAU_CSN()) - set(sky_stars)))
 	
 if __name__ == '__main__':
-	all_iau_named_stars = IAU_CSN()
-	print(all_iau_named_stars)
-	#print(len(all_iau_named_stars))
-	#all_pages = inTheSkyAllPages()
-	#inTheSkyAllStars(all_pages, all_iau_named_stars, True)
+	iau_dataframe = IAU_CSN()
+	all_pages = inTheSkyAllPages()
+	inTheSkyAllStars(all_pages, iau_dataframe, True)
 	#compareOutputs()
 

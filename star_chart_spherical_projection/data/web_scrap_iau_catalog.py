@@ -23,8 +23,7 @@ user_agents = [
 		'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15'
 ]
 
-
-def IAU_CSN():
+def IAU_CSN(save_csv=False):
 	# get all valid named stars
 	random_agent = random.choice(user_agents)
 	iau_catalog_url = "https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt"
@@ -35,17 +34,28 @@ def IAU_CSN():
 	full_body_text = (full_body.text).split("\n")
 
 	star_data = []
-	for line in full_body_text:
+	for i, line in enumerate(full_body_text):
 		iau_named_stars = {}
 		if line != "" and line[0] != "#" and line[0] != "$":
-			common_name = line.split()[0]
-			hr_designation = line.split()[2]
-			if hr_designation == "HR":
-				hr_designation += " " + line.split()[3]
-			iau_named_stars["Common Name"] = common_name
-			iau_named_stars["HR"] = hr_designation
+			full_line = line.split("  ") # split on double space
+			full_line = (list(filter(None, full_line))) # remove empty strings
+			full_line = [x.replace("_", "") for x in full_line] # remove underscores
+			full_line = [x.strip() for x in full_line] # strip leading/trailing whitespace
+			if "Asellus Australis" in full_line[0] or "Polaris Australis" in full_line[0]: 
+				# edge case where a long name is not splitting based on double space
+				names = full_line[0].split(" ")
+				first = names[0] + " " + names[1]
+				second = names[2] + " " + names[3]
+				third = names[4] + " " + names[5]
+				split_elements = [first, second, third]
+				full_line = split_elements + full_line[1:]
+			iau_named_stars["Common Name"] = full_line[0]
+			iau_named_stars["Designation"] = full_line[2]
 			star_data.append(iau_named_stars)
+
 	iau_stars = pd.DataFrame(star_data)
+	if save_csv:
+		iau_stars.to_csv("iau_star_properties.csv", index=False)
 	return iau_stars
 	
 
@@ -114,21 +124,21 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				if name[0] == " ":
 					all_names[-1] = all_names[-1] + name
 	
-	# if either the common name is found or the HR desgination is found in the list of possible
+	# if either the common name is found or the desgination is found in the list of possible
 	common_name = list(set(iau_names["Common Name"]).intersection(all_names))
-	hr_desgination = list(set(iau_names["HR"]).intersection(all_names))
+	desgination = list(set(iau_names["Desgination"]).intersection(all_names))
 	# if star is a valid IAU star, with a value shared name
 	data = []
-	if len(common_name) == 1 or len(hr_desgination) == 1: 
+	if len(common_name) == 1 or len(desgination) == 1: 
 		if len(common_name) == 1:
 			common_name = common_name[0]
-			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({hr_desgination[0]})")
+			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
 			star_values["Common Name"] = common_name
 		else:
 			# get common name used by IAU, not used in website
-			iau_name = iau_names.loc[iau_names["HR"] == hr_desgination[0]]["Common Name"]
+			iau_name = iau_names.loc[iau_names["Designation"] == desgination[0]]["Common Name"]
 			common_name = iau_name.item()
-			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({hr_desgination[0]})")
+			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
 			
 		star_values["Alternative Names"] = all_names
 
@@ -159,15 +169,17 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 		return None
 	
 def compareOutputs():
-	found_stars = pd.read_csv("star_properties.csv")
-	sky_stars = found_stars["Common Name"]
-	print(len(IAU_CSN()))
-	print(len(sky_stars))
-	print(list(set(IAU_CSN()) - set(sky_stars)))
+	sky_stars = pd.read_csv("star_properties.csv")["Common Name"]
+	iau_stars = IAU_CSN()["Common Name"]
+	diff_stars = list(set(iau_stars) - set(sky_stars))
+	print(f"IAU - Website = {len(iau_stars)} - {len(sky_stars)} = {len(iau_stars) - len(sky_stars)}")
+	print(diff_stars[0])
+	first = IAU_CSN().loc[IAU_CSN()["Common Name"] == diff_stars[0]]
+	print(first)
 	
 if __name__ == '__main__':
-	iau_dataframe = IAU_CSN()
-	all_pages = inTheSkyAllPages()
-	inTheSkyAllStars(all_pages, iau_dataframe, True)
-	#compareOutputs()
+	iau_dataframe = IAU_CSN(save_csv=True)
+	#all_pages = inTheSkyAllPages()
+	#inTheSkyAllStars(all_pages, iau_dataframe, True)
+	compareOutputs()
 

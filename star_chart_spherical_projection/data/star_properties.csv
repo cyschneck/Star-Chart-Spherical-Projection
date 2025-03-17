@@ -1,6 +1,7 @@
 Common Name,Alternative Names,Right Ascension,Declination,Magnitude
 Sirius,"['Sirius', 'α-CMa', 'Alpha Canis Majoris', '9-CMa', '9 Canis Majoris', 'HR 2491', 'HD 48915', 'HIP 32349']",06h45m09s,"-16°42'47""",-1.44
 Canopus,"['Canopus', 'α-Car', 'Alpha Carinae', 'HR 2326', 'HD 45348', 'HIP 30438', 'TYC 8534-2277-1']",06h23m57s,"-52°41'44""",-0.63
+Rigil Kentaurus,"['Rigil Kentaurus', 'α-Cen', 'Alpha Centauri', 'HR 5459', 'HD 128620', 'HIP 71683']",14h39m40s,"-60°50'06""",-0.01
 Vega,"['Vega', 'α-Lyr', 'Alpha Lyrae', '3-Lyr', '3 Lyrae', 'HR 7001', 'HD 172167', 'HIP 91262']",18h36m56s,"+38°46'58""",0.03
 Capella,"['Capella', 'α-Aur', 'Alpha Aurigae', '13-Aur', '13 Aurigae', 'HR 1708', 'HD 34029', 'NSV 1897', 'HIP 24608']",05h16m41s,"+45°59'56""",0.08
 Arcturus,"['Arcturus', 'α-Boo', 'Alpha Bootis', '16-Boo', '16 Bootis', 'HR 5340', 'HD 124897', 'NSV 6603', 'HIP 69673', 'TYC 1472-1436-1']",14h15m40s,"+19°11'14""",0.16
@@ -31,6 +32,7 @@ Alnilam,"['Alnilam', 'ε-Ori', 'Epsilon Orionis', '46-Ori', '46 Orionis', 'HR 19
 Alioth,"['Alioth', 'ε-UMa', 'Epsilon Ursae Majoris', '77-UMa', '77 Ursae Majoris', 'HR 4905', 'HD 112185', 'HIP 62956', 'TYC 3845-1190-1']",12h54m01s,"+55°57'35""",1.76
 Alnair,"['Alnair', 'α-Gru', 'Alpha Gruis', 'HR 8425', 'HD 209952', 'NSV 14040', 'HIP 109268', 'TYC 8438-1959-1']",22h08m13s,"-46°57'38""",1.77
 Mirfak,"['Mirfak', 'α-Per', 'Alpha Persei', '33-Per', '33 Persei', 'HR 1017', 'HD 20902', 'NSV 1125', 'HIP 15863', 'TYC 3320-2808-1']",03h24m19s,"+49°51'40""",1.81
+Kaus Australis,"['Kaus Australis', 'ε-Sgr', 'Epsilon Sagittarii', '20-Sgr', '20 Sagittarii', 'HR 6879', 'HD 169022', 'HIP 90185', 'TYC 7401-3471-1']",18h24m10s,"-34°23'03""",1.81
 Dubhe,"['Dubhe', 'α-UMa', 'Alpha Ursae Majoris', '50-UMa', '50 Ursae Majoris', 'HR 4301', 'HD 95689', 'NSV 5070', 'HIP 54061', 'TYC 4146-1274-1']",11h03m43s,"+61°45'04""",1.82
 Wezen,"['Wezen', 'δ-CMa', 'Delta Canis Majoris', '25-CMa', '25 Canis Majoris', 'HR 2693', 'HD 54605', 'NSV 3424', 'HIP 34444', 'TYC 6532-5001-1']",07h08m23s,"-26°23'35""",1.84
 Sargas,"['Sargas', 'θ-Sco', 'Theta Scorpii', 'HR 6553', 'HD 159532', 'NSV 9233', 'HIP 86228', 'TYC 7892-7679-1']",17h37m19s,"-42°59'52""",1.86
@@ -46,6 +48,7 @@ Mirzam,"['Mirzam', 'β-CMa', 'Beta Canis Majoris', '2-CMa', '2 Canis Majoris', '
 Alphard,"['Alphard', 'α-Hya', 'Alpha Hydrae', '30-Hya', '30 Hydrae', 'HR 3748', 'HD 81797', 'NSV 4496', 'HIP 46390', 'TYC 5460-1592-1']",09h27m35s,"-08°39'30""",1.98
 Sirius,"['Sirius', 'α-CMa', 'Alpha Canis Majoris', '9-CMa', '9 Canis Majoris', 'HR 2491', 'HD 48915', 'HIP 32349']",06h45m09s,"-16°42'47""",-1.44
 Canopus,"['Canopus', 'α-Car', 'Alpha Carinae', 'HR 2326', 'HD 45348', 'HIP 30438', 'TYC 8534-2277-1']",06h23m57s,"-52°41'44""",-0.63
+Rigil Kentaurus,"['Rigil Kentaurus', 'α-Cen', 'Alpha Centauri', 'HR 5459', 'HD 128620', 'HIP 71683']",14h39m40s,"-60°50'06""",-0.01
 Vega,"['Vega', 'α-Lyr', 'Alpha Lyrae', '3-Lyr', '3 Lyrae', 'HR 7001', 'HD 172167', 'HIP 91262']",18h36m56s,"+38°46'58""",0.03
 Capella,"['Capella', 'α-Aur', 'Alpha Aurigae', '13-Aur', '13 Aurigae', 'HR 1708', 'HD 34029', 'NSV 1897', 'HIP 24608']",05h16m41s,"+45°59'56""",0.08
 Arcturus,"['Arcturus', 'α-Boo', 'Alpha Bootis', '16-Boo', '16 Bootis', 'HR 5340', 'HD 124897', 'NSV 6603', 'HIP 69673', 'TYC 1472-1436-1']",14h15m40s,"+19°11'14""",0.16
@@ -76,6 +79,7 @@ Alnilam,"['Alnilam', 'ε-Ori', 'Epsilon Orionis', '46-Ori', '46 Orionis', 'HR 19
 Alioth,"['Alioth', 'ε-UMa', 'Epsilon Ursae Majoris', '77-UMa', '77 Ursae Majoris', 'HR 4905', 'HD 112185', 'HIP 62956', 'TYC 3845-1190-1']",12h54m01s,"+55°57'35""",1.76
 Alnair,"['Alnair', 'α-Gru', 'Alpha Gruis', 'HR 8425', 'HD 209952', 'NSV 14040', 'HIP 109268', 'TYC 8438-1959-1']",22h08m13s,"-46°57'38""",1.77
 Mirfak,"['Mirfak', 'α-Per', 'Alpha Persei', '33-Per', '33 Persei', 'HR 1017', 'HD 20902', 'NSV 1125', 'HIP 15863', 'TYC 3320-2808-1']",03h24m19s,"+49°51'40""",1.81
+Kaus Australis,"['Kaus Australis', 'ε-Sgr', 'Epsilon Sagittarii', '20-Sgr', '20 Sagittarii', 'HR 6879', 'HD 169022', 'HIP 90185', 'TYC 7401-3471-1']",18h24m10s,"-34°23'03""",1.81
 Dubhe,"['Dubhe', 'α-UMa', 'Alpha Ursae Majoris', '50-UMa', '50 Ursae Majoris', 'HR 4301', 'HD 95689', 'NSV 5070', 'HIP 54061', 'TYC 4146-1274-1']",11h03m43s,"+61°45'04""",1.82
 Wezen,"['Wezen', 'δ-CMa', 'Delta Canis Majoris', '25-CMa', '25 Canis Majoris', 'HR 2693', 'HD 54605', 'NSV 3424', 'HIP 34444', 'TYC 6532-5001-1']",07h08m23s,"-26°23'35""",1.84
 Sargas,"['Sargas', 'θ-Sco', 'Theta Scorpii', 'HR 6553', 'HD 159532', 'NSV 9233', 'HIP 86228', 'TYC 7892-7679-1']",17h37m19s,"-42°59'52""",1.86
@@ -141,11 +145,13 @@ Sheratan,"['Sheratan', 'β-Ari', 'Beta Arietis', '6-Ari', '6 Arietis', 'HR 553',
 Phact,"['Phact', 'α-Col', 'Alpha Columbae', 'HR 1956', 'HD 37795', 'NSV 2549', 'HIP 26634', 'TYC 7064-1357-1', 'Gaia EDR3- 2900546759663847168']",05h39m38s,"-34°04'27""",2.66
 ,"['β-Crv', 'Beta Corvi', '9-Crv', '9 Corvi', 'HR 4786', 'HD 109379', 'NSV 5729', 'HIP 61359', 'TYC 6683-1116-1', 'Gaia EDR3- 3501215734352781440']",12h34m23s,"-23°23'49""",2.66
 ,"['ι-Aur', 'Iota Aurigae', '3-Aur', '3 Aurigae', 'HR 1577', 'HD 31398', 'NSV 1778', 'HIP 23015', 'TYC 2391-1446-1', 'Gaia EDR3- 160886283751041408']",04h56m59s,"+33°09'57""",2.66
+Kaus Media,"['Kaus Media', 'δ-Sgr', 'Delta Sagittarii', '19-Sgr', '19 Sagittarii', 'HR 6859', 'HD 168454', 'HIP 89931', 'TYC 6856-2170-1', 'Gaia EDR3- 4049506483413484672']",18h20m59s,"-29°49'41""",2.68
 Ruchbah,"['Ruchbah', 'δ-Cas', 'Delta Cassiopeiae', '37-Cas', '37 Cassiopeiae', 'HR 403', 'HD 8538', 'HIP 6686', 'TYC 4031-3289-1', 'Gaia EDR3- 510204838759030144']",01h25m49s,"+60°14'06""",2.68
 Muphrid,"['Muphrid', 'η-Boo', 'Eta Bootis', '8-Boo', '8 Bootis', 'HR 5235', 'HD 121370', 'HIP 67927', 'TYC 1470-1157-1']",13h54m41s,"+18°23'54""",2.68
 Tarazed,"['Tarazed', 'γ-Aql', 'Gamma Aquilae', '50-Aql', '50 Aquilae', 'HR 7525', 'HD 186791', 'HIP 97278', 'TYC 1061-2577-1', 'Gaia EDR3- 4302054339959905920']",19h46m15s,"+10°36'47""",2.69
 Izar,"['Izar', 'ε-Boo', 'Epsilon Bootis', '36-Boo', '36 Bootis', 'HR 5506', 'HD 129989']",14h44m59s,"+27°04'27""",2.70
 Zubenelgenubi,"['Zubenelgenubi', 'α²-Lib', 'Alpha2 Librae', '9-Lib', '9 Librae', 'HR 5531', 'HD 130841', 'NSV 6827', 'HIP 72622', 'TYC 6155-1210-1']",14h50m52s,"-16°02'30""",2.73
+Yed Prior,"['Yed Prior', 'δ-Oph', 'Delta Ophiuchi', '1-Oph', '1 Ophiuchi', 'HR 6056', 'HD 146051', 'NSV 7556', 'HIP 79593', 'TYC 5037-1068-1', 'Gaia EDR3- 4357027756659697664']",16h14m20s,"-03°41'41""",2.73
 ,"['η-Dra', 'Eta Draconis', '14-Dra', '14 Draconis', 'HR 6132', 'HD 148387', 'NSV 7713', 'HIP 80331', 'TYC 4190-2568-1', 'Gaia EDR3- 1625209684868707328']",16h23m59s,"+61°30'52""",2.73
 ,"['δ-Cru', 'Delta Crucis', 'HR 4656', 'HD 106490', 'HIP 59747', 'TYC 8645-2263-1', 'Gaia EDR3- 6071060144089351808']",12h15m08s,"-58°44'56""",2.74
 Porrima,"['Porrima', 'γ-Vir', 'Gamma Virginis', '29-Vir', '29 Virginis', 'HR 4825', 'HD 110379', 'NSV 5859', 'HIP 61941']",12h41m40s,"-01°26'58""",2.74
@@ -155,12 +161,16 @@ Cebalrai,"['Cebalrai', 'β-Oph', 'Beta Ophiuchi', '60-Oph', '60 Ophiuchi', 'HR 6
 Kornephoros,"['Kornephoros', 'β-Her', 'Beta Herculis', '27-Her', '27 Herculis', 'HR 6148', 'HD 148856', 'NSV 7778', 'HIP 80816', 'TYC 1518-1442-1', 'Gaia EDR3- 1297565458994346240']",16h30m13s,"+21°29'22""",2.78
 Cursa,"['Cursa', 'β-Eri', 'Beta Eridani', '67-Eri', '67 Eridani', 'HR 1666', 'HD 33111', 'NSV 1841', 'HIP 23875', 'TYC 4759-1671-1']",05h07m51s,"-05°05'10""",2.79
 Rastaban,"['Rastaban', 'β-Dra', 'Beta Draconis', '23-Dra', '23 Draconis', 'HR 6536', 'HD 159181', 'HIP 85670', 'TYC 3521-1800-1', 'Gaia EDR3- 1415230383034813824']",17h30m25s,"+52°18'05""",2.80
+Kaus Borealis,"['Kaus Borealis', 'λ-Sgr', 'Lambda Sagittarii', '22-Sgr', '22 Sagittarii', 'HR 6913', 'HD 169916', 'HIP 90496', 'TYC 6861-3180-1', 'Gaia EDR3- 4076915349846977664']",18h27m58s,"-25°25'21""",2.81
 Vindemiatrix,"['Vindemiatrix', 'ε-Vir', 'Epsilon Virginis', '47-Vir', '47 Virginis', 'HR 4932', 'HD 113226', 'NSV 6064', 'HIP 63608', 'TYC 886-1326-1', 'Gaia EDR3- 3736865265441207424']",13h02m10s,"+10°57'33""",2.82
 Tureis,"['Tureis', 'ρ-Pup', 'Rho Puppis', '15-Pup', '15 Puppis', 'HR 3185', 'HD 67523', 'HIP 39757', 'TYC 6555-3245-1', 'Gaia EDR3- 5698015743046182272']",08h07m32s,"-24°18'14""",2.83
 Algenib,"['Algenib', 'γ-Peg', 'Gamma Pegasi', '88-Peg', '88 Pegasi', 'HR 39', 'HD 886', 'HIP 1067', 'TYC 1179-1775-1', 'Gaia EDR3- 2769202742740232960']",00h13m14s,"+15°11'00""",2.84
 Nihal,"['Nihal', 'β-Lep', 'Beta Leporis', '9-Lep', '9 Leporis', 'HR 1829', 'HD 36079', 'NSV 2008', 'HIP 25606', 'TYC 5928-1657-1', 'Gaia EDR3- 2968097043227107840']",05h28m14s,"-20°45'32""",2.84
+,"['δ-Cap', 'Delta Capricorni', '49-Cap', '49 Capricorni', 'HR 8322', 'HD 207098', 'HIP 107556', 'TYC 6363-1044-1', 'Gaia EDR3- 6838311796136238976']",21h47m02s,"-16°07'42""",2.85
+,"['δ-Cap', 'Delta Capricorni', '49-Cap', '49 Capricorni', 'HR 8322', 'HD 207098', 'HIP 107556', 'TYC 6363-1044-1', 'Gaia EDR3- 6838311796136238976']",21h47m02s,"-16°07'42""",2.85
 Alcyone,"['Alcyone', 'η-Tau', 'Eta Tauri', '25-Tau', '25 Tauri', 'HR 1165', 'HD 23630', 'HIP 17702', 'TYC 1800-2202-1', 'Gaia EDR3- 66714384142368256']",03h47m29s,"+24°06'17""",2.88
 Gomeisa,"['Gomeisa', 'β-CMi', 'Beta Canis Minoris', '3-CMi', '3 Canis Minoris', 'HR 2845', 'HD 58715', 'HIP 36188', 'TYC 764-2774-1']",07h27m09s,"+08°17'21""",2.89
+Cor Caroli,"['Cor Caroli', 'α²-CVn', 'Alpha2 Canum Venaticorum', '12-CVn', '12 Canum Venaticorum', 'HR 4915', 'HD 112413', 'HIP 63125', 'TYC 3021-2645-1', 'Gaia EDR3- 1517698716348324992']",12h56m01s,"+38°19'07""",2.89
 ,"['π-Sco', 'Pi Scorpii', '6-Sco', '6 Scorpii', 'HR 5944', 'HD 143018', 'NSV 7371', 'HIP 78265', 'TYC 6783-2697-1', 'Gaia EDR3- 6235406071207202688']",15h58m51s,"-26°06'51""",2.89
 Sadalsuud,"['Sadalsuud', 'β-Aqr', 'Beta Aquarii', '22-Aqr', '22 Aquarii', 'HR 8232', 'HD 204867', 'HIP 106278', 'TYC 5216-1725-1', 'Gaia EDR3- 2671038928727970944']",21h31m33s,"-05°34'16""",2.89
 ,"['μ-Gem', 'Mu Geminorum', '13-Gem', '13 Geminorum', 'HR 2286', 'HD 44478', 'HIP 30343', 'TYC 1878-1429-1']",06h22m57s,"+22°30'49""",2.90
@@ -181,6 +191,7 @@ Furud,"['Furud', 'ζ-CMa', 'Zeta Canis Majoris', '1-CMa', '1 Canis Majoris', 'HR
 ,"['ε-Aur', 'Epsilon Aurigae', '7-Aur', '7 Aurigae', 'HR 1605', 'HD 31964', 'HIP 23416', 'TYC 2907-1275-1', 'Gaia EDR3- 205499655242974464']",05h01m58s,"+43°49'23""",3.03
 Pherkad,"['Pherkad', 'γ-UMi', 'Gamma Ursae Minoris', '13-UMi', '13 Ursae Minoris', 'HR 5735', 'HD 137422', 'HIP 75097', 'TYC 4414-2314-1']",15h20m43s,"+71°50'02""",3.03
 Seginus,"['Seginus', 'γ-Boo', 'Gamma Bootis', '27-Boo', '27 Bootis', 'HR 5435', 'HD 127762', 'HIP 71075', 'TYC 3036-1151-1']",14h32m04s,"+38°18'28""",3.04
+Tania Australis,"['Tania Australis', 'μ-UMa', 'Mu Ursae Majoris', '34-UMa', '34 Ursae Majoris', 'HR 4069', 'HD 89758', 'NSV 4829', 'HIP 50801', 'TYC 3004-1418-1']",10h22m19s,"+41°29'58""",3.04
 Altais,"['Altais', 'δ-Dra', 'Delta Draconis', '57-Dra', '57 Draconis', 'HR 7310', 'HD 180711', 'HIP 94376', 'TYC 4444-2239-1', 'Gaia EDR3- 2255173119658513408']",19h12m33s,"+67°39'43""",3.06
 Albireo,"['Albireo', 'β¹-Cyg', 'Beta1 Cygni', '6-Cyg', '6 Cygni', 'HR 7417', 'HD 183912', 'NSV 12105', 'HIP 95947', 'TYC 2133-2964-1']",19h30m43s,"+27°57'34""",3.07
 Dabih,"['Dabih', 'β-Cap', 'Beta Capricorni', '9-Cap', '9 Capricorni', 'HR 7776', 'HD 193495', 'HIP 100345', 'TYC 5753-2281-1']",20h21m00s,"-14°46'53""",3.07
@@ -195,6 +206,7 @@ Errai,"['Errai', 'γ-Cep', 'Gamma Cephei', '35-Cep', '35 Cephei', 'HR 8974', 'HD
 Acamar,"['Acamar', 'θ¹-Eri', 'Theta1 Eridani', 'HR 897', 'HD 18622', 'NSV 1002', 'HIP 13847', 'TYC 7563-1016-1', 'Gaia EDR3- 5044368071870093312']",02h58m15s,"-40°18'16""",3.22
 Sulafat,"['Sulafat', 'γ-Lyr', 'Gamma Lyrae', '14-Lyr', '14 Lyrae', 'HR 7178', 'HD 176437', 'NSV 11624', 'HIP 93194', 'TYC 2643-3346-1', 'Gaia EDR3- 2043823929421342848']",18h58m56s,"+32°41'22""",3.22
 Alfirk,"['Alfirk', 'β-Cep', 'Beta Cephei', '8-Cep', '8 Cephei', 'HR 8238', 'HD 205021', 'HIP 106032', 'TYC 4465-2643-1', 'Gaia EDR3- 2272185759996420992']",21h28m39s,"+70°33'38""",3.23
+Yed Posterior,"['Yed Posterior', 'ε-Oph', 'Epsilon Ophiuchi', '2-Oph', '2 Ophiuchi', 'HR 6075', 'HD 146791', 'HIP 79882', 'TYC 5042-999-1', 'Gaia EDR3- 4356298849169862784']",16h18m19s,"-04°41'32""",3.24
 Skat,"['Skat', 'δ-Aqr', 'Delta Aquarii', '76-Aqr', '76 Aquarii', 'HR 8709', 'HD 216627', 'NSV 14356', 'HIP 113136', 'TYC 6387-1382-1']",22h54m39s,"-15°49'14""",3.27
 ,"['σ-Lib', 'Sigma Librae', '20-Lib', '20 Librae', 'HR 5603', 'HD 133216', 'HIP 73714', 'TYC 6752-1455-1', 'Gaia EDR3- 6227443304915069056']",15h04m04s,"-25°16'55""",3.28
 Edasich,"['Edasich', 'ι-Dra', 'Iota Draconis', '12-Dra', '12 Draconis', 'HR 5744', 'HD 137759', 'NSV 7077', 'HIP 75458', 'TYC 3875-1620-1', 'Gaia EDR3- 1614731957531452544']",15h24m55s,"+58°57'58""",3.30
@@ -212,9 +224,11 @@ Mothallah,"['Mothallah', 'α-Tri', 'Alpha Trianguli', '2-Tri', '2 Trianguli', 'H
 ,"['ε-Hya', 'Epsilon Hydrae', '11-Hya', '11 Hydrae', 'HR 3482', 'HD 74874', 'HIP 43109', 'TYC 224-1333-1']",08h46m46s,"+06°25'07""",3.42
 Homam,"['Homam', 'ζ-Peg', 'Zeta Pegasi', '42-Peg', '42 Pegasi', 'HR 8634', 'HD 214923', 'HIP 112029', 'TYC 1155-2187-1']",22h41m27s,"+10°49'53""",3.42
 Adhafera,"['Adhafera', 'ζ-Leo', 'Zeta Leonis', '36-Leo', '36 Leonis', 'HR 4031', 'HD 89025', 'NSV 4804', 'HIP 50335', 'TYC 1969-1261-1']",10h16m41s,"+23°25'02""",3.44
+Tania Borealis,"['Tania Borealis', 'λ-UMa', 'Lambda Ursae Majoris', '33-UMa', '33 Ursae Majoris', 'HR 4033', 'HD 89021', 'HIP 50372', 'TYC 3007-1286-1']",10h17m05s,"+42°54'52""",3.44
 ,"['η-Cas', 'Eta Cassiopeiae', '24-Cas', '24 Cassiopeiae', 'HR 219', 'HD 4614', 'HIP 3821', 'TYC 3663-2669-1']",00h49m05s,"+57°48'59""",3.46
 ,"['σ-CMa', 'Sigma Canis Majoris', '22-CMa', '22 Canis Majoris', 'HR 2646', 'HD 52877', 'HIP 33856', 'TYC 6531-3793-1', 'Gaia EDR3- 5610441600394646016']",07h01m43s,"-27°56'05""",3.47
 Nekkar,"['Nekkar', 'β-Boo', 'Beta Bootis', '42-Boo', '42 Bootis', 'HR 5602', 'HD 133208', 'NSV 6898', 'HIP 73555', 'TYC 3047-1258-1', 'Gaia EDR3- 1296713990316692096']",15h01m56s,"+40°23'25""",3.48
+Alula Borealis,"['Alula Borealis', 'ν-UMa', 'Nu Ursae Majoris', '54-UMa', '54 Ursae Majoris', 'HR 4377', 'HD 98262', 'HIP 55219', 'TYC 2520-2631-1', 'Gaia EDR3- 757565233820538752']",11h18m28s,"+33°05'39""",3.48
 Sadalbari,"['Sadalbari', 'μ-Peg', 'Mu Pegasi', '48-Peg', '48 Pegasi', 'HR 8684', 'HD 216131', 'HIP 112748', 'TYC 2225-1821-1', 'Gaia EDR3- 1876510592179455744']",22h50m00s,"+24°36'05""",3.51
 Subra,"['Subra', 'O-Leo', 'Omicron Leonis', '14-Leo', '14 Leonis', 'HR 3852', 'HD 83808', 'HIP 47508', 'TYC 821-2130-1', 'Gaia EDR3- 588551501854159744']",09h41m08s,"+09°53'31""",3.51
 ,"['β-Cnc', 'Beta Cancri', '17-Cnc', '17 Cancri', 'HR 3249', 'HD 69267', 'NSV 3973', 'HIP 40526', 'TYC 794-1622-1', 'Gaia EDR3- 3098404220680931968']",08h16m30s,"+09°11'07""",3.52
@@ -236,6 +250,7 @@ Atlas,"['Atlas', '27-Tau', '27 Tauri', 'HR 1178', 'HD 23850', 'NSV 1345', 'HIP 1
 Sheliak,"['Sheliak', 'β-Lyr', 'Beta Lyrae', '10-Lyr', '10 Lyrae', 'HR 7106', 'HD 174638', 'HIP 92420', 'TYC 2642-2929-1', 'Gaia EDR3- 2090687795056051328']",18h50m04s,"+33°21'45""",3.63
 Rotanev,"['Rotanev', 'β-Del', 'Beta Delphini', '6-Del', '6 Delphini', 'HR 7882', 'HD 196524', 'HIP 101769', 'TYC 1100-1720-1']",20h37m32s,"+14°35'42""",3.63
 Nusakan,"['Nusakan', 'β-CrB', 'Beta Coronae Borealis', '3-CrB', '3 Coronae Borealis', 'HR 5747', 'HD 137909', 'HIP 75695', 'TYC 2032-1605-1']",15h27m49s,"+29°06'20""",3.64
+,"['γ-Tau', 'Gamma Tauri', '54-Tau', '54 Tauri', 'HR 1346', 'HD 27371', 'NSV 1553', 'HIP 20205', 'TYC 1264-1009-1', 'Gaia EDR3- 3312052249215275904']",04h19m47s,"+15°37'39""",3.65
 Thuban,"['Thuban', 'α-Dra', 'Alpha Draconis', '11-Dra', '11 Draconis', 'HR 5291', 'HD 123299', 'NSV 6546', 'HIP 68756', 'TYC 4174-1262-1']",14h04m23s,"+64°22'32""",3.65
 ,"['ζ-Cas', 'Zeta Cassiopeiae', '17-Cas', '17 Cassiopeiae', 'HR 153', 'HD 3360', 'NSV 225', 'HIP 2920', 'TYC 3654-2132-1', 'Gaia EDR3- 418001477279154304']",00h36m58s,"+53°53'48""",3.68
 Nashira,"['Nashira', 'γ-Cap', 'Gamma Capricorni', '40-Cap', '40 Capricorni', 'HR 8278', 'HD 206088', 'HIP 106985', 'TYC 6362-1078-1']",21h40m05s,"-16°39'44""",3.68
@@ -244,7 +259,9 @@ Electra,"['Electra', '17-Tau', '17 Tauri', 'HR 1142', 'HD 23302', 'HIP 17499', '
 Alshain,"['Alshain', 'β-Aql', 'Beta Aquilae', '60-Aql', '60 Aquilae', 'HR 7602', 'HD 188512', 'NSV 12557', 'HIP 98036', 'TYC 493-3355-1', 'Gaia EDR3- 4296708789290712064']",19h55m18s,"+06°24'16""",3.72
 Ran,"['Ran', 'ε-Eri', 'Epsilon Eridani', '18-Eri', '18 Eridani', 'HR 1084', 'HD 22049', 'HIP 16537', 'TYC 5296-1533-1']",03h32m55s,"-09°27'29""",3.72
 Grumium,"['Grumium', 'ξ-Dra', 'Xi Draconis', '32-Dra', '32 Draconis', 'HR 6688', 'HD 163588', 'HIP 87585', 'TYC 3910-1710-1', 'Gaia EDR3- 1421593566062037120']",17h53m31s,"+56°52'22""",3.73
+Baten Kaitos,"['Baten Kaitos', 'ζ-Cet', 'Zeta Ceti', '55-Cet', '55 Ceti', 'HR 539', 'HD 11353', 'NSV 638', 'HIP 8645', 'TYC 5278-2437-1']",01h51m27s,"-10°20'06""",3.73
 Albali,"['Albali', 'ε-Aqr', 'Epsilon Aquarii', '2-Aqr', '2 Aquarii', 'HR 7950', 'HD 198001', 'HIP 102618', 'TYC 5760-1997-1', 'Gaia EDR3- 6903096911032851584']",20h47m40s,"-09°29'45""",3.76
+,"['δ-Tau', 'Delta Tauri', '61-Tau', '61 Tauri', 'HR 1373', 'HD 27697', 'NSV 1582', 'HIP 20455', 'TYC 1268-1267-1', 'Gaia EDR3- 3314024566919613952']",04h22m56s,"+17°32'32""",3.76
 ,"['η-Per', 'Eta Persei', '15-Per', '15 Persei', 'HR 834', 'HD 17506', 'HIP 13268', 'TYC 3704-1332-1', 'Gaia EDR3- 454491381981202944']",02h50m41s,"+55°53'43""",3.76
 ,"['ζ-Aur', 'Zeta Aurigae', '8-Aur', '8 Aurigae', 'HR 1612', 'HD 32068', 'HIP 23453', 'TYC 2899-2236-1']",05h02m28s,"+41°04'33""",3.77
 Sualocin,"['Sualocin', 'α-Del', 'Alpha Delphini', '9-Del', '9 Delphini', 'HR 7906', 'HD 196867', 'NSV 13207', 'HIP 101958', 'TYC 1633-2442-1']",20h39m38s,"+15°54'43""",3.78
@@ -264,5 +281,7 @@ Azha,"['Azha', 'η-Eri', 'Eta Eridani', '3-Eri', '3 Eridani', 'HR 874', 'HD 1832
 Atik,"['Atik', 'O-Per', 'Omicron Persei', '38-Per', '38 Persei', 'HR 1131', 'HD 23180', 'HIP 17448', 'TYC 2359-1258-1', 'Gaia EDR3- 216718178536050176']",03h44m19s,"+32°17'17""",3.91
 ,"['α-For', 'Alpha Fornacis', 'HR 963', 'HD 20010', 'NSV 1074', 'HIP 14879', 'TYC 6445-990-1']",03h12m04s,"-28°59'20""",3.92
 ,"['γ-Lib', 'Gamma Librae', '38-Lib', '38 Librae', 'HR 5787', 'HD 138905', 'HIP 76333', 'TYC 5608-1381-1', 'Gaia EDR3- 6265374394490973184']",15h35m31s,"-14°47'22""",3.92
+Asellus Australis,"['Asellus Australis', 'δ-Cnc', 'Delta Cancri', '47-Cnc', '47 Cancri', 'HR 3461', 'HD 74442', 'HIP 42911', 'TYC 1396-2758-1', 'Gaia EDR3- 660136821288588416']",08h44m41s,"+18°09'11""",3.93
 Rukbat,"['Rukbat', 'α-Sgr', 'Alpha Sagittarii', 'HR 7348', 'HD 181869', 'HIP 95347', 'TYC 7935-2139-1', 'Gaia EDR3- 6713727061309245952']",19h23m53s,"-40°36'59""",3.94
 Kitalpha,"['Kitalpha', 'α-Equ', 'Alpha Equulei', '8-Equ', '8 Equulei', 'HR 8131', 'HD 202447', 'HIP 104987', 'TYC 536-2354-1']",21h15m49s,"+05°14'52""",3.94
+Arkab Prior,"['Arkab Prior', 'β¹-Sgr', 'Beta1 Sagittarii', 'HR 7337', 'HD 181454', 'HIP 95241', 'TYC 7943-2105-1']",19h22m38s,"-44°27'32""",3.94

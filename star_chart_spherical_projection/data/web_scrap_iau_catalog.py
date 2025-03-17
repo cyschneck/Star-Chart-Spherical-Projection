@@ -127,19 +127,20 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 	# if either the common name is found or the desgination is found in the list of possible
 	common_name = list(set(iau_names["Common Name"]).intersection(all_names))
 	desgination = list(set(iau_names["Designation"]).intersection(all_names))
+	
 	# if star is a valid IAU star, with a value shared name
 	data = []
 	if len(common_name) == 1 or len(desgination) == 1: 
 		if len(common_name) == 1:
 			common_name = common_name[0]
 			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
-			star_values["Common Name"] = common_name
 		else:
 			# get common name used by IAU, not used in website
 			iau_name = iau_names.loc[iau_names["Designation"] == desgination[0]]["Common Name"]
 			common_name = iau_name.item()
 			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
 			
+		star_values["Common Name"] = common_name
 		star_values["Alternative Names"] = all_names
 
 		# star position properties
@@ -164,22 +165,24 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				star_values["Proper Motion (Speed)"] = value
 			if "Proper Motion (pos ang)" in name_value[0].text:
 				star_values["Proper Motion (Angle)"] = value
+		star_values["URL"] = page_link
 		return star_values
 	else:
 		return None
 	
 def compareOutputs():
 	sky_stars = pd.read_csv("star_properties.csv")["Common Name"]
-	iau_stars = IAU_CSN()["Common Name"]
+	iau_stars = pd.read_csv("iau_star_properties.csv")["Common Name"]
 	diff_stars = list(set(iau_stars) - set(sky_stars))
+	print(len(diff_stars))
 	print(f"IAU - Website = {len(iau_stars)} - {len(sky_stars)} = {len(iau_stars) - len(sky_stars)}")
-	print(diff_stars[0])
+	#print(diff_stars)
 	first = IAU_CSN().loc[IAU_CSN()["Common Name"] == diff_stars[0]]
-	print(first)
+	#print(first)
 	
 if __name__ == '__main__':
 	iau_dataframe = IAU_CSN(save_csv=True)
 	all_pages = inTheSkyAllPages()
 	inTheSkyAllStars(all_pages, iau_dataframe, True)
-	compareOutputs()
+	#compareOutputs()
 

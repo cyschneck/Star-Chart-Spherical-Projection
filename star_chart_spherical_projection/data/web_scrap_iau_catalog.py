@@ -176,13 +176,25 @@ def compareOutputs():
 	diff_stars = list(set(iau_stars) - set(sky_stars))
 	print(len(diff_stars))
 	print(f"IAU - Website = {len(iau_stars)} - {len(sky_stars)} = {len(iau_stars) - len(sky_stars)}")
-	#print(diff_stars)
+	'''
+	temp = []
+	for star in diff_stars:
+		print(star)
+		new_star = {}
+		new_star["Common Name"] = star
+		des = IAU_CSN().loc[IAU_CSN()["Common Name"] == star]["Designation"].item()
+		new_star["Designation"] = des
+		new_star["URL"] = ""
+		temp.append(new_star)
+	_stars = pd.DataFrame(temp)
+	_stars.to_csv("backup_links2.csv", index=False)
+	'''
 	first = IAU_CSN().loc[IAU_CSN()["Common Name"] == diff_stars[0]]
-	#print(first)
+	print(first)
 	
 if __name__ == '__main__':
-	iau_dataframe = IAU_CSN(save_csv=True)
-	all_pages = inTheSkyAllPages()
-	inTheSkyAllStars(all_pages, iau_dataframe, True)
-	#compareOutputs()
+	#iau_dataframe = IAU_CSN(save_csv=True)
+	#all_pages = inTheSkyAllPages()
+	#inTheSkyAllStars(all_pages, iau_dataframe, True)
+	compareOutputs()
 

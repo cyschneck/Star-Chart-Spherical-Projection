@@ -55,7 +55,7 @@ def IAU_CSN(save_csv=False):
 
 	iau_stars = pd.DataFrame(star_data)
 	if save_csv:
-		iau_stars.to_csv("iau_star_properties.csv", index=False)
+		iau_stars.to_csv("iau_stars.csv", index=False)
 	return iau_stars
 	
 
@@ -97,12 +97,12 @@ def inTheSkyAllStars(page_links=None, iau_names=None, save_csv=False):
 					star_data.append(star_property_dict)
 		
 	star_dataframe = pd.DataFrame(star_data)
-	print(len(star_dataframe.index))
+	#print(len(star_dataframe.index))
 	if save_csv:
 		star_dataframe.to_csv("star_properties.csv", index=False)
-	return star_dataframe
 
 def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pages=None):
+	# retrieve star data by iterating through all possible InTheSky pages
 	random_agent = random.choice(user_agents)
 	req_with_headers = request.Request(url=page_link, headers={'User-Agent': random_agent})
 	star_html = request.urlopen(req_with_headers).read()
@@ -126,19 +126,19 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 	
 	# if either the common name is found or the desgination is found in the list of possible
 	common_name = list(set(iau_names["Common Name"]).intersection(all_names))
-	desgination = list(set(iau_names["Designation"]).intersection(all_names))
+	designation = list(set(iau_names["Designation"]).intersection(all_names))
 	
 	# if star is a valid IAU star, with a value shared name
 	data = []
-	if len(common_name) == 1 or len(desgination) == 1: 
+	if len(common_name) == 1 or len(designation) == 1: 
 		if len(common_name) == 1:
 			common_name = common_name[0]
-			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
+			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({desgination[0]})")
 		else:
 			# get common name used by IAU, not used in website
 			iau_name = iau_names.loc[iau_names["Designation"] == desgination[0]]["Common Name"]
 			common_name = iau_name.item()
-			print(f"Retrieving Star Data (Page {page_number}/{total_pages}) = {common_name} ({desgination[0]})")
+			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({desgination[0]})")
 			
 		star_values["Common Name"] = common_name
 		star_values["Alternative Names"] = all_names
@@ -153,28 +153,115 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 			value = value.replace("\\", "") # replace random string in declination
 			value = value.replace("−", "-")
 			value = value.strip()
-			if "Right ascension" in name_value[0].text:
+			header = name_value[0].text.lower()
+			if "right ascension" in header:
 				star_values["Right Ascension"] = value
-			if "Declination" in name_value[0].text:
+			if "declination" in header:
 				star_values["Declination"] = value
-			if "Magnitude" in name_value[0].text:
+			if "magnitude" in header:
 				# if multiple magnitudes, gets Visual (V)
 				all_mag = value.split(" ")
 				star_values["Magnitude"] = all_mag[all_mag.index("(V)") - 1]
-			if "Proper Motion (speed)" in name_value[0].text:
+			if "proper motion (speed)" in header:
 				star_values["Proper Motion (Speed)"] = value
-			if "Proper Motion (pos ang)" in name_value[0].text:
+			if "proper motion (pos ang)" in header:
 				star_values["Proper Motion (Angle)"] = value
 		star_values["URL"] = page_link
 		return star_values
 	else:
 		return None
+		
+def backupStars(backup_links_csv=None, save_csv=False):
+	# add stars not found inTheSky to stars, from a list of backup links manually created
+	backup_links_df = pd.read_csv(backup_links_csv)
+	print("Collecting from backup links")
+
+	star_data = []
+	
+	# iterate through backup links
+	# collect data from Wikipedia links
+	for index, row in backup_links_df.iterrows():
+		if not pd.isnull(row["URL"]): # if URL is not empty
+			if "wikipedia" in row["URL"]:
+				print(f"({index+1}/{len(backup_links_df.index)}) Retrieving from Wikipedia = {row["Common Name"]} ({row["Designation"]})")
+				# collect data from wikipedia
+				wiki_star_data_dict = wikipediaLinks(row)
+				star_data.append(wiki_star_data_dict)
+		else:
+			print(f"({index+1}/{len(backup_links_df.index)}) Unknown Star = {row["Common Name"]} ({row["Designation"]})")
+
+
+	star_dataframe = pd.DataFrame(star_data)
+	if save_csv:
+		star_dataframe.to_csv("star_backup_properties.csv", index=False)
+	return star_dataframe
+
+def wikipediaLinks(row_data=None):
+	# process wikiepdia links
+	random_agent = random.choice(user_agents)
+	req_with_headers = request.Request(url=row_data["URL"], headers={'User-Agent': random_agent})
+	star_html = request.urlopen(req_with_headers).read()
+	full_body = BeautifulSoup(star_html, 'html.parser')
+		
+	star_values = {}
+	star_values["Common Name"] = row_data["Common Name"]
+	star_values["URL"] = row_data["URL"]
+	
+	
+	# star position properties
+	info_box = full_body.find("table", "infobox")
+	rows = info_box.find_all("tr")
+	for i, row in enumerate(rows):
+		if "right ascension" in row.text.lower():
+			ra_text = row.text.replace("\n", "")
+			ra_text = ra_text.split("ascension")[1]
+			ra_text = re.sub(r"\[.*?\]","",ra_text) # remove links in brackets
+			if len(ra_text.split(" ")[0]) != 3:
+				# add additional 0 at the start of the string if does not already include
+				ra_text = "0" + ra_text
+			ra_text = ra_text.replace(" ", "") # remove whitespace
+			star_values["Right Ascension"] = ra_text
+		if "declination" in row.text.lower():
+			dec_text = row.text.replace("\n", "")
+			dec_text = dec_text.lower().split("declination")[1]
+			dec_text = re.sub(r"\[.*?\]","",dec_text) # remove links in brackets
+			dec_text = dec_text.replace(u'\xa0', u' ')# remove non-breaking space in string
+			if len(dec_text.split(" ")[0]) != 4:
+				# add additional postive sign if does not already include
+				dec_text = "+" + dec_text
+			dec_text = dec_text.replace(" ", "") # remove whitespace
+			star_values["Declination"] = dec_text
+		if "apparent magnitude" in row.text.lower():
+			mag_text = row.text.strip("\n")
+			mag_text = mag_text.replace("\n", "$") # find split point
+			mag_text = mag_text.split("$$")[1]
+			mag_text = re.sub(r"\[.*?\]","",mag_text) # remove links in brackets
+			# TODO: fix magntiude when a range of values is present
+			star_values["Magnitude"] = mag_text
+		if "proper motion" in row.text.lower():
+			pm_text = row.text.lower()
+			pm_text = pm_text.replace(u'\xa0', u' ')# remove non-breaking space in string
+			pm_text = re.sub(r"\[.*?\]","",pm_text) # remove links in brackets
+			pm_text = re.sub(r"\(.*?\)","",pm_text) # remove links in paraenthesis
+			pm_ra_text = pm_text.split(":")[1].split("dec")[0].strip(" ")
+			pm_dec_text = pm_text.split(":")[2].strip(" ")
+			#print(pm_text)
+			#print(pm_ra_text)
+			#print(pm_dec_text)
+			# TODO: fix proper motion when range of values is presents
+		if "other designations" in row.text.lower():
+			des_text = rows[i+1].text
+			des_text = re.sub(r"\[.*?\]","",des_text) # remove links in brackets
+			star_values["Alternative Names"] = des_text
+
+	return star_values
 	
 def compareOutputs():
+	# compare number of stars with offical names to number of stars found with full list of properties
 	sky_stars = pd.read_csv("star_properties.csv")["Common Name"]
-	iau_stars = pd.read_csv("iau_star_properties.csv")["Common Name"]
+	iau_stars = pd.read_csv("iau_stars.csv")["Common Name"]
 	diff_stars = list(set(iau_stars) - set(sky_stars))
-	print(len(diff_stars))
+	#print(len(diff_stars))
 	print(f"IAU - Website = {len(iau_stars)} - {len(sky_stars)} = {len(iau_stars) - len(sky_stars)}")
 	'''
 	temp = []
@@ -189,12 +276,16 @@ def compareOutputs():
 	_stars = pd.DataFrame(temp)
 	_stars.to_csv("backup_links2.csv", index=False)
 	'''
-	first = IAU_CSN().loc[IAU_CSN()["Common Name"] == diff_stars[0]]
-	print(first)
+	#first = IAU_CSN().loc[IAU_CSN()["Common Name"] == diff_stars[0]]
+	#print(first)
 	
 if __name__ == '__main__':
-	#iau_dataframe = IAU_CSN(save_csv=True)
-	#all_pages = inTheSkyAllPages()
-	#inTheSkyAllStars(all_pages, iau_dataframe, True)
-	compareOutputs()
+	#iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
+	#all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
+	#inTheSkyAllStars(page_links=all_inthesky_pages,
+	#				iau_names=iau_dataframe,
+	#				save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
+	backupStars(backup_links_csv="backup_links.csv",
+				save_csv=True)              					     # iterate through backup list of stars
+	#compareOutputs()
 

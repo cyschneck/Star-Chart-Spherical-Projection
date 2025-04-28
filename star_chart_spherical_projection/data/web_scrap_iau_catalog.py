@@ -55,7 +55,7 @@ def IAU_CSN(save_csv=False):
 
 	iau_stars = pd.DataFrame(star_data)
 	if save_csv:
-		iau_stars.to_csv("iau_stars.csv", index=False)
+		iau_stars.to_csv("1_iau_stars.csv", index=False)
 	return iau_stars
 	
 
@@ -99,7 +99,7 @@ def inTheSkyAllStars(page_links=None, iau_names=None, save_csv=False):
 	star_dataframe = pd.DataFrame(star_data)
 	#print(len(star_dataframe.index))
 	if save_csv:
-		star_dataframe.to_csv("star_properties.csv", index=False)
+		star_dataframe.to_csv("2_inthesky_star_data.csv", index=False)
 
 def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pages=None):
 	# retrieve star data by iterating through all possible InTheSky pages
@@ -133,12 +133,12 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 	if len(common_name) == 1 or len(designation) == 1: 
 		if len(common_name) == 1:
 			common_name = common_name[0]
-			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({desgination[0]})")
+			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({designation[0]})")
 		else:
 			# get common name used by IAU, not used in website
-			iau_name = iau_names.loc[iau_names["Designation"] == desgination[0]]["Common Name"]
+			iau_name = iau_names.loc[iau_names["Designation"] == designation[0]]["Common Name"]
 			common_name = iau_name.item()
-			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({desgination[0]})")
+			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({designation[0]})")
 			
 		star_values["Common Name"] = common_name
 		star_values["Alternative Names"] = all_names
@@ -193,7 +193,7 @@ def backupStars(backup_links_csv=None, save_csv=False):
 
 	star_dataframe = pd.DataFrame(star_data)
 	if save_csv:
-		star_dataframe.to_csv("star_backup_properties.csv", index=False)
+		star_dataframe.to_csv("3_backup_star_data.csv", index=False)
 	return star_dataframe
 
 def wikipediaLinks(row_data=None):
@@ -285,7 +285,8 @@ if __name__ == '__main__':
 	#inTheSkyAllStars(page_links=all_inthesky_pages,
 	#				iau_names=iau_dataframe,
 	#				save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
-	backupStars(backup_links_csv="backup_links.csv",
-				save_csv=True)              					     # iterate through backup list of stars
+	#backupStars(backup_links_csv="backup_links.csv",
+	#			save_csv=True)              					     # iterate through backup list of stars
+	# combine csv into a single star data
 	#compareOutputs()
 

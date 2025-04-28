@@ -84,7 +84,7 @@ The first step to plot the celestial sphere onto a 2D plot is to map the star's 
 
 The sphere is projected from the South Pole (via [Stereographic projection](https://gisgeography.com/azimuthal-projection-orthographic-stereographic-gnomonic/)):
  <p align="center">
-  <img src="https://gisgeography.com/wp-content/uploads/2016/12/Stereographic-Projection-768x421.png" />
+  <img src="https://gisgeography.com/wp-content/uploads/2016/06/Stereographic-Projection.jpg" />
 </p>
 
 

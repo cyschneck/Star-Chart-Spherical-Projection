@@ -141,7 +141,7 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 			print(f"(Page {page_number}/{total_pages}) Retrieving from in-the-sky = {common_name} ({designation[0]})")
 			
 		star_values["Common Name"] = common_name
-		star_values["Alternative Names"] = all_names
+		star_values["Alternative Names"] = str(", ".join(all_names))
 
 		# star position properties
 		table_body = full_body.find("table", "objinfo stripy")
@@ -155,17 +155,24 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 			value = value.strip()
 			header = name_value[0].text.lower()
 			if "right ascension" in header:
-				star_values["Right Ascension"] = value
+				ra_text = value.replace("h", ".") # remove hour marker
+				ra_text = ra_text.replace("m", ".") # remove minute marker
+				ra_text = ra_text.replace("s", "") # remove second marker
+				star_values["Right Ascension"] = ra_text
 			if "declination" in header:
-				star_values["Declination"] = value
+				dec_text = value.replace("°", ".") # remove degree marker
+				dec_text = dec_text.replace("'", "") # remove degree minute marker
+				dec_text = dec_text.replace("\"", "") # remove degree second marker
+				star_values["Declination"] = dec_text
 			if "magnitude" in header:
 				# if multiple magnitudes, gets Visual (V)
 				all_mag = value.split(" ")
-				star_values["Magnitude"] = all_mag[all_mag.index("(V)") - 1]
+				star_values["Magnitude (Visual)"] = all_mag[all_mag.index("(V)") - 1]
 			if "proper motion (speed)" in header:
 				star_values["Proper Motion (Speed)"] = value
 			if "proper motion (pos ang)" in header:
-				star_values["Proper Motion (Angle)"] = value
+				pm_angle = value.replace("°", "") # remove degree mark
+				star_values["Proper Motion (Angle)"] = pm_angle
 		star_values["URL"] = page_link
 		return star_values
 	else:
@@ -220,6 +227,10 @@ def wikipediaLinks(row_data=None):
 				# add additional 0 at the start of the string if does not already include
 				ra_text = "0" + ra_text
 			ra_text = ra_text.replace(" ", "") # remove whitespace
+			ra_text = ra_text.replace(".", "") # remove microseconds mark
+			ra_text = ra_text.replace("h", ".") # remove hours marker
+			ra_text = ra_text.replace("m", ".") # remove minute marker
+			ra_text = ra_text.replace("s", "") # remove minute marker
 			star_values["Right Ascension"] = ra_text
 		if "declination" in row.text.lower():
 			dec_text = row.text.replace("\n", "")
@@ -230,6 +241,12 @@ def wikipediaLinks(row_data=None):
 				# add additional postive sign if does not already include
 				dec_text = "+" + dec_text
 			dec_text = dec_text.replace(" ", "") # remove whitespace
+			dec_text = dec_text.replace(".", "") # remove microseconds mark
+			dec_text = dec_text.replace("+", "") # remove postive mark
+			dec_text = dec_text.replace("−", "-") # replace negative mark
+			dec_text = dec_text.replace("°",".") # remove degree marks
+			dec_text = dec_text.replace("′","") # remove degree minute marks
+			dec_text = dec_text.replace("″","") # remove degree second marks
 			star_values["Declination"] = dec_text
 		if "apparent magnitude" in row.text.lower():
 			mag_text = row.text.strip("\n")
@@ -255,6 +272,17 @@ def wikipediaLinks(row_data=None):
 			star_values["Alternative Names"] = des_text
 
 	return star_values
+
+def setupFinalCSV():
+	# set up a single csv with all star data
+	inthesky_df = pd.read_csv("2_inthesky_star_data.csv")
+	backup_df = pd.read_csv("3_backup_star_data.csv")
+	
+	print(list(inthesky_df))
+	print(list(backup_df))
+	
+	# Headers: Common Name, Right Ascension, Declination, PM Speed, PM Angle, Magnitude, Alternative Names, URL
+	
 	
 def compareOutputs():
 	# compare number of stars with offical names to number of stars found with full list of properties
@@ -280,13 +308,14 @@ def compareOutputs():
 	#print(first)
 	
 if __name__ == '__main__':
-	#iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
-	#all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
-	#inTheSkyAllStars(page_links=all_inthesky_pages,
-	#				iau_names=iau_dataframe,
-	#				save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
-	#backupStars(backup_links_csv="backup_links.csv",
-	#			save_csv=True)              					     # iterate through backup list of stars
+	iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
+	all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
+	inTheSkyAllStars(page_links=all_inthesky_pages,
+					iau_names=iau_dataframe,
+					save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
+	backupStars(backup_links_csv="backup_links.csv",
+				save_csv=True)              					     # iterate through backup list of stars
 	# combine csv into a single star data
+	setupFinalCSV()
 	#compareOutputs()
 

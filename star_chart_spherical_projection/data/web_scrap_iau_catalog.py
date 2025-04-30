@@ -223,7 +223,7 @@ def wikipediaLinks(row_data=None):
 	star_values = {}
 	star_values["Common Name"] = row_data["Common Name"]
 	star_values["URL"] = row_data["URL"]
-	print(row_data["URL"])
+	#print(row_data["URL"])
 	
 	# star position properties
 	info_box = full_body.find("table", "infobox")
@@ -274,22 +274,26 @@ def wikipediaLinks(row_data=None):
 			pm_dec_text = pm_text.split(":")[2].strip(" ")
 			pm_ra_text = pm_ra_text.replace("−", "-") # replace negative sign
 			pm_dec_text = pm_dec_text.replace("−", "-") # replace negative sign
-			print(f"full text: {pm_text}")
-			print(f"ra      : {pm_ra_text}")
-			print(f"dec     : {pm_dec_text}")
+			#print(f"full text: {pm_text}")
+			#print(f"ra      : {pm_ra_text}")
+			#print(f"dec     : {pm_dec_text}")
+			star_values["Proper Motion RA (mas/yr)"] = pm_ra_text.split(" ")[0]
+			star_values["Proper Motion DEC (mas/yr)"] = pm_dec_text.split(" ")[0]
+			'''
+			# TODO: fix proper motion when range of values is presents
 			ra_value = float(pm_ra_text.split(" ")[0])
 			dec_value = float(pm_dec_text.split(" ")[0])
 			import numpy as np
 			pm_speed = np.sqrt(ra_value**2 + dec_value**2)
 			print(pm_speed)
-			#pm_angle = abs(np.rad2deg(np.atan2(dec_value, ra_value))) + 90 - 360
-			#print(pm_angle)
-			# TODO: fix proper motion when range of values is presents
+			pm_angle = abs(np.rad2deg(np.atan2(dec_value, ra_value))) + 90 - 360
+			print(pm_angle)
+			'''
 		if "other designations" in row.text.lower():
 			des_text = rows[i+1].text
 			des_text = re.sub(r"\[.*?\]","",des_text) # remove links in brackets
 			star_values["Alternative Names"] = des_text
-	exit()
+	#exit()
 	return star_values
 
 def setupFinalCSV():

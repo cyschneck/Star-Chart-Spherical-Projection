@@ -1,4 +1,4 @@
-Common Name,URL,Right Ascension,Declination,Magnitude,Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),Alternative Names
+Common Name,URL,Right Ascension,Declination,Magnitude (Visual),Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),Alternative Names
 Tianyi,https://en.wikipedia.org/wiki/7_Draconis,12.47.3434473,66.47250977,5.43,6.674,-6.498,"Tianyi, 7 Dra, BD+67°764, FK5 3020, HD 111335, HIP 62423, HR 4863, SAO 15902"
 Mekbuda,https://en.wikipedia.org/wiki/Zeta_Geminorum,07.04.0653079,20.34130739,3.93 (3.68 to 4.16),-7.29,-0.41,"Mekbuda, ζ Gem, 43 Gem, BD+20°1687, FK5 269, HD 52973, HIP 34088, HR 2650, SAO 79031, WDS J07041+2034A"
 Kurhah,https://en.wikipedia.org/wiki/Xi_Cephei,22.03.47455,64.374071,4.2 (4.45 + 4.60),215.46,91.06,"Kurhah, 17 Cephei, BD+63°1802, CCDM J22038+2407, HIP 108917, HR 8417, SAO 19827, WDS J22038+6438"
@@ -28,7 +28,6 @@ Moriah,https://en.wikipedia.org/wiki/HAT-P-23,20.24.297235,16.4543812,10.791±0.
 Fafnir,https://en.wikipedia.org/wiki/42_Draconis,18.25.5913696,65.33485313,4.82,105.816,-26.846,"Fafnir, BD+65° 1271, GC 25212, HD 170693, HIP 90344, HR 6945, SAO 17888, PPM 20916, GCRV 10941"
 Nosaxa,https://en.wikipedia.org/wiki/HD_48265,06.40.017270,-48.3231042,6.449 ± 0.020,26.524,29.689,"Nosaxa, CD–48 2430, HD 48265, HIP 31895, SAO 218115."
 Terebellum,https://en.wikipedia.org/wiki/Omega_Sagittarii,19.55.5036255,-26.17576933,4.70,203.96,74.40,"Terebellum, ψ Sgr, 58 Sagittarii, CPD−26°6880, FK5 1629, GC 27583, GJ 770.1, GJ 9673, HD 188376, HIP 98066, HR 7597, SAO 188722, PPM 270451"
-Tegmine,https://en.wikipedia.org/wiki/Zeta_Cancri,08.12.127,17.3852,+5.58/+5.99/+6.12,,,"Tegmen, Tegmine, 16 Cancri, HR 3208/3209/3210, HD 68257/68255/68256, BD+18°1867, HIP 40167, SAO 97645/97646, GC 11142/11141, ADS 6650, CCDM J08123+1738, WDS 08122+1739"
 Koeia,https://en.wikipedia.org/wiki/HIP_12961,02.46.428869,-23.0511802,6.74,294.717,140.966,"Koeia, CD−23 1056, HIP 12961, SAO 168043, PPM 245393, LTT 1349, NLTT 8966, TYC 6434-00494-1, 2MASS J02464286-2305119"
 Nasti,https://en.wikipedia.org/wiki/HD_68988,08.18.2217286,61.27385950,8.20,128.266,30.427,"Násti, BD+61°1038, HD 68988, HIP 40687, SAO 14494"
 Situla,https://en.wikipedia.org/wiki/Kappa_Aquarii,22.37.45381,-04.134100,5.030±0.009,-69.411,-119.631,"Situla, 63 Aquarii, BD−04 5716, FK5 1595, GC 31581, HD 214376, HIP 111710, HR 8610, SAO 146210, PPM 206585, WDS J22378-0414A"

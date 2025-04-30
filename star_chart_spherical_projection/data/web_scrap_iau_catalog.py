@@ -26,6 +26,7 @@ user_agents = [
 
 def IAU_CSN(save_csv=False):
 	# get all valid named stars
+	print("Retrieving from full IAU list")
 	random_agent = random.choice(user_agents)
 	iau_catalog_url = "https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt"
 	req_with_headers = request.Request(url=iau_catalog_url, headers={'User-Agent': random_agent})
@@ -267,7 +268,7 @@ def wikipediaLinks(row_data=None):
 			mag_text = mag_text.split("$$")[1]
 			mag_text = re.sub(r"\[.*?\]","",mag_text) # remove links in brackets
 			# TODO: fix magntiude when a range of values is present
-			star_values["Magnitude"] = mag_text
+			star_values["Magnitude (Visual)"] = mag_text
 		if "proper motion" in row.text.lower():
 			pm_text = row.text.lower()
 			pm_text = pm_text.replace(u'\xa0', u' ')# remove non-breaking space in string
@@ -302,33 +303,43 @@ def wikipediaLinks(row_data=None):
 			star_values["Alternative Names"] = des_text
 	return star_values
 
-def setupFinalCSV():
+def setupFinalCSV(save_csv=False):
 	# set up a single csv with all star data
 	inthesky_df = pd.read_csv("2_inthesky_star_data.csv")
 	backup_df = pd.read_csv("3_backup_star_data.csv")
+
+	# update dataframe to contain both proper motion as speed/angle and ra/dec
+	combined_df = pd.concat([inthesky_df, backup_df], ignore_index=True)
+	for i, row in combined_df.iterrows():
+
+		# add RA/Dec from proper motion and angle in inthesky data
+		if np.isnan(row["Proper Motion RA (mas/yr)"]) and not np.isnan(row["Proper Motion (Speed, mas/yr)"]):
+			pm_angle_rad = np.deg2rad(row["Proper Motion (Angle, Degrees)"])
+			pm_speed = row["Proper Motion (Speed, mas/yr)"]
+			combined_df.loc[i, "Proper Motion RA (mas/yr)"] = np.cos(pm_angle_rad) * pm_speed
+			combined_df.loc[i, "Proper Motion DEC (mas/yr)"] = np.sin(pm_angle_rad) * pm_speed
+
+		# add proper motion speed and angle from RA/Dec in backup links
+		if np.isnan(row["Proper Motion (Speed, mas/yr)"]) and not np.isnan(row["Proper Motion RA (mas/yr)"]) :
+			ra_value = float(row["Proper Motion RA (mas/yr)"])
+			dec_value = float(row["Proper Motion DEC (mas/yr)"])
+			pm_speed = np.sqrt(ra_value**2 + dec_value**2)
+			combined_df.loc[i, "Proper Motion (Speed, mas/yr)"]= pm_speed
+			pm_angle = np.rad2deg(np.arctan(ra_value/dec_value))
+			if ra_value < 0 and dec_value > 0: # 90-180
+				pm_angle += 90
+			if ra_value < 0 and dec_value < 0: # 180-270
+				pm_angle += 180
+			if ra_value > 0 and dec_value < 0: # 270-360
+				pm_angle += 270
+			combined_df.loc[i, "Proper Motion (Angle, Degrees)"] = pm_angle
+
+		if np.isnan(row["Proper Motion (Speed, mas/yr)"]) and np.isnan(row["Proper Motion RA (mas/yr)"]):
+			print("THIS IS A EMPTY")
+			print(combined_df.loc[[i]])
 	
-	print(list(inthesky_df))
-	print(list(backup_df))
-	combined_df = pd.concat([inthesky_df, backup_df])
-	print(combined_df)
-	# add RA/Dec from proper motion and angle in inthesky data
-	'''
-	# add proper motion speed and angle from RA/Dec in backup links
-	ra_value = float(ra_value)
-	dec_value = float(dec_value)
-	pm_speed = np.sqrt(ra_value**2 + dec_value**2)
-	star_values["Proper Motion (Speed, mas/yr)"]= pm_speed
-	pm_angle = np.rad2deg(np.arctan(ra_value/dec_value))
-	if ra_value < 0 and dec_value > 0: # 90-180
-		pm_angle += 90
-	if ra_value < 0 and dec_value < 0: # 180-270
-		pm_angle += 180
-	if ra_value > 0 and dec_value < 0: # 270-360
-		pm_angle += 270
-	star_values["Proper Motion (Angle, Degrees)"] = pm_angle	
-	'''
-	
-	# Headers: Common Name, Right Ascension, Declination, PM Speed, PM Angle, Magnitude, Alternative Names, URL
+	if save_csv:
+		combined_df.to_csv("4_all_stars_data.csv", index=False)
 	
 	
 def compareOutputs():
@@ -357,12 +368,12 @@ def compareOutputs():
 if __name__ == '__main__':
 	#iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
 	#all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
-	#inTheSkyAllStars(page_links=all_inthesky_pages,
-	#				iau_names=iau_dataframe,
-	#				save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
-	#backupStars(backup_links_csv="backup_links.csv",
-	#			save_csv=True)              					     # iterate through backup list of stars
+	inTheSkyAllStars(page_links=all_inthesky_pages,
+					iau_names=iau_dataframe,
+					save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
+	backupStars(backup_links_csv="backup_links.csv",
+				save_csv=True)              					     # iterate through backup list of stars
 	# combine csv into a single star data
-	setupFinalCSV()
+	setupFinalCSV(save_csv=True)
 	#compareOutputs()
 

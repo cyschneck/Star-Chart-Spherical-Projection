@@ -169,10 +169,20 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				all_mag = value.split(" ")
 				star_values["Magnitude (Visual)"] = all_mag[all_mag.index("(V)") - 1]
 			if "proper motion (speed)" in header:
-				star_values["Proper Motion (Speed)"] = value
+				pm_sp = value.lower().split(" ")[0]
+				units = value.lower().split(" ")[1]
+				if "arcsec/yr" in units:
+					# convert arcsec/yr to mas/yr
+					pm_sp = str(float(pm_sp) * 1000)
+				elif "mas/yr" in units:
+					pass
+				else:
+					print(f"Invalid units: {units}")
+					exit()
+				star_values["Proper Motion (Speed, mas/yr)"] = pm_sp
 			if "proper motion (pos ang)" in header:
 				pm_angle = value.replace("°", "") # remove degree mark
-				star_values["Proper Motion (Angle)"] = pm_angle
+				star_values["Proper Motion (Angle, Degrees)"] = pm_angle
 		star_values["URL"] = page_link
 		return star_values
 	else:
@@ -213,7 +223,7 @@ def wikipediaLinks(row_data=None):
 	star_values = {}
 	star_values["Common Name"] = row_data["Common Name"]
 	star_values["URL"] = row_data["URL"]
-	
+	print(row_data["URL"])
 	
 	# star position properties
 	info_box = full_body.find("table", "infobox")
@@ -243,7 +253,7 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.replace(" ", "") # remove whitespace
 			dec_text = dec_text.replace(".", "") # remove microseconds mark
 			dec_text = dec_text.replace("+", "") # remove postive mark
-			dec_text = dec_text.replace("−", "-") # replace negative mark
+			dec_text = dec_text.replace("–", "-") # replace negative mark
 			dec_text = dec_text.replace("°",".") # remove degree marks
 			dec_text = dec_text.replace("′","") # remove degree minute marks
 			dec_text = dec_text.replace("″","") # remove degree second marks
@@ -262,15 +272,24 @@ def wikipediaLinks(row_data=None):
 			pm_text = re.sub(r"\(.*?\)","",pm_text) # remove links in paraenthesis
 			pm_ra_text = pm_text.split(":")[1].split("dec")[0].strip(" ")
 			pm_dec_text = pm_text.split(":")[2].strip(" ")
-			#print(pm_text)
-			#print(pm_ra_text)
-			#print(pm_dec_text)
+			pm_ra_text = pm_ra_text.replace("−", "-") # replace negative sign
+			pm_dec_text = pm_dec_text.replace("−", "-") # replace negative sign
+			print(f"full text: {pm_text}")
+			print(f"ra      : {pm_ra_text}")
+			print(f"dec     : {pm_dec_text}")
+			ra_value = float(pm_ra_text.split(" ")[0])
+			dec_value = float(pm_dec_text.split(" ")[0])
+			import numpy as np
+			pm_speed = np.sqrt(ra_value**2 + dec_value**2)
+			print(pm_speed)
+			#pm_angle = abs(np.rad2deg(np.atan2(dec_value, ra_value))) + 90 - 360
+			#print(pm_angle)
 			# TODO: fix proper motion when range of values is presents
 		if "other designations" in row.text.lower():
 			des_text = rows[i+1].text
 			des_text = re.sub(r"\[.*?\]","",des_text) # remove links in brackets
 			star_values["Alternative Names"] = des_text
-
+	exit()
 	return star_values
 
 def setupFinalCSV():
@@ -308,11 +327,11 @@ def compareOutputs():
 	#print(first)
 	
 if __name__ == '__main__':
-	iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
-	all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
-	inTheSkyAllStars(page_links=all_inthesky_pages,
-					iau_names=iau_dataframe,
-					save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
+	#iau_dataframe = IAU_CSN(save_csv=True)                          # retrieve offical list of IAU names -> saved to iau_stars.csv
+	#all_inthesky_pages = inTheSkyAllPages()                         # returns links to all pages in InTheSky
+	#inTheSkyAllStars(page_links=all_inthesky_pages,
+	#				iau_names=iau_dataframe,
+	#				save_csv=True)                                   # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
 	backupStars(backup_links_csv="backup_links.csv",
 				save_csv=True)              					     # iterate through backup list of stars
 	# combine csv into a single star data

@@ -2,6 +2,7 @@ import re
 from bs4 import BeautifulSoup
 import pandas as pd
 from urllib import request, error
+import numpy as np
 
 import random
 
@@ -253,7 +254,9 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.replace(" ", "") # remove whitespace
 			dec_text = dec_text.replace(".", "") # remove microseconds mark
 			dec_text = dec_text.replace("+", "") # remove postive mark
-			dec_text = dec_text.replace("–", "-") # replace negative mark
+			dec_text = dec_text.replace("−", "-") # replace negative mark
+			dec_text = dec_text.replace(u'\u2013', '-') # replace negative sign
+			dec_text = dec_text.replace(u'\u2212', '-') # replace negative sign
 			dec_text = dec_text.replace("°",".") # remove degree marks
 			dec_text = dec_text.replace("′","") # remove degree minute marks
 			dec_text = dec_text.replace("″","") # remove degree second marks
@@ -272,28 +275,48 @@ def wikipediaLinks(row_data=None):
 			pm_text = re.sub(r"\(.*?\)","",pm_text) # remove links in paraenthesis
 			pm_ra_text = pm_text.split(":")[1].split("dec")[0].strip(" ")
 			pm_dec_text = pm_text.split(":")[2].strip(" ")
-			pm_ra_text = pm_ra_text.replace("−", "-") # replace negative sign
-			pm_dec_text = pm_dec_text.replace("−", "-") # replace negative sign
-			#print(f"full text: {pm_text}")
-			#print(f"ra      : {pm_ra_text}")
-			#print(f"dec     : {pm_dec_text}")
+			pm_ra_text = pm_ra_text.replace("+", "") # remove postive sign
+			pm_dec_text = pm_dec_text.replace("+", "") # remove postive sign
+			pm_ra_text = pm_ra_text.replace(u'\u2013', '-') # replace negative sign
+			pm_ra_text = pm_ra_text.replace(u'\u2212', '-') # replace negative sign
+			pm_dec_text = pm_dec_text.replace(u'\u2013', '-') # replace negative sign
+			pm_dec_text = pm_dec_text.replace(u'\u2212', '-') # replace negative sign
+			pm_ra_text = pm_ra_text.split(" ")[0]
+			pm_dec_text = pm_dec_text.split(" ")[0]
+			if "±" in pm_ra_text:
+				pm_ra_text = pm_ra_text.split("±")[0]
+			if "±" in pm_dec_text:
+				pm_dec_text = pm_dec_text.split("±")[0]
 			star_values["Proper Motion RA (mas/yr)"] = pm_ra_text.split(" ")[0]
 			star_values["Proper Motion DEC (mas/yr)"] = pm_dec_text.split(" ")[0]
-			'''
-			# TODO: fix proper motion when range of values is presents
-			ra_value = float(pm_ra_text.split(" ")[0])
-			dec_value = float(pm_dec_text.split(" ")[0])
-			import numpy as np
+			ra_value = pm_ra_text.split(" ")[0]
+			dec_value = pm_dec_text.split(" ")[0]
+			# ignore plus/minus (use middle value)
+			if "±" in ra_value:
+				ra_value = ra_value.split("±")[0]
+			if "±" in dec_value:
+				dec_value = dec_value.split("±")[0]
+			ra_value = float(ra_value)
+			dec_value = float(dec_value)
 			pm_speed = np.sqrt(ra_value**2 + dec_value**2)
-			print(pm_speed)
-			pm_angle = abs(np.rad2deg(np.atan2(dec_value, ra_value))) + 90 - 360
-			print(pm_angle)
-			'''
+			star_values["Proper Motion (Speed, mas/yr)"]= pm_speed
+			pm_angle = np.rad2deg(np.arctan(ra_value/dec_value))
+			if ra_value < 0 and dec_value > 0: # 90-180
+				pm_angle += 90
+			if ra_value < 0 and dec_value < 0: # 180-270
+				pm_angle += 180
+			if ra_value > 0 and dec_value < 0: # 270-360
+				pm_angle += 270
+			if pm_angle < 0:
+				print(ra_value)
+				print(dec_value)
+				print(pm_angle)
+				exit()
+			star_values["Proper Motion (Angle, Degrees)"] = pm_angle		
 		if "other designations" in row.text.lower():
 			des_text = rows[i+1].text
 			des_text = re.sub(r"\[.*?\]","",des_text) # remove links in brackets
 			star_values["Alternative Names"] = des_text
-	#exit()
 	return star_values
 
 def setupFinalCSV():

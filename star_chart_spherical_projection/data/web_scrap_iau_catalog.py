@@ -358,13 +358,14 @@ def setupFinalCSV(save_csv=False):
 			print(combined_df.loc[[i]])
 	
 	if save_csv:
+		combined_df = combined_df.sort_values("Common Name", ascending=True) # sort by Common Name
 		combined_df.to_csv("4_all_stars_data.csv", index=False)
-	
 	
 def compareOutputs():
 	# compare number of stars with offical names to number of stars found with full list of properties
 	iau_stars = pd.read_csv("1_iau_stars.csv")["Common Name"]
 	sky_stars = pd.read_csv("4_all_stars_data.csv")["Common Name"]
+	print(f"All Stars:\n{list(sky_stars)}")
 	assert len(list(iau_stars)) == len(list(sky_stars))
 	print(f"Length of IAU == Length of Found Stars = {len(list(iau_stars)) == len(list(sky_stars))}")
 	

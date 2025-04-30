@@ -107,7 +107,7 @@ Where in the Northern Hemisphere, projections are formed from the South Pole:
 
 ### Data
 
-All named stars are collected from [IAU Named Stars](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt)
+All IAU named stars are collected from [`pas.rochester.edu`](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt).
 
 [IAU Named Stars](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/1_iau_stars.csv):
 

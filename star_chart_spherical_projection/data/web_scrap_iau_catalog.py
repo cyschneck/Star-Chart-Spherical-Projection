@@ -168,7 +168,9 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 			if "magnitude" in header:
 				# if multiple magnitudes, gets Visual (V)
 				all_mag = value.split(" ")
-				star_values["Magnitude (Visual)"] = all_mag[all_mag.index("(V)") - 1]
+				all_mag = all_mag[all_mag.index("(V)") - 1]
+				all_mag = all_mag.replace("+", "") # remove postive mark
+				star_values["Magnitude (Visual)"] = all_mag
 			if "proper motion (speed)" in header:
 				pm_sp = value.lower().split(" ")[0]
 				units = value.lower().split(" ")[1]
@@ -264,12 +266,18 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.replace("′","") # remove degree minute marks
 			dec_text = dec_text.replace("″","") # remove degree second marks
 			star_values["Declination"] = dec_text
-		if "apparent magnitude" in row.text.lower():
+		if "apparent magnitude" in row.text.lower() and "v" in row.text.lower():
 			mag_text = row.text.strip("\n")
 			mag_text = mag_text.replace("\n", "$") # find split point
 			mag_text = mag_text.split("$$")[1]
 			mag_text = re.sub(r"\[.*?\]","",mag_text) # remove links in brackets
-			# TODO: fix magntiude when a range of values is present
+			mag_text = re.sub(r"\(.*?\)","",mag_text) # remove links in parenthesis
+			mag_text = mag_text.replace(u'\xa0', u' ')# remove non-breaking space in string
+			mag_text = mag_text.replace("+", "") # remove postive sign
+			mag_text = mag_text.replace("/", " ") # remove cross sign
+			mag_text = mag_text.split(" ")[0]
+			mag_text = mag_text.split("±")[0]
+			mag_text = mag_text.strip()
 			star_values["Magnitude (Visual)"] = mag_text
 		if "proper motion" in row.text.lower():
 			pm_text = row.text.lower()
@@ -370,11 +378,11 @@ def compareOutputs():
 	print(f"Length of IAU == Length of Found Stars = {len(list(iau_stars)) == len(list(sky_stars))}")
 	
 if __name__ == '__main__':
-	iau_dataframe = IAU_CSN(save_csv=True)                  # retrieve offical list of IAU names -> saved to iau_stars.csv
-	all_inthesky_pages = inTheSkyAllPages()                 # returns links to all pages in InTheSky
-	inTheSkyAllStars(page_links=all_inthesky_pages,
-					iau_names=iau_dataframe,
-					save_csv=True)                          # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
+	#iau_dataframe = IAU_CSN(save_csv=True)                  # retrieve offical list of IAU names -> saved to iau_stars.csv
+	#all_inthesky_pages = inTheSkyAllPages()                 # returns links to all pages in InTheSky
+	#inTheSkyAllStars(page_links=all_inthesky_pages,
+	#				iau_names=iau_dataframe,
+	#				save_csv=True)                          # iterate through InTheSky for IAU stars, saves stars to star_properties.csv
 	backupStars(backup_links_csv="0_backup_links.csv",
 				save_csv=True)              				# iterate through backup list of stars
 	# combine csv into a single star data

@@ -253,9 +253,6 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.lower().split("declination")[1]
 			dec_text = re.sub(r"\[.*?\]","",dec_text) # remove links in brackets
 			dec_text = dec_text.replace(u'\xa0', u' ')# remove non-breaking space in string
-			if len(dec_text.split(" ")[0]) != 4:
-				# add additional postive sign if does not already include
-				dec_text = "+" + dec_text
 			dec_text = dec_text.replace(" ", "") # remove whitespace
 			dec_text = dec_text.replace(".", "") # remove microseconds mark
 			dec_text = dec_text.replace("+", "") # remove postive mark

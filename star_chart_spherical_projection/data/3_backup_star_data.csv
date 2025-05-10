@@ -1,4 +1,4 @@
-Common Name,Right Ascension,Declination,Magnitude (Visual),Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),Alternative Names,URL
+Common Name,Right Ascension (HH.MM.SS),Declination (DD.SS),"Magnitude (V, Visual)",Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),Alternative Names,URL
 Tianyi,12.47.3434473,66.47250977,5.43,6.674,-6.498,"Tianyi, 7 Dra, BD+67°764, FK5 3020, HD 111335, HIP 62423, HR 4863, SAO 15902",https://en.wikipedia.org/wiki/7_Draconis
 Mekbuda,07.04.0653079,20.34130739,3.93,-7.29,-0.41,"Mekbuda, ζ Gem, 43 Gem, BD+20°1687, FK5 269, HD 52973, HIP 34088, HR 2650, SAO 79031, WDS J07041+2034A",https://en.wikipedia.org/wiki/Zeta_Geminorum
 Kurhah,22.03.47455,64.374071,4.2,215.46,91.06,"Kurhah, 17 Cephei, BD+63°1802, CCDM J22038+2407, HIP 108917, HR 8417, SAO 19827, WDS J22038+6438",https://en.wikipedia.org/wiki/Xi_Cephei
@@ -14,7 +14,7 @@ Titawin,01.36.5040476,41.23321228,4.10,-172.437,-383.824,"Titawin, 50 Andromeda
 Anser,19.28.423299,24.3953661,4.40,-126.197,-106.865,"Anser, α Vul, 6 Vulpeculae, BD+24°3759, FK5 1508, HD 183439, HIP 95771, HR 7405, SAO 87261, CCDM J19288+2442A, WDS J19287+2440A",https://en.wikipedia.org/wiki/Alpha_Vulpeculae
 Belenos,01.25.1251573,28.34001030,7.12,251.270,-157.570,"Bélénos, BD+27°225, GC 1710, HD 8574, HIP 6643, SAO 74702, LTT 10508, NLTT 4709",https://en.wikipedia.org/wiki/HD_8574
 Bubup,05.37.020168,-73.4157645,6.70,138.794,-108.499,"Bubup, CD−73°253, HD 38283, HIP 26380, SAO 256213, 2MASS J05370199-7341574",https://en.wikipedia.org/wiki/HD_38283
-Meridiana,19.09.2834097,-37.54161022,4.102,84.87,-95.99,"Meridiana, α CrA, Alf CrA, CD−38° 13350, FK5 718, GC 26360, HD 178253, HIP 94114, HR 7254, SAO 210990, IRAS 19060-3759, 2MASS J19092834-3754157",https://en.wikipedia.org/wiki/Alpha_Coronae_Australis
+Meridiana,19.09.2834097,-37.54161022,4.102,84.87,-95.99,"Meridiana, α CrA, Alf CrA, CD−38°13350, FK5 718, GC 26360, HD 178253, HIP 94114, HR 7254, SAO 210990, IRAS 19060-3759, 2MASS J19092834-3754157",https://en.wikipedia.org/wiki/Alpha_Coronae_Australis
 Segin,01.54.2373409,63.40123602,3.37,29.587,-18.387,"Segin, Epsilon Cas, ε Cas, 45 Cassiopeiae, BD+62 320, FK5 63, HD 11415, HIP 8886, HR 542, SAO 12031",https://en.wikipedia.org/wiki/Epsilon_Cassiopeiae
 Dziban,17.41.5810460,72.09248581,5.82,34.89,-275.94,"Dziban, 31 Dra, ADS 10759 AB, Gliese 694.1",https://en.wikipedia.org/wiki/Psi1_Draconis
 Pleione,03.49.112166,24.0812157,4.77,19.496,-47.650,"Pleione, 28 Tau, BU Tau, BD+23°558, GC 4587, HD 23862, HIP 17851, HR 1180, SAO 76229",https://en.wikipedia.org/wiki/Pleione_(star)
@@ -26,7 +26,7 @@ Angetenar,02.51.0232186,-21.00144654,4.78,-38.52,-16.05,"Angetenar, τ2 Eridani,
 Gumala,19.15.332301,-24.1045671,6.25,118.567,-102.364,"Gumala, V5652 Sgr, CD−24° 15161, GJ 749, HD 179949, HIP 94645, HR 7291, SAO 187883",https://en.wikipedia.org/wiki/HD_179949
 Alshat,20.20.3981562,-12.45326844,4.76,14.74,-14.32,"Alshat, ν Cap, Nu Cap, 8 Cap, BD−13°5642, HD 193432, HIP 100310, HR 7773, SAO 163468, ADS 13714, WDS J20207-1246A",https://en.wikipedia.org/wiki/Nu_Capricorni
 Moriah,20.24.297235,16.4543812,11.94,13.325,-5.505,"Moriah, TYC 1632-1396-1, GSC 01632-01396, 2MASS J20242972+1645437",https://en.wikipedia.org/wiki/HAT-P-23
-Fafnir,18.25.5913696,65.33485313,4.82,105.816,-26.846,"Fafnir, BD+65° 1271, GC 25212, HD 170693, HIP 90344, HR 6945, SAO 17888, PPM 20916, GCRV 10941",https://en.wikipedia.org/wiki/42_Draconis
+Fafnir,18.25.5913696,65.33485313,4.82,105.816,-26.846,"Fafnir, BD+65°1271, GC 25212, HD 170693, HIP 90344, HR 6945, SAO 17888, PPM 20916, GCRV 10941",https://en.wikipedia.org/wiki/42_Draconis
 Nosaxa,06.40.017270,-48.3231042,8.07,26.524,29.689,"Nosaxa, CD–48 2430, HD 48265, HIP 31895, SAO 218115.",https://en.wikipedia.org/wiki/HD_48265
 Terebellum,19.55.5036255,-26.17576933,4.70,203.96,74.40,"Terebellum, ψ Sgr, 58 Sagittarii, CPD−26°6880, FK5 1629, GC 27583, GJ 770.1, GJ 9673, HD 188376, HIP 98066, HR 7597, SAO 188722, PPM 270451",https://en.wikipedia.org/wiki/Omega_Sagittarii
 Koeia,02.46.428869,-23.0511802,10.24,294.717,140.966,"Koeia, CD−23 1056, HIP 12961, SAO 168043, PPM 245393, LTT 1349, NLTT 8966, TYC 6434-00494-1, 2MASS J02464286-2305119",https://en.wikipedia.org/wiki/HIP_12961
@@ -41,7 +41,7 @@ Fumalsamakah,23.03.5261349,03.49121662,4.40,11.76,-9.85,"Fumalsamakah, Beta Psc,
 Cujam,16.25.2495425,14.01597711,4.5821,40.86,-59.71,"Cujam, ω Her, 24 Her, 51 Ser, BD+14°3049, FK5 613, HD 148112, HIP 80463, HR 6117, SAO 102153, WDS J16254+1402AB.",https://en.wikipedia.org/wiki/Omega_Herculis
 Felixvarela,00.28.34306,-16.133484,9.62,-354.939,-227.995,"Felixvarela, HIP 2247, SAO 147293, PPM 208851, 2MASS J00283433-1613343",https://en.wikipedia.org/wiki/BD%E2%88%9217_63
 Uklun,11.44.5046086,-58.42133580,7.47,-63.574,-70.331,"Uklun, CD–58°4207, HD 102117, HIP 57291, SAO 239348",https://en.wikipedia.org/wiki/HD_102117
-Azelfafage,21.42.0566458,51.11226415,4.66,5.29,-1.78,"π1 Cyg, 80 Cygni, BD+50° 3410, FK5 3733, HD 206672, HIP 107136, HR 8301, SAO 33665.",https://en.wikipedia.org/wiki/Pi1_Cygni
+Azelfafage,21.42.0566458,51.11226415,4.66,5.29,-1.78,"π1 Cyg, 80 Cygni, BD+50°3410, FK5 3733, HD 206672, HIP 107136, HR 8301, SAO 33665.",https://en.wikipedia.org/wiki/Pi1_Cygni
 Kalausi,09.37.118275,-43.1619934,8.23,21.805,-120.094,"Kalausi, CD–42°5452, GC 13300, HD 83443, HIP 47202, SAO 221348, 2MASS J09371182-4316198",https://en.wikipedia.org/wiki/HD_83443
 Torcular,01.45.2363185,09.09278530,4.27,72.98,39.30,"Torcular, Torcularis Septentrionalis, ο Psc, 110 Piscium, BD+08°273, FK5 60, GC 2139, HD 10761, HIP 8198, HR 510, SAO 110110, PPM 144950",https://en.wikipedia.org/wiki/Omicron_Piscium
 Zhang,09.51.2869384,-14.50477710,4.12,18.88,-21.85,"Zhang, upsilon1 Hya, 39 Hydrae, BD-14°2963, HD 85444, HIP 48356, HR 3903, SAO 155542",https://en.wikipedia.org/wiki/Upsilon1_Hydrae
@@ -51,7 +51,7 @@ Aldulfin,20.33.1277192,11.18117412,4.03,11.96,-28.97,"Aldulfin, ε Del, 2 Del,
 Tonatiuh,12.05.151172,76.5420643,5.78,147.183,-92.464,"Tonatiuh, BD+77°461, FK5 451, GC 16514, HD 104985, HIP 58952, HR 4609, SAO 7500, NLTT 29548",https://en.wikipedia.org/wiki/HD_104985
 Tupa,12.25.462674,-64.0119516,6.994,-182.666,-60.693,"Tupã, CD−63°757, CPD−63°2270, GC 16944, HIP 60644, LTT 4696, SAO 251899",https://en.wikipedia.org/wiki/HD_108147
 Moldoveanu,16.02.118462,28.1010420,11.19,-17.349,14.780,"Moldoveanu, BD+28 2507, TOI-2021, TIC 236312126, TYC 2041-1657-1, GSC 02041-01657, 2MASS J16021184+2810105",https://en.wikipedia.org/wiki/XO-1
-Botein,03.11.3776465,19.43360397,4.349,153.33,-8.28,"Botein, Botejn, 57 Arietis, BD+19° 477, FK5 114, HD 19787, HIP 14838, HR 951, SAO 93328.",https://en.wikipedia.org/wiki/Delta_Arietis
+Botein,03.11.37767,19.433602,4.349,153.871,-5.586,"Botein, Botejn, δ Arietis, 57 Arietis, BD+19°477, FK5 114, GC 3805, HD 19787, HIP 14838, HR 951, SAO 93328, PPM 118897",https://en.wikipedia.org/wiki/Delta_Arietis
 Alasia,18.21.49783,-11.552165,7.95,-22.963,-68.395,"Alasia, BD−11°4606, HD 168746, HIP 90004, SAO 161386, PPM 234431",https://en.wikipedia.org/wiki/HD_168746
 Barnard's Star,17.57.4849847,04.41361139,9.511,-801.551,10362.394,"Proxima Ophiuchi, ""Barnard's Runaway Star"", ""Greyhound of the Skies"", V2500 Ophiuchi, BD+04°3561a, GJ 699, HIP 87937, LFT 1385, LHS 57, LTT 15309, 2MASS J17574849+0441405, GCTP 4098.00, Gl 140-024, Karmn J17578+046, Munich 15040, Vyssotsky 799, Latin: Velox Barnardi",https://en.wikipedia.org/wiki/Barnard%27s_Star
 Mouhoun,04.50.178614408264,-24.2207833769068,7.911,18.469,-19.837,"CD−24 2616, Gaia DR3 4893980371818915456, HD 30856, HIP 22491, SAO 169805, TIC 612908, TYC 6466-1769-1, GSC 06466-01769, 2MASS J04501787-2422077",https://en.wikipedia.org/wiki/HD_30856
@@ -72,7 +72,7 @@ Pincoya,18.03.0693302,-28.33383488,9.62,-34.658,-42.253,"Pincoya, CD–28° 140
 Nushagak,02.49.4448710,71.45116292,8.16,90.848,-33.013,"Nushagak, BD+71°171, HIP 13192, SAO 4737, GSC 04321-01320,   PPM 5099, TYC 4321-1320-1, AG+71 95",https://en.wikipedia.org/wiki/HD_17156
 Lusitania,06.29.1319200,10.56020059,8.10,206.208,-62.550,"Lusitânia, BD+11 1197, GC 8415, HD 45652, HIP 30905, SAO 95735, NLTT 16570",https://en.wikipedia.org/wiki/HD_45652
 Alterf,09.31.4322754,22.58046904,4.32,-20.17,-39.47,"Alterf, λ Leo, 4 Leo, BD+23°2107, HD 82308, HIP 46750, HR 3773, SAO 80885",https://en.wikipedia.org/wiki/Lambda_Leonis
-Mesarthim,01.53.3181479,19.17378790,3.86,79.20,-97.63,"5 Ari, BD+18 243, HIP 8832, WDS J01535+1918",https://en.wikipedia.org/wiki/Gamma_Arietis
+Mesarthim,01.53.31813,19.173788,3.86,77.138,-97.321,"5 Ari, BD+18 243, HIP 8832, WDS J01535+1918",https://en.wikipedia.org/wiki/Gamma_Arietis
 Cocibolca,00.44.2665067,-26.30564555,7.78,313.556,149.324,"Cocibolca, CD−27°223, GJ 9024, HD 4208, HIP 3479, SAO 166526, LTT 410",https://en.wikipedia.org/wiki/HD_4208
 Taygeta,03.45.1249578,24.28022097,4.30,21.24,-40.56,"q Tauri, 19 Tauri, HR 1145, HD 23338, BD+24°547, HIP 17531, SAO 76140, GC 4486, BDS 1848, CCDM 03452+2429",https://en.wikipedia.org/wiki/Taygeta
 Flegetonte,11.45.4229278,02.49173262,8.07,-188.735,-113.403,"BD+03°2549, HD 102195, HIP 57370, HR 4293, SAO 119033, LTT 13232, NLTT 28458",https://en.wikipedia.org/wiki/HD_102195
@@ -123,7 +123,7 @@ Jishui,07.39.0993466,34.35035028,4.90,-37.975,-105.132,"Jishui, ο Gem, 71 Gemin
 Merga,14.49.1867062,46.06583369,5.76,-6.404,-78.073,"Merga, Marrha, El Mara el Musalsela, Falx Italica, h Boötis, 38 Boo, BD+46°1993, FK5 1383, GC 19959, HD 130945, HIP 72487, HR 5533, SAO 45226",https://en.wikipedia.org/wiki/38_Bo%C3%B6tis
 Beid,04.11.5193956,-06.50152864,4.04,10.76,81.92,"Beid, ο1 Eri, 38 Eri, BD−07°764, FK5 154, HD 26574, HIP 19587, HR 1298, SAO 131019",https://en.wikipedia.org/wiki/Omicron1_Eridani
 Dofida,13.32.2555543,-47.16169091,7.17,24.87,-125.01,"Dofida, CD−46° 8708, GC 18290, HD 117618, HIP 66047, SAO 224228",https://en.wikipedia.org/wiki/HD_117618
-Lich,13.00.01,12.4057,,46.44,-84.87,"Lich, PSR 1257+12, PSR J1300+1240, PSR 1300+1240",https://en.wikipedia.org/wiki/PSR_B1257%2B12
+Lich,13.00.031075,12.4055155,,46.44,-84.87,"Lich, PSR 1257+12, PSR J1300+1240, PSR 1300+1240",https://en.wikipedia.org/wiki/PSR_B1257%2B12
 Musica,20.58.2593353,10.50214309,5.506,-49.921,-34.509,"Musica, 18 Del, BD+10°4425, GC 29266, HD 199665, HIP 103527, HR 8030, SAO 106712, WDS J20584+1050A",https://en.wikipedia.org/wiki/18_Delphini
 Muliphein,07.03.4549305,-15.37598300,4.10,-0.14,-11.36,"Muliphein, Muliphen, 23 Canis Majoris, BD−15°1625, FK5 271, HD 53244, HR 2657, HIP 34045, SAO 152303",https://en.wikipedia.org/wiki/Gamma_Canis_Majoris
 Solaris,21.13.3599016,14.41217858,9.78,233.909,-0.360,"Solaris, AG+14 2370, BD+14 4559, HIP 104780, PPM 139779, LTT 16221",https://en.wikipedia.org/wiki/BD%2B14_4559
@@ -136,7 +136,7 @@ Aladfar,19.13.4548832,39.08454801,4.43,-0.60,-1.26,"Eta Lyr or η Lyr, 20 Lyr
 Felis,09.54.522045,-19.0033620,4.94,-45.386,-40.456,"Felis, 183 G. Hydrae, BD−18° 2810, FK5 373, GC 13644, HIP 48615, HR 3923, SAO 155588",https://en.wikipedia.org/wiki/HD_85951
 Kang,14.12.5374538,-10.16253340,4.180,7.25,139.88,"Kang, 98 Virginis, κ Vir, BD−09°3878, FK5 523, HD 124294, HIP 69427, HR 5315, SAO 158427",https://en.wikipedia.org/wiki/Kappa_Virginis
 Timir,16.28.28151,-13.235869,6.903,-37.413,3.049,"BD−13°4437, HIP 80687, PPM 231736, SAO 159932",https://en.wikipedia.org/wiki/HD_148427
-Uruk,19.32.0416092,16.28274431,8.97,63.452,15.508,"Uruk, BD+16° 3883, HD 231701, HIP 96078, SAO 104946",https://en.wikipedia.org/wiki/HD_231701
+Uruk,19.32.0416092,16.28274431,8.97,63.452,15.508,"Uruk, BD+16°3883, HD 231701, HIP 96078, SAO 104946",https://en.wikipedia.org/wiki/HD_231701
 Minchir,08.38.4543747,03.20291701,4.48,-19.48,-15.92,"σ Hya, 5 Hydrae, BD+03°2026, FK5 1224, HD 73471, HIP 42402, HR 3418, SAO 116988",https://en.wikipedia.org/wiki/Sigma_Hydrae
 Marohu,23.12.3773683,-22.40262738,11.9,-23.264,-37.143,"Márohu, TOI-231, TIC 204376737, WASP-6, TYC 6972-75-1, 2MASS J23123773-2240261, DENIS J231237.7-224025, UCAC2 22823425",https://en.wikipedia.org/wiki/WASP-6
 Hunor,16.20.363576,41.0253107,8.71,-10.078,-29.057,"HAT-P-2, BD+41°2693, HD 147506, HIP 80076, SAO 46035",https://en.wikipedia.org/wiki/HD_147506

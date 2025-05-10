@@ -159,18 +159,18 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				ra_text = value.replace("h", ".") # remove hour marker
 				ra_text = ra_text.replace("m", ".") # remove minute marker
 				ra_text = ra_text.replace("s", "") # remove second marker
-				star_values["Right Ascension"] = ra_text
+				star_values["Right Ascension (HH.MM.SS)"] = ra_text
 			if "declination" in header:
 				dec_text = value.replace("°", ".") # remove degree marker
 				dec_text = dec_text.replace("'", "") # remove degree minute marker
 				dec_text = dec_text.replace("\"", "") # remove degree second marker
-				star_values["Declination"] = dec_text
+				star_values["Declination (DD.SS)"] = dec_text
 			if "magnitude" in header:
 				# if multiple magnitudes, gets Visual (V)
 				all_mag = value.split(" ")
 				all_mag = all_mag[all_mag.index("(V)") - 1]
 				all_mag = all_mag.replace("+", "") # remove postive mark
-				star_values["Magnitude (Visual)"] = all_mag
+				star_values["Magnitude (V, Visual)"] = all_mag
 			if "proper motion (speed)" in header:
 				pm_sp = value.lower().split(" ")[0]
 				units = value.lower().split(" ")[1]
@@ -182,14 +182,14 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				else:
 					print(f"Invalid units: {units}")
 					exit()
-				star_values["Proper Motion (Speed, mas/yr)"] = pm_sp
+				star_values["Proper Motion Speed (mas/yr)"] = pm_sp
 			if "proper motion (pos ang)" in header:
 				pm_angle = value.replace("°", "") # remove degree mark
-				star_values["Proper Motion (Angle, Degrees)"] = pm_angle
+				star_values["Proper Motion Angle (DD.SS)"] = pm_angle
 		star_values["URL"] = page_link
 		
 		# if proper motion  elements not found, return None
-		if "Proper Motion (Angle, Degrees)" not in list(star_values) or "Proper Motion (Speed, mas/yr)" not in list(star_values):
+		if "Right Ascension (HH.MM.SS)" not in list(star_values) or "Proper Motion Angle (DD.SS)" not in list(star_values) or "Proper Motion Speed (mas/yr)" not in list(star_values):
 			return None
 		else:
 			return star_values
@@ -247,7 +247,7 @@ def wikipediaLinks(row_data=None):
 			ra_text = ra_text.replace("h", ".") # remove hours marker
 			ra_text = ra_text.replace("m", ".") # remove minute marker
 			ra_text = ra_text.replace("s", "") # remove minute marker
-			star_values["Right Ascension"] = ra_text
+			star_values["Right Ascension (HH.MM.SS)"] = ra_text
 		if "declination" in row.text.lower():
 			dec_text = row.text.replace("\n", "")
 			dec_text = dec_text.lower().split("declination")[1]
@@ -262,7 +262,7 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.replace("°",".") # remove degree marks
 			dec_text = dec_text.replace("′","") # remove degree minute marks
 			dec_text = dec_text.replace("″","") # remove degree second marks
-			star_values["Declination"] = dec_text
+			star_values["Declination (DD.SS)"] = dec_text
 		if "apparent magnitude" in row.text.lower() and "v" in row.text.lower():
 			mag_text = row.text.strip("\n")
 			mag_text = mag_text.replace("\n", "$") # find split point
@@ -275,7 +275,7 @@ def wikipediaLinks(row_data=None):
 			mag_text = mag_text.split(" ")[0]
 			mag_text = mag_text.split("±")[0]
 			mag_text = mag_text.strip()
-			star_values["Magnitude (Visual)"] = mag_text
+			star_values["Magnitude (V, Visual)"] = mag_text
 		if "proper motion" in row.text.lower():
 			pm_text = row.text.lower()
 			pm_text = pm_text.replace(u'\xa0', u' ')# remove non-breaking space in string
@@ -323,11 +323,11 @@ def setupFinalCSV(save_csv=False):
 	combined_df = pd.concat([inthesky_df, backup_df, manual_missing_df], ignore_index=True)
 	# reorder headers
 	reordered_headers = ["Common Name",
-						"Right Ascension",
-						"Declination",
-						"Magnitude (Visual)",
-						"Proper Motion (Speed, mas/yr)",
-						"Proper Motion (Angle, Degrees)",
+						"Right Ascension (HH.MM.SS)",
+						"Declination (DD.SS)",
+						"Magnitude (V, Visual)",
+						"Proper Motion Speed (mas/yr)",
+						"Proper Motion Angle (DD.SS)",
 						"Proper Motion RA (mas/yr)", 
 						"Proper Motion DEC (mas/yr)",
 						"Alternative Names",
@@ -337,18 +337,18 @@ def setupFinalCSV(save_csv=False):
 	for i, row in combined_df.iterrows():
 
 		# add RA/Dec from proper motion and angle in inthesky data
-		if np.isnan(row["Proper Motion RA (mas/yr)"]) and not np.isnan(row["Proper Motion (Speed, mas/yr)"]):
-			pm_angle_rad = np.deg2rad(row["Proper Motion (Angle, Degrees)"])
-			pm_speed = row["Proper Motion (Speed, mas/yr)"]
+		if np.isnan(row["Proper Motion RA (mas/yr)"]) and not np.isnan(row["Proper Motion Speed (mas/yr)"]):
+			pm_angle_rad = np.deg2rad(row["Proper Motion Angle (DD.SS)"])
+			pm_speed = row["Proper Motion Speed (mas/yr)"]
 			combined_df.loc[i, "Proper Motion RA (mas/yr)"] = round(np.sin(pm_angle_rad) * pm_speed, 4)
 			combined_df.loc[i, "Proper Motion DEC (mas/yr)"] = round(np.cos(pm_angle_rad) * pm_speed, 4)
 
 		# add proper motion speed and angle from RA/Dec in backup links
-		if np.isnan(row["Proper Motion (Speed, mas/yr)"]) and not np.isnan(row["Proper Motion RA (mas/yr)"]) :
+		if np.isnan(row["Proper Motion Speed (mas/yr)"]) and not np.isnan(row["Proper Motion RA (mas/yr)"]) :
 			ra_value = float(row["Proper Motion RA (mas/yr)"])
 			dec_value = float(row["Proper Motion DEC (mas/yr)"])
 			pm_speed = np.sqrt(ra_value**2 + dec_value**2)
-			combined_df.loc[i, "Proper Motion (Speed, mas/yr)"]= round(pm_speed, 4)
+			combined_df.loc[i, "Proper Motion Speed (mas/yr)"]= round(pm_speed, 4)
 			pm_angle = np.rad2deg(np.arctan(ra_value/dec_value))
 			if ra_value < 0 and dec_value > 0: # 90-180
 				pm_angle += 90
@@ -356,9 +356,9 @@ def setupFinalCSV(save_csv=False):
 				pm_angle += 180
 			if ra_value > 0 and dec_value < 0: # 270-360
 				pm_angle += 270
-			combined_df.loc[i, "Proper Motion (Angle, Degrees)"] = round(pm_angle, 4)
+			combined_df.loc[i, "Proper Motion Angle (DD.SS)"] = round(pm_angle, 4)
 
-		if np.isnan(row["Proper Motion (Speed, mas/yr)"]) and np.isnan(row["Proper Motion RA (mas/yr)"]):
+		if np.isnan(row["Proper Motion Speed (mas/yr)"]) and np.isnan(row["Proper Motion RA (mas/yr)"]):
 			print("EMPTY ROW")
 			print(combined_df.loc[[i]])
 	

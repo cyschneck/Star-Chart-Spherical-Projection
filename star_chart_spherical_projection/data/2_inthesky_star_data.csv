@@ -1,4 +1,4 @@
-Common Name,Alternative Names,Right Ascension,Declination,Magnitude (Visual),"Proper Motion (Speed, mas/yr)","Proper Motion (Angle, Degrees)",URL
+Common Name,Alternative Names,Right Ascension (HH.MM.SS),Declination (DD.SS),"Magnitude (V, Visual)",Proper Motion Speed (mas/yr),Proper Motion Angle (DD.SS),URL
 Sirius,"Sirius, α-CMa, Alpha Canis Majoris, 9-CMa, 9 Canis Majoris, HR 2491, HD 48915, HIP 32349",06.45.09,-16.4247,-1.44,1340.0,204.1,https://in-the-sky.org/data/object.php?id=HIP32349
 Canopus,"Canopus, α-Car, Alpha Carinae, HR 2326, HD 45348, HIP 30438, TYC 8534-2277-1",06.23.57,-52.4144,-0.63,30.6,40.6,https://in-the-sky.org/data/object.php?id=TYC8534-2277-1
 Rigil Kentaurus,"Rigil Kentaurus, α-Cen, Alpha Centauri, HR 5459, HD 128620, HIP 71683",14.39.40,-60.5006,-0.01,3710.0,277.3,https://in-the-sky.org/data/object.php?id=HIP71683

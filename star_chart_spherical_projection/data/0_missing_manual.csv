@@ -1,4 +1,4 @@
-Common Name,Alternative Names,Right Ascension,Declination,Magnitude (Visual),Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),"Proper Motion (Speed, mas/yr)","Proper Motion (Angle, Degrees)",URL
+Common Name,Alternative Names,Right Ascension (HH.MM.SS),Declination (DD.SS),"Magnitude (V, Visual)",Proper Motion RA (mas/yr),Proper Motion DEC (mas/yr),Proper Motion Speed (mas/yr),Proper Motion Angle (DD.SS),URL
 Alya,"Alya, θ¹-Ser, θ¹-Ser, Theta1 Serpentis Cauda, 63-Ser, 63 Serpentis Cauda, HR 7141, HD 175638, NSV 11557, HIP 92946, TYC 457-687-1, Gaia EDR3- 4281199284413726208",18.56.13,4.1213,4.58,,,56,56,https://in-the-sky.org/data/object.php?id=TYC457-687-1
 Taika,"Taika, 2MASS, J22220308+4527265, Gaia DR2 196215385497 720 96, GSC 03607-01028, TYC 3607-1028-1",22.22.030875821831,45.2726.515961773,3,8.962,-5.41,,,https://ja.wikipedia.org/wiki/HAT-P-40
 Tegmine,"Tegmen, Tegmine, 16 Cancri, HR 3208/3209/3210, HD 68257/68255/68256, BD+18°1867, HIP 40167, SAO 97645/97646, GC 11142/11141, ADS 6650, CCDM J08123+1738, WDS 08122+1739",08.12.127,17.3852,5.58,118.325,-148.433,,,https://simbad.u-strasbg.fr/simbad/sim-id?Ident=HR++3208

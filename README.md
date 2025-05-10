@@ -284,7 +284,7 @@ plotStereographicProjection(northOrSouth=None,
 ## Return Final Position of Stars
 **finalPositionOfStars()**
 
-Returns a dictionary for the final positions of the stars for a specific year in the format: {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 finalPositionOfStars(builtInStars=[],
 		yearSince2000=0, 
@@ -302,7 +302,7 @@ finalPositionOfStars(builtInStars=[],
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (userDefinedStars)
 - *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
-- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
+- *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Common Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
 <details closed>
 <summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
@@ -378,7 +378,7 @@ plotStarPositionOverTime(builtInStarName=None,
 - *[OPTIONAL]* isPrecessionIncluded: (boolean)  when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
 - *[OPTIONAL]* showYearMarker: (boolean) show dotted line for current year
-- *[OPTIONAL]* fig_plot_title: (string) figure plot title, defaults to `<STAR NAME> <DECLINATION/RA> (<With/Without> Precession) from <START BCE/CE> to <END BCE/CE>, every <YEAR INCREMENT> Years`
+- *[OPTIONAL]* fig_plot_title: (string) figure plot title, defaults to `<COMMON NAME> <DECLINATION/RA> (<With/Without> Precession) from <START BCE/CE> to <END BCE/CE>, every <YEAR INCREMENT> Years`
 - *[OPTIONAL]* fig_plot_color: (string) figure plot color, defaults to blue `C0`
 - *[OPTIONAL]* figsize_n: (float/int) figure plot size NxN, `12`
 - *[OPTIONAL]* figsize_dpi: (float/int) figure dpi, defaults to `100`

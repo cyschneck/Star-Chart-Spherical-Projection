@@ -72,12 +72,12 @@ def finalPositionOfStars(builtInStars=[],
 																										declination_max=declination_max)
 	# Generate a .csv file with final positions of stars
 	if save_to_csv is not None:
-		header_options = ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
+		header_options = ["Common Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 		star_chart_list = []
 		for star_name, star_position in finalPositionOfStarsDict.items():
 			star_chart_list.append([star_name, star_position["RA"], star_position["Declination"]])
 		df = pd.DataFrame(star_chart_list, columns=header_options)
-		df = df.sort_values(by=["Star Name"])
+		df = df.sort_values(by=["Common Name"])
 		df.to_csv(save_to_csv, header=header_options, index=False)
 	return finalPositionOfStarsDict
 
@@ -92,7 +92,7 @@ def starPositionOverTime(builtInStarName=None,
 	if builtInStarName is not None:
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
-		star_data = star_dataframe.loc[star_dataframe["Star Name"] == builtInStarName].values.flatten().tolist()
+		star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
 		star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag = star_data
 	if newStar is not None:
 		star_name = newStar.starName
@@ -153,7 +153,7 @@ def plotStarPositionOverTime(builtInStarName=None,
 	if builtInStarName is not None:
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
-		star_data = star_dataframe.loc[star_dataframe["Star Name"] == builtInStarName].values.flatten().tolist()
+		star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
 		star_name, _, _, _, _, _ = star_data
 	if newStar is not None:
 		star_name = newStar.starName

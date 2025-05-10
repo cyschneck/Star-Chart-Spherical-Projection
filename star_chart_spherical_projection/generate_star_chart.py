@@ -37,7 +37,7 @@ def getStarList(selectStars=[]):
 	star_dataframe = pd.read_csv(star_csv_file)
 	for index, row in star_dataframe.iterrows():
 		if len(selectStars) > 0: # get only a subset of all stars
-			if row["Star Name"] in selectStars:
+			if row["Common Name"] in selectStars:
 				star_data_list.append(row.tolist())
 		else:
 			star_data_list.append(row.tolist())
@@ -202,7 +202,7 @@ def generateStereographicProjection(starList=None,
 	# Convert Star chart from RA hours to Radians to chart
 	list_of_stars = convertRAhrtoRadians(starList)
 
-	finalPositionOfStarsDict = {} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+	finalPositionOfStarsDict = {} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 	x_star_labels = []
 	x_ra_values = []
 	y_dec_values = []
@@ -240,7 +240,7 @@ def generateStereographicProjection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
@@ -256,7 +256,7 @@ def generateStereographicProjection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Star Name': {"Declination" : Declination (int), "RA": RA (str)}
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)

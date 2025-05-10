@@ -90,7 +90,7 @@ def starPositionOverTime(builtInStarName=None,
 						save_to_csv=None):
 
 	if builtInStarName is not None:
-		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
+		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		star_data = star_dataframe.loc[star_dataframe["Star Name"] == builtInStarName].values.flatten().tolist()
 		star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag = star_data
@@ -151,7 +151,7 @@ def plotStarPositionOverTime(builtInStarName=None,
 													isPrecessionIncluded=isPrecessionIncluded)
 
 	if builtInStarName is not None:
-		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'star_data.csv')  # get file's directory, up one level, /data/star_data.csv
+		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		star_data = star_dataframe.loc[star_dataframe["Star Name"] == builtInStarName].values.flatten().tolist()
 		star_name, _, _, _, _, _ = star_data

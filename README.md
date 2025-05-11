@@ -1,6 +1,7 @@
 # Star-Chart-Spherical-Projection
 
 ![PyPi](https://img.shields.io/pypi/v/star-chart-spherical-projection)
+![PyPi-Versions](https://img.shields.io/pypi/pyversions/star-chart-spherical-projection)
 ![license](https://img.shields.io/github/license/cyschneck/Star-Chart-Spherical-Projection)
 [![repo-status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![pytests](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml/badge.svg?branch=main)](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/pytests.yml)

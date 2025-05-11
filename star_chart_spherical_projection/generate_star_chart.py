@@ -206,31 +206,38 @@ def _generate_stereographic_projection(starList=None,
 	x_ra_values = []
 	y_dec_values = []
 	for star in list_of_stars:
-		if maxMagnitudeFilter is None or star[5] < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
-			logger.debug(f"Star = '{star[0]}'")
+		# [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
+		name = star[0]
+		ra = star[1]
+		dec = star[2]
+		pm_speed = star[3]
+		pm_angle = star[4]
+		mag = star[5]
+		if maxMagnitudeFilter is None or mag < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
+			logger.debug(f"Star = '{name}'")
 
 			radius_of_circle = star_chart_spherical_projection._calculate_radius_of_circle(declination_min, northOrSouth)
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
-			logger.debug(f"'{star[0]}' original RA = {np.rad2deg(star[1])} and Declination = {star[2]}")
+			logger.debug(f"'{name}' original RA = {np.rad2deg(ra)} and Declination = {dec}")
 			star_ra, star_declination = _ra_dec_via_pm(yearSince2000, 
-														star[1], 
-														float(star[2]), 
-														float(star[3]), 
-														float(star[4]))
-			logger.debug(f"Adjusted: {star[1]} RA (radians) = {star_ra}")
-			logger.debug(f"Adjusted via Proper Motion: '{star[1]}': {star[2]} Declination (degrees) = {star_declination} ")
+														ra, 
+														dec, 
+														pm_speed, 
+														pm_angle)
+			logger.debug(f"Adjusted: {ra} RA (radians) = {star_ra}")
+			logger.debug(f"Adjusted via Proper Motion: '{ra}': {dec} Declination (degrees) = {star_declination} ")
 
 			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
 			# Vondrak accurate up  +/- 200K years around 2000
 			if isPrecessionIncluded:
-				star_declination, star_ra = _precession_vondrak(star[0], star_ra, star_declination, yearSince2000)
+				star_declination, star_ra = _precession_vondrak(name, star_ra, star_declination, yearSince2000)
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius
 				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) 
 
-				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
+				logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 
 				in_range_value = False # Determine if within range of South/North Hemisphere
 				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
@@ -239,15 +246,15 @@ def _generate_stereographic_projection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
-					x_star_labels.append(star[0])
+					finalPositionOfStarsDict[name] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+					x_star_labels.append(name)
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
-					logger.debug(f"Original: '{star[0]}': {np.rad2deg(star[1])} RA (degrees) and {star[2]} Declination (degrees)")
+					logger.debug(f"Original: '{name}': {np.rad2deg(ra)} RA (degrees) and {dec} Declination (degrees)")
 			if not isPrecessionIncluded:
 				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
 
-				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
+				logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 				in_range_value = False # Determine if within range of South/North Hemisphere
 				if star_declination > declination_min and star_declination < declination_max: # only display stars within range of declination values
 					in_range_value = True # North
@@ -255,11 +262,11 @@ def _generate_stereographic_projection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
-					x_star_labels.append(star[0])
+					finalPositionOfStarsDict[name] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+					x_star_labels.append(name)
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
-					logger.debug(f"Original: '{star[0]}': {np.rad2deg(star[1])} RA (degrees) and {star[2]} Declination (degrees)")
+					logger.debug(f"Original: '{name}': {np.rad2deg(ra)} RA (degrees) and {dec} Declination (degrees)")
 
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
@@ -301,9 +308,16 @@ def plot_stereographic_projection(builtInStars=[],
 												figsize_dpi=figsize_dpi,
 												save_plot_name=save_plot_name)
 	northOrSouth = northOrSouth.capitalize()
+	listOfStars = []
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = _get_stars(builtInStars)
+		for star in _get_stars(builtInStars):
+			listOfStars.append([star[0],
+								star[1],
+								star[2],
+								star[4],
+								star[5],
+								star[3]])
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

@@ -113,6 +113,7 @@ def position_over_time(builtInStarName=None,
 																							northOrSouth="North",
 																							declination_min=-90,
 																							declination_max=90)
+		
 		position_over_time[year+2000] = {"RA (radians)": star_radians[0], 
 									"RA (hours)" : star_dict[star_name]["RA"], 
 									"Dec (degrees)" : star_dict[star_name]["Declination"]}

@@ -17,14 +17,14 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
-def finalPositionOfStars(builtInStars=[], 
-						yearSince2000=0,
-						isPrecessionIncluded=True,
-						userDefinedStars=[],
-						onlyDisplayUserStars=False,
-						declination_min=None,
-						declination_max=None,
-						save_to_csv=None):
+def final_position(builtInStars=[], 
+					yearSince2000=0,
+					isPrecessionIncluded=True,
+					userDefinedStars=[],
+					onlyDisplayUserStars=False,
+					declination_min=None,
+					declination_max=None,
+					save_to_csv=None):
 	# return the final position of the stars as a dictionary
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
@@ -79,6 +79,7 @@ def finalPositionOfStars(builtInStars=[],
 		df = pd.DataFrame(star_chart_list, columns=header_options)
 		df = df.sort_values(by=["Common Name"])
 		df.to_csv(save_to_csv, header=header_options, index=False)
+
 	return finalPositionOfStarsDict
 
 def starPositionOverTime(builtInStarName=None,
@@ -223,8 +224,8 @@ def predictPoleStar(yearSince2000=0, northOrSouth="North"):
 	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, northOrSouth=northOrSouth)
 	northOrSouth = northOrSouth.title()
 
-	final_position_builtin_stars = star_chart_spherical_projection.finalPositionOfStars(yearSince2000=yearSince2000,
-																						isPrecessionIncluded=True)
+	final_position_builtin_stars = star_chart_spherical_projection.final_position(yearSince2000=yearSince2000,
+																				isPrecessionIncluded=True)
 	# Set the pole declination based on either North/South
 	if northOrSouth == "North":
 		pole_declination = 90

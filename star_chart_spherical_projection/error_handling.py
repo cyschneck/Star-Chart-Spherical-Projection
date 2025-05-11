@@ -28,7 +28,7 @@ def errorHandling(isPlotFunction=None,
 				figsize_dpi=None,
 				save_plot_name=None,
 				save_to_csv=None):
-	# Error Handling for Variables shared between finalPositionOfStars() and plot_stereographic_projection() (defined by isPlotFunction)
+	# Error Handling for Variables shared between final_position() and plot_stereographic_projection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
 	if type(builtInStars) != list:
@@ -68,7 +68,7 @@ def errorHandling(isPlotFunction=None,
 	if type(onlyDisplayUserStars) != bool:
 		raise ValueError(f"[onlyDisplayUserStars]: Must be a bool, current type = '{type(onlyDisplayUserStars)}'")
 
-	# Error Handling for finalPositionOfStars() function
+	# Error Handling for final_position() function
 	if not isPlotFunction:
 		# Ensure that declination ranges are set and within within ranges
 		if declination_max is not None:

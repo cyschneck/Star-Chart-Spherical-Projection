@@ -10,7 +10,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 * **Plot Stars on a Polar Chart**
 	* plot_stereographic_projection()
 * **Return Final Position of Stars**
-	* finalPositionOfStars()
+	* final_position()
 	* starPositionOverTime()
 	* plotStarPositionOverTime()
 	* predictPoleStar()
@@ -58,7 +58,7 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.finalPositionOfStars(builtInStars=["Vega"],
+star_final_pos_dict = scsp.final_position(builtInStars=["Vega"],
 						yearSince2000=11500,
 						save_to_csv="final_star_positions.csv")
 ```
@@ -133,7 +133,7 @@ All [star data](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blo
 
 ### newStar Object
 
-The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a newStar object. The newStar object will require a few important features that plot_stereographic_projection() and finalPositionOfStars() can now accept as an additional argument.
+The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a newStar object. The newStar object will require a few important features that plot_stereographic_projection() and final_position() can now accept as an additional argument.
 
 This allows for the creation of a new star in two ways:
 
@@ -282,11 +282,11 @@ plot_stereographic_projection(northOrSouth=None,
 | ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
 
 ## Return Final Position of Stars
-**finalPositionOfStars()**
+**final_position()**
 
 Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-finalPositionOfStars(builtInStars=[],
+final_position(builtInStars=[],
 		yearSince2000=0, 
 		isPrecessionIncluded=True,
 		userDefinedStars=[],

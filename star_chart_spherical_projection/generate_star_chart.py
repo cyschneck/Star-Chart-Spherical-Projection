@@ -28,7 +28,7 @@ southern_declination_max = -90
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
 
-def get_stars(selectStars=[]):
+def _get_stars(selectStars=[]):
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
@@ -42,7 +42,7 @@ def get_stars(selectStars=[]):
 			star_data_list.append(row.tolist())
 	return star_data_list
 
-def convertRAhrtoRadians(star_list):
+def _ra_to_radians(star_list):
 	# change first element in the list object [RA, dec]
 	for star in star_list:
 		ra_in_hr = star[1]
@@ -199,7 +199,7 @@ def generateStereographicProjection(starList=None,
 	# Generate sterographic projections and return declination and right ascension
 
 	# Convert Star chart from RA hours to Radians to chart
-	list_of_stars = convertRAhrtoRadians(starList)
+	list_of_stars = _ra_to_radians(starList)
 
 	finalPositionOfStarsDict = {} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 	x_star_labels = []

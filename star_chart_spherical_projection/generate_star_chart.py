@@ -58,7 +58,7 @@ def _ra_to_radians(star_list):
 		star[1] = ra_in_radians
 	return star_list
 
-def convertRadianstoRAhr(ra_in_radians):
+def _radians_to_ra(ra_in_radians):
 	# change star in radians to RA in hours
 	ra_in_degree = np.rad2deg(ra_in_radians)
 
@@ -239,7 +239,7 @@ def generateStereographicProjection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
@@ -255,7 +255,7 @@ def generateStereographicProjection(starList=None,
 					in_range_value = True # South
 
 				if in_range_value:
-					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": convertRadianstoRAhr(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+					finalPositionOfStarsDict[star[0]] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 					x_star_labels.append(star[0])
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)

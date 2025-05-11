@@ -15,7 +15,7 @@ def calculateLength(angle_of_inclination, radius_of_circle, northOrSouth):
 	equation_of_length = radius_of_circle * math.tan(angle_in_radians) # calculated
 	return equation_of_length
 
-def calculateRadiusOfCircle(min_dec, northOrSouth):
+def _calculate_radius_of_circle(min_dec, northOrSouth):
 	# calculate radius of full circle from -80 to 80 where min dec is the radius of smaller circle
 	# assumes total length = 1
 	total_ruler_len = 1
@@ -34,7 +34,7 @@ def _calculate_ruler(declination_min, declination_max, increment, northOrSouth):
 	declination_angles_ruler = np.arange(-90, 90+1, increment) # declination max range from -90 to 90
 
 	# calculate full size of circle to find declination for smaller range
-	radius_of_circle = calculateRadiusOfCircle(declination_min, northOrSouth)
+	radius_of_circle = _calculate_radius_of_circle(declination_min, northOrSouth)
 
 	ruler_position_dict = {} # dict: {degree : position_on_ruler }
 

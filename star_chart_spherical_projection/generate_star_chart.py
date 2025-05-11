@@ -209,7 +209,7 @@ def _generate_stereographic_projection(starList=None,
 		if maxMagnitudeFilter is None or star[5] < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
 			logger.debug(f"Star = '{star[0]}'")
 
-			radius_of_circle = star_chart_spherical_projection.calculateRadiusOfCircle(declination_min, northOrSouth)
+			radius_of_circle = star_chart_spherical_projection._calculate_radius_of_circle(declination_min, northOrSouth)
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
 			logger.debug(f"'{star[0]}' original RA = {np.rad2deg(star[1])} and Declination = {star[2]}")

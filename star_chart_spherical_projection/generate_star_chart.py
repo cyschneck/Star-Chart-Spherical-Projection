@@ -215,9 +215,9 @@ def _generate_stereographic_projection(starList=None,
 			logger.debug(f"'{star[0]}' original RA = {np.rad2deg(star[1])} and Declination = {star[2]}")
 			star_ra, star_declination = _ra_dec_via_pm(yearSince2000, 
 														star[1], 
-														star[2], 
-														star[3], 
-														star[4])
+														float(star[2]), 
+														float(star[3]), 
+														float(star[4]))
 			logger.debug(f"Adjusted: {star[1]} RA (radians) = {star_ra}")
 			logger.debug(f"Adjusted via Proper Motion: '{star[1]}': {star[2]} Declination (degrees) = {star_declination} ")
 
@@ -303,7 +303,7 @@ def plot_stereographic_projection(builtInStars=[],
 	northOrSouth = northOrSouth.capitalize()
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = get_stars(builtInStars)
+		listOfStars = _get_stars(builtInStars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

@@ -218,7 +218,7 @@ def plot_position(builtInStarName=None,
 	if save_plot_name is not None:
 		fig.savefig(save_plot_name, dpi=fig.dpi)
 
-def predictPoleStar(yearSince2000=0, northOrSouth="North"):
+def predict_pole_star(yearSince2000=0, northOrSouth="North"):
 	# Find the next North/South Pole Star
 
 	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, northOrSouth=northOrSouth)

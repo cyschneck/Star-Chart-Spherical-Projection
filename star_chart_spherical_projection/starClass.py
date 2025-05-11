@@ -3,7 +3,7 @@ import numpy as np
 
 import star_chart_spherical_projection
 
-class newStar:
+class add_new_star:
 	def __init__(self,
 				starName=None,
 				ra=None,

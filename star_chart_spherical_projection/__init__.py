@@ -13,9 +13,9 @@ from .generate_star_chart import plot_stereographic_projection
 from .position_of_stars import final_position
 from .position_of_stars import position_over_time
 from .position_of_stars import plot_position
-from .position_of_stars import predictPoleStar
+from .position_of_stars import predict_pole_star
 
-from .starClass import newStar
+from .starClass import add_new_star
 
 from .declination_r_axis import calculateRuler
 from .declination_r_axis import calculateRadiusOfCircle

@@ -13,9 +13,9 @@ A Python package to generate circular astronomy star charts (past, present, and 
 	* final_position()
 	* position_over_time()
 	* plot_position()
-	* predictPoleStar()
+	* predict_pole_star()
 * **Add a New Star to Plot**
-	* newStar()
+	* add_new_star()
 
 ## Quickstart: Star-Chart-Spherical-Projection
 Plot stars in the Southern Hemisphere for the year 2025 (without stars labels)
@@ -32,13 +32,13 @@ Plot a few built-in stars as well as two new user defined stars in the Northern 
 ```python
 import star_chart_spherical_projection as scsp
 
-exalibur_star = scsp.newStar(starName="Exalibur",
+exalibur_star = scsp.add_new_star(starName="Exalibur",
 				ra="14.04.23",
 				dec=64.22,
 				properMotionSpeed=12.3,
 				properMotionAngle=83,
 				magnitudeVisual=1.2)
-karaboudjan_star = scsp.newStar(starName="Karaboudjan",
+karaboudjan_star = scsp.add_new_star(starName="Karaboudjan",
 				ra="3.14.15",
 				dec=10.13,
 				properMotionSpeedRA=57.6,
@@ -131,9 +131,9 @@ All [star data](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blo
 
 ## Add a New Star
 
-### newStar Object
+### New Star Object
 
-The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a newStar object. The newStar object will require a few important features that plot_stereographic_projection() and final_position() can now accept as an additional argument.
+The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a new star object. The new star object will require a few important features that plot_stereographic_projection() and final_position() can now accept as an additional argument.
 
 This allows for the creation of a new star in two ways:
 
@@ -141,7 +141,7 @@ This allows for the creation of a new star in two ways:
 
 As seen in [in-the-sky.org for Pollux](https://in-the-sky.org/data/object.php?id=TYC1920-2194-1)
 ```
-star_chart_spherical_projection.newStar(starName=None,
+star_chart_spherical_projection.add_new_star(starName=None,
 					ra=None,
 					dec=None,
 					properMotionSpeed=None,
@@ -160,7 +160,7 @@ star_chart_spherical_projection.newStar(starName=None,
 As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
 
 ```
-star_chart_spherical_projection.newStar(starName=None,
+star_chart_spherical_projection.add_new_star(starName=None,
 					ra=None,
 					dec=None,
 					properMotionSpeedRA=None,
@@ -214,7 +214,7 @@ plot_stereographic_projection(northOrSouth=None,
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* maxMagnitudeFilter: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
-- *[OPTIONAL]* userDefinedStars: (list) List of newStar objects of stars the user has added
+- *[OPTIONAL]* userDefinedStars: (list) List of new star objects of stars the user has added
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only display the stars defined by the users (userDefinedStars)
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
@@ -298,7 +298,7 @@ final_position(builtInStars=[],
 - *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* userDefinedStars: (list): List of newStar objects of stars the user has added
+- *[OPTIONAL]* userDefinedStars: (list): List of new star objects of stars the user has added
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (userDefinedStars)
 - *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
@@ -325,7 +325,7 @@ position_over_time(builtInStarName=None,
 			save_to_csv=None)
 ```
 - **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
-- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
+- **[REQUIRED]** newStar: (add_new_star object) a new star included created from a add_new_star()
 - **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** incrementYear: (float/int) number of year to increment from start to end by, defaults to `5` years
@@ -339,11 +339,11 @@ position_over_time(builtInStarName=None,
 </details>
 
 ## Predict Past and Future Pole Stars
-**predictPoleStar**
+**predict_pole_star**
 
 Return the North/South Pole star for a given year since 2000
 ```
-predictPoleStar(yearSince2000=0, northOrSouth="North")
+predict_pole_star(yearSince2000=0, northOrSouth="North")
 ```
 - **[REQUIRED]** yearSince2000 (int/float): ear since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* northOrSouth (string): North or South Pole where `North` = 90° and `South` = -90°, defaults to `North`

@@ -92,7 +92,7 @@ def test_finalPositionOfStars_userDefinedStarsInvalidTypes(invalid_input, error_
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_finalPositionOfStars_userDefinedStarsInvalidStarTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: {error_output} is not a valid newStar object (see: star_chart_spherical_projection.newStar)")):
+	with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: {error_output} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")):
 		scsp.final_position(userDefinedStars=[invalid_input])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)

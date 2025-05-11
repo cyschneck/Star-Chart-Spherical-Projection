@@ -62,8 +62,8 @@ def errorHandling(isPlotFunction=None,
 	if type(userDefinedStars) != list:
 		raise ValueError(f"[userDefinedStars]: Must be a list, current type = '{type(userDefinedStars)}'")
 	for user_star in userDefinedStars:
-		if type(user_star) != star_chart_spherical_projection.newStar:
-			raise ValueError(f"[userDefinedStars]: {type(user_star)} is not a valid newStar object (see: star_chart_spherical_projection.newStar)")
+		if type(user_star) != star_chart_spherical_projection.add_new_star:
+			raise ValueError(f"[userDefinedStars]: {type(user_star)} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")
 
 	if type(onlyDisplayUserStars) != bool:
 		raise ValueError(f"[onlyDisplayUserStars]: Must be a bool, current type = '{type(onlyDisplayUserStars)}'")
@@ -238,7 +238,7 @@ def errorHandlingStarClass(starName=None,
 			raise ValueError(f"[magnitudeVisual]: Must be a int or float, current type = '{type(magnitudeVisual)}'")
 
 def errorHandlingPredictPoleStar(yearSince2000=None, northOrSouth=None):
-	# Error Handling for predictPoleStar()
+	# Error Handling for predict_pole_star()
 	if yearSince2000 is None:
 		raise ValueError("[yearSince2000]: yearSince2000 is required")
 	else:

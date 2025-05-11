@@ -28,7 +28,7 @@ def errorHandling(isPlotFunction=None,
 				figsize_dpi=None,
 				save_plot_name=None,
 				save_to_csv=None):
-	# Error Handling for Variables shared between finalPositionOfStars() and plotStereographicProjection() (defined by isPlotFunction)
+	# Error Handling for Variables shared between finalPositionOfStars() and plot_stereographic_projection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
 	if type(builtInStars) != list:
@@ -82,7 +82,7 @@ def errorHandling(isPlotFunction=None,
 			if not save_to_csv.lower().endswith(".csv"):
 				raise ValueError(f"[save_to_csv]: Extension must be a .csv file, current extension = '{save_to_csv.split('.')[1]}'")
 
-	# Error Handling for plotStereographicProjection() function
+	# Error Handling for plot_stereographic_projection() function
 	if isPlotFunction:
 		# Ensure that Hemisphere selected are within options
 		if type(northOrSouth) != str:

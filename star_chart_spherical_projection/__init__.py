@@ -8,7 +8,7 @@ from .generate_star_chart import convertRadianstoRAhr
 from .generate_star_chart import generateStereographicProjection
 from .generate_star_chart import calculateRAandDeclinationViaProperMotion
 from .generate_star_chart import precessionVondrak
-from .generate_star_chart import plotStereographicProjection
+from .generate_star_chart import plot_stereographic_projection
 
 from .position_of_stars import finalPositionOfStars
 from .position_of_stars import starPositionOverTime

@@ -264,7 +264,7 @@ def generateStereographicProjection(starList=None,
 
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
-def plotStereographicProjection(builtInStars=[], 
+def plot_stereographic_projection(builtInStars=[], 
 								northOrSouth=None, 
 								declination_min=None,
 								yearSince2000=0,

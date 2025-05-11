@@ -6,7 +6,7 @@
 import math
 import numpy as np
 
-def calculateLength(angle_of_inclination, radius_of_circle, northOrSouth):
+def _calculate_length(angle_of_inclination, radius_of_circle, northOrSouth):
 	# convert angle into length of radius
 	if northOrSouth == "North":
 		angle_in_radians = np.deg2rad(45 - angle_of_inclination/2) # + angle for northern projection
@@ -40,12 +40,12 @@ def _calculate_ruler(declination_min, declination_max, increment, northOrSouth):
 
 	for n_angle in declination_angles_ruler:
 		if northOrSouth == "North":
-			ruler_position = calculateLength(n_angle, radius_of_circle, "North")
+			ruler_position = _calculate_length(n_angle, radius_of_circle, "North")
 			y_lengthSegments.append(ruler_position)
 			if n_angle >= declination_min and n_angle <= declination_max: # North
 				ruler_position_dict[n_angle] = round(ruler_position, 4)
 		if northOrSouth == "South":
-			ruler_position = calculateLength(n_angle, radius_of_circle, "South")
+			ruler_position = _calculate_length(n_angle, radius_of_circle, "South")
 			y_lengthSegments.append(ruler_position)
 			if n_angle <= declination_min and n_angle >= declination_max: # South
 				ruler_position_dict[n_angle] = round(ruler_position, 4)

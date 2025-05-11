@@ -228,7 +228,7 @@ def _generate_stereographic_projection(starList=None,
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius
-				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) 
+				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) 
 
 				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 
@@ -245,7 +245,7 @@ def _generate_stereographic_projection(starList=None,
 					y_dec_values.append(dec_ruler_position)
 					logger.debug(f"Original: '{star[0]}': {np.rad2deg(star[1])} RA (degrees) and {star[2]} Declination (degrees)")
 			if not isPrecessionIncluded:
-				dec_ruler_position = star_chart_spherical_projection.calculateLength(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
+				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
 
 				logger.debug(f"{star[0]}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 				in_range_value = False # Determine if within range of South/North Hemisphere

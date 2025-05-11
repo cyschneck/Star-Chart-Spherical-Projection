@@ -76,7 +76,7 @@ def _radians_to_ra(ra_in_radians):
 	ra_in_hours = f"{hours}.{minutes}.{seconds}"
 	return ra_in_hours
 
-def calculateRAandDeclinationViaProperMotion(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_angle):
+def _ra_dec_via_pm(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_angle):
 	# Calculate the RA and Declination of a star based on changes due to Proper Motion
 	# returns calculated RA and Declination
 
@@ -213,11 +213,11 @@ def _generate_stereographic_projection(starList=None,
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
 			logger.debug(f"'{star[0]}' original RA = {np.rad2deg(star[1])} and Declination = {star[2]}")
-			star_ra, star_declination = calculateRAandDeclinationViaProperMotion(yearSince2000, 
-																				star[1], 
-																				star[2], 
-																				star[3], 
-																				star[4])
+			star_ra, star_declination = _ra_dec_via_pm(yearSince2000, 
+														star[1], 
+														star[2], 
+														star[3], 
+														star[4])
 			logger.debug(f"Adjusted: {star[1]} RA (radians) = {star_ra}")
 			logger.debug(f"Adjusted via Proper Motion: '{star[1]}': {star[2]} Declination (degrees) = {star_declination} ")
 

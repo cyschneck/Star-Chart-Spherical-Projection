@@ -12,7 +12,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 * **Return Final Position of Stars**
 	* final_position()
 	* position_over_time()
-	* plotStarPositionOverTime()
+	* plot_position()
 	* predictPoleStar()
 * **Add a New Star to Plot**
 	* newStar()
@@ -349,12 +349,12 @@ predictPoleStar(yearSince2000=0, northOrSouth="North")
 - *[OPTIONAL]* northOrSouth (string): North or South Pole where `North` = 90° and `South` = -90°, defaults to `North`
 
 ## Plot a Star's Position over Time
-**plotStarPositionOverTime()**
+**plot_position()**
 
 Plot a star's declination and right ascension position over time
 
 ```
-plotStarPositionOverTime(builtInStarName=None, 
+plot_position(builtInStarName=None, 
 			newStar=None,
 			startYearSince2000=None,
 			endYearSince2000=None,
@@ -392,7 +392,7 @@ plotStarPositionOverTime(builtInStarName=None,
 
 **Declination with Precession:**
 ```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 							newStar=None,
 							startYearSince2000=-15000,
 							endYearSince2000=15000,
@@ -403,7 +403,7 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
 **Declination without Precession:**
 ```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 							newStar=None,
 							startYearSince2000=-15000,
 							endYearSince2000=15000,
@@ -414,7 +414,7 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension with Precession:**
 ```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 							newStar=None,
 							startYearSince2000=-15000,
 							endYearSince2000=15000,
@@ -425,7 +425,7 @@ star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
 ![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
 **Right Ascension without Precession:**
 ```python
-star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 							newStar=None,
 							startYearSince2000=-15000,
 							endYearSince2000=15000,

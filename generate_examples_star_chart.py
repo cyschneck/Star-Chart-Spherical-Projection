@@ -16,7 +16,7 @@ if __name__ == '__main__':
 														isPrecessionIncluded=True,
 														incrementYear=incrementYear,
 														save_to_csv=None)
-	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+	star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 														DecOrRA="D",
 														showPlot=show_plot,
 														save_plot_name="examples/plot_star_vega_declination_with_precession.png")
-	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+	star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,
@@ -34,7 +34,7 @@ if __name__ == '__main__':
 														DecOrRA="R",
 														showPlot=show_plot,
 														save_plot_name="examples/plot_star_vega_right_ascension_with_precession.png")
-	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+	star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 														DecOrRA="D",
 														showPlot=show_plot,
 														save_plot_name="examples/plot_star_vega_declination_without_precession.png")
-	star_chart_spherical_projection.plotStarPositionOverTime(builtInStarName="Vega",
+	star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,

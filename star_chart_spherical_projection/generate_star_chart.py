@@ -181,7 +181,7 @@ def vondrakDreamalligator(star_name, star_ra_rad, star_dec_rad, year_to_calculat
 
 	return dec_as_rad, ra_as_rad # new declination and right ascension
 
-def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
+def _precession_vondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	# Temporary fix for vondrak plugin (will only find a smaller subsections of the stars)
 	logger.debug("INCLUDING PRECESSION VIA VONDRAK")
 	vondrak_dec, vondrak_ra = vondrakDreamalligator(star_name, star_ra, np.deg2rad(star_dec), 2000 + year_YYYY_since_2000)
@@ -224,7 +224,7 @@ def _generate_stereographic_projection(starList=None,
 			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
 			# Vondrak accurate up  +/- 200K years around 2000
 			if isPrecessionIncluded:
-				star_declination, star_ra = precessionVondrak(star[0], star_ra, star_declination, yearSince2000)
+				star_declination, star_ra = _precession_vondrak(star[0], star_ra, star_declination, yearSince2000)
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius

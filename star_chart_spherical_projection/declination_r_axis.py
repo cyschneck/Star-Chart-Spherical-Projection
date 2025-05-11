@@ -25,7 +25,7 @@ def calculateRadiusOfCircle(min_dec, northOrSouth):
 		radius_of_circle_at_min_dec = (total_ruler_len/2) / math.tan(np.deg2rad(45 + min_dec/2))
 	return radius_of_circle_at_min_dec
 
-def calculateRuler(declination_min, declination_max, increment, northOrSouth):
+def _calculate_ruler(declination_min, declination_max, increment, northOrSouth):
 	# define the length of each segment in ruler when radius = 1
 
 	x_angleOfDeclination = np.arange(-90, 90+1,increment) # declination max range from -90 to 90

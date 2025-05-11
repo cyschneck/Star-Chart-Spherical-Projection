@@ -342,7 +342,7 @@ def plot_stereographic_projection(builtInStars=[],
 	declination_values = np.arange(declination_min, declination_max+1, incrementBy) # +1 to show max value in range
 
 	# Store the ruler positions based on degrees and the ratio of the ruler
-	ruler_position_dict = star_chart_spherical_projection.calculateRuler(declination_min,
+	ruler_position_dict = star_chart_spherical_projection._calculate_ruler(declination_min,
 																		declination_max,
 																		incrementBy, 
 																		northOrSouth)

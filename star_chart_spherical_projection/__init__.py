@@ -17,7 +17,7 @@ from .position_of_stars import predict_pole_star
 
 from .starClass import add_new_star
 
-from .declination_r_axis import calculateRuler
+from .declination_r_axis import _calculate_ruler
 from .declination_r_axis import calculateRadiusOfCircle
 from .declination_r_axis import calculateLength
 

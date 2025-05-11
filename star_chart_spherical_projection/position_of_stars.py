@@ -59,11 +59,11 @@ def finalPositionOfStars(builtInStars=[],
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
 	
-	# Set declination min values when using the generateStereographicProjection() to capture all stars if not set
+	# Set declination min values when using the _generate_stereographic_projection() to capture all stars if not set
 	declination_min = -90
 	declination_max = 90
 
-	_, _, _, finalPositionOfStarsDict = star_chart_spherical_projection.generateStereographicProjection(starList=listOfStars, 
+	_, _, _, finalPositionOfStarsDict = star_chart_spherical_projection._generate_stereographic_projection(starList=listOfStars, 
 																										northOrSouth="North", 
 																										declination_min=declination_min,
 																										yearSince2000=yearSince2000,
@@ -106,7 +106,7 @@ def starPositionOverTime(builtInStarName=None,
 	position_over_time = {}
 	for year in years_to_calculate:
 		star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
-		_, star_radians, _, star_dict = star_chart_spherical_projection.generateStereographicProjection(starList=star_row, 
+		_, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row, 
 																							yearSince2000=year,
 																							isPrecessionIncluded=isPrecessionIncluded,
 																							northOrSouth="North",

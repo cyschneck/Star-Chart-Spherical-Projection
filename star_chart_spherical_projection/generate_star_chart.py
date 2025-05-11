@@ -189,7 +189,7 @@ def precessionVondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	logger.debug(f"Precession for Star = {star_name}, Declination = {vondrak_dec}, RA = {vondrak_ra}")
 	return vondrak_dec, vondrak_ra
 
-def generateStereographicProjection(starList=None, 
+def _generate_stereographic_projection(starList=None, 
 									northOrSouth=None, 
 									yearSince2000=None,
 									isPrecessionIncluded=None,
@@ -375,7 +375,7 @@ def plot_stereographic_projection(builtInStars=[],
 	logger.debug(f"\n{northOrSouth}ern Range of Declination: {declination_min} to {declination_max}")
 
 	# convert to x and y values for stars
-	x_star_labels, x_ra_values, y_dec_values, star_dict = generateStereographicProjection(starList=listOfStars, 
+	x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars, 
 																						northOrSouth=northOrSouth, 
 																						yearSince2000=yearSince2000,
 																						isPrecessionIncluded=isPrecessionIncluded,

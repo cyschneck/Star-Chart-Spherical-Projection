@@ -5,7 +5,7 @@ from .error_handling import errorHandlingPredictPoleStar
 from .generate_star_chart import _get_stars
 from .generate_star_chart import _ra_to_radians
 from .generate_star_chart import _radians_to_ra
-from .generate_star_chart import generateStereographicProjection
+from .generate_star_chart import _generate_stereographic_projection
 from .generate_star_chart import calculateRAandDeclinationViaProperMotion
 from .generate_star_chart import precessionVondrak
 from .generate_star_chart import plot_stereographic_projection

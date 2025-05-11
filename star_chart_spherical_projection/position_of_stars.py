@@ -39,7 +39,7 @@ def finalPositionOfStars(builtInStars=[],
 
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = star_chart_spherical_projection.getStarList(builtInStars)
+		listOfStars = star_chart_spherical_projection.get_stars(builtInStars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

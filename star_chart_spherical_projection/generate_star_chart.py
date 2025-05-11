@@ -28,8 +28,7 @@ southern_declination_max = -90
 # Start Year (JP2000)
 j2000 = 2000 # start year of the star catalogue (jan 1 2000 via IAU)
 
-def getStarList(selectStars=[]):
-	# generate a star object
+def get_stars(selectStars=[]):
 	# selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
 	# stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
 	star_data_list = []
@@ -304,7 +303,7 @@ def plot_stereographic_projection(builtInStars=[],
 	northOrSouth = northOrSouth.capitalize()
 	if not onlyDisplayUserStars:
 		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = getStarList(builtInStars)
+		listOfStars = get_stars(builtInStars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

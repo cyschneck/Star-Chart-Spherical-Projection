@@ -11,7 +11,7 @@ A Python package to generate circular astronomy star charts (past, present, and 
 	* plot_stereographic_projection()
 * **Return Final Position of Stars**
 	* final_position()
-	* starPositionOverTime()
+	* position_over_time()
 	* plotStarPositionOverTime()
 	* predictPoleStar()
 * **Add a New Star to Plot**
@@ -311,12 +311,12 @@ final_position(builtInStars=[],
 </details>
 
 ## Return A Star's Position over Time
-**starPositionOverTime()**
+**position_over_time()**
 
 Returns a single star's position over time
 
 ```
-starPositionOverTime(builtInStarName=None,
+position_over_time(builtInStarName=None,
 			newStar=None,
 			startYearSince2000=None,
 			endYearSince2000=None,

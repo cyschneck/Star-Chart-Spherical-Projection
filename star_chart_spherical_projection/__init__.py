@@ -11,7 +11,7 @@ from .generate_star_chart import _precession_vondrak
 from .generate_star_chart import plot_stereographic_projection
 
 from .position_of_stars import final_position
-from .position_of_stars import starPositionOverTime
+from .position_of_stars import position_over_time
 from .position_of_stars import plotStarPositionOverTime
 from .position_of_stars import predictPoleStar
 

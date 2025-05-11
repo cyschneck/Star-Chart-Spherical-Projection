@@ -82,7 +82,7 @@ def final_position(builtInStars=[],
 
 	return finalPositionOfStarsDict
 
-def starPositionOverTime(builtInStarName=None,
+def position_over_time(builtInStarName=None,
 						newStar=None,
 						startYearSince2000=None,
 						endYearSince2000=None,
@@ -144,12 +144,12 @@ def plotStarPositionOverTime(builtInStarName=None,
 							figsize_dpi=100,
 							save_plot_name=None):
 
-	position_over_time_dict = starPositionOverTime(builtInStarName=builtInStarName,
-													newStar=newStar,
-													startYearSince2000=startYearSince2000,
-													endYearSince2000=endYearSince2000,
-													incrementYear=incrementYear,
-													isPrecessionIncluded=isPrecessionIncluded)
+	position_over_time_dict = position_over_time(builtInStarName=builtInStarName,
+												newStar=newStar,
+												startYearSince2000=startYearSince2000,
+												endYearSince2000=endYearSince2000,
+												incrementYear=incrementYear,
+												isPrecessionIncluded=isPrecessionIncluded)
 
 	if builtInStarName is not None:
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv

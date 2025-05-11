@@ -9,7 +9,7 @@ if __name__ == '__main__':
 	incrementYear = 5
 	year_since_example = 25 # 2025
 	show_plot = False
-	star_chart_spherical_projection.starPositionOverTime(builtInStarName="Vega",
+	star_chart_spherical_projection.position_over_time(builtInStarName="Vega",
 														newStar=None,
 														startYearSince2000=startYear,
 														endYearSince2000=endYear,

@@ -58,6 +58,7 @@ if __name__ == '__main__':
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="South",
 																displayStarNamesLabels=False,
 																yearSince2000=year_since_example,
+																maxMagnitudeFilter=3,
 																save_plot_name="examples/quickstart_south_years.png")
 	exalibur_star = star_chart_spherical_projection.add_new_star(starName="Exalibur",
 															ra="14.04.23",

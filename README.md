@@ -25,7 +25,8 @@ import star_chart_spherical_projection as scsp
 
 scsp.plot_stereographic_projection(northOrSouth="South",
 				displayStarNamesLabels=False,
-				yearSince2000=24)
+				maxMagnitudeFilter=3,
+				yearSince2000=25)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_years.png) 
 

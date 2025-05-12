@@ -1,3 +1,5 @@
+## PLACEHOLDER WITH OLD STAR DATA
+
 import pandas as pd
 import logging
 

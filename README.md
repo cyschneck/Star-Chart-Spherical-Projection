@@ -239,11 +239,11 @@ plot_stereographic_projection(northOrSouth=None,
 | ------------- | ------------- |
 | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
 
-| declination_min=-30° (default) (whtout star labels) | declination_min=10° (without star labels) |
+| declination_min=-30° (default) (without star labels) | declination_min=10° (without star labels) |
 | ------------- | ------------- |
 | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_10.png) |
 
-| yearSince2000=0 (default) | yearSince2000=-3100 |
+| yearSince2000=0 (default) (without star labels) | yearSince2000=-3100 (without star labels) |
 | ------------- | ------------- |
 | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_negative_3100.png) |
 

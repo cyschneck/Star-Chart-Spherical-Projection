@@ -113,10 +113,12 @@ if __name__ == '__main__':
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																yearSince2000=0,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/yearSince2000_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																yearSince2000=-3100,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/yearSince2000_negative_3100.png")
 	# displayStarNamesLabels
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",

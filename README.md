@@ -259,7 +259,7 @@ plot_stereographic_projection(northOrSouth=None,
 | ------------- | ------------- |
 | ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
 
-| isPrecessionIncluded=True (default) (yearSince2000=11500) | isPrecessionIncluded=False (yearSince2000=11500) |
+| isPrecessionIncluded=True (default) (yearSince2000=11500) (without star labels) | isPrecessionIncluded=False (yearSince2000=11500) (without star labels) |
 | ------------- | ------------- |
 | ![isPrecessionIncluded_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_default.png) | ![isPrecessionIncluded_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_false.png) |
 

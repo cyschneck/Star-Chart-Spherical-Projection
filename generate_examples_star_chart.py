@@ -156,11 +156,13 @@ if __name__ == '__main__':
 																isPrecessionIncluded=True,
 																yearSince2000=11500,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/isPrecessionIncluded_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																isPrecessionIncluded=False,
 																yearSince2000=11500,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/isPrecessionIncluded_false.png")
 	# maxMagnitudeFilter
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",

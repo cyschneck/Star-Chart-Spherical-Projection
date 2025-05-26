@@ -102,10 +102,12 @@ if __name__ == '__main__':
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																declination_min=-30,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/declination_min_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																declination_min=10,
 																showPlot=show_plot,
+																displayStarNamesLabels=False,
 																save_plot_name="examples/declination_min_10.png")
 	# yearSince2000
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",

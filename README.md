@@ -239,7 +239,7 @@ plot_stereographic_projection(northOrSouth=None,
 | ------------- | ------------- |
 | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
 
-| declination_min=-30° (default) | declination_min=10° |
+| declination_min=-30° (default) (whtout star labels) | declination_min=10° (without star labels) |
 | ------------- | ------------- |
 | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_10.png) |
 

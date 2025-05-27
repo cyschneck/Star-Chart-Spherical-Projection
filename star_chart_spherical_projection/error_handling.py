@@ -19,7 +19,7 @@ def errorHandling(isPlotFunction=None,
 				userDefinedStars=None,
 				onlyDisplayUserStars=None,
 				display_labels=None,
-				displayDeclinationNumbers=None,
+				display_dec=None,
 				incrementBy=None,
 				showPlot=None,
 				fig_plot_title=None,
@@ -100,8 +100,8 @@ def errorHandling(isPlotFunction=None,
 		if type(display_labels) != bool:
 			raise ValueError(f"[display_labels]: Must be a bool, current type = '{type(display_labels)}'")
 
-		if type(displayDeclinationNumbers) != bool:
-			raise ValueError(f"[displayDeclinationNumbers]: Must be a bool, current type = '{type(displayDeclinationNumbers)}'")
+		if type(display_dec) != bool:
+			raise ValueError(f"[display_dec]: Must be a bool, current type = '{type(display_dec)}'")
 
 		# Ensure that increment options are 1, 5, 10
 		if type(incrementBy) != int:

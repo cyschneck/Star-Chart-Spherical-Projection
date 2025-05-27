@@ -129,15 +129,15 @@ if __name__ == '__main__':
 																display_labels=False,
 																showPlot=show_plot,
 																save_plot_name="examples/displayLabels_false.png")
-	# displayDeclinationNumbers
+	# display_dec
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																display_labels=False,
-																displayDeclinationNumbers=True,
+																display_dec=True,
 																showPlot=show_plot,
 																save_plot_name="examples/displayDeclinationNumbers_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																display_labels=False,
-																displayDeclinationNumbers=False,
+																display_dec=False,
 																showPlot=show_plot,
 																save_plot_name="examples/displayDeclinationNumbers_false.png")
 	# incrementBy

@@ -83,8 +83,8 @@ def test_plotStereographicProjection_displayLabelInvalidTypes(invalid_input, err
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_plotStereographicProjection_displayDeclinationNumbersInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[displayDeclinationNumbers]: Must be a bool, current type = '{error_output}'")):
-		scsp.plot_stereographic_projection(pole="North", displayDeclinationNumbers=invalid_input)
+	with pytest.raises(ValueError, match=re.escape(f"[display_dec]: Must be a bool, current type = '{error_output}'")):
+		scsp.plot_stereographic_projection(pole="North", display_dec=invalid_input)
 
 def test_plotStereographicProjection_incrementByInvalidOptions():
 	with pytest.raises(ValueError, match=re.escape("[incrementBy]: Must be one of the options [1, 5, 10], current value = '2'")):

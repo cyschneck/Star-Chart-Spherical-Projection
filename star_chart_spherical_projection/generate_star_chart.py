@@ -275,7 +275,7 @@ def plot_stereographic_projection(included_stars=[],
 								declination_min=None,
 								year_since_2000=0,
 								display_labels=True,
-								displayDeclinationNumbers=True,
+								display_dec=True,
 								incrementBy=10,
 								isPrecessionIncluded=True,
 								max_magnitude=None,
@@ -295,7 +295,7 @@ def plot_stereographic_projection(included_stars=[],
 												declination_min=declination_min,
 												year_since_2000=year_since_2000,
 												display_labels=display_labels,
-												displayDeclinationNumbers=displayDeclinationNumbers,
+												display_dec=display_dec,
 												incrementBy=incrementBy, 
 												isPrecessionIncluded=isPrecessionIncluded,
 												max_magnitude=max_magnitude,
@@ -370,7 +370,7 @@ def plot_stereographic_projection(included_stars=[],
 		ax.set_ylim(0, max(ruler_declination_position))
 
 		# Display Axis
-		if displayDeclinationNumbers:
+		if display_dec:
 			ruler_declination_labels = [f"{deg}°" for deg in ruler_declination_labels]
 			plt.yticks(ruler_declination_position, fontsize=7)
 			ax.set_yticklabels(ruler_declination_labels)

@@ -194,7 +194,7 @@ plot_stereographic_projection(pole=None,
 			declination_min=None,
 			year_since_2000=0,
 			display_labels=True,
-			displayDeclinationNumbers=True,
+			display_dec=True,
 			incrementBy=10,
 			isPrecessionIncluded=True,
 			max_magnitude=None,
@@ -212,7 +212,7 @@ plot_stereographic_projection(pole=None,
 - *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* display_labels: (boolean) display the star name labels, defaults to True
-- *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
+- *[OPTIONAL]* display_dec: (boolean) display declination values, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* max_magnitude: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
@@ -251,9 +251,9 @@ plot_stereographic_projection(pole=None,
 | ------------- | ------------- |
 | ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_default.png)  | ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_false.png) |
 
-| displayDeclinationNumbers=True (default) (without star labels) | displayDeclinationNumbers=False (without star labels) |
+| display_dec=True (default) (without star labels) | display_dec=False (without star labels) |
 | ------------- | ------------- |
-| ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![displayDeclinationNumbers+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
+| ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
 
 | incrementBy=10 (default) (without star labels) | incrementBy=5 (without star labels) |
 | ------------- | ------------- |

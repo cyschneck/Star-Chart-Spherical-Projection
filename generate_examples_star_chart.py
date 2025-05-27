@@ -58,7 +58,7 @@ if __name__ == '__main__':
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South",
 																display_labels=False,
 																yearSince2000=year_since_example,
-																maxMagnitudeFilter=3,
+																max_magnitude=3,
 																save_plot_name="examples/quickstart_south_years.png")
 	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
 															ra="14.04.23",
@@ -164,13 +164,13 @@ if __name__ == '__main__':
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/isPrecessionIncluded_false.png")
-	# maxMagnitudeFilter
+	# max_magnitude
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-																maxMagnitudeFilter=None,
+																max_magnitude=None,
 																showPlot=show_plot,
 																save_plot_name="examples/maxMagnitudeFilter_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-																maxMagnitudeFilter=1,
+																max_magnitude=1,
 																showPlot=show_plot,
 																save_plot_name="examples/maxMagnitudeFilter_1.png")
 	# userDefinedStars

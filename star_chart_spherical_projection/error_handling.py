@@ -15,7 +15,7 @@ def errorHandling(isPlotFunction=None,
 				isPrecessionIncluded=None,
 				declination_max=None,
 				declination_min=None,
-				maxMagnitudeFilter=None,
+				max_magnitude=None,
 				userDefinedStars=None,
 				onlyDisplayUserStars=None,
 				display_labels=None,
@@ -91,10 +91,10 @@ def errorHandling(isPlotFunction=None,
 			if pole not in ["North", "South"]:
 				raise ValueError(f"[pole]: Pole options are ['North', 'South'], current option = '{pole}'")
 
-		# Ensure that maxMagnitudeFilter options is a float, set by default to None
-		if maxMagnitudeFilter is not None:
-			if type(maxMagnitudeFilter) != int and type(maxMagnitudeFilter) != float:
-				raise ValueError(f"[maxMagnitudeFilter]: Must be a int or float, current type = '{type(maxMagnitudeFilter)}'")
+		# Ensure that max_magnitude options is a float, set by default to None
+		if max_magnitude is not None:
+			if type(max_magnitude) != int and type(max_magnitude) != float:
+				raise ValueError(f"[max_magnitude]: Must be a int or float, current type = '{type(max_magnitude)}'")
 
 		# Ensure that the display options for star names and declination numbers are booleans ["True", "False"]
 		if type(display_labels) != bool:

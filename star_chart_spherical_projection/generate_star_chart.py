@@ -193,7 +193,7 @@ def _generate_stereographic_projection(starList=None,
 									pole=None, 
 									yearSince2000=None,
 									isPrecessionIncluded=None,
-									maxMagnitudeFilter=None,
+									max_magnitude=None,
 									declination_min=None,
 									declination_max=None):
 	# Generate sterographic projections and return declination and right ascension
@@ -213,7 +213,7 @@ def _generate_stereographic_projection(starList=None,
 		pm_speed = star[3]
 		pm_angle = star[4]
 		mag = star[5]
-		if maxMagnitudeFilter is None or mag < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
+		if max_magnitude is None or mag < max_magnitude: # Optional: Filter out stars with a magnitude greater than max_magnitude
 			logger.debug(f"Star = '{name}'")
 
 			radius_of_circle = star_chart_spherical_projection._calculate_radius_of_circle(declination_min, pole)
@@ -278,7 +278,7 @@ def plot_stereographic_projection(included_stars=[],
 								displayDeclinationNumbers=True,
 								incrementBy=10,
 								isPrecessionIncluded=True,
-								maxMagnitudeFilter=None,
+								max_magnitude=None,
 								userDefinedStars=[],
 								onlyDisplayUserStars=False,
 								showPlot=True,
@@ -298,7 +298,7 @@ def plot_stereographic_projection(included_stars=[],
 												displayDeclinationNumbers=displayDeclinationNumbers,
 												incrementBy=incrementBy, 
 												isPrecessionIncluded=isPrecessionIncluded,
-												maxMagnitudeFilter=maxMagnitudeFilter,
+												max_magnitude=max_magnitude,
 												userDefinedStars=userDefinedStars,
 												onlyDisplayUserStars=onlyDisplayUserStars,
 												showPlot=showPlot,
@@ -393,7 +393,7 @@ def plot_stereographic_projection(included_stars=[],
 																						pole=pole, 
 																						yearSince2000=yearSince2000,
 																						isPrecessionIncluded=isPrecessionIncluded,
-																						maxMagnitudeFilter=maxMagnitudeFilter,
+																						max_magnitude=max_magnitude,
 																						declination_min=declination_min,
 																						declination_max=declination_max)
 

@@ -101,9 +101,9 @@ def test_plotStereographicProjection_isPrecessionIncludedInvalidTypes(invalid_in
 		scsp.plot_stereographic_projection(pole="North", isPrecessionIncluded=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_maxMagnitudeFilterInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[maxMagnitudeFilter]: Must be a int or float, current type = '{error_output}'")):
-		scsp.plot_stereographic_projection(pole="North", maxMagnitudeFilter=invalid_input)
+def test_plotStereographicProjection_maxMagnitudeInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[max_magnitude]: Must be a int or float, current type = '{error_output}'")):
+		scsp.plot_stereographic_projection(pole="North", max_magnitude=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_plotStereographicProjection_showPlotInvalidTypes(invalid_input, error_output):

@@ -68,7 +68,7 @@ def final_position(included_stars=[],
 																										declination_min=declination_min,
 																										yearSince2000=yearSince2000,
 																										isPrecessionIncluded=isPrecessionIncluded,
-																										maxMagnitudeFilter=None,
+																										max_magnitude=None,
 																										declination_max=declination_max)
 	# Generate a .csv file with final positions of stars
 	if save_to_csv is not None:

@@ -25,7 +25,7 @@ import star_chart_spherical_projection as scsp
 
 scsp.plot_stereographic_projection(pole="South",
 				display_labels=False,
-				maxMagnitudeFilter=3,
+				max_magnitude=3,
 				yearSince2000=25)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_years.png) 
@@ -197,7 +197,7 @@ plot_stereographic_projection(pole=None,
 			displayDeclinationNumbers=True,
 			incrementBy=10,
 			isPrecessionIncluded=True,
-			maxMagnitudeFilter=None,
+			max_magnitude=None,
 			userDefinedStars=[],
 			onlyDisplayUserStars=False,
 			showPlot=True,
@@ -215,7 +215,7 @@ plot_stereographic_projection(pole=None,
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
-- *[OPTIONAL]* maxMagnitudeFilter: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
+- *[OPTIONAL]* max_magnitude: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* userDefinedStars: (list) List of new star objects of stars the user has added
 - *[OPTIONAL]* onlyDisplayUserStars: (bool) Only display the stars defined by the users (userDefinedStars)
 - *[OPTIONAL]* showPlot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
@@ -263,9 +263,9 @@ plot_stereographic_projection(pole=None,
 | ------------- | ------------- |
 | ![isPrecessionIncluded_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_default.png) | ![isPrecessionIncluded_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecessionIncluded_false.png) |
 
-| maxMagnitudeFilter=None (default) | maxMagnitudeFilter=1 |
+| max_magnitude=None (default) | max_magnitude=1 |
 | ------------- | ------------- |
-| ![maxMagnitudeFilter_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_default.png) | ![maxMagnitudeFilter+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_1.png) |
+| ![maxMagnitude_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_default.png) | ![maxMagnitude+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_1.png) |
 
 | userDefinedStars=[] (default) (with just "Vega") | userDefinedStars=[exalibur_star, karaboudjan_star] (from Quickstart with "Vega") |
 | ------------- | ------------- |

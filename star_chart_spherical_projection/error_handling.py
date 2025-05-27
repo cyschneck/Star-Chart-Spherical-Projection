@@ -18,7 +18,7 @@ def errorHandling(isPlotFunction=None,
 				maxMagnitudeFilter=None,
 				userDefinedStars=None,
 				onlyDisplayUserStars=None,
-				displayStarNamesLabels=None,
+				display_labels=None,
 				displayDeclinationNumbers=None,
 				incrementBy=None,
 				showPlot=None,
@@ -97,8 +97,8 @@ def errorHandling(isPlotFunction=None,
 				raise ValueError(f"[maxMagnitudeFilter]: Must be a int or float, current type = '{type(maxMagnitudeFilter)}'")
 
 		# Ensure that the display options for star names and declination numbers are booleans ["True", "False"]
-		if type(displayStarNamesLabels) != bool:
-			raise ValueError(f"[displayStarNamesLabels]: Must be a bool, current type = '{type(displayStarNamesLabels)}'")
+		if type(display_labels) != bool:
+			raise ValueError(f"[display_labels]: Must be a bool, current type = '{type(display_labels)}'")
 
 		if type(displayDeclinationNumbers) != bool:
 			raise ValueError(f"[displayDeclinationNumbers]: Must be a bool, current type = '{type(displayDeclinationNumbers)}'")

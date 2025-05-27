@@ -77,9 +77,9 @@ def test_plotStereographicProjection_yearSince2000InvalidTypes(invalid_input, er
 		scsp.plot_stereographic_projection(pole="North", yearSince2000=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_displayStarNamesLabelsInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[displayStarNamesLabels]: Must be a bool, current type = '{error_output}'")):
-		scsp.plot_stereographic_projection(pole="North", displayStarNamesLabels=invalid_input)
+def test_plotStereographicProjection_displayLabelInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[display_labels]: Must be a bool, current type = '{error_output}'")):
+		scsp.plot_stereographic_projection(pole="North", display_labels=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_plotStereographicProjection_displayDeclinationNumbersInvalidTypes(invalid_input, error_output):

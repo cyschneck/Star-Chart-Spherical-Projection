@@ -24,7 +24,7 @@ Plot stars in the Southern Hemisphere for the year 2025 (without stars labels)
 import star_chart_spherical_projection as scsp
 
 scsp.plot_stereographic_projection(pole="South",
-				displayStarNamesLabels=False,
+				display_labels=False,
 				maxMagnitudeFilter=3,
 				yearSince2000=25)
 ```
@@ -49,7 +49,7 @@ karaboudjan_star = scsp.add_new_star(star_name="Karaboudjan",
 scsp.plot_stereographic_projection(pole="North",
 				included_stars=["Vega", "Arcturus", "Altair"],
 				userDefinedStars=[exalibur_star, karaboudjan_star],
-				displayStarNamesLabels=True,
+				display_labels=True,
 				fig_plot_color="red",
 				yearSince2000=-39)
 ```
@@ -193,7 +193,7 @@ plot_stereographic_projection(pole=None,
 			included_stars=[], 
 			declination_min=None,
 			yearSince2000=0,
-			displayStarNamesLabels=True,
+			display_labels=True,
 			displayDeclinationNumbers=True,
 			incrementBy=10,
 			isPrecessionIncluded=True,
@@ -211,7 +211,7 @@ plot_stereographic_projection(pole=None,
 - *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
-- *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
+- *[OPTIONAL]* display_labels: (boolean) display the star name labels, defaults to True
 - *[OPTIONAL]* displayDeclinationNumbers: (boolean) display declination values, defaults to True
 - *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
@@ -247,9 +247,9 @@ plot_stereographic_projection(pole=None,
 | ------------- | ------------- |
 | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_negative_3100.png) |
 
-| displayStarNamesLabels=True (default) | displayStarNamesLabels=False |
+| display_labels=True (default) | display_labels=False |
 | ------------- | ------------- |
-| ![displayStarNamesLabels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayStarNamesLabels_default.png)  | ![displayStarNamesLabels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayStarNamesLabels_false.png) |
+| ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_default.png)  | ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_false.png) |
 
 | displayDeclinationNumbers=True (default) (without star labels) | displayDeclinationNumbers=False (without star labels) |
 | ------------- | ------------- |
@@ -441,7 +441,7 @@ star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 __Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							displayStarNamesLabels=False,
+							display_labels=False,
 							yearSince2000=11500,
 							isPrecessionIncluded=False,
 							fig_plot_color="red")
@@ -449,7 +449,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							displayStarNamesLabels=True,
+							display_labels=True,
 							yearSince2000=11500,
 							isPrecessionIncluded=False,
 							fig_plot_color="red")
@@ -458,7 +458,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 __Star Chart in the Northern Hemisphere (centered on 90°) with Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							displayStarNamesLabels=False,
+							display_labels=False,
 							yearSince2000=11500,
 							isPrecessionIncluded=True,
 							fig_plot_color="red")
@@ -466,7 +466,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 ![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							displayStarNamesLabels=True,
+							display_labels=True,
 							yearSince2000=11500,
 							isPrecessionIncluded=True,
 							fig_plot_color="red")
@@ -475,7 +475,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 __Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							displayStarNamesLabels=False,
+							display_labels=False,
 							yearSince2000=11500,
 							isPrecessionIncluded=False,
 							fig_plot_color="cornflowerblue")
@@ -483,7 +483,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="South",
 ![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							displayStarNamesLabels=True,
+							display_labels=True,
 							yearSince2000=11500,
 							isPrecessionIncluded=False,
 							fig_plot_color="cornflowerblue")
@@ -492,7 +492,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="South",
 __Star Chart in the Southern Hemisphere (centered on -90°) with Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							displayStarNamesLabels=False,
+							display_labels=False,
 							yearSince2000=11500,
 							isPrecessionIncluded=True,
 							fig_plot_color="cornflowerblue")
@@ -500,7 +500,7 @@ star_chart_spherical_projection.plot_stereographic_projection(pole="South",
 ![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							displayStarNamesLabels=True,
+							display_labels=True,
 							yearSince2000=11500,
 							isPrecessionIncluded=True,
 							fig_plot_color="cornflowerblue")

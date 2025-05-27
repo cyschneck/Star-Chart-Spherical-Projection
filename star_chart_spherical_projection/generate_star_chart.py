@@ -274,7 +274,7 @@ def plot_stereographic_projection(included_stars=[],
 								pole=None, 
 								declination_min=None,
 								yearSince2000=0,
-								displayStarNamesLabels=True,
+								display_labels=True,
 								displayDeclinationNumbers=True,
 								incrementBy=10,
 								isPrecessionIncluded=True,
@@ -294,7 +294,7 @@ def plot_stereographic_projection(included_stars=[],
 												pole=pole, 
 												declination_min=declination_min,
 												yearSince2000=yearSince2000,
-												displayStarNamesLabels=displayStarNamesLabels,
+												display_labels=display_labels,
 												displayDeclinationNumbers=displayDeclinationNumbers,
 												incrementBy=incrementBy, 
 												isPrecessionIncluded=isPrecessionIncluded,
@@ -410,7 +410,7 @@ def plot_stereographic_projection(included_stars=[],
 	ax.set_xticklabels(labels_ra, fontsize=10)
 
 	# Optional: Label the stars with names
-	if displayStarNamesLabels:
+	if display_labels:
 		for i, txt in enumerate(x_star_labels):
 			ax.annotate(txt, (x_ra_values[i], y_dec_values[i]), 
 						horizontalalignment='center', verticalalignment='bottom', 

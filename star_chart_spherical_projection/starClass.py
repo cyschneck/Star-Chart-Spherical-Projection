@@ -12,7 +12,7 @@ class add_new_star:
 				pm_angle=None,
 				properMotionSpeedRA=None,
 				properMotionSpeedDec=None,
-				magnitudeVisual=None):
+				magnitude=None):
 
 		star_chart_spherical_projection.errorHandlingStarClass(star_name=star_name,
 																ra=ra,
@@ -21,12 +21,12 @@ class add_new_star:
 																pm_angle=pm_angle,
 																properMotionSpeedRA=properMotionSpeedRA,
 																properMotionSpeedDec=properMotionSpeedDec,
-																magnitudeVisual=magnitudeVisual)
+																magnitude=magnitude)
 
 		self.star_name = star_name
 		self.ra = ra
 		self.dec = dec
-		self.magnitudeVisual = magnitudeVisual
+		self.magnitude = magnitude
 		self.properMotionSpeedRA = properMotionSpeedRA
 		self.properMotionSpeedDec = properMotionSpeedDec
 

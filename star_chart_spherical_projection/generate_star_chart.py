@@ -324,7 +324,7 @@ def plot_stereographic_projection(included_stars=[],
 						star_object.dec,
 						star_object.pm_speed,
 						star_object.pm_angle,
-						star_object.magnitudeVisual]
+						star_object.magnitude]
 			listOfStars.append(star_row)
 	else:
 		listOfStars = []
@@ -334,7 +334,7 @@ def plot_stereographic_projection(included_stars=[],
 						star_object.dec,
 						star_object.pm_speed,
 						star_object.pm_angle,
-						star_object.magnitudeVisual]
+						star_object.magnitude]
 			listOfStars.append(star_row)
 
 	# plot star chart as a circular graph

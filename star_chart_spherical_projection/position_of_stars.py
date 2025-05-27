@@ -46,7 +46,7 @@ def final_position(included_stars=[],
 						star_object.dec,
 						star_object.pm_speed,
 						star_object.pm_angle,
-						star_object.magnitudeVisual]
+						star_object.magnitude]
 			listOfStars.append(star_row)
 	else:
 		listOfStars = []
@@ -56,7 +56,7 @@ def final_position(included_stars=[],
 						star_object.dec,
 						star_object.pm_speed,
 						star_object.pm_angle,
-						star_object.magnitudeVisual]
+						star_object.magnitude]
 			listOfStars.append(star_row)
 	
 	# Set declination min values when using the _generate_stereographic_projection() to capture all stars if not set
@@ -101,7 +101,7 @@ def position_over_time(builtInStarName=None,
 		star_declination = newStar.dec
 		star_pm_speed = newStar.pm_speed
 		star_pm_angle = newStar.pm_angle
-		star_mag = newStar.magnitudeVisual
+		star_mag = newStar.magnitude
 
 	years_to_calculate = np.arange(startYearSince2000, endYearSince2000+1, incrementYear).tolist()
 	position_over_time = {}

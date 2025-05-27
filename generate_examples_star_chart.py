@@ -65,13 +65,13 @@ if __name__ == '__main__':
 															dec=64.22,
 															pm_speed=12.3,
 															pm_angle=83,
-															magnitudeVisual=1.2)
+															magnitude=1.2)
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 																ra="3.14.15",
 																dec=10.13,
 																properMotionSpeedRA=57.6,
 																properMotionSpeedDec=60.1,
-																magnitudeVisual=0.3)
+																magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																included_stars=["Vega", "Arcturus", "Altair"],
 																userDefinedStars=[exalibur_star, karaboudjan_star],
@@ -179,13 +179,13 @@ if __name__ == '__main__':
 															dec=64.22,
 															pm_speed=12.3,
 															pm_angle=83,
-															magnitudeVisual=1.2)
+															magnitude=1.2)
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 															ra="3.14.15",
 															dec=10.13,
 															properMotionSpeedRA=57.6,
 															properMotionSpeedDec=60.1,
-															magnitudeVisual=0.3)
+															magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																included_stars=["Vega"],
 																userDefinedStars=[],

@@ -138,7 +138,7 @@ def errorHandlingStarClass(star_name=None,
 						pm_angle=None,
 						properMotionSpeedRA=None,
 						properMotionSpeedDec=None,
-						magnitudeVisual=None):
+						magnitude=None):
 	
 	if star_name is None:
 		raise ValueError("[star_name]: star_name is required")
@@ -231,11 +231,11 @@ def errorHandlingStarClass(star_name=None,
 		if pm_speed is not None and properMotionSpeedRA is not None:
 			raise ValueError("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle, not pm_speed/properMotionSpeedRA")
 
-	if magnitudeVisual is None:
-		raise ValueError("[magnitudeVisual]: magnitudeVisual is required")
+	if magnitude is None:
+		raise ValueError("[magnitude]: magnitude is required")
 	else:
-		if type(magnitudeVisual) != int and type(magnitudeVisual) != float:
-			raise ValueError(f"[magnitudeVisual]: Must be a int or float, current type = '{type(magnitudeVisual)}'")
+		if type(magnitude) != int and type(magnitude) != float:
+			raise ValueError(f"[magnitude]: Must be a int or float, current type = '{type(magnitude)}'")
 
 def errorHandlingPredictPoleStar(yearSince2000=None, northOrSouth=None):
 	# Error Handling for predict_pole_star()

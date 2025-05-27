@@ -73,7 +73,7 @@ if __name__ == '__main__':
 																properMotionSpeedDec=60.1,
 																magnitudeVisual=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
-																builtInStars=["Vega", "Arcturus", "Altair"],
+																included_stars=["Vega", "Arcturus", "Altair"],
 																userDefinedStars=[exalibur_star, karaboudjan_star],
 																displayStarNamesLabels=True,
 																fig_plot_color="red",
@@ -89,15 +89,15 @@ if __name__ == '__main__':
 																displayStarNamesLabels=False,
 																showPlot=show_plot,
 																save_plot_name="examples/northOrSouth_south.png")
-	# builtInStars
+	# included_stars
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
-																builtInStars=[],
+																included_stars=[],
 																showPlot=show_plot,
-																save_plot_name="examples/builtInStars_default.png")
+																save_plot_name="examples/includedStars_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
-																builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"],
+																included_stars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"],
 																showPlot=show_plot,
-																save_plot_name="examples/builtInStars_subset.png")
+																save_plot_name="examples/includedStars_subset.png")
 	# declination_min
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																declination_min=-30,
@@ -187,12 +187,12 @@ if __name__ == '__main__':
 															properMotionSpeedDec=60.1,
 															magnitudeVisual=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
-																builtInStars=["Vega"],
+																included_stars=["Vega"],
 																userDefinedStars=[],
 																showPlot=show_plot,
 																save_plot_name="examples/userDefinedStars_none.png")
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
-																builtInStars=["Vega"],
+																included_stars=["Vega"],
 																userDefinedStars=[exalibur_star, karaboudjan_star],
 																showPlot=show_plot,
 																save_plot_name="examples/userDefinedStars_included.png")

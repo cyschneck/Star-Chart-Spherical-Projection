@@ -41,13 +41,13 @@ star_dataframe = star_dataframe.sort_values(by=["Common Name"])
 lst_of_current_stars = star_dataframe["Common Name"].tolist()
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
-def test_finalPositionOfStars_builtInStarsInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: Must be a list, current type = '{error_output}'")):
-		scsp.final_position(builtInStars=invalid_input)
+def test_finalPositionOfStars_includedStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[included_stars]: Must be a list, current type = '{error_output}'")):
+		scsp.final_position(included_stars=invalid_input)
 
-def test_finalPositionOfStars_builtInStarsInvalidStar():
-	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
-		scsp.final_position(builtInStars=["Fake star", "VEga"])
+def test_finalPositionOfStars_includedStarsInvalidStar():
+	with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
+		scsp.final_position(included_stars=["Fake star", "VEga"])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_finalPositionOfStars_declinationMinInvalidTypes(invalid_input, error_output):

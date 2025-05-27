@@ -17,7 +17,7 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
-def final_position(builtInStars=[], 
+def final_position(included_stars=[], 
 					yearSince2000=0,
 					isPrecessionIncluded=True,
 					userDefinedStars=[],
@@ -28,7 +28,7 @@ def final_position(builtInStars=[],
 	# return the final position of the stars as a dictionary
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
-												builtInStars=builtInStars,
+												included_stars=included_stars,
 												yearSince2000=yearSince2000,
 												isPrecessionIncluded=isPrecessionIncluded,
 												userDefinedStars=userDefinedStars,
@@ -38,8 +38,8 @@ def final_position(builtInStars=[],
 												save_to_csv=save_to_csv)
 
 	if not onlyDisplayUserStars:
-		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		listOfStars = star_chart_spherical_projection._get_stars(builtInStars)
+		included_stars = [x.title() for x in included_stars] # convert all names to capitalized
+		listOfStars = star_chart_spherical_projection._get_stars(included_stars)
 		for star_object in userDefinedStars:
 			star_row = [star_object.starName,
 						star_object.ra,

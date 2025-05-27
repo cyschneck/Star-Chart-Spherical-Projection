@@ -9,7 +9,7 @@ import pandas as pd
 import star_chart_spherical_projection
 
 def errorHandling(isPlotFunction=None,
-				builtInStars=None,
+				included_stars=None,
 				northOrSouth=None, 
 				yearSince2000=None,
 				isPrecessionIncluded=None,
@@ -31,18 +31,18 @@ def errorHandling(isPlotFunction=None,
 	# Error Handling for Variables shared between final_position() and plot_stereographic_projection() (defined by isPlotFunction)
 
 	# Ensure that star list is a list
-	if type(builtInStars) != list:
-		raise ValueError(f"[builtInStars]: Must be a list, current type = '{type(builtInStars)}'")
+	if type(included_stars) != list:
+		raise ValueError(f"[included_stars]: Must be a list, current type = '{type(included_stars)}'")
 
 	## Check that user list has stars that are found in current list
-	if len(builtInStars) != 0:
-		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
+	if len(included_stars) != 0:
+		included_stars = [x.title() for x in included_stars] # convert all names to capitalized
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
 		star_dataframe = pd.read_csv(star_csv_file)
 		all_star_names_in_csv = list(star_dataframe['Common Name'])
-		for star_given in builtInStars:
+		for star_given in included_stars:
 			if star_given not in all_star_names_in_csv:
-				raise ValueError(f"[builtInStars]: '{star_given}' not a star in current list of stars, please select one of the following: {all_star_names_in_csv}")
+				raise ValueError(f"[included_stars]: '{star_given}' not a star in current list of stars, please select one of the following: {all_star_names_in_csv}")
 
 	# Ensure that declination ranges are set and within within ranges
 	if declination_min is not None:

@@ -47,7 +47,7 @@ karaboudjan_star = scsp.add_new_star(starName="Karaboudjan",
 				properMotionSpeedDec=60.1,
 				magnitudeVisual=0.3)
 scsp.plot_stereographic_projection(northOrSouth="North",
-				builtInStars=["Vega", "Arcturus", "Altair"],
+				included_stars=["Vega", "Arcturus", "Altair"],
 				userDefinedStars=[exalibur_star, karaboudjan_star],
 				displayStarNamesLabels=True,
 				fig_plot_color="red",
@@ -60,7 +60,7 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 ```python
 import star_chart_spherical_projection as scsp
 
-star_final_pos_dict = scsp.final_position(builtInStars=["Vega"],
+star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
 						yearSince2000=11500,
 						save_to_csv="final_star_positions.csv")
 ```
@@ -190,7 +190,7 @@ Important Note: RA/Dec proper motion will be converted from speed along the righ
 Plot stars on a Stereographic Polar Plot
 ```
 plot_stereographic_projection(northOrSouth=None, 
-			builtInStars=[], 
+			included_stars=[], 
 			declination_min=None,
 			yearSince2000=0,
 			displayStarNamesLabels=True,
@@ -208,7 +208,7 @@ plot_stereographic_projection(northOrSouth=None,
 			save_plot_name=None)
 ```
 - **[REQUIRED]** northOrSouth: (string) map for either the "North" or "South" hemisphere
-- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* displayStarNamesLabels: (boolean) display the star name labels, defaults to True
@@ -226,7 +226,7 @@ plot_stereographic_projection(northOrSouth=None,
 - *[OPTIONAL]* save_plot_name: (string) save plot with a string name, defaults to not saving
 
 <details closed>
-<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
+<summary>Stars that will be included by default when included_stars = [] (Click to view all)</summary>
 <br>
 ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnair', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Delta Velorum', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kaus Australis', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Tureis', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>
@@ -235,9 +235,9 @@ plot_stereographic_projection(northOrSouth=None,
 | ------------- | ------------- |
 | ![northOrSouth+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/northOrSouth_north.png) |  ![northOrSouth+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/northOrSouth_south.png) |
 
-| builtInStars=[] (Includes all stars, default) | builtInStars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
+| included_stars=[] (Includes all stars, default) | included_stars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
 | ------------- | ------------- |
-| ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_default.png) | ![builtInStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/builtInStars_subset.png) |
+| ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/includedStars_default.png) | ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/includedStars_subset.png) |
 
 | declination_min=-30° (default) (without star labels) | declination_min=10° (without star labels) |
 | ------------- | ------------- |
@@ -288,7 +288,7 @@ plot_stereographic_projection(northOrSouth=None,
 
 Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
-final_position(builtInStars=[],
+final_position(included_stars=[],
 		yearSince2000=0, 
 		isPrecessionIncluded=True,
 		userDefinedStars=[],
@@ -297,7 +297,7 @@ final_position(builtInStars=[],
 		declination_max=None,
 		save_to_csv=None)
 ```
-- *[OPTIONAL]* builtInStars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* yearSince2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* userDefinedStars: (list): List of new star objects of stars the user has added
@@ -307,7 +307,7 @@ final_position(builtInStars=[],
 - *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Common Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
 <details closed>
-<summary>Stars that will be included by default when builtInStars = [] (Click to view all)</summary>
+<summary>Stars that will be included by default when included_stars = [] (Click to view all)</summary>
 <br>
 ['Acamar', 'Achernar', 'Acrab', 'Acrux', 'Adhara', 'Aldebaran', 'Alderamin', 'Algieba', 'Algol', 'Alhena', 'Alioth', 'Alkaid', 'Almach', 'Alnair', 'Alnilam', 'Alnitak', 'Alphard', 'Alphecca', 'Alpheratz', 'Altair', 'Aludra', 'Ankaa', 'Antares', 'Arcturus', 'Arneb', 'Ascella', 'Aspidiske', 'Atria', 'Avior', 'Bellatrix', 'Beta Hydri', 'Beta Phoenicis', 'Betelgeuse', 'Canopus', 'Capella', 'Caph', 'Castor', 'Cebalrai', 'Celaeno', 'Chara', 'Cor-Caroli', 'Cursa', 'Delta Crucis', 'Delta Velorum', 'Deneb', 'Denebola', 'Diphda', 'Dschubba', 'Dubhe', 'Elnath', 'Eltanin', 'Enif', 'Formalhaut', 'Gacrux', 'Gamma Phoenicis', 'Gienah', 'Hadar', 'Hamal', 'Kaus Australis', 'Kochab', 'Kornephoros', 'Lesath', 'Markab', 'Megrez', 'Meissa', 'Menkalinan', 'Menkar', 'Menkent', 'Merak', 'Miaplacidus', 'Mimosa', 'Mintaka', 'Mirach', 'Mirfak', 'Mirzam', 'Mizar', 'Muphrid', 'Naos', 'Navi', 'Nunki', 'Peacock', 'Phact', 'Phecda', 'Polaris', 'Pollux', 'Procyon', 'Rasalhague', 'Rastaban', 'Regulus', 'Rigel', 'Ruchbah', 'Sabik', 'Sadr', 'Saiph', 'Sargas', 'Scheat', 'Schedar', 'Segin', 'Seginus', 'Shaula', 'Sheratan', 'Sirius', 'Spica', 'Suhail', 'Tarazed', 'Thuban', 'Tureis', 'Unukalhai', 'Vega', 'Wezen', 'Zosma', 'Zubeneschamali']
 </details>

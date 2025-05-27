@@ -50,13 +50,13 @@ def test_plotStereographicProjection_northOrSouthInvalidTypes(invalid_input, err
 		scsp.plot_stereographic_projection(northOrSouth=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
-def test_plotStereographicProjection_builtInStarsInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: Must be a list, current type = '{error_output}'")):
-		scsp.plot_stereographic_projection(northOrSouth="North", builtInStars=invalid_input)
+def test_plotStereographicProjection_includedStarsInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[included_stars]: Must be a list, current type = '{error_output}'")):
+		scsp.plot_stereographic_projection(northOrSouth="North", included_stars=invalid_input)
 
-def test_plotStereographicProjection_builtInStarsInvalidStar():
-	with pytest.raises(ValueError, match=re.escape(f"[builtInStars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
-		scsp.plot_stereographic_projection(northOrSouth="North", builtInStars=["Fake star", "VEga"])
+def test_plotStereographicProjection_includedStarsInvalidStar():
+	with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
+		scsp.plot_stereographic_projection(northOrSouth="North", included_stars=["Fake star", "VEga"])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_plotStereographicProjection_declinationMinInvalidTypes(invalid_input, error_output):

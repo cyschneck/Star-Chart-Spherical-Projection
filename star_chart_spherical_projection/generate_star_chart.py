@@ -270,7 +270,7 @@ def _generate_stereographic_projection(starList=None,
 
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
-def plot_stereographic_projection(builtInStars=[], 
+def plot_stereographic_projection(included_stars=[], 
 								northOrSouth=None, 
 								declination_min=None,
 								yearSince2000=0,
@@ -290,7 +290,7 @@ def plot_stereographic_projection(builtInStars=[],
 
 	# Catch errors in given arguments before plotting and set default constants
 	star_chart_spherical_projection.errorHandling(isPlotFunction=True,
-												builtInStars=builtInStars,
+												included_stars=included_stars,
 												northOrSouth=northOrSouth, 
 												declination_min=declination_min,
 												yearSince2000=yearSince2000,
@@ -310,8 +310,8 @@ def plot_stereographic_projection(builtInStars=[],
 	northOrSouth = northOrSouth.capitalize()
 	listOfStars = []
 	if not onlyDisplayUserStars:
-		builtInStars = [x.title() for x in builtInStars] # convert all names to capitalized
-		for star in _get_stars(builtInStars):
+		included_stars = [x.title() for x in included_stars] # convert all names to capitalized
+		for star in _get_stars(included_stars):
 			listOfStars.append([star[0],
 								star[1],
 								star[2],

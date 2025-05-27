@@ -60,13 +60,13 @@ if __name__ == '__main__':
 																yearSince2000=year_since_example,
 																maxMagnitudeFilter=3,
 																save_plot_name="examples/quickstart_south_years.png")
-	exalibur_star = star_chart_spherical_projection.add_new_star(starName="Exalibur",
+	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
 															ra="14.04.23",
 															dec=64.22,
 															properMotionSpeed=12.3,
 															properMotionAngle=83,
 															magnitudeVisual=1.2)
-	karaboudjan_star = star_chart_spherical_projection.add_new_star(starName="Karaboudjan",
+	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 																ra="3.14.15",
 																dec=10.13,
 																properMotionSpeedRA=57.6,
@@ -174,13 +174,13 @@ if __name__ == '__main__':
 																showPlot=show_plot,
 																save_plot_name="examples/maxMagnitudeFilter_1.png")
 	# userDefinedStars
-	exalibur_star = star_chart_spherical_projection.add_new_star(starName="Exalibur",
+	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
 															ra="14.04.23",
 															dec=64.22,
 															properMotionSpeed=12.3,
 															properMotionAngle=83,
 															magnitudeVisual=1.2)
-	karaboudjan_star = star_chart_spherical_projection.add_new_star(starName="Karaboudjan",
+	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 															ra="3.14.15",
 															dec=10.13,
 															properMotionSpeedRA=57.6,

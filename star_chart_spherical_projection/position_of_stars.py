@@ -41,7 +41,7 @@ def final_position(included_stars=[],
 		included_stars = [x.title() for x in included_stars] # convert all names to capitalized
 		listOfStars = star_chart_spherical_projection._get_stars(included_stars)
 		for star_object in userDefinedStars:
-			star_row = [star_object.starName,
+			star_row = [star_object.star_name,
 						star_object.ra,
 						star_object.dec,
 						star_object.properMotionSpeed,
@@ -51,7 +51,7 @@ def final_position(included_stars=[],
 	else:
 		listOfStars = []
 		for star_object in userDefinedStars:
-			star_row = [star_object.starName,
+			star_row = [star_object.star_name,
 						star_object.ra,
 						star_object.dec,
 						star_object.properMotionSpeed,
@@ -96,7 +96,7 @@ def position_over_time(builtInStarName=None,
 		star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
 		star_name, star_ra, star_declination, star_mag, star_pm_speed, star_pm_angle, star_pm_ra, star_pm_dec, star_alt_names, star_url = star_data
 	if newStar is not None:
-		star_name = newStar.starName
+		star_name = newStar.star_name
 		star_ra = newStar.ra
 		star_declination = newStar.dec
 		star_pm_speed = newStar.properMotionSpeed
@@ -158,7 +158,7 @@ def plot_position(builtInStarName=None,
 		star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
 		star_name = star_data[0]
 	if newStar is not None:
-		star_name = newStar.starName
+		star_name = newStar.star_name
 	
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
 	ax = fig.subplots()

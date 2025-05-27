@@ -131,7 +131,7 @@ def errorHandling(isPlotFunction=None,
 		if save_plot_name is not None and type(save_plot_name) != str:
 			raise ValueError(f"[save_plot_name]: Must be a string, current type = '{type(save_plot_name)}'")
 
-def errorHandlingStarClass(starName=None,
+def errorHandlingStarClass(star_name=None,
 						ra=None,
 						dec=None,
 						properMotionSpeed=None,
@@ -140,11 +140,11 @@ def errorHandlingStarClass(starName=None,
 						properMotionSpeedDec=None,
 						magnitudeVisual=None):
 	
-	if starName is None:
-		raise ValueError("[starName]: starName is required")
+	if star_name is None:
+		raise ValueError("[star_name]: star_name is required")
 	else:
-		if type(starName) != str:
-			raise ValueError(f"[starName]: Must be a str, current type = '{type(starName)}'")
+		if type(star_name) != str:
+			raise ValueError(f"[star_name]: Must be a str, current type = '{type(star_name)}'")
 
 	if ra is None:
 		raise ValueError("[ra]: Right Ascension is required")

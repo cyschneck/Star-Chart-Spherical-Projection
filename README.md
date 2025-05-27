@@ -34,13 +34,13 @@ Plot a few built-in stars as well as two new user defined stars in the Northern 
 ```python
 import star_chart_spherical_projection as scsp
 
-exalibur_star = scsp.add_new_star(starName="Exalibur",
+exalibur_star = scsp.add_new_star(star_name="Exalibur",
 				ra="14.04.23",
 				dec=64.22,
 				properMotionSpeed=12.3,
 				properMotionAngle=83,
 				magnitudeVisual=1.2)
-karaboudjan_star = scsp.add_new_star(starName="Karaboudjan",
+karaboudjan_star = scsp.add_new_star(star_name="Karaboudjan",
 				ra="3.14.15",
 				dec=10.13,
 				properMotionSpeedRA=57.6,
@@ -143,14 +143,14 @@ This allows for the creation of a new star in two ways:
 
 As seen in [in-the-sky.org for Pollux](https://in-the-sky.org/data/object.php?id=TYC1920-2194-1)
 ```
-star_chart_spherical_projection.add_new_star(starName=None,
+star_chart_spherical_projection.add_new_star(star_name=None,
 					ra=None,
 					dec=None,
 					properMotionSpeed=None,
 					properMotionAngle=None,
 					magnitudeVisual=None)
 ```
-* **[REQUIRED]** starName: (string) A star name to be displayed as a label
+* **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
 * **[REQUIRED]** properMotionSpeed: (int/float) Proper motion speed as a single value (in mas/year)
@@ -162,14 +162,14 @@ star_chart_spherical_projection.add_new_star(starName=None,
 As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
 
 ```
-star_chart_spherical_projection.add_new_star(starName=None,
+star_chart_spherical_projection.add_new_star(star_name=None,
 					ra=None,
 					dec=None,
 					properMotionSpeedRA=None,
 					properMotionSpeedDec=None,
 					magnitudeVisual=None)
 ```
-* **[REQUIRED]** starName: (string) A star name to be displayed as a label
+* **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
 * **[REQUIRED]** properMotionSpeedRA: (int/float) Speed of Proper Motion along the Right Ascension

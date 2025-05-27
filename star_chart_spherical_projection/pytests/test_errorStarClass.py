@@ -18,52 +18,52 @@ invalid_non_num_options = [([], "<class 'list'>"),
 						(False, "<class 'bool'>")]
 
 def test_starClass_starNameRequired():
-	with pytest.raises(ValueError, match=re.escape("[starName]: starName is required")):
-		scsp.add_new_star(starName=None)
+	with pytest.raises(ValueError, match=re.escape("[star_name]: star_name is required")):
+		scsp.add_new_star(star_name=None)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
 def test_starClass_starNameInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[starName]: Must be a str, current type = '{error_output}'")):
-		scsp.add_new_star(starName=invalid_input)
+	with pytest.raises(ValueError, match=re.escape(f"[star_name]: Must be a str, current type = '{error_output}'")):
+		scsp.add_new_star(star_name=invalid_input)
 
 def test_starClass_RARequired():
 	with pytest.raises(ValueError, match=re.escape("[ra]: Right Ascension is required")):
-		scsp.add_new_star(starName="testing Star",
+		scsp.add_new_star(star_name="testing Star",
 					ra=None)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
 def test_starClass_RAInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[ra]: Must be a str, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra=invalid_input)
 
 def test_starClass_RAInvalidFormat():
 	with pytest.raises(ValueError, match=re.escape("[ra]: Right Ascension must be three parts '[HH, MM, SS]' (Hours, Minutes, Seconds), currently  = '['1', '2', '3', '4']'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3.4")
 
 def test_starClass_RAInvalidTimeFormat():
 	with pytest.raises(ValueError, match=re.escape("[ra]: Each part of the Right Ascension must be an integar, 'a' current type = <class 'str'>")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.a")
 
 def test_starClass_DecRequired():
 	with pytest.raises(ValueError, match=re.escape("[dec]: Declination is required")):
-		scsp.add_new_star(starName="testing Star",
+		scsp.add_new_star(star_name="testing Star",
 					ra="1.2.3",
 					dec=None)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_DECInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[dec]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_properMotionSpeedInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeed]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeed=invalid_input)
@@ -71,7 +71,7 @@ def test_starClass_properMotionSpeedInvalidTypes(invalid_input, error_output):
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_properMotionAngleInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[properMotionAngle]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeed=123.4,
@@ -80,7 +80,7 @@ def test_starClass_properMotionAngleInvalidTypes(invalid_input, error_output):
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_properMotionSpeedRAInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeedRA]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeedRA=invalid_input)
@@ -88,14 +88,14 @@ def test_starClass_properMotionSpeedRAInvalidTypes(invalid_input, error_output):
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_properMotionSpeedDecInvalidTypes(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[properMotionSpeedDec]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					properMotionSpeedDec=invalid_input)
 
 def test_starClass_properMotionSpeedAngleOrRADecRequired():
 	with pytest.raises(ValueError, match=re.escape("Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -106,7 +106,7 @@ def test_starClass_properMotionSpeedAngleOrRADecRequired():
 
 def test_starClass_properMotionSpeedAngleOrRADecOnlyOneRequired():
 	with pytest.raises(ValueError, match=re.escape("Either properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle is required, not both")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -117,7 +117,7 @@ def test_starClass_properMotionSpeedAngleOrRADecOnlyOneRequired():
 
 def test_starClass_properMotionSpeedDecExtra():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedDec]: With properMotionSpeed/properMotionAngle set, properMotionSpeedDec should be None")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -128,7 +128,7 @@ def test_starClass_properMotionSpeedDecExtra():
 
 def test_starClass_properMotionSpeedRAExtra():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedRA]: With properMotionSpeed/properMotionAngle set, properMotionSpeedRA should be None")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -139,7 +139,7 @@ def test_starClass_properMotionSpeedRAExtra():
 
 def test_starClass_properMotionSpeedExtra():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeed]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionSpeed should be None")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -150,7 +150,7 @@ def test_starClass_properMotionSpeedExtra():
 
 def test_starClass_properMotionAngleExtra():
 	with pytest.raises(ValueError, match=re.escape("[properMotionAngle]: With properMotionSpeedRA/properMotionSpeedDec set, properMotionAngle should be None")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -161,7 +161,7 @@ def test_starClass_properMotionAngleExtra():
 
 def test_starClass_properMotionSpeedDecRequiredWithRA():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedDec]: With properMotionSpeedRA set, properMotionSpeedDec is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -172,7 +172,7 @@ def test_starClass_properMotionSpeedDecRequiredWithRA():
 
 def test_starClass_properMotionSpeedDecRequiredWithRA():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeedRA]: With properMotionSpeedDec set, properMotionSpeedRA is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -183,7 +183,7 @@ def test_starClass_properMotionSpeedDecRequiredWithRA():
 
 def test_starClass_properMotionAngleRequiredWithSpeed():
 	with pytest.raises(ValueError, match=re.escape("[properMotionAngle]: With properMotionSpeed set, properMotionAngle is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -194,7 +194,7 @@ def test_starClass_properMotionAngleRequiredWithSpeed():
 
 def test_starClass_properMotionSpeedRequiredWithAngle():
 	with pytest.raises(ValueError, match=re.escape("[properMotionSpeed]: With properMotionAngle set, properMotionSpeed is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -205,7 +205,7 @@ def test_starClass_properMotionSpeedRequiredWithAngle():
 
 def test_starClass_properMotionSpeedvsDec():
 	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedDec")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -216,7 +216,7 @@ def test_starClass_properMotionSpeedvsDec():
 
 def test_starClass_properMotionSpeedvsRA():
 	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionSpeed/properMotionSpeedRA")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -227,7 +227,7 @@ def test_starClass_properMotionSpeedvsRA():
 
 def test_starClass_properMotionAnglevsDec():
 	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedDec")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -238,7 +238,7 @@ def test_starClass_properMotionAnglevsDec():
 
 def test_starClass_properMotionAnglevsRA():
 	with pytest.raises(ValueError, match=re.escape("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or properMotionSpeed/properMotionAngle, not properMotionAngle/properMotionSpeedRA")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=1.2,
@@ -249,7 +249,7 @@ def test_starClass_properMotionAnglevsRA():
 
 def test_starClass_magnitudeVisualRequired():
 	with pytest.raises(ValueError, match=re.escape("[magnitudeVisual]: magnitudeVisual is required")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=None,
@@ -259,7 +259,7 @@ def test_starClass_magnitudeVisualRequired():
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_starClass_magnitudeVisualRequired(invalid_input, error_output):
 	with pytest.raises(ValueError, match=re.escape(f"[magnitudeVisual]: Must be a int or float, current type = '{error_output}'")):
-		scsp.add_new_star(starName="Testing Star",
+		scsp.add_new_star(star_name="Testing Star",
 					ra="1.2.3",
 					dec=12.3,
 					magnitudeVisual=invalid_input,

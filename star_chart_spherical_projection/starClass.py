@@ -5,7 +5,7 @@ import star_chart_spherical_projection
 
 class add_new_star:
 	def __init__(self,
-				starName=None,
+				star_name=None,
 				ra=None,
 				dec=None,
 				properMotionSpeed=None,
@@ -14,7 +14,7 @@ class add_new_star:
 				properMotionSpeedDec=None,
 				magnitudeVisual=None):
 
-		star_chart_spherical_projection.errorHandlingStarClass(starName=starName,
+		star_chart_spherical_projection.errorHandlingStarClass(star_name=star_name,
 																ra=ra,
 																dec=dec,
 																properMotionSpeed=properMotionSpeed,
@@ -23,7 +23,7 @@ class add_new_star:
 																properMotionSpeedDec=properMotionSpeedDec,
 																magnitudeVisual=magnitudeVisual)
 
-		self.starName = starName
+		self.star_name = star_name
 		self.ra = ra
 		self.dec = dec
 		self.magnitudeVisual = magnitudeVisual

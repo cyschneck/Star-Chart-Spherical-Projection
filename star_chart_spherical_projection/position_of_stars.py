@@ -18,7 +18,7 @@ stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
 def final_position(included_stars=[], 
-					yearSince2000=0,
+					year_since_2000=0,
 					isPrecessionIncluded=True,
 					userDefinedStars=[],
 					onlyDisplayUserStars=False,
@@ -29,7 +29,7 @@ def final_position(included_stars=[],
 
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
 												included_stars=included_stars,
-												yearSince2000=yearSince2000,
+												year_since_2000=year_since_2000,
 												isPrecessionIncluded=isPrecessionIncluded,
 												userDefinedStars=userDefinedStars,
 												onlyDisplayUserStars=onlyDisplayUserStars,
@@ -66,7 +66,7 @@ def final_position(included_stars=[],
 	_, _, _, finalPositionOfStarsDict = star_chart_spherical_projection._generate_stereographic_projection(starList=listOfStars, 
 																										pole="North", 
 																										declination_min=declination_min,
-																										yearSince2000=yearSince2000,
+																										year_since_2000=year_since_2000,
 																										isPrecessionIncluded=isPrecessionIncluded,
 																										max_magnitude=None,
 																										declination_max=declination_max)
@@ -108,7 +108,7 @@ def position_over_time(builtInStarName=None,
 	for year in years_to_calculate:
 		star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
 		_, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row, 
-																							yearSince2000=year,
+																							year_since_2000=year,
 																							isPrecessionIncluded=isPrecessionIncluded,
 																							pole="North",
 																							declination_min=-90,
@@ -219,13 +219,13 @@ def plot_position(builtInStarName=None,
 	if save_plot_name is not None:
 		fig.savefig(save_plot_name, dpi=fig.dpi)
 
-def predict_pole_star(yearSince2000=0, pole="North"):
+def predict_pole_star(year_since_2000=0, pole="North"):
 	# Find the next North/South Pole Star
 
-	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, pole=pole)
+	star_chart_spherical_projection.errorHandlingPredictPoleStar(year_since_2000=year_since_2000, pole=pole)
 	pole = pole.title()
 
-	final_position_builtin_stars = star_chart_spherical_projection.final_position(yearSince2000=yearSince2000,
+	final_position_builtin_stars = star_chart_spherical_projection.final_position(year_since_2000=year_since_2000,
 																				isPrecessionIncluded=True)
 	# Set the pole declination based on either North/South
 	if pole == "North":

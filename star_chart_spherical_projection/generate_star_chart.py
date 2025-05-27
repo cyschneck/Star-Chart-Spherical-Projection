@@ -191,7 +191,7 @@ def _precession_vondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 
 def _generate_stereographic_projection(starList=None, 
 									pole=None, 
-									yearSince2000=None,
+									year_since_2000=None,
 									isPrecessionIncluded=None,
 									max_magnitude=None,
 									declination_min=None,
@@ -220,7 +220,7 @@ def _generate_stereographic_projection(starList=None,
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
 			logger.debug(f"'{name}' original RA = {np.rad2deg(ra)} and Declination = {dec}")
-			star_ra, star_declination = _ra_dec_via_pm(yearSince2000, 
+			star_ra, star_declination = _ra_dec_via_pm(year_since_2000, 
 														ra, 
 														dec, 
 														pm_speed, 
@@ -231,7 +231,7 @@ def _generate_stereographic_projection(starList=None,
 			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
 			# Vondrak accurate up  +/- 200K years around 2000
 			if isPrecessionIncluded:
-				star_declination, star_ra = _precession_vondrak(name, star_ra, star_declination, yearSince2000)
+				star_declination, star_ra = _precession_vondrak(name, star_ra, star_declination, year_since_2000)
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius
@@ -273,7 +273,7 @@ def _generate_stereographic_projection(starList=None,
 def plot_stereographic_projection(included_stars=[], 
 								pole=None, 
 								declination_min=None,
-								yearSince2000=0,
+								year_since_2000=0,
 								display_labels=True,
 								displayDeclinationNumbers=True,
 								incrementBy=10,
@@ -293,7 +293,7 @@ def plot_stereographic_projection(included_stars=[],
 												included_stars=included_stars,
 												pole=pole, 
 												declination_min=declination_min,
-												yearSince2000=yearSince2000,
+												year_since_2000=year_since_2000,
 												display_labels=display_labels,
 												displayDeclinationNumbers=displayDeclinationNumbers,
 												incrementBy=incrementBy, 
@@ -391,7 +391,7 @@ def plot_stereographic_projection(included_stars=[],
 	# convert to x and y values for stars
 	x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars, 
 																						pole=pole, 
-																						yearSince2000=yearSince2000,
+																						year_since_2000=year_since_2000,
 																						isPrecessionIncluded=isPrecessionIncluded,
 																						max_magnitude=max_magnitude,
 																						declination_min=declination_min,
@@ -418,12 +418,12 @@ def plot_stereographic_projection(included_stars=[],
 	for i, txt in enumerate(x_star_labels):
 		logger.debug(f"{txt}: {np.rad2deg(x_ra_values[i]):05f} RA (degrees) and {y_dec_values[i]:05f} Declination (ruler)")
 		output_string = "Proper Motion"
-		logger.debug(f"{output_string} for {yearSince2000} Years\n")
+		logger.debug(f"{output_string} for {year_since_2000} Years\n")
 
 	ax.scatter(x_ra_values, y_dec_values, s=10, c=fig_plot_color)
 
 	# Set Default Figure Title based on variables used in calculation
-	years_for_title = yearSince2000
+	years_for_title = year_since_2000
 	suffix = ""
 	if 1000 <  abs(years_for_title) and abs(years_for_title) < 1000000:
 		years_for_title = years_for_title / 1000
@@ -431,8 +431,8 @@ def plot_stereographic_projection(included_stars=[],
 	if abs(years_for_title) > 1000000:
 		years_for_title = years_for_title / 1000000
 		suffix = "M"
-	if yearSince2000 >= -2000: year_bce_ce = f"{yearSince2000 + 2000} C.E" # positive years for C.E
-	if yearSince2000 < -2000: year_bce_ce = f"{abs(yearSince2000 + 2000)} B.C.E" # negative years for B.C.E
+	if year_since_2000 >= -2000: year_bce_ce = f"{year_since_2000 + 2000} C.E" # positive years for C.E
+	if year_since_2000 < -2000: year_bce_ce = f"{abs(year_since_2000 + 2000)} B.C.E" # negative years for B.C.E
 	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot

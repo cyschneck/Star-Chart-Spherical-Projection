@@ -11,7 +11,7 @@ import star_chart_spherical_projection
 def errorHandling(isPlotFunction=None,
 				included_stars=None,
 				pole=None, 
-				yearSince2000=None,
+				year_since_2000=None,
 				isPrecessionIncluded=None,
 				declination_max=None,
 				declination_min=None,
@@ -52,8 +52,8 @@ def errorHandling(isPlotFunction=None,
 			raise ValueError(f"[declination_min]: Minimum declination must lie between -90 and +90 (-89 to 89) [recommended by default: north=-30, south=30], current minimum = '{declination_min}'")
 
 	# Ensure if a year is selected it is a float or int, set by default to 0 (the year = 2000)
-	if type(yearSince2000) != int and type(yearSince2000) != float:
-		raise ValueError(f"[yearSince2000]: Must be a int or float, current type = '{type(yearSince2000)}'")
+	if type(year_since_2000) != int and type(year_since_2000) != float:
+		raise ValueError(f"[year_since_2000]: Must be a int or float, current type = '{type(year_since_2000)}'")
 
 	# Ensure that precession options are booleans ["True", "False"]
 	if type(isPrecessionIncluded) != bool:
@@ -237,13 +237,13 @@ def errorHandlingStarClass(star_name=None,
 		if type(magnitude) != int and type(magnitude) != float:
 			raise ValueError(f"[magnitude]: Must be a int or float, current type = '{type(magnitude)}'")
 
-def errorHandlingPredictPoleStar(yearSince2000=None, pole=None):
+def errorHandlingPredictPoleStar(year_since_2000=None, pole=None):
 	# Error Handling for predict_pole_star()
-	if yearSince2000 is None:
-		raise ValueError("[yearSince2000]: yearSince2000 is required")
+	if year_since_2000 is None:
+		raise ValueError("[year_since_2000]: year_since_2000 is required")
 	else:
-		if type(yearSince2000) != int and type(yearSince2000) != float:
-			raise ValueError(f"[yearSince2000]: Must be a int or float, current type = '{type(yearSince2000)}'")
+		if type(year_since_2000) != int and type(year_since_2000) != float:
+			raise ValueError(f"[year_since_2000]: Must be a int or float, current type = '{type(year_since_2000)}'")
 	
 	if pole is not None:
 		if type(pole) != str:

@@ -57,7 +57,7 @@ if __name__ == '__main__':
 	# Quickstart Graphs
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South",
 																display_labels=False,
-																yearSince2000=year_since_example,
+																year_since_2000=year_since_example,
 																max_magnitude=3,
 																save_plot_name="examples/quickstart_south_years.png")
 	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 																userDefinedStars=[exalibur_star, karaboudjan_star],
 																display_labels=True,
 																fig_plot_color="red",
-																yearSince2000=-39,
+																year_since_2000=-39,
 																save_plot_name="examples/quickstart_newstar_example.png")
 	## Graphs for each plot Arguments
 	# pole
@@ -109,14 +109,14 @@ if __name__ == '__main__':
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/declination_min_10.png")
-	# yearSince2000
+	# year_since_2000
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-																yearSince2000=0,
+																year_since_2000=0,
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/yearSince2000_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-																yearSince2000=-3100,
+																year_since_2000=-3100,
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/yearSince2000_negative_3100.png")
@@ -154,13 +154,13 @@ if __name__ == '__main__':
 	# isPrecessionIncluded
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																isPrecessionIncluded=True,
-																yearSince2000=11500,
+																year_since_2000=11500,
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/isPrecessionIncluded_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																isPrecessionIncluded=False,
-																yearSince2000=11500,
+																year_since_2000=11500,
 																showPlot=show_plot,
 																display_labels=False,
 																save_plot_name="examples/isPrecessionIncluded_false.png")
@@ -233,28 +233,28 @@ if __name__ == '__main__':
 	## Northern Hemisphere: Graph Without and With Precession
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																display_labels=True,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=False,
 																fig_plot_color="red",
 																showPlot=show_plot,
 																save_plot_name="examples/north_with_labels_without_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
 																display_labels=True,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=True,
 																fig_plot_color="red",
 																showPlot=show_plot,
 																save_plot_name="examples/north_with_labels_with_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
 																display_labels=False,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=False,
 																fig_plot_color="red",
 																showPlot=show_plot,
 																save_plot_name="examples/north_without_labels_without_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
 																display_labels=False,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=True,
 																fig_plot_color="red",
 																showPlot=show_plot,
@@ -263,28 +263,28 @@ if __name__ == '__main__':
 	## Southern Hemisphere: Graph Without and With Precession
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
 																display_labels=True,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=False,
 																fig_plot_color="cornflowerblue",
 																showPlot=show_plot,
 																save_plot_name="examples/south_with_labels_without_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
 																display_labels=True,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=True,
 																fig_plot_color="cornflowerblue",
 																showPlot=show_plot,
 																save_plot_name="examples/south_with_labels_with_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
 																display_labels=False,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=False,
 																fig_plot_color="cornflowerblue",
 																showPlot=show_plot,
 																save_plot_name="examples/south_without_labels_without_precession")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
 																display_labels=False,
-																yearSince2000=year_to_calculate,
+																year_since_2000=year_to_calculate,
 																isPrecessionIncluded=True,
 																fig_plot_color="cornflowerblue",
 																showPlot=show_plot,

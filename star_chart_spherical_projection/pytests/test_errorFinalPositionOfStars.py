@@ -81,9 +81,9 @@ def test_finalPositionOfStars_yearSince2000InvalidTypes(invalid_input, error_out
 		scsp.final_position(year_since_2000=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_finalPositionOfStars_isPrecessionIncludedInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[isPrecessionIncluded]: Must be a bool, current type = '{error_output}'")):
-		scsp.final_position(isPrecessionIncluded=invalid_input)
+def test_finalPositionOfStars_isPrecessionInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[is_precession]: Must be a bool, current type = '{error_output}'")):
+		scsp.final_position(is_precession=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
 def test_finalPositionOfStars_userDefinedStarsInvalidTypes(invalid_input, error_output):

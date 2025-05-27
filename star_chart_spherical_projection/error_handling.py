@@ -12,7 +12,7 @@ def errorHandling(isPlotFunction=None,
 				included_stars=None,
 				pole=None, 
 				year_since_2000=None,
-				isPrecessionIncluded=None,
+				is_precession=None,
 				declination_max=None,
 				declination_min=None,
 				max_magnitude=None,
@@ -56,8 +56,8 @@ def errorHandling(isPlotFunction=None,
 		raise ValueError(f"[year_since_2000]: Must be a int or float, current type = '{type(year_since_2000)}'")
 
 	# Ensure that precession options are booleans ["True", "False"]
-	if type(isPrecessionIncluded) != bool:
-		raise ValueError(f"[isPrecessionIncluded]: Must be a bool, current type = '{type(isPrecessionIncluded)}'")
+	if type(is_precession) != bool:
+		raise ValueError(f"[is_precession]: Must be a bool, current type = '{type(is_precession)}'")
 
 	if type(userDefinedStars) != list:
 		raise ValueError(f"[userDefinedStars]: Must be a list, current type = '{type(userDefinedStars)}'")

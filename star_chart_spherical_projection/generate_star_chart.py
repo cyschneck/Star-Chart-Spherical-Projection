@@ -192,7 +192,7 @@ def _precession_vondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 def _generate_stereographic_projection(starList=None, 
 									pole=None, 
 									year_since_2000=None,
-									isPrecessionIncluded=None,
+									is_precession=None,
 									max_magnitude=None,
 									declination_min=None,
 									declination_max=None):
@@ -230,7 +230,7 @@ def _generate_stereographic_projection(starList=None,
 
 			# Optional: Calculate new position of star due to PRECESSION (change RA and Declination over time)
 			# Vondrak accurate up  +/- 200K years around 2000
-			if isPrecessionIncluded:
+			if is_precession:
 				star_declination, star_ra = _precession_vondrak(name, star_ra, star_declination, year_since_2000)
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
@@ -251,7 +251,7 @@ def _generate_stereographic_projection(starList=None,
 					x_ra_values.append(star_ra)
 					y_dec_values.append(dec_ruler_position)
 					logger.debug(f"Original: '{name}': {np.rad2deg(ra)} RA (degrees) and {dec} Declination (degrees)")
-			if not isPrecessionIncluded:
+			if not is_precession:
 				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, pole) # convert degree to position on radius
 
 				logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
@@ -277,7 +277,7 @@ def plot_stereographic_projection(included_stars=[],
 								display_labels=True,
 								display_dec=True,
 								increment=10,
-								isPrecessionIncluded=True,
+								is_precession=True,
 								max_magnitude=None,
 								userDefinedStars=[],
 								onlyDisplayUserStars=False,
@@ -297,7 +297,7 @@ def plot_stereographic_projection(included_stars=[],
 												display_labels=display_labels,
 												display_dec=display_dec,
 												increment=increment, 
-												isPrecessionIncluded=isPrecessionIncluded,
+												is_precession=is_precession,
 												max_magnitude=max_magnitude,
 												userDefinedStars=userDefinedStars,
 												onlyDisplayUserStars=onlyDisplayUserStars,
@@ -392,7 +392,7 @@ def plot_stereographic_projection(included_stars=[],
 	x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars, 
 																						pole=pole, 
 																						year_since_2000=year_since_2000,
-																						isPrecessionIncluded=isPrecessionIncluded,
+																						is_precession=is_precession,
 																						max_magnitude=max_magnitude,
 																						declination_min=declination_min,
 																						declination_max=declination_max)
@@ -433,7 +433,7 @@ def plot_stereographic_projection(included_stars=[],
 		suffix = "M"
 	if year_since_2000 >= -2000: year_bce_ce = f"{year_since_2000 + 2000} C.E" # positive years for C.E
 	if year_since_2000 < -2000: year_bce_ce = f"{abs(year_since_2000 + 2000)} B.C.E" # negative years for B.C.E
-	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
+	figure_has_precession_extra_string = "with Precession" if is_precession else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot
 		ax.set_title(f"{pole}ern Hemisphere [{years_for_title}{suffix} Years Since 2000 ({year_bce_ce})]: {declination_max}° to {declination_min}° {figure_has_precession_extra_string}")

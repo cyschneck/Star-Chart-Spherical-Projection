@@ -19,7 +19,7 @@ logger.addHandler(stream_handler)
 
 def final_position(included_stars=[], 
 					year_since_2000=0,
-					isPrecessionIncluded=True,
+					is_precession=True,
 					userDefinedStars=[],
 					onlyDisplayUserStars=False,
 					declination_min=None,
@@ -30,7 +30,7 @@ def final_position(included_stars=[],
 	star_chart_spherical_projection.errorHandling(isPlotFunction=False,
 												included_stars=included_stars,
 												year_since_2000=year_since_2000,
-												isPrecessionIncluded=isPrecessionIncluded,
+												is_precession=is_precession,
 												userDefinedStars=userDefinedStars,
 												onlyDisplayUserStars=onlyDisplayUserStars,
 												declination_min=declination_min,
@@ -67,7 +67,7 @@ def final_position(included_stars=[],
 																										pole="North", 
 																										declination_min=declination_min,
 																										year_since_2000=year_since_2000,
-																										isPrecessionIncluded=isPrecessionIncluded,
+																										is_precession=is_precession,
 																										max_magnitude=None,
 																										declination_max=declination_max)
 	# Generate a .csv file with final positions of stars
@@ -87,7 +87,7 @@ def position_over_time(builtInStarName=None,
 						startYearSince2000=None,
 						endYearSince2000=None,
 						incrementYear=5,
-						isPrecessionIncluded=True,
+						is_precession=True,
 						save_to_csv=None):
 
 	if builtInStarName is not None:
@@ -109,7 +109,7 @@ def position_over_time(builtInStarName=None,
 		star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
 		_, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row, 
 																							year_since_2000=year,
-																							isPrecessionIncluded=isPrecessionIncluded,
+																							is_precession=is_precession,
 																							pole="North",
 																							declination_min=-90,
 																							declination_max=90)
@@ -135,7 +135,7 @@ def plot_position(builtInStarName=None,
 				startYearSince2000=None,
 				endYearSince2000=None,
 				incrementYear=10,
-				isPrecessionIncluded=True,
+				is_precession=True,
 				DecOrRA="D",
 				showPlot=True,
 				showYearMarker=True,
@@ -150,7 +150,7 @@ def plot_position(builtInStarName=None,
 												startYearSince2000=startYearSince2000,
 												endYearSince2000=endYearSince2000,
 												incrementYear=incrementYear,
-												isPrecessionIncluded=isPrecessionIncluded)
+												is_precession=is_precession)
 
 	if builtInStarName is not None:
 		star_csv_file = os.path.join(os.path.dirname(__file__), 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
@@ -180,7 +180,7 @@ def plot_position(builtInStarName=None,
 		title = "Right Ascension"
 		y_label = "Right Ascension (Radians)"
 
-	if isPrecessionIncluded:
+	if is_precession:
 		precession_label = "(With Precession)"
 	else:
 		precession_label = "(Without Precession)"
@@ -226,7 +226,7 @@ def predict_pole_star(year_since_2000=0, pole="North"):
 	pole = pole.title()
 
 	final_position_builtin_stars = star_chart_spherical_projection.final_position(year_since_2000=year_since_2000,
-																				isPrecessionIncluded=True)
+																				is_precession=True)
 	# Set the pole declination based on either North/South
 	if pole == "North":
 		pole_declination = 90

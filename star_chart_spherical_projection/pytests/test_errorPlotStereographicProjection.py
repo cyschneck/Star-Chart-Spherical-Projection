@@ -96,9 +96,9 @@ def test_plotStereographicProjection_incrementInvalidTypes(invalid_input, error_
 		scsp.plot_stereographic_projection(pole="North", increment=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_isPrecessionIncludedInvalidTypes(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[isPrecessionIncluded]: Must be a bool, current type = '{error_output}'")):
-		scsp.plot_stereographic_projection(pole="North", isPrecessionIncluded=invalid_input)
+def test_plotStereographicProjection_isPrecessionInvalidTypes(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[is_precession]: Must be a bool, current type = '{error_output}'")):
+		scsp.plot_stereographic_projection(pole="North", is_precession=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_plotStereographicProjection_maxMagnitudeInvalidTypes(invalid_input, error_output):

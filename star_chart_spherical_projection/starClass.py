@@ -10,7 +10,7 @@ class add_new_star:
 				dec=None,
 				pm_speed=None,
 				pm_angle=None,
-				properMotionSpeedRA=None,
+				pm_speed_ra=None,
 				properMotionSpeedDec=None,
 				magnitude=None):
 
@@ -19,7 +19,7 @@ class add_new_star:
 																dec=dec,
 																pm_speed=pm_speed,
 																pm_angle=pm_angle,
-																properMotionSpeedRA=properMotionSpeedRA,
+																pm_speed_ra=pm_speed_ra,
 																properMotionSpeedDec=properMotionSpeedDec,
 																magnitude=magnitude)
 
@@ -27,11 +27,11 @@ class add_new_star:
 		self.ra = ra
 		self.dec = dec
 		self.magnitude = magnitude
-		self.properMotionSpeedRA = properMotionSpeedRA
+		self.pm_speed_ra = pm_speed_ra
 		self.properMotionSpeedDec = properMotionSpeedDec
 
-		if self.properMotionSpeedRA is not None and self.properMotionSpeedDec is not None:
-			self.convertToSpeedAndAngle(proper_motion_ra=self.properMotionSpeedRA, proper_motion_dec=self.properMotionSpeedDec)
+		if self.pm_speed_ra is not None and self.properMotionSpeedDec is not None:
+			self.convertToSpeedAndAngle(proper_motion_ra=self.pm_speed_ra, proper_motion_dec=self.properMotionSpeedDec)
 		else:
 			self.pm_speed = pm_speed
 			self.pm_angle = pm_angle

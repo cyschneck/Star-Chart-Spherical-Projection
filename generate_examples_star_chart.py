@@ -69,7 +69,7 @@ if __name__ == '__main__':
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 																ra="3.14.15",
 																dec=10.13,
-																properMotionSpeedRA=57.6,
+																pm_speed_ra=57.6,
 																properMotionSpeedDec=60.1,
 																magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
@@ -183,7 +183,7 @@ if __name__ == '__main__':
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
 															ra="3.14.15",
 															dec=10.13,
-															properMotionSpeedRA=57.6,
+															pm_speed_ra=57.6,
 															properMotionSpeedDec=60.1,
 															magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",

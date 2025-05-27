@@ -136,7 +136,7 @@ def errorHandlingStarClass(star_name=None,
 						dec=None,
 						pm_speed=None,
 						pm_angle=None,
-						properMotionSpeedRA=None,
+						pm_speed_ra=None,
 						properMotionSpeedDec=None,
 						magnitude=None):
 	
@@ -172,64 +172,64 @@ def errorHandlingStarClass(star_name=None,
 		if type(pm_angle) != int and type(pm_angle) != float:
 			raise ValueError(f"[pm_angle]: Must be a int or float, current type = '{type(pm_angle)}'")
 
-	if properMotionSpeedRA is not None:
-		if type(properMotionSpeedRA) != int and type(properMotionSpeedRA) != float:
-			raise ValueError(f"[properMotionSpeedRA]: Must be a int or float, current type = '{type(properMotionSpeedRA)}'")
+	if pm_speed_ra is not None:
+		if type(pm_speed_ra) != int and type(pm_speed_ra) != float:
+			raise ValueError(f"[pm_speed_ra]: Must be a int or float, current type = '{type(pm_speed_ra)}'")
 
 	if properMotionSpeedDec is not None:
 		if type(properMotionSpeedDec) != int and type(properMotionSpeedDec) != float:
 			raise ValueError(f"[properMotionSpeedDec]: Must be a int or float, current type = '{type(properMotionSpeedDec)}'")
 
 	# Verify at least one pair is set
-	if properMotionSpeedRA is None and properMotionSpeedDec is None:
+	if pm_speed_ra is None and properMotionSpeedDec is None:
 		# Neither pairs are set
 		if pm_speed is None and pm_angle is None:
-			raise ValueError("Either properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle is required")
+			raise ValueError("Either pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle is required")
 
 	# Verify when only one value is set, make sure to set up its pair
-	if properMotionSpeedRA is not None:
+	if pm_speed_ra is not None:
 		if properMotionSpeedDec is None and pm_speed is None and pm_angle is None:
-			raise ValueError("[properMotionSpeedDec]: With properMotionSpeedRA set, properMotionSpeedDec is required")
+			raise ValueError("[properMotionSpeedDec]: With pm_speed_ra set, properMotionSpeedDec is required")
 
 	if properMotionSpeedDec is not None:
-		if properMotionSpeedRA is None and pm_speed is None and pm_angle is None:
-			raise ValueError("[properMotionSpeedRA]: With properMotionSpeedDec set, properMotionSpeedRA is required")
+		if pm_speed_ra is None and pm_speed is None and pm_angle is None:
+			raise ValueError("[pm_speed_ra]: With properMotionSpeedDec set, pm_speed_ra is required")
 	if pm_speed is not None:
-		if properMotionSpeedRA is None and properMotionSpeedDec is None and pm_angle is None:
+		if pm_speed_ra is None and properMotionSpeedDec is None and pm_angle is None:
 			raise ValueError("[pm_angle]: With pm_speed set, pm_angle is required")
 	if pm_angle is not None:
-		if properMotionSpeedRA is None and properMotionSpeedDec is None and pm_speed is None:
+		if pm_speed_ra is None and properMotionSpeedDec is None and pm_speed is None:
 			raise ValueError("[pm_speed]: With pm_angle set, pm_speed is required")
 
 	# Remove the invalid extra options when pm_speed/pm_angle should be the only pair set
 	if pm_speed is not None and pm_angle is not None:
-		if properMotionSpeedRA is not None and properMotionSpeedDec is not None:
-			raise ValueError("Either properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle is required, not both")
-		if properMotionSpeedRA is not None and properMotionSpeedDec is None:
-			raise ValueError("[properMotionSpeedRA]: With pm_speed/pm_angle set, properMotionSpeedRA should be None")
-		if properMotionSpeedRA is None and properMotionSpeedDec is not None:
+		if pm_speed_ra is not None and properMotionSpeedDec is not None:
+			raise ValueError("Either pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle is required, not both")
+		if pm_speed_ra is not None and properMotionSpeedDec is None:
+			raise ValueError("[pm_speed_ra]: With pm_speed/pm_angle set, pm_speed_ra should be None")
+		if pm_speed_ra is None and properMotionSpeedDec is not None:
 			raise ValueError("[properMotionSpeedDec]: With pm_speed/pm_angle set, properMotionSpeedDec should be None")
 
-	# Remove the invalid extra options when properMotionSpeedRA/properMotionSpeedDec should be the only pair set
-	if properMotionSpeedRA is not None and properMotionSpeedDec is not None:
+	# Remove the invalid extra options when pm_speed_ra/properMotionSpeedDec should be the only pair set
+	if pm_speed_ra is not None and properMotionSpeedDec is not None:
 		if pm_speed is None and pm_angle is not None:
-			raise ValueError("[pm_angle]: With properMotionSpeedRA/properMotionSpeedDec set, pm_angle should be None")
+			raise ValueError("[pm_angle]: With pm_speed_ra/properMotionSpeedDec set, pm_angle should be None")
 		if pm_speed is not None and pm_angle is None:
-			raise ValueError("[pm_speed]: With properMotionSpeedRA/properMotionSpeedDec set, pm_speed should be None")
+			raise ValueError("[pm_speed]: With pm_speed_ra/properMotionSpeedDec set, pm_speed should be None")
 
-	# Verify the non-None values are the correct pairs: properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle
+	# Verify the non-None values are the correct pairs: pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle
 	if pm_speed is None and properMotionSpeedDec is None:
-		if properMotionSpeedRA is not None and pm_angle is not None:
-			raise ValueError("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle, not pm_angle/properMotionSpeedRA")
-	if pm_speed is None and properMotionSpeedRA is None:
+		if pm_speed_ra is not None and pm_angle is not None:
+			raise ValueError("Should be a pair of pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle, not pm_angle/pm_speed_ra")
+	if pm_speed is None and pm_speed_ra is None:
 		if pm_angle is not None and properMotionSpeedDec is not None:
-			raise ValueError("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle, not pm_angle/properMotionSpeedDec")
-	if pm_angle is None and properMotionSpeedRA is None:
+			raise ValueError("Should be a pair of pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle, not pm_angle/properMotionSpeedDec")
+	if pm_angle is None and pm_speed_ra is None:
 		if pm_speed is not None and properMotionSpeedDec is not None:
-			raise ValueError("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle, not pm_speed/properMotionSpeedDec")
+			raise ValueError("Should be a pair of pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle, not pm_speed/properMotionSpeedDec")
 	if pm_angle is None and properMotionSpeedDec is None:
-		if pm_speed is not None and properMotionSpeedRA is not None:
-			raise ValueError("Should be a pair of properMotionSpeedRA/properMotionSpeedDec or pm_speed/pm_angle, not pm_speed/properMotionSpeedRA")
+		if pm_speed is not None and pm_speed_ra is not None:
+			raise ValueError("Should be a pair of pm_speed_ra/properMotionSpeedDec or pm_speed/pm_angle, not pm_speed/pm_speed_ra")
 
 	if magnitude is None:
 		raise ValueError("[magnitude]: magnitude is required")

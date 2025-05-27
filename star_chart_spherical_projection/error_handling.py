@@ -20,7 +20,7 @@ def errorHandling(isPlotFunction=None,
 				onlyDisplayUserStars=None,
 				display_labels=None,
 				display_dec=None,
-				incrementBy=None,
+				increment=None,
 				showPlot=None,
 				fig_plot_title=None,
 				fig_plot_color=None,
@@ -104,10 +104,10 @@ def errorHandling(isPlotFunction=None,
 			raise ValueError(f"[display_dec]: Must be a bool, current type = '{type(display_dec)}'")
 
 		# Ensure that increment options are 1, 5, 10
-		if type(incrementBy) != int:
-			raise ValueError(f"[incrementBy]: Must be a int, current type = '{type(incrementBy)}'")
-		if incrementBy not in [1, 5, 10]:
-			raise ValueError(f"[incrementBy]: Must be one of the options [1, 5, 10], current value = '{incrementBy}'")
+		if type(increment) != int:
+			raise ValueError(f"[increment]: Must be a int, current type = '{type(increment)}'")
+		if increment not in [1, 5, 10]:
+			raise ValueError(f"[increment]: Must be one of the options [1, 5, 10], current value = '{increment}'")
 
 		# Ensure that the only options for showPlot are booleans ["True", "False"]
 		if type(showPlot) != bool:

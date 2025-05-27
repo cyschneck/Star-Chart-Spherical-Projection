@@ -140,17 +140,17 @@ if __name__ == '__main__':
 																display_dec=False,
 																showPlot=show_plot,
 																save_plot_name="examples/displayDeclinationNumbers_false.png")
-	# incrementBy
+	# increment
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																display_labels=False,
-																incrementBy=10,
+																increment=10,
 																showPlot=show_plot,
-																save_plot_name="examples/incrementBy_default.png")
+																save_plot_name="examples/increment_default.png")
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																display_labels=False,
-																incrementBy=5,
+																increment=5,
 																showPlot=show_plot,
-																save_plot_name="examples/incrementBy_5.png")
+																save_plot_name="examples/increment_5.png")
 	# isPrecessionIncluded
 	star_chart_spherical_projection.plot_stereographic_projection(pole="North",
 																isPrecessionIncluded=True,

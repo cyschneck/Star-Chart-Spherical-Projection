@@ -195,7 +195,7 @@ plot_stereographic_projection(pole=None,
 			year_since_2000=0,
 			display_labels=True,
 			display_dec=True,
-			incrementBy=10,
+			increment=10,
 			isPrecessionIncluded=True,
 			max_magnitude=None,
 			userDefinedStars=[],
@@ -213,7 +213,7 @@ plot_stereographic_projection(pole=None,
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* display_labels: (boolean) display the star name labels, defaults to True
 - *[OPTIONAL]* display_dec: (boolean) display declination values, defaults to True
-- *[OPTIONAL]* incrementBy: (int) increment values for declination (either 1, 5, 10), defaults to 10
+- *[OPTIONAL]* increment: (int) increment values for declination (either 1, 5, 10), defaults to 10
 - *[OPTIONAL]* isPrecessionIncluded: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* max_magnitude: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* userDefinedStars: (list) List of new star objects of stars the user has added
@@ -255,9 +255,9 @@ plot_stereographic_projection(pole=None,
 | ------------- | ------------- |
 | ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
 
-| incrementBy=10 (default) (without star labels) | incrementBy=5 (without star labels) |
+| increment=10 (default) (without star labels) | increment=5 (without star labels) |
 | ------------- | ------------- |
-| ![incrementBy_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_default.png) | ![incrementBy_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/incrementBy_5.png) |
+| ![increment_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/increment_default.png) | ![increment_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/increment_5.png) |
 
 | isPrecessionIncluded=True (default) (year_since_2000=11500) (without star labels) | isPrecessionIncluded=False (year_since_2000=11500) (without star labels) |
 | ------------- | ------------- |

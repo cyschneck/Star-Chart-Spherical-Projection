@@ -276,7 +276,7 @@ def plot_stereographic_projection(included_stars=[],
 								year_since_2000=0,
 								display_labels=True,
 								display_dec=True,
-								incrementBy=10,
+								increment=10,
 								isPrecessionIncluded=True,
 								max_magnitude=None,
 								userDefinedStars=[],
@@ -296,7 +296,7 @@ def plot_stereographic_projection(included_stars=[],
 												year_since_2000=year_since_2000,
 												display_labels=display_labels,
 												display_dec=display_dec,
-												incrementBy=incrementBy, 
+												increment=increment, 
 												isPrecessionIncluded=isPrecessionIncluded,
 												max_magnitude=max_magnitude,
 												userDefinedStars=userDefinedStars,
@@ -353,12 +353,12 @@ def plot_stereographic_projection(included_stars=[],
 	# Set Declination (astronomical 'latitude') as Y (radius of polar plot)
 
 	# Split up chart into North/South hemisphere
-	declination_values = np.arange(declination_min, declination_max+1, incrementBy) # +1 to show max value in range
+	declination_values = np.arange(declination_min, declination_max+1, increment) # +1 to show max value in range
 
 	# Store the ruler positions based on degrees and the ratio of the ruler
 	ruler_position_dict = star_chart_spherical_projection._calculate_ruler(declination_min,
 																		declination_max,
-																		incrementBy, 
+																		increment, 
 																		pole)
 
 	# Display declination lines on the chart from -min to +max

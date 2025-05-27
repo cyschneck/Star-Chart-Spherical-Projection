@@ -44,7 +44,7 @@ karaboudjan_star = scsp.add_new_star(star_name="Karaboudjan",
 				ra="3.14.15",
 				dec=10.13,
 				pm_speed_ra=57.6,
-				properMotionSpeedDec=60.1,
+				pm_speed_dec=60.1,
 				magnitude=0.3)
 scsp.plot_stereographic_projection(northOrSouth="North",
 				included_stars=["Vega", "Arcturus", "Altair"],
@@ -166,14 +166,14 @@ star_chart_spherical_projection.add_new_star(star_name=None,
 					ra=None,
 					dec=None,
 					pm_speed_ra=None,
-					properMotionSpeedDec=None,
+					pm_speed_dec=None,
 					magnitude=None)
 ```
 * **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
 * **[REQUIRED]** pm_speed_ra: (int/float) Speed of Proper Motion along the Right Ascension
-* **[REQUIRED]** properMotionSpeedDec: (int/float) Speed of Proper Motion along the Declination
+* **[REQUIRED]** pm_speed_dec: (int/float) Speed of Proper Motion along the Declination
 * **[REQUIRED]** magnitude: (int/float) Absolute Visual Magnitude
 
 Important Note: RA/Dec proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`pm_speed`) and an angle (`pm_angle`) for further calculations

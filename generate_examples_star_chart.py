@@ -70,7 +70,7 @@ if __name__ == '__main__':
 																ra="3.14.15",
 																dec=10.13,
 																pm_speed_ra=57.6,
-																properMotionSpeedDec=60.1,
+																pm_speed_dec=60.1,
 																magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																included_stars=["Vega", "Arcturus", "Altair"],
@@ -184,7 +184,7 @@ if __name__ == '__main__':
 															ra="3.14.15",
 															dec=10.13,
 															pm_speed_ra=57.6,
-															properMotionSpeedDec=60.1,
+															pm_speed_dec=60.1,
 															magnitude=0.3)
 	star_chart_spherical_projection.plot_stereographic_projection(northOrSouth="North",
 																included_stars=["Vega"],

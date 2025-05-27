@@ -29,10 +29,10 @@ def test_predictPoleStar_yearSince2000InvalidType( invalid_input, error_output):
 		scsp.predict_pole_star(yearSince2000=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
-def test_predictPoleStar_northOrSouthInvalidType(invalid_input, error_output):
-	with pytest.raises(ValueError, match=re.escape(f"[northOrSouth]: Must be a str, current type = '{error_output}'")):
-		scsp.predict_pole_star(yearSince2000=0, northOrSouth=invalid_input)
+def test_predictPoleStar_poleInvalidType(invalid_input, error_output):
+	with pytest.raises(ValueError, match=re.escape(f"[pole]: Must be a str, current type = '{error_output}'")):
+		scsp.predict_pole_star(yearSince2000=0, pole=invalid_input)
 
-def test_predictPoleStar_northOrSouthInvalidOptions():
-	with pytest.raises(ValueError, match=re.escape("[northOrSouth]: Must be a 'North' or 'South', currently = 'Invalid'")):
-		scsp.predict_pole_star(yearSince2000=0, northOrSouth="Invalid")
+def test_predictPoleStar_poleInvalidOptions():
+	with pytest.raises(ValueError, match=re.escape("[pole]: Must be a 'North' or 'South', currently = 'Invalid'")):
+		scsp.predict_pole_star(yearSince2000=0, pole="Invalid")

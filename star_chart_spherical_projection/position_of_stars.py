@@ -64,7 +64,7 @@ def final_position(included_stars=[],
 	declination_max = 90
 
 	_, _, _, finalPositionOfStarsDict = star_chart_spherical_projection._generate_stereographic_projection(starList=listOfStars, 
-																										northOrSouth="North", 
+																										pole="North", 
 																										declination_min=declination_min,
 																										yearSince2000=yearSince2000,
 																										isPrecessionIncluded=isPrecessionIncluded,
@@ -110,7 +110,7 @@ def position_over_time(builtInStarName=None,
 		_, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row, 
 																							yearSince2000=year,
 																							isPrecessionIncluded=isPrecessionIncluded,
-																							northOrSouth="North",
+																							pole="North",
 																							declination_min=-90,
 																							declination_max=90)
 		
@@ -219,18 +219,18 @@ def plot_position(builtInStarName=None,
 	if save_plot_name is not None:
 		fig.savefig(save_plot_name, dpi=fig.dpi)
 
-def predict_pole_star(yearSince2000=0, northOrSouth="North"):
+def predict_pole_star(yearSince2000=0, pole="North"):
 	# Find the next North/South Pole Star
 
-	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, northOrSouth=northOrSouth)
-	northOrSouth = northOrSouth.title()
+	star_chart_spherical_projection.errorHandlingPredictPoleStar(yearSince2000=yearSince2000, pole=pole)
+	pole = pole.title()
 
 	final_position_builtin_stars = star_chart_spherical_projection.final_position(yearSince2000=yearSince2000,
 																				isPrecessionIncluded=True)
 	# Set the pole declination based on either North/South
-	if northOrSouth == "North":
+	if pole == "North":
 		pole_declination = 90
-	if northOrSouth == "South":
+	if pole == "South":
 		pole_declination = -90
 
 	# Find the closest star in builtin stars

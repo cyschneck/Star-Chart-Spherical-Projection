@@ -190,7 +190,7 @@ def _precession_vondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
 	return vondrak_dec, vondrak_ra
 
 def _generate_stereographic_projection(starList=None, 
-									northOrSouth=None, 
+									pole=None, 
 									yearSince2000=None,
 									isPrecessionIncluded=None,
 									maxMagnitudeFilter=None,
@@ -216,7 +216,7 @@ def _generate_stereographic_projection(starList=None,
 		if maxMagnitudeFilter is None or mag < maxMagnitudeFilter: # Optional: Filter out stars with a magnitude greater than maxMagnitudeFilter
 			logger.debug(f"Star = '{name}'")
 
-			radius_of_circle = star_chart_spherical_projection._calculate_radius_of_circle(declination_min, northOrSouth)
+			radius_of_circle = star_chart_spherical_projection._calculate_radius_of_circle(declination_min, pole)
 
 			# Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
 			logger.debug(f"'{name}' original RA = {np.rad2deg(ra)} and Declination = {dec}")
@@ -235,7 +235,7 @@ def _generate_stereographic_projection(starList=None,
 				logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
 				# convert degree to position on radius
-				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) 
+				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, pole) 
 
 				logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 
@@ -252,7 +252,7 @@ def _generate_stereographic_projection(starList=None,
 					y_dec_values.append(dec_ruler_position)
 					logger.debug(f"Original: '{name}': {np.rad2deg(ra)} RA (degrees) and {dec} Declination (degrees)")
 			if not isPrecessionIncluded:
-				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, northOrSouth) # convert degree to position on radius
+				dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, pole) # convert degree to position on radius
 
 				logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 				in_range_value = False # Determine if within range of South/North Hemisphere
@@ -271,7 +271,7 @@ def _generate_stereographic_projection(starList=None,
 	return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
 def plot_stereographic_projection(included_stars=[], 
-								northOrSouth=None, 
+								pole=None, 
 								declination_min=None,
 								yearSince2000=0,
 								displayStarNamesLabels=True,
@@ -291,7 +291,7 @@ def plot_stereographic_projection(included_stars=[],
 	# Catch errors in given arguments before plotting and set default constants
 	star_chart_spherical_projection.errorHandling(isPlotFunction=True,
 												included_stars=included_stars,
-												northOrSouth=northOrSouth, 
+												pole=pole, 
 												declination_min=declination_min,
 												yearSince2000=yearSince2000,
 												displayStarNamesLabels=displayStarNamesLabels,
@@ -307,7 +307,7 @@ def plot_stereographic_projection(included_stars=[],
 												figsize_n=figsize_n,
 												figsize_dpi=figsize_dpi,
 												save_plot_name=save_plot_name)
-	northOrSouth = northOrSouth.capitalize()
+	pole = pole.capitalize()
 	listOfStars = []
 	if not onlyDisplayUserStars:
 		included_stars = [x.title() for x in included_stars] # convert all names to capitalized
@@ -341,10 +341,10 @@ def plot_stereographic_projection(included_stars=[],
 
 	# Set declination based on hemisphere selected
 	if declination_min is None:
-		if northOrSouth == "North": declination_min = northern_declination_min
-		if northOrSouth == "South": declination_min = southern_declination_min
-	if northOrSouth == "North": declination_max = northern_declination_max
-	if northOrSouth == "South": declination_max = southern_declination_max
+		if pole == "North": declination_min = northern_declination_min
+		if pole == "South": declination_min = southern_declination_min
+	if pole == "North": declination_max = northern_declination_max
+	if pole == "South": declination_max = southern_declination_max
 
 	# Polar plot figure
 	fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
@@ -359,7 +359,7 @@ def plot_stereographic_projection(included_stars=[],
 	ruler_position_dict = star_chart_spherical_projection._calculate_ruler(declination_min,
 																		declination_max,
 																		incrementBy, 
-																		northOrSouth)
+																		pole)
 
 	# Display declination lines on the chart from -min to +max
 	def displayDeclinationMarksOnAxis(declination_values, dec_min, dec_max, isInverted):
@@ -381,16 +381,16 @@ def plot_stereographic_projection(included_stars=[],
 			ax.set_rlabel_position(120) # declination labels position
 
 	# Display declination lines based on hemisphere
-	if northOrSouth == "North":
+	if pole == "North":
 		displayDeclinationMarksOnAxis(declination_values, northern_declination_min, northern_declination_max, False)
-	if northOrSouth == "South":
+	if pole == "South":
 		displayDeclinationMarksOnAxis(declination_values, southern_declination_min, southern_declination_max, True)
 
-	logger.debug(f"\n{northOrSouth}ern Range of Declination: {declination_min} to {declination_max}")
+	logger.debug(f"\n{pole}ern Range of Declination: {declination_min} to {declination_max}")
 
 	# convert to x and y values for stars
 	x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars, 
-																						northOrSouth=northOrSouth, 
+																						pole=pole, 
 																						yearSince2000=yearSince2000,
 																						isPrecessionIncluded=isPrecessionIncluded,
 																						maxMagnitudeFilter=maxMagnitudeFilter,
@@ -436,7 +436,7 @@ def plot_stereographic_projection(included_stars=[],
 	figure_has_precession_extra_string = "with Precession" if isPrecessionIncluded else "without Precession"
 
 	if fig_plot_title is None: # by default sets title of plot
-		ax.set_title(f"{northOrSouth}ern Hemisphere [{years_for_title}{suffix} Years Since 2000 ({year_bce_ce})]: {declination_max}° to {declination_min}° {figure_has_precession_extra_string}")
+		ax.set_title(f"{pole}ern Hemisphere [{years_for_title}{suffix} Years Since 2000 ({year_bce_ce})]: {declination_max}° to {declination_min}° {figure_has_precession_extra_string}")
 	else:
 		ax.set_title(fig_plot_title)
 

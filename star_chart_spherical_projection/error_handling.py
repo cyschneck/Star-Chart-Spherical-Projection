@@ -10,7 +10,7 @@ import star_chart_spherical_projection
 
 def errorHandling(isPlotFunction=None,
 				included_stars=None,
-				northOrSouth=None, 
+				pole=None, 
 				yearSince2000=None,
 				isPrecessionIncluded=None,
 				declination_max=None,
@@ -84,12 +84,12 @@ def errorHandling(isPlotFunction=None,
 
 	# Error Handling for plot_stereographic_projection() function
 	if isPlotFunction:
-		# Ensure that Hemisphere selected are within options
-		if type(northOrSouth) != str:
-			raise ValueError(f"[northOrSouth]: Must be a str, current type = '{type(northOrSouth)}'")
+		# Ensure that Pole selected are within options
+		if type(pole) != str:
+			raise ValueError(f"[pole]: Must be a str, current type = '{type(pole)}'")
 		else:
-			if northOrSouth not in ["North", "South"]:
-				raise ValueError(f"[northOrSouth]: Hemisphere options are ['North', 'South'], current option = '{northOrSouth}'")
+			if pole not in ["North", "South"]:
+				raise ValueError(f"[pole]: Pole options are ['North', 'South'], current option = '{pole}'")
 
 		# Ensure that maxMagnitudeFilter options is a float, set by default to None
 		if maxMagnitudeFilter is not None:
@@ -237,7 +237,7 @@ def errorHandlingStarClass(star_name=None,
 		if type(magnitude) != int and type(magnitude) != float:
 			raise ValueError(f"[magnitude]: Must be a int or float, current type = '{type(magnitude)}'")
 
-def errorHandlingPredictPoleStar(yearSince2000=None, northOrSouth=None):
+def errorHandlingPredictPoleStar(yearSince2000=None, pole=None):
 	# Error Handling for predict_pole_star()
 	if yearSince2000 is None:
 		raise ValueError("[yearSince2000]: yearSince2000 is required")
@@ -245,9 +245,9 @@ def errorHandlingPredictPoleStar(yearSince2000=None, northOrSouth=None):
 		if type(yearSince2000) != int and type(yearSince2000) != float:
 			raise ValueError(f"[yearSince2000]: Must be a int or float, current type = '{type(yearSince2000)}'")
 	
-	if northOrSouth is not None:
-		if type(northOrSouth) != str:
-			raise ValueError(f"[northOrSouth]: Must be a str, current type = '{type(northOrSouth)}'")
+	if pole is not None:
+		if type(pole) != str:
+			raise ValueError(f"[pole]: Must be a str, current type = '{type(pole)}'")
 		else:
-			if northOrSouth.title() not in ["North", "South"]:
-				raise ValueError(f"[northOrSouth]: Must be a 'North' or 'South', currently = '{northOrSouth}'")
+			if pole.title() not in ["North", "South"]:
+				raise ValueError(f"[pole]: Must be a 'North' or 'South', currently = '{pole}'")

@@ -44,7 +44,7 @@ def final_position(included_stars=[],
 			star_row = [star_object.star_name,
 						star_object.ra,
 						star_object.dec,
-						star_object.properMotionSpeed,
+						star_object.pm_speed,
 						star_object.properMotionAngle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
@@ -54,7 +54,7 @@ def final_position(included_stars=[],
 			star_row = [star_object.star_name,
 						star_object.ra,
 						star_object.dec,
-						star_object.properMotionSpeed,
+						star_object.pm_speed,
 						star_object.properMotionAngle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
@@ -99,7 +99,7 @@ def position_over_time(builtInStarName=None,
 		star_name = newStar.star_name
 		star_ra = newStar.ra
 		star_declination = newStar.dec
-		star_pm_speed = newStar.properMotionSpeed
+		star_pm_speed = newStar.pm_speed
 		star_pm_angle = newStar.properMotionAngle
 		star_mag = newStar.magnitudeVisual
 

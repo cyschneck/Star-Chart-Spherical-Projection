@@ -63,7 +63,7 @@ if __name__ == '__main__':
 	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
 															ra="14.04.23",
 															dec=64.22,
-															properMotionSpeed=12.3,
+															pm_speed=12.3,
 															properMotionAngle=83,
 															magnitudeVisual=1.2)
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",
@@ -177,7 +177,7 @@ if __name__ == '__main__':
 	exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
 															ra="14.04.23",
 															dec=64.22,
-															properMotionSpeed=12.3,
+															pm_speed=12.3,
 															properMotionAngle=83,
 															magnitudeVisual=1.2)
 	karaboudjan_star = star_chart_spherical_projection.add_new_star(star_name="Karaboudjan",

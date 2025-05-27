@@ -323,7 +323,7 @@ def plot_stereographic_projection(included_stars=[],
 						star_object.ra,
 						star_object.dec,
 						star_object.pm_speed,
-						star_object.properMotionAngle,
+						star_object.pm_angle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
 	else:
@@ -333,7 +333,7 @@ def plot_stereographic_projection(included_stars=[],
 						star_object.ra,
 						star_object.dec,
 						star_object.pm_speed,
-						star_object.properMotionAngle,
+						star_object.pm_angle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
 

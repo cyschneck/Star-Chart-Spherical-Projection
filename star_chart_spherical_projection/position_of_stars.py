@@ -45,7 +45,7 @@ def final_position(included_stars=[],
 						star_object.ra,
 						star_object.dec,
 						star_object.pm_speed,
-						star_object.properMotionAngle,
+						star_object.pm_angle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
 	else:
@@ -55,7 +55,7 @@ def final_position(included_stars=[],
 						star_object.ra,
 						star_object.dec,
 						star_object.pm_speed,
-						star_object.properMotionAngle,
+						star_object.pm_angle,
 						star_object.magnitudeVisual]
 			listOfStars.append(star_row)
 	
@@ -100,7 +100,7 @@ def position_over_time(builtInStarName=None,
 		star_ra = newStar.ra
 		star_declination = newStar.dec
 		star_pm_speed = newStar.pm_speed
-		star_pm_angle = newStar.properMotionAngle
+		star_pm_angle = newStar.pm_angle
 		star_mag = newStar.magnitudeVisual
 
 	years_to_calculate = np.arange(startYearSince2000, endYearSince2000+1, incrementYear).tolist()

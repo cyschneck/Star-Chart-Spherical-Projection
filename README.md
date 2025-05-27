@@ -38,7 +38,7 @@ exalibur_star = scsp.add_new_star(star_name="Exalibur",
 				ra="14.04.23",
 				dec=64.22,
 				pm_speed=12.3,
-				properMotionAngle=83,
+				pm_angle=83,
 				magnitudeVisual=1.2)
 karaboudjan_star = scsp.add_new_star(star_name="Karaboudjan",
 				ra="3.14.15",
@@ -147,14 +147,14 @@ star_chart_spherical_projection.add_new_star(star_name=None,
 					ra=None,
 					dec=None,
 					pm_speed=None,
-					properMotionAngle=None,
+					pm_angle=None,
 					magnitudeVisual=None)
 ```
 * **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
 * **[REQUIRED]** dec: (int/float) Declination of star (a positive or negative value)
 * **[REQUIRED]** pm_speed: (int/float) Proper motion speed as a single value (in mas/year)
-* **[REQUIRED]** properMotionAngle: (int/float) Proper motion positive angle (between 0° and 360°)
+* **[REQUIRED]** pm_angle: (int/float) Proper motion positive angle (between 0° and 360°)
 * **[REQUIRED]** magnitudeVisual: (int/float) Absolute Visual Magnitude
 
 **With the Proper Motion speed along the Right Ascension and Declination**
@@ -176,7 +176,7 @@ star_chart_spherical_projection.add_new_star(star_name=None,
 * **[REQUIRED]** properMotionSpeedDec: (int/float) Speed of Proper Motion along the Declination
 * **[REQUIRED]** magnitudeVisual: (int/float) Absolute Visual Magnitude
 
-Important Note: RA/Dec proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`pm_speed`) and an angle (`properMotionAngle`) for further calculations
+Important Note: RA/Dec proper motion will be converted from speed along the right ascension and declination to a proper motion speed (`pm_speed`) and an angle (`pm_angle`) for further calculations
 
 <details closed>
 <summary>Stars Built-in (Click to view all)</summary>

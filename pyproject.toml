@@ -7,7 +7,7 @@ authors = [
 
 description = "A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with more than a hundred named stars accurate over 400,000 years with proper motion and precession of the equinoxes"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "MIT"
 requires-python = ">=3.10"
 
 dependencies = [
@@ -27,7 +27,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",

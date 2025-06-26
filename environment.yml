@@ -2,11 +2,12 @@ name: star_chart
 channels:
   - conda-forge
 dependencies:
-  - python>=3.10,<3.14  # minimum support 3.`0, maximum support 3.13
+  - python>=3.10,<3.14  # minimum support 3.10, maximum support 3.13
   - beautifulsoup4
   - numpy
   - pandas
-  - pytest
+  - pytest      # dev: testing
+  - pre-commit  # dev: pre-commit hooks
   - pip
   - pip:
     - matplotlib # avoid warning "QApplication: invalid style override passed, ignoring it."

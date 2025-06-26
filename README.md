@@ -9,14 +9,14 @@
 A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with all IAU named stars accurate over 400,000 years with proper motion and precession of the equinoxes
 
 * **Plot Stars on a Polar Chart**
-	* plot_stereographic_projection()
+    * plot_stereographic_projection()
 * **Return Final Position of Stars**
-	* final_position()
-	* position_over_time()
-	* plot_position()
-	* predict_pole_star()
+    * final_position()
+    * position_over_time()
+    * plot_position()
+    * predict_pole_star()
 * **Add a New Star to Plot**
-	* add_new_star()
+    * add_new_star()
 
 ## Quickstart: Star-Chart-Spherical-Projection
 Plot stars in the Southern Hemisphere for the year 2025 (without stars labels)
@@ -24,9 +24,9 @@ Plot stars in the Southern Hemisphere for the year 2025 (without stars labels)
 import star_chart_spherical_projection as scsp
 
 scsp.plot_stereographic_projection(pole="South",
-				display_labels=False,
-				max_magnitude=3,
-				year_since_2000=25)
+                display_labels=False,
+                max_magnitude=3,
+                year_since_2000=25)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_years.png) 
 
@@ -35,23 +35,23 @@ Plot a few built-in stars as well as two new user defined stars in the Northern 
 import star_chart_spherical_projection as scsp
 
 exalibur_star = scsp.add_new_star(star_name="Exalibur",
-				ra="14.04.23",
-				dec=64.22,
-				pm_speed=12.3,
-				pm_angle=83,
-				magnitude=1.2)
+                ra="14.04.23",
+                dec=64.22,
+                pm_speed=12.3,
+                pm_angle=83,
+                magnitude=1.2)
 karaboudjan_star = scsp.add_new_star(star_name="Karaboudjan",
-				ra="3.14.15",
-				dec=10.13,
-				pm_speed_ra=57.6,
-				pm_speed_dec=60.1,
-				magnitude=0.3)
+                ra="3.14.15",
+                dec=10.13,
+                pm_speed_ra=57.6,
+                pm_speed_dec=60.1,
+                magnitude=0.3)
 scsp.plot_stereographic_projection(pole="North",
-				included_stars=["Vega", "Arcturus", "Altair"],
-				userDefinedStars=[exalibur_star, karaboudjan_star],
-				display_labels=True,
-				fig_plot_color="red",
-				year_since_2000=-39)
+                included_stars=["Vega", "Arcturus", "Altair"],
+                userDefinedStars=[exalibur_star, karaboudjan_star],
+                display_labels=True,
+                fig_plot_color="red",
+                year_since_2000=-39)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_newstar_example.png) 
 
@@ -61,8 +61,8 @@ Return the final position of a Vega (can be a single star or a list of stars) af
 import star_chart_spherical_projection as scsp
 
 star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
-						year_since_2000=11500,
-						save_to_csv="final_star_positions.csv")
+                        year_since_2000=11500,
+                        save_to_csv="final_star_positions.csv")
 ```
 Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
 
@@ -144,11 +144,11 @@ This allows for the creation of a new star in two ways:
 As seen in [in-the-sky.org for Pollux](https://in-the-sky.org/data/object.php?id=TYC1920-2194-1)
 ```
 star_chart_spherical_projection.add_new_star(star_name=None,
-					ra=None,
-					dec=None,
-					pm_speed=None,
-					pm_angle=None,
-					magnitude=None)
+                    ra=None,
+                    dec=None,
+                    pm_speed=None,
+                    pm_angle=None,
+                    magnitude=None)
 ```
 * **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
@@ -163,11 +163,11 @@ As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star)
 
 ```
 star_chart_spherical_projection.add_new_star(star_name=None,
-					ra=None,
-					dec=None,
-					pm_speed_ra=None,
-					pm_speed_dec=None,
-					magnitude=None)
+                    ra=None,
+                    dec=None,
+                    pm_speed_ra=None,
+                    pm_speed_dec=None,
+                    magnitude=None)
 ```
 * **[REQUIRED]** star_name: (string) A star name to be displayed as a label
 * **[REQUIRED]** ra: (string) Right Ascension of star as a string with three parts 'HH.MM.SS' (Hours, Minutes, Seconds)
@@ -190,22 +190,22 @@ Important Note: RA/Dec proper motion will be converted from speed along the righ
 Plot stars on a Stereographic Polar Plot
 ```
 plot_stereographic_projection(pole=None, 
-			included_stars=[], 
-			declination_min=None,
-			year_since_2000=0,
-			display_labels=True,
-			display_dec=True,
-			increment=10,
-			is_precession=True,
-			max_magnitude=None,
-			userDefinedStars=[],
-			onlyDisplayUserStars=False,
-			showPlot=True,
-			fig_plot_title=None,
-			fig_plot_color="C0",
-			figsize_n=12,
-			figsize_dpi=100,
-			save_plot_name=None)
+            included_stars=[], 
+            declination_min=None,
+            year_since_2000=0,
+            display_labels=True,
+            display_dec=True,
+            increment=10,
+            is_precession=True,
+            max_magnitude=None,
+            userDefinedStars=[],
+            onlyDisplayUserStars=False,
+            showPlot=True,
+            fig_plot_title=None,
+            fig_plot_color="C0",
+            figsize_n=12,
+            figsize_dpi=100,
+            save_plot_name=None)
 ```
 - **[REQUIRED]** pole: (string) map for either the "North" or "South" hemisphere
 - *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
@@ -289,13 +289,13 @@ plot_stereographic_projection(pole=None,
 Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
 ```
 final_position(included_stars=[],
-		year_since_2000=0, 
-		is_precession=True,
-		userDefinedStars=[],
-		onlyDisplayUserStars=False,
-		declination_min=None,
-		declination_max=None,
-		save_to_csv=None)
+        year_since_2000=0, 
+        is_precession=True,
+        userDefinedStars=[],
+        onlyDisplayUserStars=False,
+        declination_min=None,
+        declination_max=None,
+        save_to_csv=None)
 ```
 - *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
@@ -319,12 +319,12 @@ Returns a single star's position over time
 
 ```
 position_over_time(builtInStarName=None,
-			newStar=None,
-			startYearSince2000=None,
-			endYearSince2000=None,
-			incrementYear=5,
-			is_precession=True,
-			save_to_csv=None)
+            newStar=None,
+            startYearSince2000=None,
+            endYearSince2000=None,
+            incrementYear=5,
+            is_precession=True,
+            save_to_csv=None)
 ```
 - **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
 - **[REQUIRED]** newStar: (add_new_star object) a new star included created from a add_new_star()
@@ -357,19 +357,19 @@ Plot a star's declination and right ascension position over time
 
 ```
 plot_position(builtInStarName=None, 
-			newStar=None,
-			startYearSince2000=None,
-			endYearSince2000=None,
-			incrementYear=10,
-			is_precession=True,
-			DecOrRA="D",
-			showPlot=True,
-			showYearMarker=True,
-			fig_plot_title=None,
-			fig_plot_color="C0",
-			figsize_n=12,
-			figsize_dpi=100,
-			save_plot_name=None)
+            newStar=None,
+            startYearSince2000=None,
+            endYearSince2000=None,
+            incrementYear=10,
+            is_precession=True,
+            DecOrRA="D",
+            showPlot=True,
+            showYearMarker=True,
+            fig_plot_title=None,
+            fig_plot_color="C0",
+            figsize_n=12,
+            figsize_dpi=100,
+            save_plot_name=None)
 ```
 - **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
 - **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
@@ -395,45 +395,45 @@ plot_position(builtInStarName=None,
 **Declination with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							is_precession=True,
-							incrementYear=5,
-							DecOrRA="D")
+                            newStar=None,
+                            startYearSince2000=-15000,
+                            endYearSince2000=15000,
+                            is_precession=True,
+                            incrementYear=5,
+                            DecOrRA="D")
 ```
 ![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
 **Declination without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							is_precession=False,
-							incrementYear=5,
-							DecOrRA="D")
+                            newStar=None,
+                            startYearSince2000=-15000,
+                            endYearSince2000=15000,
+                            is_precession=False,
+                            incrementYear=5,
+                            DecOrRA="D")
 ```
 ![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							is_precession=True,
-							incrementYear=5,
-							DecOrRA="R")
+                            newStar=None,
+                            startYearSince2000=-15000,
+                            endYearSince2000=15000,
+                            is_precession=True,
+                            incrementYear=5,
+                            DecOrRA="R")
 ```
 ![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
 **Right Ascension without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(builtInStarName="Vega",
-							newStar=None,
-							startYearSince2000=-15000,
-							endYearSince2000=15000,
-							is_precession=False,
-							incrementYear=5,
-							DecOrRA="R")
+                            newStar=None,
+                            startYearSince2000=-15000,
+                            endYearSince2000=15000,
+                            is_precession=False,
+                            incrementYear=5,
+                            DecOrRA="R")
 ```
 ![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
 
@@ -441,69 +441,69 @@ star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 __Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							display_labels=False,
-							year_since_2000=11500,
-							is_precession=False,
-							fig_plot_color="red")
+                            display_labels=False,
+                            year_since_2000=11500,
+                            is_precession=False,
+                            fig_plot_color="red")
 ```
 ![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							display_labels=True,
-							year_since_2000=11500,
-							is_precession=False,
-							fig_plot_color="red")
+                            display_labels=True,
+                            year_since_2000=11500,
+                            is_precession=False,
+                            fig_plot_color="red")
 ```
 ![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
 __Star Chart in the Northern Hemisphere (centered on 90°) with Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							display_labels=False,
-							year_since_2000=11500,
-							is_precession=True,
-							fig_plot_color="red")
+                            display_labels=False,
+                            year_since_2000=11500,
+                            is_precession=True,
+                            fig_plot_color="red")
 ```
 ![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-							display_labels=True,
-							year_since_2000=11500,
-							is_precession=True,
-							fig_plot_color="red")
+                            display_labels=True,
+                            year_since_2000=11500,
+                            is_precession=True,
+                            fig_plot_color="red")
 ```
 ![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
 __Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							display_labels=False,
-							year_since_2000=11500,
-							is_precession=False,
-							fig_plot_color="cornflowerblue")
+                            display_labels=False,
+                            year_since_2000=11500,
+                            is_precession=False,
+                            fig_plot_color="cornflowerblue")
 ```
 ![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							display_labels=True,
-							year_since_2000=11500,
-							is_precession=False,
-							fig_plot_color="cornflowerblue")
+                            display_labels=True,
+                            year_since_2000=11500,
+                            is_precession=False,
+                            fig_plot_color="cornflowerblue")
 ```
 ![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
 __Star Chart in the Southern Hemisphere (centered on -90°) with Precession__
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							display_labels=False,
-							year_since_2000=11500,
-							is_precession=True,
-							fig_plot_color="cornflowerblue")
+                            display_labels=False,
+                            year_since_2000=11500,
+                            is_precession=True,
+                            fig_plot_color="cornflowerblue")
 ```
 ![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
 ```
 star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-							display_labels=True,
-							year_since_2000=11500,
-							is_precession=True,
-							fig_plot_color="cornflowerblue")
+                            display_labels=True,
+                            year_since_2000=11500,
+                            is_precession=True,
+                            fig_plot_color="cornflowerblue")
 ```
 ![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
 
@@ -526,13 +526,18 @@ To run existing and new tests from the root directory:
 python -m pytest
 ```
 
+## Beta :test_tube: Features
+
+These features are not included in pip install because they are still experimental and being tested/debugged. For more information and getting them up and running, contact cyschneck@gmail.com or ugschneck@gmail.com or post a question as a [Github Issue](https://github.com/cyschneck/centerline-width/issues)
+- Plot stars in a constellation/asterism with connected
+
 ## Bibliography
 
 Named stars specified by ["IAU Catalog of Star Names"](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt) with the star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/) and Wikipedia where indicated
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 
-Precession code adapted to Python 3+ from [the Vondrak long term precession model Github repo 'vondrak')](https://github.com/dreamalligator/vondrak)
+Precession code adapted to Python 3+ from [the Vondrak long term precession model Github repo 'vondrak'](https://github.com/dreamalligator/vondrak)
 
 ## Bug and Feature Request
 

@@ -169,7 +169,7 @@ def inTheSkyStarPage(page_link=None, iau_names=None, page_number=None, total_pag
 				# if multiple magnitudes, gets Visual (V)
 				all_mag = value.split(" ")
 				all_mag = all_mag[all_mag.index("(V)") - 1]
-				all_mag = all_mag.replace("+", "") # remove postive mark
+				all_mag = all_mag.replace("+", "") # remove positive mark
 				star_values["Magnitude (V, Visual)"] = all_mag
 			if "proper motion (speed)" in header:
 				pm_sp = value.lower().split(" ")[0]
@@ -255,7 +255,7 @@ def wikipediaLinks(row_data=None):
 			dec_text = dec_text.replace(u'\xa0', u' ')# remove non-breaking space in string
 			dec_text = dec_text.replace(" ", "") # remove whitespace
 			dec_text = dec_text.replace(".", "") # remove microseconds mark
-			dec_text = dec_text.replace("+", "") # remove postive mark
+			dec_text = dec_text.replace("+", "") # remove positive mark
 			dec_text = dec_text.replace("−", "-") # replace negative mark
 			dec_text = dec_text.replace(u'\u2013', '-') # replace negative sign
 			dec_text = dec_text.replace(u'\u2212', '-') # replace negative sign
@@ -270,7 +270,7 @@ def wikipediaLinks(row_data=None):
 			mag_text = re.sub(r"\[.*?\]","",mag_text) # remove links in brackets
 			mag_text = re.sub(r"\(.*?\)","",mag_text) # remove links in parenthesis
 			mag_text = mag_text.replace(u'\xa0', u' ')# remove non-breaking space in string
-			mag_text = mag_text.replace("+", "") # remove postive sign
+			mag_text = mag_text.replace("+", "") # remove positive sign
 			mag_text = mag_text.replace("/", " ") # remove cross sign
 			mag_text = mag_text.split(" ")[0]
 			mag_text = mag_text.split("±")[0]
@@ -283,8 +283,8 @@ def wikipediaLinks(row_data=None):
 			pm_text = re.sub(r"\(.*?\)","",pm_text) # remove links in paraenthesis
 			pm_ra_text = pm_text.split(":")[1].split("dec")[0].strip(" ")
 			pm_dec_text = pm_text.split(":")[2].strip(" ")
-			pm_ra_text = pm_ra_text.replace("+", "") # remove postive sign
-			pm_dec_text = pm_dec_text.replace("+", "") # remove postive sign
+			pm_ra_text = pm_ra_text.replace("+", "") # remove positive sign
+			pm_dec_text = pm_dec_text.replace("+", "") # remove positive sign
 			pm_ra_text = pm_ra_text.replace(u'\u2013', '-') # replace negative sign
 			pm_ra_text = pm_ra_text.replace(u'\u2212', '-') # replace negative sign
 			pm_dec_text = pm_dec_text.replace(u'\u2013', '-') # replace negative sign
@@ -367,7 +367,7 @@ def setupFinalCSV(save_csv=False):
 		combined_df.to_csv("4_all_stars_data.csv", index=False)
 	
 def compareOutputs():
-	# compare number of stars with offical names to number of stars found with full list of properties
+	# compare number of stars with official names to number of stars found with full list of properties
 	iau_stars = pd.read_csv("1_iau_stars.csv")["Common Name"]
 	sky_stars = pd.read_csv("4_all_stars_data.csv")["Common Name"]
 	print(f"All Stars:\n{list(sky_stars)}")
@@ -375,7 +375,7 @@ def compareOutputs():
 	print(f"Length of IAU == Length of Found Stars = {len(list(iau_stars)) == len(list(sky_stars))}")
 	
 if __name__ == '__main__':
-	iau_dataframe = IAU_CSN(save_csv=True)                  # retrieve offical list of IAU names -> saved to iau_stars.csv
+	iau_dataframe = IAU_CSN(save_csv=True)                  # retrieve official list of IAU names -> saved to iau_stars.csv
 	all_inthesky_pages = inTheSkyAllPages()                 # returns links to all pages in InTheSky
 	inTheSkyAllStars(page_links=all_inthesky_pages,
 					iau_names=iau_dataframe,

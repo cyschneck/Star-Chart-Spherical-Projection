@@ -113,7 +113,7 @@ All IAU named stars are collected from the [IAU WSGN Star Catalog](https://exopl
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cyschneck&repo=iau-star-names)]([https://github.com/unaschneck/intaturalist-push-notifications](https://github.com/cyschneck/iau-star-names))
 
-IAU Named Stars
+[IAU Named Stars with Data](https://github.com/cyschneck/iau-star-names/blob/main/iau_proper_stars.csv)
 
 - Proper Names
 - WSGN-ID
@@ -129,7 +129,7 @@ IAU Named Stars
 
 Data is collected via automatic web scrapping from [`in-the-sky.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/2_inthesky_star_data.csv) and [`wikipedia.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/3_backup_star_data.csv) (and some [manual additions](https://github.com/cyschneck/iau-star-names/blob/main/data/0_missing_manual.csv))
 
-The star data is collected as:
+The [stars with relevant data](https://github.com/cyschneck/iau-star-names/blob/main/stars_with_data.csv) is collected as:
 
 - Common Name
 - Right Ascension (HH.MM.SS)

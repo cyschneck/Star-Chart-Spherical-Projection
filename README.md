@@ -109,16 +109,27 @@ Where in the Northern Hemisphere, projections are formed from the South Pole:
 
 ### Data
 
-All IAU named stars are collected from [`pas.rochester.edu`](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt).
+All IAU named stars are collected from the [IAU WSGN Star Catalog](https://exopla.net/star-names/modern-iau-star-names/)
 
-[IAU Named Stars](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/1_iau_stars.csv):
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cyschneck&repo=iau-star-names)]([https://github.com/unaschneck/intaturalist-push-notifications](https://github.com/cyschneck/iau-star-names))
 
-- Common Name
-- Designation
+IAU Named Stars
 
-Data is collected via automatic web scrapping from [`in-the-sky.org`](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/2_inthesky_star_data.csv) and [`wikipedia.org`](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/3_backup_star_data.csv) (and some [manual additions](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/0_missing_manual.csv))
+- Proper Names
+- WSGN-ID
+- Desgination
+- HIP
+- Bayer ID
+- Constellation
+- Origin
+- Ethnic, Cultural Group, or Language
+- Reference
+- Additional Info, e.g. language corruptions
+- Date of Adoption
 
-All [star data](https://github.com/cyschneck/Star-Chart-Spherical-Projection/blob/main/star_chart_spherical_projection/data/4_all_stars_data.csv):
+Data is collected via automatic web scrapping from [`in-the-sky.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/2_inthesky_star_data.csv) and [`wikipedia.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/3_backup_star_data.csv) (and some [manual additions](https://github.com/cyschneck/iau-star-names/blob/main/data/0_missing_manual.csv))
+
+The star data is collected as:
 
 - Common Name
 - Right Ascension (HH.MM.SS)

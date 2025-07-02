@@ -7,3 +7,4 @@ if __name__ == '__main__':
     print("Retrieving Star Data CSV. from iau-star-names..")
     iau_star_dataframe = pd.read_csv(csv_data_url, encoding="utf-8")
     iau_star_dataframe.to_csv("stars_with_data.csv", index=False)
+    print(f"README Stars: \n{list(iau_star_dataframe["Common Name"])}")

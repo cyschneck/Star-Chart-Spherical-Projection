@@ -210,9 +210,9 @@ def _generate_stereographic_projection(starList=None,
         name = star[0]
         ra = star[1]
         dec = star[2]
-        pm_speed = star[3]
-        pm_angle = star[4]
-        mag = star[5]
+        pm_speed = float(star[3])
+        pm_angle = float(star[4])
+        mag = float(star[5])
         if max_magnitude is None or mag < max_magnitude: # Optional: Filter out stars with a magnitude greater than max_magnitude
             logger.debug(f"Star = '{name}'")
 

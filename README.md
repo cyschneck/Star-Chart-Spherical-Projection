@@ -219,7 +219,7 @@ plot_stereographic_projection(pole=None,
             save_plot_name=None)
 ```
 - **[REQUIRED]** pole: (string) map for either the "North" or "South" hemisphere
-- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in stars_with_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* declination_min: (int/float) outer declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* display_labels: (boolean) display the star name labels, defaults to True
@@ -308,7 +308,7 @@ final_position(included_stars=[],
         declination_max=None,
         save_to_csv=None)
 ```
-- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in 4_all_stars_data.csv). Example: ["Vega", "Merak", "Dubhe"]
+- *[OPTIONAL]* included_stars: (list) a list of star names to include from built-in list, by default = [] includes all stars (in stars_with_data.csv). Example: ["Vega", "Merak", "Dubhe"]
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* is_precession: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* userDefinedStars: (list): List of new star objects of stars the user has added

@@ -35,7 +35,7 @@ invalid_non_num_options = [([], "<class 'list'>"),
                         (False, "<class 'bool'>")]
 
 filepath_one_level_above = os.path.dirname(os.path.dirname(__file__))
-star_csv_file = os.path.join(filepath_one_level_above, 'data', '4_all_stars_data.csv')  # get file's directory, up one level, /data/star_data.csv
+star_csv_file = os.path.join(filepath_one_level_above, 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/star_data.csv
 star_dataframe = pd.read_csv(star_csv_file)
 star_dataframe = star_dataframe.sort_values(by=["Common Name"])
 lst_of_current_stars = star_dataframe["Common Name"].tolist()

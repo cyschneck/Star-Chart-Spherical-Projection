@@ -8,7 +8,7 @@
 
 A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with all IAU named stars accurate over 400,000 years with proper motion and precession of the equinoxes
 
-* **Plot Stars on a Polar Chart**
+* **Plot Stars on a (Polar) Star Chart**
     * plot_stereographic_projection()
 * **Return Final Position of Stars**
     * final_position()
@@ -111,7 +111,7 @@ Where in the Northern Hemisphere, projections are formed from the South Pole:
 
 All IAU named stars are collected from the [IAU WSGN Star Catalog](https://exopla.net/star-names/modern-iau-star-names/)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cyschneck&repo=iau-star-names)]([https://github.com/unaschneck/intaturalist-push-notifications](https://github.com/cyschneck/iau-star-names))
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cyschneck&repo=iau-star-names)](https://github.com/cyschneck/iau-star-names)
 
 [IAU Named Stars with Data](https://github.com/cyschneck/iau-star-names/blob/main/iau_proper_stars.csv)
 
@@ -539,7 +539,7 @@ python -m pytest
 
 ## Beta :test_tube: Features
 
-These features are not included in pip install because they are still experimental and being tested/debugged. For more information and getting them up and running, contact cyschneck@gmail.com or ugschneck@gmail.com or post a question as a [Github Issue](https://github.com/cyschneck/centerline-width/issues)
+These features are not included in pip install because they are still experimental and being tested/debugged. For more information and getting them up and running, contact cyschneck@gmail.com or post a question as a [Github Issue](https://github.com/cyschneck/Star-Chart-Spherical-Projection/issues)
 - Plot stars in a constellation/asterism with connected
 
 ## Bibliography

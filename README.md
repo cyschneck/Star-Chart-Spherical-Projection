@@ -64,7 +64,7 @@ star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
                         year_since_2000=11500,
                         save_to_csv="final_star_positions.csv")
 ```
-Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.38.21'}}`
+Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.13.54'}}`
 
 The final position of the stars are saved in `final_star_positions.csv` with the headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 

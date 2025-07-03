@@ -1,5 +1,5 @@
 # Pytest for final_position()
-# star_chart_spherical_projection/: python3 -m pytest -v
+# star_chart_spherical_projection/: python -m pytest
 import re
 import os
 

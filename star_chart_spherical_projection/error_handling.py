@@ -21,7 +21,7 @@ def errorHandling(isPlotFunction=None,
                 display_labels=None,
                 display_dec=None,
                 increment=None,
-                showPlot=None,
+                show_plot=None,
                 fig_plot_title=None,
                 fig_plot_color=None,
                 figsize_n=None,
@@ -109,9 +109,9 @@ def errorHandling(isPlotFunction=None,
         if increment not in [1, 5, 10]:
             raise ValueError(f"[increment]: Must be one of the options [1, 5, 10], current value = '{increment}'")
 
-        # Ensure that the only options for showPlot are booleans ["True", "False"]
-        if type(showPlot) != bool:
-            raise ValueError(f"[showPlot]: Must be a bool, current type = '{type(showPlot)}'")
+        # Ensure that the only options for show_plot are booleans ["True", "False"]
+        if type(show_plot) != bool:
+            raise ValueError(f"[show_plot]: Must be a bool, current type = '{type(show_plot)}'")
 
         # Ensure that the color given is a string (matplotlib has error checking for invalid color options)
         if type(fig_plot_color) != str:

@@ -281,7 +281,7 @@ def plot_stereographic_projection(included_stars=[],
                                 max_magnitude=None,
                                 userDefinedStars=[],
                                 onlyDisplayUserStars=False,
-                                showPlot=True,
+                                show_plot=True,
                                 fig_plot_title=None,
                                 fig_plot_color="C0",
                                 figsize_n=12,
@@ -301,7 +301,7 @@ def plot_stereographic_projection(included_stars=[],
                                                 max_magnitude=max_magnitude,
                                                 userDefinedStars=userDefinedStars,
                                                 onlyDisplayUserStars=onlyDisplayUserStars,
-                                                showPlot=showPlot,
+                                                show_plot=show_plot,
                                                 fig_plot_title=fig_plot_title,
                                                 fig_plot_color=fig_plot_color,
                                                 figsize_n=figsize_n,
@@ -445,7 +445,7 @@ def plot_stereographic_projection(included_stars=[],
         fig.savefig(save_plot_name)
 
     # Optional: Show the plot when it has been calculated
-    if showPlot:
+    if show_plot:
         plt.show()
     else:
         plt.close()

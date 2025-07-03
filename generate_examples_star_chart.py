@@ -8,7 +8,7 @@ if __name__ == '__main__':
     endYear = 15000
     incrementYear = 5
     year_since_example = 25 # 2025
-    show_plot = False
+    show_plt = False
     star_chart_spherical_projection.position_over_time(builtInStarName="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
@@ -23,7 +23,7 @@ if __name__ == '__main__':
                                                         is_precession=True,
                                                         incrementYear=incrementYear,
                                                         DecOrRA="D",
-                                                        showPlot=show_plot,
+                                                        show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_with_precession.png")
     star_chart_spherical_projection.plot_position(builtInStarName="Vega",
                                                         newStar=None,
@@ -32,7 +32,7 @@ if __name__ == '__main__':
                                                         is_precession=True,
                                                         incrementYear=incrementYear,
                                                         DecOrRA="R",
-                                                        showPlot=show_plot,
+                                                        show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_right_ascension_with_precession.png")
     star_chart_spherical_projection.plot_position(builtInStarName="Vega",
                                                         newStar=None,
@@ -41,7 +41,7 @@ if __name__ == '__main__':
                                                         is_precession=False,
                                                         incrementYear=incrementYear,
                                                         DecOrRA="D",
-                                                        showPlot=show_plot,
+                                                        show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_without_precession.png")
     star_chart_spherical_projection.plot_position(builtInStarName="Vega",
                                                         newStar=None,
@@ -50,7 +50,7 @@ if __name__ == '__main__':
                                                         is_precession=False,
                                                         incrementYear=incrementYear,
                                                         DecOrRA="R",
-                                                        showPlot=show_plot,
+                                                        show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_right_ascension_without_precession.png")
     # note, includes endYear (0 to 9, every three = [0, 3, 6, 9], inclusive of start, inclusive of end
 
@@ -83,95 +83,95 @@ if __name__ == '__main__':
     # pole
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/pole_north.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="South",
                                                                 display_labels=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/pole_south.png")
     # included_stars
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=[],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/includedStars_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/includedStars_subset.png")
     # declination_min
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 declination_min=-30,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/declination_min_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 declination_min=10,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/declination_min_10.png")
     # year_since_2000
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 year_since_2000=0,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/yearSince2000_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 year_since_2000=-3100,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/yearSince2000_negative_3100.png")
     # display_labels
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=True,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/displayLabels_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/displayLabels_false.png")
     # display_dec
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
                                                                 display_dec=True,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/displayDeclinationNumbers_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
                                                                 display_dec=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/displayDeclinationNumbers_false.png")
     # increment
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
                                                                 increment=10,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/increment_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 display_labels=False,
                                                                 increment=5,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/increment_5.png")
     # is_precession
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 is_precession=True,
                                                                 year_since_2000=11500,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/isPrecession_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 is_precession=False,
                                                                 year_since_2000=11500,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 display_labels=False,
                                                                 save_plot_name="examples/isPrecession_false.png")
     # max_magnitude
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 max_magnitude=None,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/maxMagnitudeFilter_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 max_magnitude=1,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/maxMagnitudeFilter_1.png")
     # userDefinedStars
     exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
@@ -189,43 +189,43 @@ if __name__ == '__main__':
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega"],
                                                                 userDefinedStars=[],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/userDefinedStars_none.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega"],
                                                                 userDefinedStars=[exalibur_star, karaboudjan_star],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/userDefinedStars_included.png")
     # onlyDisplayUserStars
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 onlyDisplayUserStars=False,
                                                                 userDefinedStars=[exalibur_star, karaboudjan_star],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/onlyDisplayUserStars_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 onlyDisplayUserStars=True,
                                                                 userDefinedStars=[exalibur_star, karaboudjan_star],
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/onlyDisplayUserStars_true.png")
     # fig_plot_title
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 fig_plot_title=None,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/fig_plot_title_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 fig_plot_title="This is a Example Title for a Star Chart",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/fig_plot_title_example.png")
     # fig_plot_color
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 fig_plot_color="C0",
                                                                 display_labels=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/fig_plot_color_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 fig_plot_color="darkorchid",
                                                                 display_labels=False,
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/fig_plot_color_darkorchid.png")
     # Example Outputs:
     year_to_calculate = 11500
@@ -236,28 +236,28 @@ if __name__ == '__main__':
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=False,
                                                                 fig_plot_color="red",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/north_with_labels_without_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
                                                                 display_labels=True,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=True,
                                                                 fig_plot_color="red",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/north_with_labels_with_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
                                                                 display_labels=False,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=False,
                                                                 fig_plot_color="red",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/north_without_labels_without_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North", 
                                                                 display_labels=False,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=True,
                                                                 fig_plot_color="red",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/north_without_labels_with_precession")
 
     ## Southern Hemisphere: Graph Without and With Precession
@@ -266,26 +266,26 @@ if __name__ == '__main__':
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=False,
                                                                 fig_plot_color="cornflowerblue",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/south_with_labels_without_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
                                                                 display_labels=True,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=True,
                                                                 fig_plot_color="cornflowerblue",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/south_with_labels_with_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
                                                                 display_labels=False,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=False,
                                                                 fig_plot_color="cornflowerblue",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/south_without_labels_without_precession")
     star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
                                                                 display_labels=False,
                                                                 year_since_2000=year_to_calculate,
                                                                 is_precession=True,
                                                                 fig_plot_color="cornflowerblue",
-                                                                showPlot=show_plot,
+                                                                show_plot=show_plt,
                                                                 save_plot_name="examples/south_without_labels_with_precession")

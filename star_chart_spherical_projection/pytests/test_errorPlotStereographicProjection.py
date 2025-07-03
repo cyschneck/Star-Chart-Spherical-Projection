@@ -107,8 +107,8 @@ def test_plotStereographicProjection_maxMagnitudeInvalidTypes(invalid_input, err
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_plotStereographicProjection_showPlotInvalidTypes(invalid_input, error_output):
-    with pytest.raises(ValueError, match=re.escape(f"[showPlot]: Must be a bool, current type = '{error_output}'")):
-        scsp.plot_stereographic_projection(pole="North", showPlot=invalid_input)
+    with pytest.raises(ValueError, match=re.escape(f"[show_plot]: Must be a bool, current type = '{error_output}'")):
+        scsp.plot_stereographic_projection(pole="North", show_plot=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
 def test_plotStereographicProjection_figPlotTitleInvalidTypes(invalid_input, error_output):

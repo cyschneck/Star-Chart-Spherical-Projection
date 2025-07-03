@@ -137,7 +137,7 @@ def plot_position(builtInStarName=None,
                 incrementYear=10,
                 is_precession=True,
                 DecOrRA="D",
-                showPlot=True,
+                show_plot=True,
                 showYearMarker=True,
                 fig_plot_title=None,
                 fig_plot_color="C0",
@@ -213,7 +213,7 @@ def plot_position(builtInStarName=None,
         plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
     plt.xticks(rotation=90)
 
-    if showPlot:
+    if show_plot:
         plt.show()
 
     if save_plot_name is not None:

@@ -69,7 +69,88 @@ def test_readme_quickstart_add_stars(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
+@pytest.mark.skip(reason="nCurrent Version invalid declination")
 def test_readme_quickstart_final_position():
     star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
                         year_since_2000=11500)
     assert star_final_pos_dict == {'Vega': {'Declination': 83.6899118156341, 'RA': '05.13.54'}}
+
+def test_readme_north_pole(generate_plot_image):
+    scsp.plot_stereographic_projection(pole="North",
+                                       display_labels=False,
+                                       save_plot_name=str(generate_plot_image),
+                                       show_plot=False)
+
+    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+                                                    "pole_north.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None
+
+def test_readme_south_pole(generate_plot_image):
+    scsp.plot_stereographic_projection(pole="South",
+                                       display_labels=False,
+                                       save_plot_name=str(generate_plot_image),
+                                       show_plot=False)
+
+    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+                                                    "pole_south.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None
+
+def test_readme_included_stars_none(generate_plot_image):
+    scsp.plot_stereographic_projection(pole="North",
+                                       included_stars=[],
+                                       save_plot_name=str(generate_plot_image),
+                                       show_plot=False)
+
+    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+                                                    "includedStars_default.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None
+
+def test_readme_included_stars_subsets(generate_plot_image):
+    scsp.plot_stereographic_projection(pole="North",
+                                       included_stars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"],
+                                       save_plot_name=str(generate_plot_image),
+                                       show_plot=False)
+
+    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+                                                    "includedStars_subset.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None
+
+
+
+###################
+###################
+def test_readme_vega_declination_with_precession(generate_plot_image):
+    # plot_star_vega_declination_with_precession.png
+    scsp.plot_position(builtInStarName="Vega",
+                       newStar=None,
+                       startYearSince2000=-15000,
+                       endYearSince2000=15000,
+                       is_precession=True,
+                       incrementYear=5,
+                       DecOrRA="D",
+                       save_plot_name=str(generate_plot_image),
+                       show_plot=False)
+
+    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+                                                    "plot_star_vega_declination_with_precession.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None

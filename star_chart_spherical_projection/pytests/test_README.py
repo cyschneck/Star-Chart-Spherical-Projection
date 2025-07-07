@@ -498,7 +498,7 @@ def test_readme_fig_plot_color_darkorchid(generate_plot_image):
 
 def test_readme_vega_declination_with_precession(generate_plot_image):
     # plot_star_vega_declination_with_precession.png
-    scsp.plot_position(builtInStarName="Vega",
+    scsp.plot_position(star="Vega",
                        newStar=None,
                        startYearSince2000=-15000,
                        endYearSince2000=15000,
@@ -518,7 +518,7 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
 
 '''
 def test_readme_vega_declination_without_precession(generate_plot_image):
-    scsp.plot_position(builtInStarName="Vega",
+    scsp.plot_position(star="Vega",
                        newStar=None,
                        startYearSince2000=-15000,
                        endYearSince2000=15000,
@@ -536,7 +536,7 @@ def test_readme_vega_declination_without_precession(generate_plot_image):
         in_decorator=False) is None
 
 def test_readme_vega_right_ascension_with_precession(generate_plot_image):
-    scsp.plot_position(builtInStarName="Vega",
+    scsp.plot_position(star="Vega",
                        newStar=None,
                        startYearSince2000=-15000,
                        endYearSince2000=15000,
@@ -554,7 +554,7 @@ def test_readme_vega_right_ascension_with_precession(generate_plot_image):
         in_decorator=False) is None
 
 def test_readme_vega_right_ascension_without_precession(generate_plot_image):
-    scsp.plot_position(builtInStarName="Vega",
+    scsp.plot_position(star="Vega",
                        newStar=None,
                        startYearSince2000=-15000,
                        endYearSince2000=15000,

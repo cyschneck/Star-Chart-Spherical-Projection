@@ -329,7 +329,7 @@ final_position(included_stars=[],
 Returns a single star's position over time
 
 ```
-position_over_time(builtInStarName=None,
+position_over_time(star=None,
             newStar=None,
             startYearSince2000=None,
             endYearSince2000=None,
@@ -337,7 +337,7 @@ position_over_time(builtInStarName=None,
             is_precession=True,
             save_to_csv=None)
 ```
-- **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
+- **[REQUIRED]** star: (string) a star name from the built-in list, example: `Vega`
 - **[REQUIRED]** newStar: (add_new_star object) a new star included created from a add_new_star()
 - **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
@@ -367,7 +367,7 @@ predict_pole_star(year_since_2000=0, pole="North")
 Plot a star's declination and right ascension position over time
 
 ```
-plot_position(builtInStarName=None, 
+plot_position(star=None, 
             newStar=None,
             startYearSince2000=None,
             endYearSince2000=None,
@@ -382,7 +382,7 @@ plot_position(builtInStarName=None,
             figsize_dpi=100,
             save_plot_name=None)
 ```
-- **[REQUIRED]** builtInStarName: (string) a star name from the built-in list, example: `Vega`
+- **[REQUIRED]** star: (string) a star name from the built-in list, example: `Vega`
 - **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
 - **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
@@ -405,7 +405,7 @@ plot_position(builtInStarName=None,
 
 **Declination with Precession:**
 ```python
-star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(star="Vega",
                             newStar=None,
                             startYearSince2000=-15000,
                             endYearSince2000=15000,
@@ -416,7 +416,7 @@ star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 ![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
 **Declination without Precession:**
 ```python
-star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(star="Vega",
                             newStar=None,
                             startYearSince2000=-15000,
                             endYearSince2000=15000,
@@ -427,7 +427,7 @@ star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 ![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension with Precession:**
 ```python
-star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(star="Vega",
                             newStar=None,
                             startYearSince2000=-15000,
                             endYearSince2000=15000,
@@ -438,7 +438,7 @@ star_chart_spherical_projection.plot_position(builtInStarName="Vega",
 ![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
 **Right Ascension without Precession:**
 ```python
-star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+star_chart_spherical_projection.plot_position(star="Vega",
                             newStar=None,
                             startYearSince2000=-15000,
                             endYearSince2000=15000,

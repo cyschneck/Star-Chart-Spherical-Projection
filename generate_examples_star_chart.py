@@ -9,14 +9,14 @@ if __name__ == '__main__':
     incrementYear = 5
     year_since_example = 25 # 2025
     show_plt = False
-    star_chart_spherical_projection.position_over_time(builtInStarName="Vega",
+    star_chart_spherical_projection.position_over_time(star="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
                                                         endYearSince2000=endYear,
                                                         is_precession=True,
                                                         incrementYear=incrementYear,
                                                         save_to_csv=None)
-    star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+    star_chart_spherical_projection.plot_position(star="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
                                                         endYearSince2000=endYear,
@@ -25,7 +25,7 @@ if __name__ == '__main__':
                                                         DecOrRA="D",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_with_precession.png")
-    star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+    star_chart_spherical_projection.plot_position(star="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
                                                         endYearSince2000=endYear,
@@ -34,7 +34,7 @@ if __name__ == '__main__':
                                                         DecOrRA="R",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_right_ascension_with_precession.png")
-    star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+    star_chart_spherical_projection.plot_position(star="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
                                                         endYearSince2000=endYear,
@@ -43,7 +43,7 @@ if __name__ == '__main__':
                                                         DecOrRA="D",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_without_precession.png")
-    star_chart_spherical_projection.plot_position(builtInStarName="Vega",
+    star_chart_spherical_projection.plot_position(star="Vega",
                                                         newStar=None,
                                                         startYearSince2000=startYear,
                                                         endYearSince2000=endYear,

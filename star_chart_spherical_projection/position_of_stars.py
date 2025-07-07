@@ -82,7 +82,7 @@ def final_position(included_stars=[],
 
     return finalPositionOfStarsDict
 
-def position_over_time(builtInStarName=None,
+def position_over_time(star=None,
                         newStar=None,
                         startYearSince2000=None,
                         endYearSince2000=None,
@@ -90,10 +90,10 @@ def position_over_time(builtInStarName=None,
                         is_precession=True,
                         save_to_csv=None):
 
-    if builtInStarName is not None:
+    if star is not None:
         star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
         star_dataframe = pd.read_csv(star_csv_file)
-        star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
+        star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name, star_ra, star_declination, star_mag, star_pm_speed, star_pm_angle, star_pm_ra, star_pm_dec, star_alt_names, star_url = star_data
     if newStar is not None:
         star_name = newStar.star_name
@@ -130,7 +130,7 @@ def position_over_time(builtInStarName=None,
 
     return position_over_time
 
-def plot_position(builtInStarName=None, 
+def plot_position(star=None, 
                 newStar=None,
                 startYearSince2000=None,
                 endYearSince2000=None,
@@ -145,17 +145,17 @@ def plot_position(builtInStarName=None,
                 figsize_dpi=100,
                 save_plot_name=None):
 
-    position_over_time_dict = position_over_time(builtInStarName=builtInStarName,
+    position_over_time_dict = position_over_time(star=star,
                                                 newStar=newStar,
                                                 startYearSince2000=startYearSince2000,
                                                 endYearSince2000=endYearSince2000,
                                                 incrementYear=incrementYear,
                                                 is_precession=is_precession)
 
-    if builtInStarName is not None:
+    if star is not None:
         star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
         star_dataframe = pd.read_csv(star_csv_file)
-        star_data = star_dataframe.loc[star_dataframe["Common Name"] == builtInStarName].values.flatten().tolist()
+        star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name = star_data[0]
     if newStar is not None:
         star_name = newStar.star_name

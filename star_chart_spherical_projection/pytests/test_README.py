@@ -504,7 +504,7 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
                        end_year_since_2000=15000,
                        is_precession=True,
                        increment=5,
-                       DecOrRA="D",
+                       dec_ra="D",
                        save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
@@ -524,7 +524,7 @@ def test_readme_vega_declination_without_precession(generate_plot_image):
                        end_year_since_2000=15000,
                        is_precession=False,
                        increment=5,
-                       DecOrRA="D",
+                       dec_ra="D",
                        show_plot=True)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
@@ -542,7 +542,7 @@ def test_readme_vega_right_ascension_with_precession(generate_plot_image):
                        end_year_since_2000=15000,
                        is_precession=True,
                        increment=5,
-                       DecOrRA="R",
+                       dec_ra="R",
                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
@@ -560,7 +560,7 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
                        end_year_since_2000=15000,
                        is_precession=False,
                        increment=5,
-                       DecOrRA="R",
+                       dec_ra="R",
                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',

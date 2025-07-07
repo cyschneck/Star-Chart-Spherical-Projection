@@ -136,7 +136,7 @@ def plot_position(star=None,
                 end_year_since_2000=None,
                 increment=10,
                 is_precession=True,
-                DecOrRA="D",
+                dec_ra="D",
                 show_plot=True,
                 showYearMarker=True,
                 fig_plot_title=None,
@@ -171,11 +171,11 @@ def plot_position(star=None,
         dec_lst.append(position_dict["Dec (degrees)"])
         ra_radians_lst.append(position_dict["RA (radians)"])
 
-    if DecOrRA == "D":
+    if dec_ra == "D":
         plot_y = dec_lst
         title = "Declination"
         y_label = "Declination (°)"
-    if DecOrRA == "R":
+    if dec_ra == "R":
         plot_y = ra_radians_lst
         title = "Right Ascension"
         y_label = "Right Ascension (Radians)"

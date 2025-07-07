@@ -280,7 +280,7 @@ def plot_stereographic_projection(included_stars=[],
                                 is_precession=True,
                                 max_magnitude=None,
                                 added_stars=[],
-                                onlyDisplayUserStars=False,
+                                only_added_stars=False,
                                 show_plot=True,
                                 fig_plot_title=None,
                                 fig_plot_color="C0",
@@ -300,7 +300,7 @@ def plot_stereographic_projection(included_stars=[],
                                                 is_precession=is_precession,
                                                 max_magnitude=max_magnitude,
                                                 added_stars=added_stars,
-                                                onlyDisplayUserStars=onlyDisplayUserStars,
+                                                only_added_stars=only_added_stars,
                                                 show_plot=show_plot,
                                                 fig_plot_title=fig_plot_title,
                                                 fig_plot_color=fig_plot_color,
@@ -309,7 +309,7 @@ def plot_stereographic_projection(included_stars=[],
                                                 save_plot_name=save_plot_name)
     pole = pole.capitalize()
     listOfStars = []
-    if not onlyDisplayUserStars:
+    if not only_added_stars:
         included_stars = [x.title() for x in included_stars] # convert all names to capitalized
         for star in _get_stars(included_stars):
             listOfStars.append([star[0],

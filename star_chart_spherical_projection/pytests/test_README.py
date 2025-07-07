@@ -397,13 +397,13 @@ def test_readme_only_display_user_stars_false(generate_plot_image):
                                          magnitude=0.3)
 
     scsp.plot_stereographic_projection(pole="North",
-                                       onlyDisplayUserStars=False,
+                                       only_added_stars=False,
                                        added_stars=[exalibur_star, karaboudjan_star],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
-                                                    "onlyDisplayUserStars_default.png")
+                                                    "only_added_stars_default.png")
     plt.close()
     assert os.path.exists(expected_png)
     assert matplotlib.testing.compare.compare_images(
@@ -425,13 +425,13 @@ def test_readme_only_display_user_stars_true(generate_plot_image):
                                          magnitude=0.3)
 
     scsp.plot_stereographic_projection(pole="North",
-                                       onlyDisplayUserStars=True,
+                                       only_added_stars=True,
                                        added_stars=[exalibur_star, karaboudjan_star],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
-                                                    "onlyDisplayUserStars_true.png")
+                                                    "only_added_stars_true.png")
     plt.close()
     assert os.path.exists(expected_png)
     assert matplotlib.testing.compare.compare_images(

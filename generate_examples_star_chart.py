@@ -196,17 +196,17 @@ if __name__ == '__main__':
                                                                 added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
                                                                 save_plot_name="examples/added_stars_included.png")
-    # onlyDisplayUserStars
+    # only_added_stars
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                                                                onlyDisplayUserStars=False,
+                                                                only_added_stars=False,
                                                                 added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
-                                                                save_plot_name="examples/onlyDisplayUserStars_default.png")
+                                                                save_plot_name="examples/only_added_stars_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                                                                onlyDisplayUserStars=True,
+                                                                only_added_stars=True,
                                                                 added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
-                                                                save_plot_name="examples/onlyDisplayUserStars_true.png")
+                                                                save_plot_name="examples/only_added_stars_true.png")
     # fig_plot_title
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 fig_plot_title=None,

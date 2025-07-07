@@ -17,7 +17,7 @@ def errorHandling(isPlotFunction=None,
                 declination_min=None,
                 max_magnitude=None,
                 added_stars=None,
-                onlyDisplayUserStars=None,
+                only_added_stars=None,
                 display_labels=None,
                 display_dec=None,
                 increment=None,
@@ -65,8 +65,8 @@ def errorHandling(isPlotFunction=None,
         if type(user_star) != star_chart_spherical_projection.add_new_star:
             raise ValueError(f"[added_stars]: {type(user_star)} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")
 
-    if type(onlyDisplayUserStars) != bool:
-        raise ValueError(f"[onlyDisplayUserStars]: Must be a bool, current type = '{type(onlyDisplayUserStars)}'")
+    if type(only_added_stars) != bool:
+        raise ValueError(f"[only_added_stars]: Must be a bool, current type = '{type(only_added_stars)}'")
 
     # Error Handling for final_position() function
     if not isPlotFunction:

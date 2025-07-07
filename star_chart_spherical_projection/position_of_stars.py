@@ -21,7 +21,7 @@ def final_position(included_stars=[],
                     year_since_2000=0,
                     is_precession=True,
                     added_stars=[],
-                    onlyDisplayUserStars=False,
+                    only_added_stars=False,
                     declination_min=None,
                     declination_max=None,
                     save_to_csv=None):
@@ -32,12 +32,12 @@ def final_position(included_stars=[],
                                                 year_since_2000=year_since_2000,
                                                 is_precession=is_precession,
                                                 added_stars=added_stars,
-                                                onlyDisplayUserStars=onlyDisplayUserStars,
+                                                only_added_stars=only_added_stars,
                                                 declination_min=declination_min,
                                                 declination_max=declination_max,
                                                 save_to_csv=save_to_csv)
 
-    if not onlyDisplayUserStars:
+    if not only_added_stars:
         included_stars = [x.title() for x in included_stars] # convert all names to capitalized
         listOfStars = star_chart_spherical_projection._get_stars(included_stars)
         for star_object in added_stars:

@@ -96,9 +96,9 @@ def test_finalPositionOfStars_addedStarsInvalidStarTypes(invalid_input, error_ou
         scsp.final_position(added_stars=[invalid_input])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_finalPositionOfStars_onlyDisplayUserStarsInvalidTypes(invalid_input, error_output):
-    with pytest.raises(ValueError, match=re.escape(f"[onlyDisplayUserStars]: Must be a bool, current type = '{error_output}'")):
-        scsp.final_position(onlyDisplayUserStars=invalid_input)
+def test_finalPositionOfStars_onlyAddedStarsInvalidTypes(invalid_input, error_output):
+    with pytest.raises(ValueError, match=re.escape(f"[only_added_stars]: Must be a bool, current type = '{error_output}'")):
+        scsp.final_position(only_added_stars=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_str_options)
 def test_finalPositionOfStars_saveToCsvInvalidTypes(invalid_input, error_output):

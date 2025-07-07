@@ -210,7 +210,7 @@ plot_stereographic_projection(pole=None,
             is_precession=True,
             max_magnitude=None,
             added_stars=[],
-            onlyDisplayUserStars=False,
+            only_added_stars=False,
             show_plot=True,
             fig_plot_title=None,
             fig_plot_color="C0",
@@ -228,7 +228,7 @@ plot_stereographic_projection(pole=None,
 - *[OPTIONAL]* is_precession: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* max_magnitude: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (shows all stars)
 - *[OPTIONAL]* added_stars: (list) List of new star objects of stars the user has added
-- *[OPTIONAL]* onlyDisplayUserStars: (bool) Only display the stars defined by the users (added_stars)
+- *[OPTIONAL]* only_added_stars: (bool) Only display the stars defined by the users (added_stars)
 - *[OPTIONAL]* show_plot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
 - *[OPTIONAL]* fig_plot_title: (string) figure title, defaults to "<North/South>ern Hemisphere [<YEAR NUMBERS> Years Since 2000 (YYYY)]: +/-90° to <DECLINATION MIN>°"
 - *[OPTIONAL]* fig_plot_color: (string) scatter plot star color, defaults to C0
@@ -282,9 +282,9 @@ plot_stereographic_projection(pole=None,
 | ------------- | ------------- |
 | ![addedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/added_stars_none.png) | ![addedStards+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/added_stars_included.png) |
 
-| onlyDisplayUserStars=False (default) with `added_stars` | onlyDisplayUserStars=True with added_stars=[exalibur_star, karaboudjan_star] (from Quickstart) |
+| only_added_stars=False (default) with `added_stars` | only_added_stars=True with added_stars=[exalibur_star, karaboudjan_star] (from Quickstart) |
 | ------------- | ------------- |
-| ![onlyDisplayUserStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_default.png) | ![onlyDisplayUserStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/onlyDisplayUserStars_true.png) |
+| ![onlyAddedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/only_added_stars_default.png) | ![onlyAddedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/only_added_stars_true.png) |
 
 | fig_plot_title=(default) | fig_plot_title="This is a Example Title for a Star Chart" |
 | ------------- | ------------- |
@@ -303,7 +303,7 @@ final_position(included_stars=[],
         year_since_2000=0, 
         is_precession=True,
         added_stars=[],
-        onlyDisplayUserStars=False,
+        only_added_stars=False,
         declination_min=None,
         declination_max=None,
         save_to_csv=None)
@@ -312,7 +312,7 @@ final_position(included_stars=[],
 - *[OPTIONAL]* year_since_2000: (int/float) years since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* is_precession: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* added_stars: (list): List of new star objects of stars the user has added
-- *[OPTIONAL]* onlyDisplayUserStars: (bool) Only include the stars defined by the users (added_stars)
+- *[OPTIONAL]* only_added_stars: (bool) Only include the stars defined by the users (added_stars)
 - *[OPTIONAL]* declination_min: (int/float) set minimum declination value, defaults to -30° in Northern hemisphere and 30° in Southern hemisphere
 - *[OPTIONAL]* declination_max: (int/float) set maximum declination value, defaults to 90° in Northern hemisphere and -90° in Southern hemisphere
 - *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save final star positions with headers ["Common Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]

@@ -141,6 +141,6 @@ def test_plotStereographicProjection_addedStarsInvalidTypes(invalid_input, error
         scsp.plot_stereographic_projection(pole="North", added_stars=[invalid_input])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
-def test_plotStereographicProjection_onlyDisplayUserStarsInvalidTypes(invalid_input, error_output):
-    with pytest.raises(ValueError, match=re.escape(f"[onlyDisplayUserStars]: Must be a bool, current type = '{error_output}'")):
-        scsp.plot_stereographic_projection(pole="North", onlyDisplayUserStars=invalid_input)
+def test_plotStereographicProjection_onlyAddedStarsInvalidTypes(invalid_input, error_output):
+    with pytest.raises(ValueError, match=re.escape(f"[only_added_stars]: Must be a bool, current type = '{error_output}'")):
+        scsp.plot_stereographic_projection(pole="North", only_added_stars=invalid_input)

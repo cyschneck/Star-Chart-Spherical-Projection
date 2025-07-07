@@ -85,7 +85,7 @@ def final_position(included_stars=[],
 def position_over_time(star=None,
                         added_star=None,
                         start_year_since_2000=None,
-                        endYearSince2000=None,
+                        end_year_since_2000=None,
                         incrementYear=5,
                         is_precession=True,
                         save_to_csv=None):
@@ -103,7 +103,7 @@ def position_over_time(star=None,
         star_pm_angle = added_star.pm_angle
         star_mag = added_star.magnitude
 
-    years_to_calculate = np.arange(start_year_since_2000, endYearSince2000+1, incrementYear).tolist()
+    years_to_calculate = np.arange(start_year_since_2000, end_year_since_2000+1, incrementYear).tolist()
     position_over_time = {}
     for year in years_to_calculate:
         star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
@@ -133,7 +133,7 @@ def position_over_time(star=None,
 def plot_position(star=None, 
                 added_star=None,
                 start_year_since_2000=None,
-                endYearSince2000=None,
+                end_year_since_2000=None,
                 incrementYear=10,
                 is_precession=True,
                 DecOrRA="D",
@@ -148,7 +148,7 @@ def plot_position(star=None,
     position_over_time_dict = position_over_time(star=star,
                                                 added_star=added_star,
                                                 start_year_since_2000=start_year_since_2000,
-                                                endYearSince2000=endYearSince2000,
+                                                end_year_since_2000=end_year_since_2000,
                                                 incrementYear=incrementYear,
                                                 is_precession=is_precession)
 

@@ -333,7 +333,7 @@ position_over_time(star=None,
             added_star=None,
             start_year_since_2000=None,
             end_year_since_2000=None,
-            incrementYear=5,
+            increment=5,
             is_precession=True,
             save_to_csv=None)
 ```
@@ -341,7 +341,7 @@ position_over_time(star=None,
 - **[REQUIRED]** added_star: (add_new_star object) a new star included created from `add_new_star()`
 - **[REQUIRED]** start_year_since_2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** end_year_since_2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
-- **[REQUIRED]** incrementYear: (float/int) number of year to increment from start to end by, defaults to `5` years
+- **[REQUIRED]** increment: (float/int) number of year to increment from start to end by, defaults to `5` years
 - *[OPTIONAL]* is_precession: (boolean) when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* save_to_csv: (string) CSV filename and location to save star's position over time with headers ["Year", "Declination (DD.SS)", "Right Ascension (HH.MM.SS)", "Right Ascension (radians)"]
 
@@ -371,7 +371,7 @@ plot_position(star=None,
             added_star=None,
             start_year_since_2000=None,
             end_year_since_2000=None,
-            incrementYear=10,
+            increment=10,
             is_precession=True,
             DecOrRA="D",
             show_plot=True,
@@ -387,7 +387,7 @@ plot_position(star=None,
 - **[REQUIRED]** start_year_since_2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** end_year_since_2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** DecOrRA: (string) Plot the Declination `D` or Right Ascension `RA`, defaults to `D`
-- **[REQUIRED]** incrementYear: (float/int)  number of year to increment from start to end by, defaults to `10` years
+- **[REQUIRED]** increment: (float/int)  number of year to increment from start to end by, defaults to `10` years
 - *[OPTIONAL]* is_precession: (boolean)  when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* show_plot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
 - *[OPTIONAL]* showYearMarker: (boolean) show dotted line for current year
@@ -410,7 +410,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             start_year_since_2000=-15000,
                             end_year_since_2000=15000,
                             is_precession=True,
-                            incrementYear=5,
+                            increment=5,
                             DecOrRA="D")
 ```
 ![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
@@ -421,7 +421,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             start_year_since_2000=-15000,
                             end_year_since_2000=15000,
                             is_precession=False,
-                            incrementYear=5,
+                            increment=5,
                             DecOrRA="D")
 ```
 ![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
@@ -432,7 +432,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             start_year_since_2000=-15000,
                             end_year_since_2000=15000,
                             is_precession=True,
-                            incrementYear=5,
+                            increment=5,
                             DecOrRA="R")
 ```
 ![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
@@ -443,7 +443,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             start_year_since_2000=-15000,
                             end_year_since_2000=15000,
                             is_precession=False,
-                            incrementYear=5,
+                            increment=5,
                             DecOrRA="R")
 ```
 ![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 

@@ -86,7 +86,7 @@ def position_over_time(star=None,
                         added_star=None,
                         start_year_since_2000=None,
                         end_year_since_2000=None,
-                        incrementYear=5,
+                        increment=5,
                         is_precession=True,
                         save_to_csv=None):
 
@@ -103,7 +103,7 @@ def position_over_time(star=None,
         star_pm_angle = added_star.pm_angle
         star_mag = added_star.magnitude
 
-    years_to_calculate = np.arange(start_year_since_2000, end_year_since_2000+1, incrementYear).tolist()
+    years_to_calculate = np.arange(start_year_since_2000, end_year_since_2000+1, increment).tolist()
     position_over_time = {}
     for year in years_to_calculate:
         star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
@@ -134,7 +134,7 @@ def plot_position(star=None,
                 added_star=None,
                 start_year_since_2000=None,
                 end_year_since_2000=None,
-                incrementYear=10,
+                increment=10,
                 is_precession=True,
                 DecOrRA="D",
                 show_plot=True,
@@ -149,7 +149,7 @@ def plot_position(star=None,
                                                 added_star=added_star,
                                                 start_year_since_2000=start_year_since_2000,
                                                 end_year_since_2000=end_year_since_2000,
-                                                incrementYear=incrementYear,
+                                                increment=increment,
                                                 is_precession=is_precession)
 
     if star is not None:
@@ -186,7 +186,7 @@ def plot_position(star=None,
         precession_label = "(Without Precession)"
 
     # prevent the axis from populate more than 70 elements (to prevent overlapping)
-    x_increment = incrementYear
+    x_increment = increment
     x_plot_len = np.arange(year_lst[0], year_lst[-1]+1, x_increment)
     while len(x_plot_len) > 71:
         x_increment *= 5
@@ -200,7 +200,7 @@ def plot_position(star=None,
     if year_lst[-1] >= -2000: endYear_bce_ce = f"{year_lst[-1]} C.E" # positive years for C.E
     if year_lst[-1] < -2000: endYear_bce_ce = f"{abs(year_lst[-1])} B.C.E" # negative years for B.C.E
     
-    plt.title(f"{star_name}'s {title} {precession_label} from {startYear_bce_ce} to {endYear_bce_ce}, Every {incrementYear} Years")
+    plt.title(f"{star_name}'s {title} {precession_label} from {startYear_bce_ce} to {endYear_bce_ce}, Every {increment} Years")
     plt.plot(year_lst, plot_y)
     plt.xlabel("Year")
     plt.ylabel(y_label)

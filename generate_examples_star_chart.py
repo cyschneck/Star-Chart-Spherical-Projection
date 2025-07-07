@@ -6,7 +6,7 @@ import star_chart_spherical_projection
 if __name__ == '__main__':
     startYear = -15000
     endYear = 15000
-    incrementYear = 5
+    increment = 5
     year_since_example = 25 # 2025
     show_plt = False
     star_chart_spherical_projection.position_over_time(star="Vega",
@@ -14,14 +14,14 @@ if __name__ == '__main__':
                                                         start_year_since_2000=startYear,
                                                         end_year_since_2000=endYear,
                                                         is_precession=True,
-                                                        incrementYear=incrementYear,
+                                                        increment=increment,
                                                         save_to_csv=None)
     star_chart_spherical_projection.plot_position(star="Vega",
                                                         added_star=None,
                                                         start_year_since_2000=startYear,
                                                         end_year_since_2000=endYear,
                                                         is_precession=True,
-                                                        incrementYear=incrementYear,
+                                                        increment=increment,
                                                         DecOrRA="D",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_with_precession.png")
@@ -30,7 +30,7 @@ if __name__ == '__main__':
                                                         start_year_since_2000=startYear,
                                                         end_year_since_2000=endYear,
                                                         is_precession=True,
-                                                        incrementYear=incrementYear,
+                                                        increment=increment,
                                                         DecOrRA="R",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_right_ascension_with_precession.png")
@@ -39,7 +39,7 @@ if __name__ == '__main__':
                                                         start_year_since_2000=startYear,
                                                         end_year_since_2000=endYear,
                                                         is_precession=False,
-                                                        incrementYear=incrementYear,
+                                                        increment=increment,
                                                         DecOrRA="D",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_declination_without_precession.png")
@@ -48,7 +48,7 @@ if __name__ == '__main__':
                                                         start_year_since_2000=startYear,
                                                         end_year_since_2000=endYear,
                                                         is_precession=False,
-                                                        incrementYear=incrementYear,
+                                                        increment=increment,
                                                         DecOrRA="R",
                                                         show_plot=show_plt,
                                                         save_plot_name="examples/plot_star_vega_right_ascension_without_precession.png")

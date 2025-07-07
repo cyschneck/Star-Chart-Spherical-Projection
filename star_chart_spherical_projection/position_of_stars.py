@@ -83,8 +83,8 @@ def final_position(included_stars=[],
     return finalPositionOfStarsDict
 
 def position_over_time(star=None,
-                        newStar=None,
-                        startYearSince2000=None,
+                        added_star=None,
+                        start_year_since_2000=None,
                         endYearSince2000=None,
                         incrementYear=5,
                         is_precession=True,
@@ -95,15 +95,15 @@ def position_over_time(star=None,
         star_dataframe = pd.read_csv(star_csv_file)
         star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name, star_ra, star_declination, star_mag, star_pm_speed, star_pm_angle, star_pm_ra, star_pm_dec, star_alt_names, star_url = star_data
-    if newStar is not None:
-        star_name = newStar.star_name
-        star_ra = newStar.ra
-        star_declination = newStar.dec
-        star_pm_speed = newStar.pm_speed
-        star_pm_angle = newStar.pm_angle
-        star_mag = newStar.magnitude
+    if added_star is not None:
+        star_name = added_star.star_name
+        star_ra = added_star.ra
+        star_declination = added_star.dec
+        star_pm_speed = added_star.pm_speed
+        star_pm_angle = added_star.pm_angle
+        star_mag = added_star.magnitude
 
-    years_to_calculate = np.arange(startYearSince2000, endYearSince2000+1, incrementYear).tolist()
+    years_to_calculate = np.arange(start_year_since_2000, endYearSince2000+1, incrementYear).tolist()
     position_over_time = {}
     for year in years_to_calculate:
         star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
@@ -131,8 +131,8 @@ def position_over_time(star=None,
     return position_over_time
 
 def plot_position(star=None, 
-                newStar=None,
-                startYearSince2000=None,
+                added_star=None,
+                start_year_since_2000=None,
                 endYearSince2000=None,
                 incrementYear=10,
                 is_precession=True,
@@ -146,8 +146,8 @@ def plot_position(star=None,
                 save_plot_name=None):
 
     position_over_time_dict = position_over_time(star=star,
-                                                newStar=newStar,
-                                                startYearSince2000=startYearSince2000,
+                                                added_star=added_star,
+                                                start_year_since_2000=start_year_since_2000,
                                                 endYearSince2000=endYearSince2000,
                                                 incrementYear=incrementYear,
                                                 is_precession=is_precession)
@@ -157,8 +157,8 @@ def plot_position(star=None,
         star_dataframe = pd.read_csv(star_csv_file)
         star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name = star_data[0]
-    if newStar is not None:
-        star_name = newStar.star_name
+    if added_star is not None:
+        star_name = added_star.star_name
     
     fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
     ax = fig.subplots()

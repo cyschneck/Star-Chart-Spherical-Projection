@@ -330,16 +330,16 @@ Returns a single star's position over time
 
 ```
 position_over_time(star=None,
-            newStar=None,
-            startYearSince2000=None,
+            added_star=None,
+            start_year_since_2000=None,
             endYearSince2000=None,
             incrementYear=5,
             is_precession=True,
             save_to_csv=None)
 ```
 - **[REQUIRED]** star: (string) a star name from the built-in list, example: `Vega`
-- **[REQUIRED]** newStar: (add_new_star object) a new star included created from a add_new_star()
-- **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** added_star: (add_new_star object) a new star included created from `add_new_star()`
+- **[REQUIRED]** start_year_since_2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** incrementYear: (float/int) number of year to increment from start to end by, defaults to `5` years
 - *[OPTIONAL]* is_precession: (boolean) when calculating star positions include predictions for precession, defaults to True
@@ -368,8 +368,8 @@ Plot a star's declination and right ascension position over time
 
 ```
 plot_position(star=None, 
-            newStar=None,
-            startYearSince2000=None,
+            added_star=None,
+            start_year_since_2000=None,
             endYearSince2000=None,
             incrementYear=10,
             is_precession=True,
@@ -383,8 +383,8 @@ plot_position(star=None,
             save_plot_name=None)
 ```
 - **[REQUIRED]** star: (string) a star name from the built-in list, example: `Vega`
-- **[REQUIRED]** newStar: (newStar object) a new star included created from a newStar object
-- **[REQUIRED]** startYearSince2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
+- **[REQUIRED]** added_star: (new star object) a new star included created from `add_new_star()`
+- **[REQUIRED]** start_year_since_2000: (float/int) start year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** endYearSince2000: (float/int) end year since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - **[REQUIRED]** DecOrRA: (string) Plot the Declination `D` or Right Ascension `RA`, defaults to `D`
 - **[REQUIRED]** incrementYear: (float/int)  number of year to increment from start to end by, defaults to `10` years
@@ -406,8 +406,8 @@ plot_position(star=None,
 **Declination with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
-                            newStar=None,
-                            startYearSince2000=-15000,
+                            added_star=None,
+                            start_year_since_2000=-15000,
                             endYearSince2000=15000,
                             is_precession=True,
                             incrementYear=5,
@@ -417,8 +417,8 @@ star_chart_spherical_projection.plot_position(star="Vega",
 **Declination without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
-                            newStar=None,
-                            startYearSince2000=-15000,
+                            added_star=None,
+                            start_year_since_2000=-15000,
                             endYearSince2000=15000,
                             is_precession=False,
                             incrementYear=5,
@@ -428,8 +428,8 @@ star_chart_spherical_projection.plot_position(star="Vega",
 **Right Ascension with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
-                            newStar=None,
-                            startYearSince2000=-15000,
+                            added_star=None,
+                            start_year_since_2000=-15000,
                             endYearSince2000=15000,
                             is_precession=True,
                             incrementYear=5,
@@ -439,8 +439,8 @@ star_chart_spherical_projection.plot_position(star="Vega",
 **Right Ascension without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
-                            newStar=None,
-                            startYearSince2000=-15000,
+                            added_star=None,
+                            start_year_since_2000=-15000,
                             endYearSince2000=15000,
                             is_precession=False,
                             incrementYear=5,

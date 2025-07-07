@@ -54,7 +54,7 @@ def test_readme_quickstart_add_stars(generate_plot_image):
                                          magnitude=0.3)
     scsp.plot_stereographic_projection(pole="North",
                                        included_stars=["Vega", "Arcturus", "Altair"],
-                                       userDefinedStars=[exalibur_star, karaboudjan_star],
+                                       added_stars=[exalibur_star, karaboudjan_star],
                                        display_labels=True,
                                        fig_plot_color="red",
                                        year_since_2000=-39,
@@ -69,7 +69,7 @@ def test_readme_quickstart_add_stars(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-@pytest.mark.skip(reason="nCurrent Version invalid declination")
+@pytest.mark.skip(reason="Current Version invalid declination, fix with updated version")
 def test_readme_quickstart_final_position():
     star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
                         year_since_2000=11500)
@@ -342,12 +342,12 @@ def test_readme_max_magnitude_1(generate_plot_image):
 def test_readme_user_defined_stars_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
                                        included_stars=["Vega"],
-                                       userDefinedStars=[],
+                                       added_stars=[],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
-                                                    "userDefinedStars_none.png")
+                                                    "added_stars_none.png")
     plt.close()
     assert os.path.exists(expected_png)
     assert matplotlib.testing.compare.compare_images(
@@ -370,12 +370,12 @@ def test_readme_user_defined_stars_additional_stars(generate_plot_image):
 
     scsp.plot_stereographic_projection(pole="North",
                                        included_stars=["Vega"],
-                                       userDefinedStars=[exalibur_star, karaboudjan_star],
+                                       added_stars=[exalibur_star, karaboudjan_star],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
-                                                    "userDefinedStars_included.png")
+                                                    "added_stars_included.png")
     plt.close()
     assert os.path.exists(expected_png)
     assert matplotlib.testing.compare.compare_images(
@@ -398,7 +398,7 @@ def test_readme_only_display_user_stars_false(generate_plot_image):
 
     scsp.plot_stereographic_projection(pole="North",
                                        onlyDisplayUserStars=False,
-                                       userDefinedStars=[exalibur_star, karaboudjan_star],
+                                       added_stars=[exalibur_star, karaboudjan_star],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
@@ -426,7 +426,7 @@ def test_readme_only_display_user_stars_true(generate_plot_image):
 
     scsp.plot_stereographic_projection(pole="North",
                                        onlyDisplayUserStars=True,
-                                       userDefinedStars=[exalibur_star, karaboudjan_star],
+                                       added_stars=[exalibur_star, karaboudjan_star],
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
@@ -515,6 +515,7 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
     assert matplotlib.testing.compare.compare_images(
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
+
 '''
 def test_readme_vega_declination_without_precession(generate_plot_image):
     scsp.plot_position(builtInStarName="Vega",

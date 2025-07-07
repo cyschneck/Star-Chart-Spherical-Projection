@@ -20,7 +20,7 @@ logger.addHandler(stream_handler)
 def final_position(included_stars=[], 
                     year_since_2000=0,
                     is_precession=True,
-                    userDefinedStars=[],
+                    added_stars=[],
                     onlyDisplayUserStars=False,
                     declination_min=None,
                     declination_max=None,
@@ -31,7 +31,7 @@ def final_position(included_stars=[],
                                                 included_stars=included_stars,
                                                 year_since_2000=year_since_2000,
                                                 is_precession=is_precession,
-                                                userDefinedStars=userDefinedStars,
+                                                added_stars=added_stars,
                                                 onlyDisplayUserStars=onlyDisplayUserStars,
                                                 declination_min=declination_min,
                                                 declination_max=declination_max,
@@ -40,7 +40,7 @@ def final_position(included_stars=[],
     if not onlyDisplayUserStars:
         included_stars = [x.title() for x in included_stars] # convert all names to capitalized
         listOfStars = star_chart_spherical_projection._get_stars(included_stars)
-        for star_object in userDefinedStars:
+        for star_object in added_stars:
             star_row = [star_object.star_name,
                         star_object.ra,
                         star_object.dec,
@@ -50,7 +50,7 @@ def final_position(included_stars=[],
             listOfStars.append(star_row)
     else:
         listOfStars = []
-        for star_object in userDefinedStars:
+        for star_object in added_stars:
             star_row = [star_object.star_name,
                         star_object.ra,
                         star_object.dec,

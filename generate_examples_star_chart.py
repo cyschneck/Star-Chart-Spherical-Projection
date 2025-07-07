@@ -74,7 +74,7 @@ if __name__ == '__main__':
                                                                 magnitude=0.3)
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega", "Arcturus", "Altair"],
-                                                                userDefinedStars=[exalibur_star, karaboudjan_star],
+                                                                added_stars=[exalibur_star, karaboudjan_star],
                                                                 display_labels=True,
                                                                 fig_plot_color="red",
                                                                 year_since_2000=-39,
@@ -173,7 +173,7 @@ if __name__ == '__main__':
                                                                 max_magnitude=1,
                                                                 show_plot=show_plt,
                                                                 save_plot_name="examples/maxMagnitudeFilter_1.png")
-    # userDefinedStars
+    # added_stars
     exalibur_star = star_chart_spherical_projection.add_new_star(star_name="Exalibur",
                                                             ra="14.04.23",
                                                             dec=64.22,
@@ -188,23 +188,23 @@ if __name__ == '__main__':
                                                             magnitude=0.3)
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega"],
-                                                                userDefinedStars=[],
+                                                                added_stars=[],
                                                                 show_plot=show_plt,
-                                                                save_plot_name="examples/userDefinedStars_none.png")
+                                                                save_plot_name="examples/added_stars_none.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 included_stars=["Vega"],
-                                                                userDefinedStars=[exalibur_star, karaboudjan_star],
+                                                                added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
-                                                                save_plot_name="examples/userDefinedStars_included.png")
+                                                                save_plot_name="examples/added_stars_included.png")
     # onlyDisplayUserStars
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 onlyDisplayUserStars=False,
-                                                                userDefinedStars=[exalibur_star, karaboudjan_star],
+                                                                added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
                                                                 save_plot_name="examples/onlyDisplayUserStars_default.png")
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
                                                                 onlyDisplayUserStars=True,
-                                                                userDefinedStars=[exalibur_star, karaboudjan_star],
+                                                                added_stars=[exalibur_star, karaboudjan_star],
                                                                 show_plot=show_plt,
                                                                 save_plot_name="examples/onlyDisplayUserStars_true.png")
     # fig_plot_title

@@ -16,7 +16,7 @@ def errorHandling(isPlotFunction=None,
                 declination_max=None,
                 declination_min=None,
                 max_magnitude=None,
-                userDefinedStars=None,
+                added_stars=None,
                 onlyDisplayUserStars=None,
                 display_labels=None,
                 display_dec=None,
@@ -59,11 +59,11 @@ def errorHandling(isPlotFunction=None,
     if type(is_precession) != bool:
         raise ValueError(f"[is_precession]: Must be a bool, current type = '{type(is_precession)}'")
 
-    if type(userDefinedStars) != list:
-        raise ValueError(f"[userDefinedStars]: Must be a list, current type = '{type(userDefinedStars)}'")
-    for user_star in userDefinedStars:
+    if type(added_stars) != list:
+        raise ValueError(f"[added_stars]: Must be a list, current type = '{type(added_stars)}'")
+    for user_star in added_stars:
         if type(user_star) != star_chart_spherical_projection.add_new_star:
-            raise ValueError(f"[userDefinedStars]: {type(user_star)} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")
+            raise ValueError(f"[added_stars]: {type(user_star)} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")
 
     if type(onlyDisplayUserStars) != bool:
         raise ValueError(f"[onlyDisplayUserStars]: Must be a bool, current type = '{type(onlyDisplayUserStars)}'")

@@ -279,7 +279,7 @@ def plot_stereographic_projection(included_stars=[],
                                 increment=10,
                                 is_precession=True,
                                 max_magnitude=None,
-                                userDefinedStars=[],
+                                added_stars=[],
                                 onlyDisplayUserStars=False,
                                 show_plot=True,
                                 fig_plot_title=None,
@@ -299,7 +299,7 @@ def plot_stereographic_projection(included_stars=[],
                                                 increment=increment, 
                                                 is_precession=is_precession,
                                                 max_magnitude=max_magnitude,
-                                                userDefinedStars=userDefinedStars,
+                                                added_stars=added_stars,
                                                 onlyDisplayUserStars=onlyDisplayUserStars,
                                                 show_plot=show_plot,
                                                 fig_plot_title=fig_plot_title,
@@ -318,7 +318,7 @@ def plot_stereographic_projection(included_stars=[],
                                 star[4],
                                 star[5],
                                 star[3]])
-        for star_object in userDefinedStars:
+        for star_object in added_stars:
             star_row = [star_object.star_name,
                         star_object.ra,
                         star_object.dec,
@@ -328,7 +328,7 @@ def plot_stereographic_projection(included_stars=[],
             listOfStars.append(star_row)
     else:
         listOfStars = []
-        for star_object in userDefinedStars:
+        for star_object in added_stars:
             star_row = [star_object.star_name,
                         star_object.ra,
                         star_object.dec,

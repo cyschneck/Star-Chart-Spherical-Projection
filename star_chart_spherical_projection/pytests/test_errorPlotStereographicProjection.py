@@ -136,9 +136,9 @@ def test_plotStereographicProjection_savePlotNameInvalidTypes(invalid_input, err
         scsp.plot_stereographic_projection(pole="North", save_plot_name=invalid_input)
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
-def test_plotStereographicProjection_userDefinedStarsInvalidTypes(invalid_input, error_output):
-    with pytest.raises(ValueError, match=re.escape(f"[userDefinedStars]: {error_output} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")):
-        scsp.plot_stereographic_projection(pole="North", userDefinedStars=[invalid_input])
+def test_plotStereographicProjection_addedStarsInvalidTypes(invalid_input, error_output):
+    with pytest.raises(ValueError, match=re.escape(f"[added_stars]: {error_output} is not a valid new star object (see: star_chart_spherical_projection.add_new_star)")):
+        scsp.plot_stereographic_projection(pole="North", added_stars=[invalid_input])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_bool_options)
 def test_plotStereographicProjection_onlyDisplayUserStarsInvalidTypes(invalid_input, error_output):

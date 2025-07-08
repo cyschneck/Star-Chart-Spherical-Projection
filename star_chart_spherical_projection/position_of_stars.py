@@ -138,7 +138,7 @@ def plot_position(star=None,
                 is_precession=True,
                 dec_ra="D",
                 show_plot=True,
-                showYearMarker=True,
+                display_year_marker=True,
                 fig_plot_title=None,
                 fig_plot_color="C0",
                 figsize_n=12,
@@ -208,7 +208,7 @@ def plot_position(star=None,
     ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, x_increment))
     ax.set_yticks(np.linspace(min(plot_y), max(plot_y), y_increment))
 
-    if showYearMarker:
+    if display_year_marker:
         current_year = datetime.now().year
         plt.axvline(current_year, linewidth=0.5, color="black", linestyle="dashed")
     plt.xticks(rotation=90)

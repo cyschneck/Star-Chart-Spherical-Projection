@@ -375,7 +375,7 @@ plot_position(star=None,
             is_precession=True,
             dec_ra="D",
             show_plot=True,
-            showYearMarker=True,
+            display_year_marker=True,
             fig_plot_title=None,
             fig_plot_color="C0",
             figsize_n=12,
@@ -390,7 +390,7 @@ plot_position(star=None,
 - **[REQUIRED]** increment: (float/int)  number of year to increment from start to end by, defaults to `10` years
 - *[OPTIONAL]* is_precession: (boolean)  when calculating star positions include predictions for precession, defaults to True
 - *[OPTIONAL]* show_plot: (boolean) show plot (triggers plt.show()), useful when generating multiple plots at once in the background, defaults to True
-- *[OPTIONAL]* showYearMarker: (boolean) show dotted line for current year
+- *[OPTIONAL]* display_year_marker: (boolean) show dotted line for current year
 - *[OPTIONAL]* fig_plot_title: (string) figure plot title, defaults to `<COMMON NAME> <DECLINATION/RA> (<With/Without> Precession) from <START BCE/CE> to <END BCE/CE>, every <YEAR INCREMENT> Years`
 - *[OPTIONAL]* fig_plot_color: (string) figure plot color, defaults to blue `C0`
 - *[OPTIONAL]* figsize_n: (float/int) figure plot size NxN, `12`

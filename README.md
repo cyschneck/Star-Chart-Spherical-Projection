@@ -146,7 +146,7 @@ The [stars with relevant data](https://github.com/cyschneck/iau-star-names/blob/
 
 ### New Star Object
 
-The star chart package comes with over a hundred of brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a new star object. The new star object will require a few important features that plot_stereographic_projection() and final_position() can now accept as an additional argument.
+The star chart package comes with hundreds of the brightest stars as part of a built-in library. However, a new star can be easily added for plotting or calculations by creating a new star object. The new star object will require a few important features that plot_stereographic_projection() and final_position() can now accept as an additional argument.
 
 This allows for the creation of a new star in two ways:
 
@@ -170,7 +170,7 @@ star_chart_spherical_projection.add_new_star(star_name=None,
 
 **With the Proper Motion speed along the Right Ascension and Declination**
 
-As seen in [wikipeida.og for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
+As seen in [wikipeida.org for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
 
 ```
 star_chart_spherical_projection.add_new_star(star_name=None,
@@ -447,76 +447,6 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             dec_ra="R")
 ```
 ![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
-
-# Star Chart Examples:
-__Star Chart in the Northern Hemisphere (centered on 90°) without Precession__
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                            display_labels=False,
-                            year_since_2000=11500,
-                            is_precession=False,
-                            fig_plot_color="red")
-```
-![north_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                            display_labels=True,
-                            year_since_2000=11500,
-                            is_precession=False,
-                            fig_plot_color="red")
-```
-![north_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_without_precession.png) 
-__Star Chart in the Northern Hemisphere (centered on 90°) with Precession__
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                            display_labels=False,
-                            year_since_2000=11500,
-                            is_precession=True,
-                            fig_plot_color="red")
-```
-![north_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_without_labels_with_precession.png) 
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="North",
-                            display_labels=True,
-                            year_since_2000=11500,
-                            is_precession=True,
-                            fig_plot_color="red")
-```
-![north_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/north_with_labels_with_precession.png) 
-__Star Chart in the Southern Hemisphere (centered on -90°) without Precession__
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-                            display_labels=False,
-                            year_since_2000=11500,
-                            is_precession=False,
-                            fig_plot_color="cornflowerblue")
-```
-![south_star_chart_without_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_without_precession.png) 
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-                            display_labels=True,
-                            year_since_2000=11500,
-                            is_precession=False,
-                            fig_plot_color="cornflowerblue")
-```
-![south_star_chart_with_labels_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_without_precession.png) 
-__Star Chart in the Southern Hemisphere (centered on -90°) with Precession__
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-                            display_labels=False,
-                            year_since_2000=11500,
-                            is_precession=True,
-                            fig_plot_color="cornflowerblue")
-```
-![south_star_chart_without_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_without_labels_with_precession.png) 
-```
-star_chart_spherical_projection.plot_stereographic_projection(pole="South", 
-                            display_labels=True,
-                            year_since_2000=11500,
-                            is_precession=True,
-                            fig_plot_color="cornflowerblue")
-```
-![south_star_chart_with_labels_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/south_with_labels_with_precession.png) 
 
 ## Development Environment
 To run or test against `star-chart-spherical-projection` github repo/fork, a development environment can be created via conda/miniconda

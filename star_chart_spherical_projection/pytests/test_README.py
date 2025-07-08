@@ -19,7 +19,7 @@ def generate_plot_image(tmp_path_factory):
     plt_file_path = tmp_path_factory.mktemp("data") / "pytest.png"
     return plt_file_path
 
-################### plot_centerline() ##########################################################
+################### Test Plots on README ##########################################################
 
 def test_readme_quickstart_plots(generate_plot_image):
     # quickstart_south_years.png
@@ -249,6 +249,7 @@ def test_readme_display_dec_false(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
+
 def test_readme_increment_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
                                        display_labels=False,
@@ -339,7 +340,7 @@ def test_readme_max_magnitude_1(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-def test_readme_user_defined_stars_default(generate_plot_image):
+def test_readme_added_stars_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
                                        included_stars=["Vega"],
                                        added_stars=[],
@@ -354,7 +355,7 @@ def test_readme_user_defined_stars_default(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-def test_readme_user_defined_stars_additional_stars(generate_plot_image):
+def test_readme_added_stars_additional_stars(generate_plot_image):
     exalibur_star = scsp.add_new_star(star_name="Exalibur",
                                       ra="14.04.23",
                                       dec=64.22,
@@ -516,16 +517,16 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-'''
 def test_readme_vega_declination_without_precession(generate_plot_image):
     scsp.plot_position(star="Vega",
                        added_star=None,
                        start_year_since_2000=-15000,
                        end_year_since_2000=15000,
-                       is_precession=False,
                        increment=5,
+                       is_precession=False,
                        dec_ra="D",
-                       show_plot=True)
+                       save_plot_name=str(generate_plot_image),
+                       show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
                                                     "plot_star_vega_declination_without_precession.png")
@@ -543,6 +544,7 @@ def test_readme_vega_right_ascension_with_precession(generate_plot_image):
                        is_precession=True,
                        increment=5,
                        dec_ra="R",
+                       save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
@@ -561,6 +563,7 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
                        is_precession=False,
                        increment=5,
                        dec_ra="R",
+                       save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
     expected_png = (Path(__file__).parent.parent).joinpath('../examples',
@@ -570,4 +573,3 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
     assert matplotlib.testing.compare.compare_images(
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
-'''

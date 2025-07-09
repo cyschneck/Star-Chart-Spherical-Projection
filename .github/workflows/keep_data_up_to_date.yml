@@ -1,0 +1,46 @@
+name: data-up-to-date
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 2 * *' # “At 00:00 on day-of-month 2” (on the 2nd of the month)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        architecture: 'x64'
+      env:
+          AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
+
+    - name: pip install requirements
+      run: |
+        export SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
+        pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Check for Updated Data
+      working-directory: star_chart_spherical_projection/data
+      run: |
+        python collect_data.py
+
+    - name: Check if script results in changes in files
+      uses: tj-actions/verify-changed-files@v20
+      id: verify-changed-files
+
+    - name: If file changed, throw error to review changes
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      run: |
+        echo "Update stars_with_data.csv with collect_data.py"
+        exit 1
+
+    - name: If no changes to existing files are found, pass
+      if: steps.verify-changed-files.outputs.files_changed == 'false'
+      run: |
+        echo "No changes to data file"

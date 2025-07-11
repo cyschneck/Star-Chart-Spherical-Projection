@@ -30,7 +30,7 @@ def test_readme_quickstart_plots(generate_plot_image):
                 show_plot=False,
                 save_plot_name=str(generate_plot_image))
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "quickstart_south_years.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -61,7 +61,7 @@ def test_readme_quickstart_add_stars(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "quickstart_newstar_example.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -81,7 +81,7 @@ def test_readme_north_pole(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "pole_north.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -95,7 +95,7 @@ def test_readme_south_pole(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "pole_south.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -109,7 +109,7 @@ def test_readme_included_stars_none(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "includedStars_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -123,7 +123,7 @@ def test_readme_included_stars_subsets(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "includedStars_subset.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -138,7 +138,7 @@ def test_readme_declination_min_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "declination_min_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -153,7 +153,7 @@ def test_readme_declination_min_10(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "declination_min_10.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -168,7 +168,7 @@ def test_readme_years_since_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "yearSince2000_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -183,7 +183,7 @@ def test_readme_years_since_3100(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "yearSince2000_negative_3100.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -197,7 +197,7 @@ def test_readme_display_labels_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "displayLabels_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -211,7 +211,7 @@ def test_readme_display_labels_false(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "displayLabels_false.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -226,7 +226,7 @@ def test_readme_display_dec_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "displayDeclinationNumbers_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -241,7 +241,7 @@ def test_readme_display_dec_false(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "displayDeclinationNumbers_false.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -257,7 +257,7 @@ def test_readme_increment_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "increment_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -272,7 +272,7 @@ def test_readme_increment_5(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "increment_5.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -288,7 +288,7 @@ def test_readme_is_precession_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "isPrecession_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -304,7 +304,7 @@ def test_readme_is_precession_false(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "isPrecession_false.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -318,7 +318,7 @@ def test_readme_max_magnitude_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "maxMagnitudeFilter_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -332,7 +332,7 @@ def test_readme_max_magnitude_1(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "maxMagnitudeFilter_1.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -347,7 +347,7 @@ def test_readme_added_stars_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "added_stars_none.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -375,7 +375,7 @@ def test_readme_added_stars_additional_stars(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "added_stars_included.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -403,7 +403,7 @@ def test_readme_only_display_user_stars_false(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "only_added_stars_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -431,7 +431,7 @@ def test_readme_only_display_user_stars_true(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "only_added_stars_true.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -445,7 +445,7 @@ def test_readme_fig_plot_title_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "fig_plot_title_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -459,7 +459,7 @@ def test_readme_fig_plot_title_example(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "fig_plot_title_example.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -474,7 +474,7 @@ def test_readme_fig_plot_color_default(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "fig_plot_color_default.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -489,7 +489,7 @@ def test_readme_fig_plot_color_darkorchid(generate_plot_image):
                                        save_plot_name=str(generate_plot_image),
                                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "fig_plot_color_darkorchid.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -509,7 +509,7 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
                        save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "plot_star_vega_declination_with_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -528,7 +528,7 @@ def test_readme_vega_declination_without_precession(generate_plot_image):
                        save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "plot_star_vega_declination_without_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -547,7 +547,7 @@ def test_readme_vega_right_ascension_with_precession(generate_plot_image):
                        save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "plot_star_vega_right_ascension_with_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -566,7 +566,7 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
                        save_plot_name=str(generate_plot_image),
                        show_plot=False)
 
-    expected_png = (Path(__file__).parent.parent).joinpath('../examples',
+    expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "plot_star_vega_right_ascension_without_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
@@ -583,13 +583,13 @@ def test_readme_future_star_one_max_magnitude():
     assert future_north_star == "Vega"
 
 def test_readme_final_position():
-	fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
-	assert str(fin_pos) == "{'Thuban': {'Declination': np.float64(87.7600158821428), 'RA': '02.43.17'}, 'Vega': {'Declination': np.float64(45.59902976977015), 'RA': '15.24.09'}}"
+    fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
+    assert str(fin_pos) == "{'Thuban': {'Declination': np.float64(87.7600158821428), 'RA': '02.43.17'}, 'Vega': {'Declination': np.float64(45.59902976977015), 'RA': '15.24.09'}}"
 
 def test_readme_position_over_time():
-	fin_pos = scsp.position_over_time(star="Altair",
-									start_year_since_2000=0,
-									end_year_since_2000=20000,
-									increment=10000,
-									is_precession=True)
-	assert str(fin_pos) == "{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.46', 'Dec (degrees)': np.float64(8.520199531975353)}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.41', 'Dec (degrees)': np.float64(52.1248474708539)}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.18', 'Dec (degrees)': np.float64(13.075954490463758)}}"
+    fin_pos = scsp.position_over_time(star="Altair",
+                                    start_year_since_2000=0,
+                                    end_year_since_2000=20000,
+                                    increment=10000,
+                                    is_precession=True)
+    assert str(fin_pos) == "{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.46', 'Dec (degrees)': np.float64(8.520199531975353)}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.41', 'Dec (degrees)': np.float64(52.1248474708539)}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.18', 'Dec (degrees)': np.float64(13.075954490463758)}}"

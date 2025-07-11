@@ -29,7 +29,7 @@ scsp.plot_stereographic_projection(pole="South",
                 max_magnitude=3,
                 year_since_2000=25)
 ```
-![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_south_years.png) 
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_south_years.png) 
 
 Plot a few built-in stars as well as two new user defined stars in the Northern Hemisphere for the year 1961 (2000-39) (with stars labels and in red). This uses both methods to define the proper motion for new stars: with a given proper motion and angle and with the proper motion speed in the declination and right ascension
 ```python

@@ -495,11 +495,9 @@ python -m pytest
 ## Beta :test_tube: Features
 
 These features are not included in pip install because they are still experimental and being tested/debugged. For more information and getting them up and running, contact cyschneck@gmail.com or post a question as a [Github Issue](https://github.com/cyschneck/Star-Chart-Spherical-Projection/issues)
-- Plot stars in a constellation/asterism with connected
+- Plot stars in a constellation/asterism with connected lines
 
 ## Bibliography
-
-Named stars specified by ["IAU Catalog of Star Names"](https://www.pas.rochester.edu/~emamajek/WGSN/IAU-CSN.txt) with the star position (right ascension and declination) as well as the angle and speed of proper motion from [in-the-sky.org](https://in-the-sky.org/) and Wikipedia where indicated
 
 Precession model: [Vondrák, J., et al. “New Precession Expressions, Valid for Long Time Intervals.” Astronomy &amp; Astrophysics, vol. 534, 2011](https://www.aanda.org/articles/aa/pdf/2011/10/aa17274-11.pdf)
 

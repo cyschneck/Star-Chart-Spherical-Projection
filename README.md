@@ -79,7 +79,7 @@ import star_chart_spherical_projection as scsp
 
 scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000))
 ```
-Where Thuban sits at a declination of `88.92008161558574` degrees, representing the nearest named star to the North Pole (90 degrees)
+So, 5000 years ago, Thuban sat at a declination of `88.92008161558574` degrees, representing the nearest named star to the North Pole (90 degrees)
 
 ## Install
 

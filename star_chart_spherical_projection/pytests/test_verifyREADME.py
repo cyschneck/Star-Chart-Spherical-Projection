@@ -581,3 +581,15 @@ def test_readme_future_star_no_max_magnitude():
 def test_readme_future_star_one_max_magnitude():
     future_north_star = scsp.predict_pole_star(year_since_2000=20000, pole="North", max_magnitude=1)
     assert future_north_star == "Vega"
+
+def test_readme_final_position():
+	fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
+	assert str(fin_pos) == "{'Thuban': {'Declination': np.float64(87.7600158821428), 'RA': '02.43.17'}, 'Vega': {'Declination': np.float64(45.59902976977015), 'RA': '15.24.09'}}"
+
+def test_readme_position_over_time():
+	fin_pos = scsp.position_over_time(star="Altair",
+									start_year_since_2000=0,
+									end_year_since_2000=20000,
+									increment=10000,
+									is_precession=True)
+	assert str(fin_pos) == "{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.46', 'Dec (degrees)': np.float64(8.520199531975353)}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.41', 'Dec (degrees)': np.float64(52.1248474708539)}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.18', 'Dec (degrees)': np.float64(13.075954490463758)}}"

@@ -8,6 +8,7 @@ dependencies:
   - pandas
   - pytest      # dev: testing
   - pre-commit  # dev: pre-commit hooks
+  - pytest-cov  # dev: codecov reports
   - pip
   - pip:
     - matplotlib # avoid warning "QApplication: invalid style override passed, ignoring it."

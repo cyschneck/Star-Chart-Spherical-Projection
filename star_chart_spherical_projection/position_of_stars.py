@@ -38,6 +38,7 @@ def final_position(included_stars=[],
                                                 save_to_csv=save_to_csv)
 
     if not only_added_stars:
+        # show all stars
         included_stars = [x.title() for x in included_stars] # convert all names to capitalized
         listOfStars = star_chart_spherical_projection._get_stars(included_stars)
         for star_object in added_stars:
@@ -49,6 +50,7 @@ def final_position(included_stars=[],
                         star_object.magnitude]
             listOfStars.append(star_row)
     else:
+        # show only the user's added stars
         listOfStars = []
         for star_object in added_stars:
             star_row = [star_object.star_name,
@@ -219,7 +221,7 @@ def plot_position(star=None,
     if save_plot_name is not None:
         fig.savefig(save_plot_name, dpi=fig.dpi)
 
-def predict_pole_star(year_since_2000=0, pole="North"):
+def predict_pole_star(year_since_2000=0, pole="North", max_magnitude=None):
     # Find the next North/South Pole Star
 
     star_chart_spherical_projection.errorHandlingPredictPoleStar(year_since_2000=year_since_2000, pole=pole)
@@ -232,17 +234,27 @@ def predict_pole_star(year_since_2000=0, pole="North"):
         pole_declination = 90
     if pole == "South":
         pole_declination = -90
+    
+    # Collect data to check magnitude of each star
+    star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
+    star_dataframe = pd.read_csv(star_csv_file)
 
-    # Find the closest star in builtin stars
+    # Set max_magnitude to max magnitude in star data if set to None
+    if max_magnitude is None:
+        max_magnitude = star_dataframe["Magnitude (V, Visual)"].max()
+
+    # Find the closest star in built-in stars
     closest_pole_star = None
     closest_pole_declination = None
     for star, star_data in final_position_builtin_stars.items():
-        if closest_pole_star is None:
-            closest_pole_star = star
-            closest_pole_declination = star_data["Declination"]
-        else:
-            if abs(float(star_data["Declination"]) - pole_declination) < abs(closest_pole_declination - pole_declination):
+        star_mag = star_dataframe.loc[star_dataframe["Common Name"]==star]["Magnitude (V, Visual)"].values[0]
+        if star_mag <= max_magnitude: # filter out stars with magnitudes larger than filter
+            if closest_pole_star is None:
                 closest_pole_star = star
                 closest_pole_declination = star_data["Declination"]
-    
+            else:
+                if abs(float(star_data["Declination"]) - pole_declination) < abs(closest_pole_declination - pole_declination):
+                    closest_pole_star = star
+                    closest_pole_declination = star_data["Declination"]
+        
     return closest_pole_star

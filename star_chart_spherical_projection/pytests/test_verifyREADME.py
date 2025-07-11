@@ -1,6 +1,6 @@
 # Pytest for README.md page
 # star_chart_spherical_projection/: python -m pytest
-# python -m pytest -k test_README.py -xv
+# python -m pytest -k test_verifyREADME.py -xv
 
 # Pytests to Compare and Verify Expected Outputs
 from pathlib import Path
@@ -573,3 +573,11 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
     assert matplotlib.testing.compare.compare_images(
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
+
+def test_readme_future_star_no_max_magnitude():
+    future_north_star = scsp.predict_pole_star(year_since_2000=20000, pole="North", max_magnitude=None)
+    assert future_north_star == "Thuban"
+
+def test_readme_future_star_one_max_magnitude():
+    future_north_star = scsp.predict_pole_star(year_since_2000=20000, pole="North", max_magnitude=1)
+    assert future_north_star == "Vega"

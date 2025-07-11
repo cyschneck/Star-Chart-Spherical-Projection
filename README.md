@@ -357,10 +357,25 @@ position_over_time(star=None,
 
 Return the North/South Pole star for a given year since 2000
 ```
-predict_pole_star(year_since_2000=0, pole="North")
+predict_pole_star(year_since_2000=0, pole="North", max_magnitude=None)
 ```
 - **[REQUIRED]** year_since_2000 (int/float): ear since 2000 (-50 = 1950 and +50 = 2050) to calculate proper motion and precession, defaults = 0 years
 - *[OPTIONAL]* pole (string): North or South Pole where `North` = 90° and `South` = -90°, defaults to `North`
+- *[OPTIONAL]* max_magnitude: (int/float) filter existing stars by magnitude by setting the max magnitude for the chart to include, defaults to None (all stars)
+
+For example:
+```python
+import star_chart_spherical_projection as scsp
+
+scsp.predict_pole_star(year_since_2000=20000, pole="North")
+```
+In 20,000 years, `Thuban` will be the North Pole, replacing Polaris. However, a brighter star with a magnitude less than 1
+```python
+import star_chart_spherical_projection as scsp
+
+scsp.predict_pole_star(year_since_2000=20000, pole="North", max_magnitude=1)
+```
+Is `Vega`
 
 ## Plot a Star's Position over Time
 **plot_position()**

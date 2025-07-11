@@ -70,6 +70,17 @@ Returns a dictionary with a star and its declination and right ascension: `{'Veg
 
 The final position of the stars are saved in `final_star_positions.csv` with the headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
+This can be used to determine past and future pole stars. For example, [Wikipedia states that the star Thuban](https://en.wikipedia.org/wiki/Thuban) is:
+
+> A relatively inconspicuous star in the night sky of the Northern Hemisphere, it is historically significant as having been the north pole star from the 4th to 2nd millennium BC
+
+```python
+import star_chart_spherical_projection as scsp
+
+scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000))
+```
+Where Thuban sits at a declination of `88.92008161558574` degrees, representing the nearest named star to the North Pole (90 degrees)
+
 ## Install
 
 PyPi pip install at [pypi.org/project/star-chart-spherical-projection/](https://pypi.org/project/star-chart-spherical-projection/)

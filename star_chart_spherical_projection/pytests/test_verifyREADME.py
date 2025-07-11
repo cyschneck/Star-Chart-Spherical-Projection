@@ -71,8 +71,7 @@ def test_readme_quickstart_add_stars(generate_plot_image):
 
 @pytest.mark.skip(reason="Current Version invalid declination, fix with updated version")
 def test_readme_quickstart_final_position():
-    star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
-                        year_since_2000=11500)
+    star_final_pos_dict = scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
     assert star_final_pos_dict == {'Vega': {'Declination': 83.6899118156341, 'RA': '05.13.54'}}
 
 def test_readme_north_pole(generate_plot_image):
@@ -88,6 +87,14 @@ def test_readme_north_pole(generate_plot_image):
     assert matplotlib.testing.compare.compare_images(
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
+
+def test_readme_final_position_thuban():
+    fin_pos = scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
+    assert str(fin_pos) == "{'Thuban': {'Declination': np.float64(88.92008161558574), 'RA': '00.03.10'}}"
+
+def test_readme_next_north_star_thuban():
+    fin_pos = scsp.predict_pole_star(year_since_2000=-5000)
+    assert fin_pos == "Thuban"
 
 def test_readme_south_pole(generate_plot_image):
     scsp.plot_stereographic_projection(pole="South",

@@ -54,7 +54,7 @@ scsp.plot_stereographic_projection(pole="North",
                 fig_plot_color="red",
                 year_since_2000=-39)
 ```
-![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/quickstart_newstar_example.png) 
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_newstar_example.png) 
 
 
 Return the final position of a Vega (can be a single star or a list of stars) after 11,500 years when Vega is the new North Pole Star (star closest to +90°)
@@ -245,55 +245,55 @@ plot_stereographic_projection(pole=None,
 
 | pole="North" (-30° to 90°) (without star labels) | pole="South" (30° to -90°) (without star labels) |
 | ------------- | ------------- |
-| ![pole+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/pole_north.png) |  ![pole+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/pole_south.png) |
+| ![pole+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/pole_north.png) |  ![pole+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/pole_south.png) |
 
 | included_stars=[] (Includes all stars, default) | included_stars=["Vega", "Arcturus", "Enif", "Caph", "Mimosa"]|
 | ------------- | ------------- |
-| ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/includedStars_default.png) | ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/includedStars_subset.png) |
+| ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/includedStars_default.png) | ![includedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/includedStars_subset.png) |
 
 | declination_min=-30° (default) (without star labels) | declination_min=10° (without star labels) |
 | ------------- | ------------- |
-| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/declination_min_10.png) |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/declination_min_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/declination_min_10.png) |
 
 | year_since_2000=0 (default) (without star labels) | year_since_2000=-3100 (without star labels) |
 | ------------- | ------------- |
-| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/yearSince2000_negative_3100.png) |
+| ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/yearSince2000_default.png) | ![declination_min+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/yearSince2000_negative_3100.png) |
 
 | display_labels=True (default) | display_labels=False |
 | ------------- | ------------- |
-| ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_default.png)  | ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayLabels_false.png) |
+| ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/displayLabels_default.png)  | ![display_labels+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/displayLabels_false.png) |
 
 | display_dec=True (default) (without star labels) | display_dec=False (without star labels) |
 | ------------- | ------------- |
-| ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_default.png)  | ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/displayDeclinationNumbers_false.png) |
+| ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/displayDeclinationNumbers_default.png)  | ![display_dec+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/displayDeclinationNumbers_false.png) |
 
 | increment=10 (default) (without star labels) | increment=5 (without star labels) |
 | ------------- | ------------- |
-| ![increment_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/increment_default.png) | ![increment_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/increment_5.png) |
+| ![increment_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/increment_default.png) | ![increment_5+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/increment_5.png) |
 
 | is_precession=True (default) (year_since_2000=11500) (without star labels) | is_precession=False (year_since_2000=11500) (without star labels) |
 | ------------- | ------------- |
-| ![isPrecession_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecession_default.png) | ![isPrecession_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/isPrecession_false.png) |
+| ![isPrecession_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/isPrecession_default.png) | ![isPrecession_false+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/isPrecession_false.png) |
 
 | max_magnitude=None (default) | max_magnitude=1 |
 | ------------- | ------------- |
-| ![maxMagnitude_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_default.png) | ![maxMagnitude+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/maxMagnitudeFilter_1.png) |
+| ![maxMagnitude_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/maxMagnitudeFilter_default.png) | ![maxMagnitude+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/maxMagnitudeFilter_1.png) |
 
 | added_stars=[] (default) (with just "Vega") | added_stars=[exalibur_star, karaboudjan_star] (from Quickstart with "Vega") |
 | ------------- | ------------- |
-| ![addedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/added_stars_none.png) | ![addedStards+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/added_stars_included.png) |
+| ![addedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_none.png) | ![addedStards+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_included.png) |
 
 | only_added_stars=False (default) with `added_stars` | only_added_stars=True with added_stars=[exalibur_star, karaboudjan_star] (from Quickstart) |
 | ------------- | ------------- |
-| ![onlyAddedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/only_added_stars_default.png) | ![onlyAddedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/only_added_stars_true.png) |
+| ![onlyAddedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/only_added_stars_default.png) | ![onlyAddedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/only_added_stars_true.png) |
 
 | fig_plot_title=(default) | fig_plot_title="This is a Example Title for a Star Chart" |
 | ------------- | ------------- |
-| ![fig_plot_title_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_default.png) | ![fig_plot_title+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_title_example.png) |
+| ![fig_plot_title_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/fig_plot_title_default.png) | ![fig_plot_title+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/fig_plot_title_example.png) |
 
 | fig_plot_color="C0" (default) (without star labels) | fig_plot_color="darkorchid" (without star labels) |
 | ------------- | ------------- |
-| ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/fig_plot_color_darkorchid.png) |
+| ![fig_plot_color_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/fig_plot_color_default.png) | ![fig_plot_color_dark_orchid+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/fig_plot_color_darkorchid.png) |
 
 ## Return Final Position of Stars
 **final_position()**
@@ -438,7 +438,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="D")
 ```
-![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_with_precession.png) 
+![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_with_precession.png) 
 **Declination without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -449,7 +449,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="D")
 ```
-![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_declination_without_precession.png) 
+![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -460,7 +460,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="R")
 ```
-![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_with_precession.png) 
+![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_with_precession.png) 
 **Right Ascension without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -471,7 +471,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="R")
 ```
-![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/examples/plot_star_vega_right_ascension_without_precession.png) 
+![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_without_precession.png) 
 
 ## Development Environment
 To run or test against `star-chart-spherical-projection` github repo/fork, a development environment can be created via conda/miniconda

@@ -1,5 +1,16 @@
-- name: Upload coverage reports to Codecov
-    uses: codecov/codecov-action@v5
-    with:
-      token: ${{ secrets.CODECOV_TOKEN }}
-      slug: cyschneck/Star-Chart-Spherical-Projection
+codecov:
+  require_ci_to_pass: yes
+  notify:
+    wait_for_ci: yes
+
+coverage:
+  precision: 2
+  round: down
+  status:
+    project:
+      default:
+        threshold: 0.4
+        if_not_found: success
+
+ignore:
+  - "examples/*"

@@ -1,7 +1,7 @@
 ########################################################################
 # Generate a star chart centered on the poles:
-#       Northern Hemsiphere = 90°
-#       Southern Hemsiphere = -90°
+#       Northern Hemisphere = 90°
+#       Southern Hemisphere = -90°
 ########################################################################
 import csv
 import logging
@@ -84,16 +84,16 @@ def _ra_dec_via_pm(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_a
     logger.debug(f"Date {years_since_2000}, RA = {star_ra}, Dec = {star_dec}, PM Speed = {star_pm_speed}, PM Angle = {star_pm_angle}")
 
     star_pm_speed_degrees = 0.00000027777776630942 * star_pm_speed # convert mas/yr to degrees/yr
-    star_pm_speed_radains = np.deg2rad(star_pm_speed_degrees) # radains/yr
-    star_movement_radains_per_year = star_pm_speed_radains * years_since_2000
-    logger.debug(f"Movement Over Time = {star_movement_radains_per_year} (rad), {star_movement_radains_per_year} (deg)")
+    star_pm_speed_radians = np.deg2rad(star_pm_speed_degrees) # radians/yr
+    star_movement_radians_per_year = star_pm_speed_radians * years_since_2000
+    logger.debug(f"Movement Over Time = {star_movement_radians_per_year} (rad), {star_movement_radians_per_year} (deg)")
 
-    ra_x_difference_component = star_movement_radains_per_year * math.cos(np.deg2rad(star_pm_angle))
-    dec_y_difference_component = star_movement_radains_per_year * math.sin(np.deg2rad(star_pm_angle))
+    ra_x_difference_component = star_movement_radians_per_year * math.cos(np.deg2rad(star_pm_angle))
+    dec_y_difference_component = star_movement_radians_per_year * math.sin(np.deg2rad(star_pm_angle))
     logger.debug(f"(RA)  x Difference = {ra_x_difference_component} (rad) = {np.rad2deg(ra_x_difference_component)} degrees")
     logger.debug(f"(DEC) y Difference = {dec_y_difference_component} (rad) = {np.rad2deg(dec_y_difference_component)} degrees")
 
-    star_adjusted_ra = star_ra + ra_x_difference_component # in radians with proper motion (potentionally will be flipped 180 based on new declination)
+    star_adjusted_ra = star_ra + ra_x_difference_component # in radians with proper motion (potentially  will be flipped 180 based on new declination)
     star_adjusted_declination = star_dec + np.rad2deg(dec_y_difference_component) # in degrees new with proper motion
 
     dec_x = star_adjusted_declination
@@ -196,7 +196,7 @@ def _generate_stereographic_projection(starList=None,
                                     max_magnitude=None,
                                     declination_min=None,
                                     declination_max=None):
-    # Generate sterographic projections and return declination and right ascension
+    # Generate stereographic projections and return declination and right ascension
 
     # Convert Star chart from RA hours to Radians to chart
     list_of_stars = _ra_to_radians(starList)

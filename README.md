@@ -130,7 +130,7 @@ All IAU named stars are collected from the [IAU WSGN Star Catalog](https://exopl
 
 - Proper Names
 - WSGN-ID
-- Desgination
+- Designation
 - HIP
 - Bayer ID
 - Constellation
@@ -183,7 +183,7 @@ star_chart_spherical_projection.add_new_star(star_name=None,
 
 **With the Proper Motion speed along the Right Ascension and Declination**
 
-As seen in [wikipeida.org for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
+As seen in [wikipedia.org for Pollux](https://en.wikipedia.org/wiki/Pollux_(star))
 
 ```
 star_chart_spherical_projection.add_new_star(star_name=None,
@@ -293,7 +293,7 @@ plot_stereographic_projection(pole=None,
 
 | added_stars=[] (default) (with just "Vega") | added_stars=[exalibur_star, karaboudjan_star] (from Quickstart with "Vega") |
 | ------------- | ------------- |
-| ![addedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_none.png) | ![addedStards+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_included.png) |
+| ![addedStars_default+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_none.png) | ![addedStars+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/added_stars_included.png) |
 
 | only_added_stars=False (default) with `added_stars` | only_added_stars=True with added_stars=[exalibur_star, karaboudjan_star] (from Quickstart) |
 | ------------- | ------------- |
@@ -461,7 +461,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="D")
 ```
-![plot_star_declination_without_prcession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_without_precession.png) 
+![plot_star_declination_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_without_precession.png) 
 **Right Ascension with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",

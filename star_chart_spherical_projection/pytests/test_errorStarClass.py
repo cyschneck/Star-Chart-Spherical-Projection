@@ -43,7 +43,7 @@ def test_starClass_RAInvalidFormat():
                     ra="1.2.3.4")
 
 def test_starClass_RAInvalidTimeFormat():
-    with pytest.raises(ValueError, match=re.escape("[ra]: Each part of the Right Ascension must be an integar, 'a' current type = <class 'str'>")):
+    with pytest.raises(ValueError, match=re.escape("[ra]: Each part of the Right Ascension must be an integer, 'a' current type = <class 'str'>")):
         scsp.add_new_star(star_name="Testing Star",
                     ra="1.2.a")
 

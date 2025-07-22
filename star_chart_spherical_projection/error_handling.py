@@ -156,7 +156,7 @@ def errorHandlingStarClass(star_name=None,
             raise ValueError(f"[ra]: Right Ascension must be three parts '[HH, MM, SS]' (Hours, Minutes, Seconds), currently  = '{ra_items}'")
         for ra_time in ra_items:
             if not ra_time.isdigit():
-                raise ValueError(f"[ra]: Each part of the Right Ascension must be an integar, '{ra_time}' current type = {type(ra_time)}")
+                raise ValueError(f"[ra]: Each part of the Right Ascension must be an integer, '{ra_time}' current type = {type(ra_time)}")
 
     if dec is None:
         raise ValueError("[dec]: Declination is required")

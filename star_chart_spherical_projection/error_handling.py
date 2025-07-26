@@ -36,10 +36,9 @@ def errorHandling(isPlotFunction=None,
 
     ## Check that user list has stars that are found in current list
     if len(included_stars) != 0:
-        included_stars = [x.title() for x in included_stars] # convert all names to capitalized
-        star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
-        star_dataframe = pd.read_csv(star_csv_file)
-        all_star_names_in_csv = list(star_dataframe['Common Name'])
+        included_stars = [x.lower() for x in included_stars] # convert all names to lowercase
+        all_common_names = [name[0] for name in star_chart_spherical_projection._get_stars()]
+        all_star_names_in_csv = [x.lower() for x in all_common_names] # convert all stars to lower case
         for star_given in included_stars:
             if star_given not in all_star_names_in_csv:
                 raise ValueError(f"[included_stars]: '{star_given}' not a star in current list of stars, please select one of the following: {all_star_names_in_csv}")

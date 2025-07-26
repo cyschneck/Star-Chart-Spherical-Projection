@@ -48,6 +48,12 @@ def _ra_to_radians(star_list):
         ra_in_hr = star[1]
         # convert RA from hours to degrees
         ra_hr, ra_min, ra_sec = list(map(int, ra_in_hr.split('.')))
+        
+        # if seconds have greater than 2 degrees of accuracy (for example: 07.46.519615)
+        second_degrees = 10**(len(str(ra_sec))-2)
+        #ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
+        
+        # convert minutes and seconds to decimals
         ra_min /= 60
         ra_sec /= 3600
         ra_total = ra_hr + ra_min + ra_sec
@@ -56,6 +62,7 @@ def _ra_to_radians(star_list):
         ra_in_degrees = ra_total * 15
         ra_in_radians = np.deg2rad(ra_in_degrees)
         star[1] = ra_in_radians
+ 
     return star_list
 
 def _radians_to_ra(ra_in_radians):

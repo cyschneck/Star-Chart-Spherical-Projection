@@ -51,7 +51,7 @@ def _ra_to_radians(star_list):
         
         # if seconds have greater than 2 degrees of accuracy (for example: 07.46.519615)
         second_degrees = 10**(len(str(ra_sec))-2)
-        #ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
+        ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
         
         # convert minutes and seconds to decimals
         ra_min /= 60
@@ -74,9 +74,9 @@ def _radians_to_ra(ra_in_radians):
     
     hours = int(ra_in_degree / 15)
     minutes = int(((ra_in_degree / 15) - hours) * 60) # measured in minutes
-    seconds = ((((ra_in_degree / 15) - hours) * 60) - minutes) * 60 # measured in seconds
+    seconds = round(((((ra_in_degree / 15) - hours) * 60) - minutes) * 60, 10) # measured in seconds
     if "." in str(seconds): # if float/decimal
-        # convert from decimal to whole number while maintaining precession (for example: 07.46.51.961500000000456 will become 07.46.51961500000000456
+        # convert from decimal to whole number while maintaining precession
         seconds = int(str(seconds).replace(".", ""))
 
     # RA in hours 'HH.MM.SS'

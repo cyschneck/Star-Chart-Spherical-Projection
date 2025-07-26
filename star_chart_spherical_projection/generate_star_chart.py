@@ -71,10 +71,13 @@ def _radians_to_ra(ra_in_radians):
 
     if ra_in_degree > 360 or ra_in_degree < 0: # lock degrees between 0 and 360, if negative, re-write as a positive degree
         ra_in_degree %= 360
-
+    
     hours = int(ra_in_degree / 15)
     minutes = int(((ra_in_degree / 15) - hours) * 60) # measured in minutes
-    seconds = round(((((ra_in_degree / 15) - hours) * 60) - minutes) * 60) # measured in seconds
+    seconds = ((((ra_in_degree / 15) - hours) * 60) - minutes) * 60 # measured in seconds
+    if "." in str(seconds): # if float/decimal
+        # convert from decimal to whole number while maintaining precession (for example: 07.46.51.961500000000456 will become 07.46.51961500000000456
+        seconds = int(str(seconds).replace(".", ""))
 
     # RA in hours 'HH.MM.SS'
     if hours < 10: hours = '0' + str(hours) # convert 6 to 06

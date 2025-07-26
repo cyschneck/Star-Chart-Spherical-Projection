@@ -9,7 +9,7 @@ if __name__ == '__main__':
     increment = 5
     year_since_example = 25 # 2025
     show_plt = False
-    
+
     star_chart_spherical_projection.position_over_time(star="Vega",
                                                         added_star=None,
                                                         start_year_since_2000=startYear,
@@ -80,6 +80,12 @@ if __name__ == '__main__':
                                                                 fig_plot_color="red",
                                                                 year_since_2000=-39,
                                                                 save_plot_name="star_chart_spherical_projection/pytests/examples/quickstart_newstar_example.png")
+    star_chart_spherical_projection.plot_stereographic_projection(pole="North",
+                                                                included_stars=["Dubhe", "Merak", "Phecda", "Megrez", "Alioth", "Mizar", "Alkaid"],
+                                                                display_labels=False,
+                                                                year_since_2000=-39,
+                                                                declination_min=40,
+                                                                save_plot_name="star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png")
     ## Graphs for each plot Arguments
     # pole
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",

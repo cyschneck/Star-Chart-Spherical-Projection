@@ -21,7 +21,7 @@ def generate_plot_image(tmp_path_factory):
 
 ################### Test Plots on README ##########################################################
 
-def test_readme_quickstart_plots(generate_plot_image):
+def test_readme_quickstart_plot_south(generate_plot_image):
     # quickstart_south_years.png
     scsp.plot_stereographic_projection(pole="South",
                 display_labels=False,
@@ -63,6 +63,24 @@ def test_readme_quickstart_add_stars(generate_plot_image):
 
     expected_png = (Path(__file__).parent).joinpath('examples',
                                                     "quickstart_newstar_example.png")
+    plt.close()
+    assert os.path.exists(expected_png)
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=0.001,
+        in_decorator=False) is None
+
+def test_readme_quickstart_big_dipper(generate_plot_image):
+    # quickstart_south_years.png
+    scsp.plot_stereographic_projection(pole="North",
+                                       included_stars=["Dubhe", "Merak", "Phecda", "Megrez", "Alioth", "Mizar", "Alkaid"],
+                                       display_labels=False,
+                                       year_since_2000=-39,
+                                       declination_min=40,
+                                       show_plot=False,
+                                       save_plot_name=str(generate_plot_image))
+
+    expected_png = (Path(__file__).parent).joinpath('examples',
+                                                    "quickstart_bigDipper.png")
     plt.close()
     assert os.path.exists(expected_png)
     assert matplotlib.testing.compare.compare_images(

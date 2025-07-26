@@ -35,10 +35,7 @@ invalid_non_num_options = [([], "<class 'list'>"),
                         (False, "<class 'bool'>")]
 
 filepath_one_level_above = os.path.dirname(os.path.dirname(__file__))
-star_csv_file = os.path.join(filepath_one_level_above, 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/star_data.csv
-star_dataframe = pd.read_csv(star_csv_file)
-star_dataframe = star_dataframe.sort_values(by=["Common Name"])
-lst_of_current_stars = star_dataframe["Common Name"].tolist()
+all_common_names = [name[0] for name in scsp._get_stars()]
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_list_options)
 def test_finalPositionOfStars_includedStarsInvalidTypes(invalid_input, error_output):
@@ -46,8 +43,8 @@ def test_finalPositionOfStars_includedStarsInvalidTypes(invalid_input, error_out
         scsp.final_position(included_stars=invalid_input)
 
 def test_finalPositionOfStars_includedStarsInvalidStar():
-    with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
-        scsp.final_position(included_stars=["Fake star", "VEga"])
+    with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {all_common_names}")):
+        scsp.final_position(included_stars=["Fake Star", "VEga"])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_finalPositionOfStars_declinationMinInvalidTypes(invalid_input, error_output):

@@ -10,6 +10,13 @@ if __name__ == '__main__':
     year_since_example = 25 # 2025
     show_plt = False
 
+    # compare stars_with_data.csv with a generated list for year 0 (to check RA and declination values)
+    all_common_names = [name [0] for name in star_chart_spherical_projection._get_stars()]
+    star_chart_spherical_projection.final_position(included_stars=all_common_names,
+                                                   year_since_2000=0, 
+                                                   is_precession=True,
+                                                   save_to_csv="star_chart_spherical_projection/pytests/examples/year_0_stars_pos.csv")
+    # star plots
     star_chart_spherical_projection.position_over_time(star="Vega",
                                                         added_star=None,
                                                         start_year_since_2000=startYear,
@@ -86,6 +93,7 @@ if __name__ == '__main__':
                                                                 year_since_2000=-39,
                                                                 declination_min=40,
                                                                 save_plot_name="star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png")
+
     ## Graphs for each plot Arguments
     # pole
     star_chart_spherical_projection.plot_stereographic_projection(pole="North",
@@ -234,3 +242,4 @@ if __name__ == '__main__':
                                                                 display_labels=False,
                                                                 show_plot=show_plt,
                                                                 save_plot_name="star_chart_spherical_projection/pytests/examples/fig_plot_color_darkorchid.png")
+    '''

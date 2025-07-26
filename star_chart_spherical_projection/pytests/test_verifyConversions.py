@@ -1,7 +1,7 @@
 # Pytest for converting right acension values
 # star_chart_spherical_projection/: python -m pytest
-# python -m pytest -k test_verifyRightAcension.py -xv
-
+# python -m pytest -k test_verifyConversions.py -xv
+from pathlib import Path
 import os
 
 # External Python libraries (installed via pip install)
@@ -27,6 +27,7 @@ def test_convertRAtoRadiansAndBack():
         print(list(row))
         print(star_ra)
         ra_in_radians = scsp._ra_to_radians([list(row)])[0]
+        print(ra_in_radians[1])
         ra_in_hours = scsp._radians_to_ra(ra_in_radians[1])
         print(ra_in_hours)
 
@@ -54,3 +55,44 @@ def test_convertRAtoRadiansAndBack():
             assert abs(star_ms - full_ms) < 2
 
     assert found_edge_case == edge_case_names # verify that edge cases do not change
+
+def test_starting_year_0_data():
+    # verify data generated for Year 0 (RA and Declination) matches current star_with_data.csv within expected range
+    starting_csv = (Path(__file__).parent).joinpath('examples',
+                                                    "year_0_stars_pos.csv")
+    current_csv = (Path(__file__).parent.parent).joinpath('data',
+                                                    "stars_with_data.csv")
+
+    start_pos = pd.read_csv(starting_csv)
+    current_pos = pd.read_csv(current_csv)
+    for index, row in current_pos.iterrows():
+        start = list(start_pos.iloc[index])
+        current = list(current_pos.iloc[index])[:3]
+        print(f"\n{index}")
+        print(current)
+        print(start)
+        
+        assert start[0] == current[0] # compare Common Names
+        
+        assert abs(start[2] - current[2]) < 0.0001 # compare Declination values
+
+        # compare Right Acensions
+        star_h, star_m, star_s = start[1].split(".")
+        second_degrees = 10**(len(str(int(star_s)))-2) # convert seconds to a float
+        star_s = float(star_s)/second_degrees
+        hours, minutes, seconds = current[1].split(".")
+        second_degrees = 10**(len(str(seconds))-2)
+        seconds = float(seconds)/second_degrees # convert seconds to a float
+
+        assert star_h == hours
+        # minutes and seconds can vary due to precession errors
+        try:
+            assert star_m == minutes
+            # seconds can be off due to precession errors when converting back and forth between hours and radians
+            assert star_s  == pytest.approx(seconds)
+        except Exception:
+            # some edge cases round  minutes (for example: 49.09 to 50.3)
+            # combine minutes and seconds to a float to compare
+            star_ms = float(".".join(start[1].split(".")[1:]))
+            full_ms = float(".".join(current[1].split(".")[1:]))
+            assert abs(star_ms - full_ms) < 2

@@ -55,7 +55,7 @@ def test_plotStereographicProjection_includedStarsInvalidTypes(invalid_input, er
         scsp.plot_stereographic_projection(pole="North", included_stars=invalid_input)
 
 def test_plotStereographicProjection_includedStarsInvalidStar():
-    with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
+    with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake star' not a star in current list of stars, please select one of the following: {lst_of_current_stars}")):
         scsp.plot_stereographic_projection(pole="North", included_stars=["Fake star", "VEga"])
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)

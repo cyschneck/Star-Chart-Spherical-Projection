@@ -50,7 +50,7 @@ def _ra_to_radians(star_list):
         ra_hr, ra_min, ra_sec = list(map(int, ra_in_hr.split('.')))
         
         # if seconds have greater than 2 degrees of accuracy (for example: 07.46.519615)
-        second_degrees = 10**(len(str(ra_sec))-2)
+        second_degrees = 10**(len(str(int(ra_sec)))-2) # convert 07 to 7 before measuring length
         ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
         
         # convert minutes and seconds to decimals

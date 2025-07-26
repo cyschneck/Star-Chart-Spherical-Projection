@@ -87,10 +87,13 @@ def test_readme_quickstart_big_dipper(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-@pytest.mark.skip(reason="Current Version invalid declination, fix with updated version")
-def test_readme_quickstart_final_position():
+def test_readme_quickstart_final_position_vega():
+    star_final_pos_dict = scsp.final_position(included_stars=["Vega"],year_since_2000=11500)
+    assert str(star_final_pos_dict) == "{'Vega': {'Declination': np.float64(83.0353969209521), 'RA': '05.13.544690750738'}}"
+
+def test_readme_quickstart_final_position_thuban():
     star_final_pos_dict = scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
-    assert star_final_pos_dict == {'Vega': {'Declination': 83.6899118156341, 'RA': '05.13.54'}}
+    assert str(star_final_pos_dict) == "{'Thuban': {'Declination': np.float64(88.92008161558574), 'RA': '00.03.103135755553'}}"
 
 def test_readme_north_pole(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",

@@ -57,8 +57,7 @@ scsp.plot_stereographic_projection(pole="North",
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_newstar_example.png) 
 
-A simple chart with the Big Dipper
-![quickstart_star_chart_big_dipper+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png) 
+Or, a simple chart with the Big Dipper
 ```python
 import star_chart_spherical_projection as scsp
 
@@ -68,6 +67,7 @@ scsp.plot_stereographic_projection(pole="North",
                                    year_since_2000=-39,
                                    declination_min=40)
 ```
+![quickstart_star_chart_big_dipper+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png) 
 
 Return the final position of a Vega (can be a single star or a list of stars) after 11,500 years when Vega is the new North Pole Star (star closest to +90°)
 ```python

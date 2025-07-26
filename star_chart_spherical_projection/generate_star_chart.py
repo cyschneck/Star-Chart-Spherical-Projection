@@ -256,7 +256,7 @@ def _generate_stereographic_projection(starList=None,
                     in_range_value = True # South
 
                 if in_range_value:
-                    finalPositionOfStarsDict[name] = {"Declination" : star_declination, "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+                    finalPositionOfStarsDict[name] = {"Declination" : float(star_declination), "RA": _radians_to_ra(star_ra)} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
                     x_star_labels.append(name)
                     x_ra_values.append(star_ra)
                     y_dec_values.append(dec_ruler_position)

@@ -77,7 +77,7 @@ star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
                         year_since_2000=11500,
                         save_to_csv="final_star_positions.csv")
 ```
-Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.6899118156341, 'RA': '05.13.54'}}`
+Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.0353969209521, 'RA': '05.13.544690750738'}}`
 
 The final position of the stars are saved in `final_star_positions.csv` with the headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
@@ -350,7 +350,7 @@ final_position(included_stars=[],
 ```python
 star_chart_spherical_projection.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
 ```
-Returns `{'Thuban': {'Declination': np.float64(87.7600158821428), 'RA': '02.43.168663798081'}, 'Vega': {'Declination': np.float64(45.59902976977015), 'RA': '15.24.9487696804'}}`
+Returns `{'Thuban': {'Declination': 87.7600158821428, 'RA': '02.43.168663798081'}, 'Vega': {'Declination': 45.59902976977015, 'RA': '15.24.9487696804'}}`
 
 ## Return A Star's Position over Time
 **position_over_time()**
@@ -388,7 +388,7 @@ star_chart_spherical_projection.position_over_time(star="Altair",
             increment=10000,
             is_precession=True)
 ```
-Returns `{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.460011519307', 'Dec (degrees)': np.float64(8.520199531975353)}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.407011733018', 'Dec (degrees)': np.float64(52.1248474708539)}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.184025054197', 'Dec (degrees)': np.float64(13.075954490463758)}}`
+Returns `{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.460011519307', 'Dec (degrees)': 8.520199531975353}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.407011733018', 'Dec (degrees)': 52.1248474708539}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.184025054197', 'Dec (degrees)': 13.075954490463758}}`
 
 ## Predict Past and Future Pole Stars
 **predict_pole_star**

@@ -43,14 +43,24 @@ def _get_stars(selectStars=[]):
     return star_data_list
 
 def _ra_to_radians(star_list):
-    # change first element in the list object [RA, dec]
+    # convert RA to radians
     for star in star_list:
-        ra_in_hr = star[1]
         # convert RA from hours to degrees
-        ra_hr, ra_min, ra_sec = list(map(int, ra_in_hr.split('.')))
+        ra_in_hr = star[1]
+        
+        ra_hr, ra_min, ra_sec = ra_in_hr.split('.')    
+        ra_hr = int(ra_hr)
+        ra_min = int(ra_min)
+        prec_zero = len(ra_sec)-len(ra_sec.lstrip('0')) # count number of preceding zeroes (for example, 0.00868)
         
         # if seconds have greater than 2 degrees of accuracy (for example: 07.46.519615)
-        second_degrees = 10**(len(str(int(ra_sec)))-2) # convert 07 to 7 before measuring length
+        len_degrees = 0
+        if prec_zero >= 30: # account for measuring the length of a number in scientifiic notation
+            len_degrees = -1
+        len_degrees += len(ra_sec)-prec_zero
+        if len_degrees < 0: len_degrees = 0
+        second_degrees = 10**(len_degrees + prec_zero) 
+        ra_sec = int(ra_sec)
         ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
         
         # convert minutes and seconds to decimals
@@ -75,14 +85,45 @@ def _radians_to_ra(ra_in_radians):
     hours = int(ra_in_degree / 15)
     minutes = int(((ra_in_degree / 15) - hours) * 60) # measured in minutes
     seconds = round(((((ra_in_degree / 15) - hours) * 60) - minutes) * 60, 10) # measured in seconds
-    if "." in str(seconds): # if float/decimal
+    
+    precision = len(str(seconds).split(".")[1])
+    if precision > 5:
+        seconds = f"{seconds:.10f}".rstrip("0") #str(float(f"{seconds:.{precision}}"))# # account for scientific notation (for example, convert 8.68e-05 to 0.0000868)
+    else:
+        seconds = str(seconds)
+    prec_seconds = seconds.split(".")[1]
+    if prec_seconds == "": prec_seconds = 0
+
+    # count preceding zeroes
+    prec_zero = 0 
+    if int(prec_seconds) != 0:
+        prec_zero = len(prec_seconds)-len(prec_seconds.lstrip('0')) # count number of preceding zeroes (for example, 0.00868)
+    
+    # handle edge case to convert "0870314" to "870314" to "8.70314" when value is a long decimal
+    is_less_ten = False 
+    if float(seconds) < 10: is_less_ten = True
+    if not float(seconds).is_integer(): # if float/decimal (for example, 54.47676 becomes 5447676, but 9.0 stays at 9)
         # convert from decimal to whole number while maintaining precession
         seconds = int(str(seconds).replace(".", ""))
+    else:
+        # convert float of integer to integer (9.0 = 9)
+        seconds = int(float(seconds))
+    
+    # handle edge case if seconds == 60, increment minutes by one
+    if seconds == 60:
+        minutes += 1
+        seconds = 0
 
     # RA in hours 'HH.MM.SS'
     if hours < 10: hours = '0' + str(hours) # convert 6 to 06
     if minutes < 10: minutes = '0' + str(minutes) # convert 6 to 06
-    if seconds < 10: seconds = '0' + str(seconds) # convert 6 to 06
+    if (seconds < 10 and seconds > 0) or is_less_ten:
+        seconds = ('0'*prec_zero) + str(seconds) # dynamically add zeroes to front of string 
+    if seconds == 0:
+        seconds = "00" # add trailing zero when exactly 0
+    if len(str(seconds)) == 1: # add trailing zero for 1 -> 10
+        seconds += "0"
+
     ra_in_hours = f"{hours}.{minutes}.{seconds}"
     return ra_in_hours
 
@@ -211,7 +252,7 @@ def _generate_stereographic_projection(starList=None,
     # Convert Star chart from RA hours to Radians to chart
     list_of_stars = _ra_to_radians(starList)
 
-    finalPositionOfStarsDict = {} # {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+    finalPositionOfStarsDict = {} # {'Common Name': {"Declination" : Declination (float), "RA": RA (str)}
     x_star_labels = []
     x_ra_values = []
     y_dec_values = []

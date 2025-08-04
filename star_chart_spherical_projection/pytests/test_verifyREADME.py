@@ -89,12 +89,12 @@ def test_readme_quickstart_big_dipper(generate_plot_image):
 
 def test_readme_quickstart_final_position_vega():
     star_final_pos_dict = scsp.final_position(included_stars=["Vega"],year_since_2000=11500)
-    assert str(star_final_pos_dict) == "{'Vega': {'Declination': 83.0353969209521, 'RA': '05.13.544690750738'}}"
+    assert str(star_final_pos_dict) == "{'Vega': {'Declination': 83.02282965393113, 'RA': '05.07.57655389657'}}"
 
 def test_readme_quickstart_final_position_thuban():
     star_final_pos_dict = scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
-    assert star_final_pos_dict["Thuban"]["Declination"] == 88.92008161558574
-    assert str(star_final_pos_dict) == "{'Thuban': {'Declination': 88.92008161558574, 'RA': '00.03.103135755553'}}"
+    assert star_final_pos_dict["Thuban"]["Declination"] == 88.89649680362646
+    assert str(star_final_pos_dict) == "{'Thuban': {'Declination': 88.89649680362646, 'RA': '00.10.168775400027'}}"
 
 def test_readme_north_pole(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -110,13 +110,9 @@ def test_readme_north_pole(generate_plot_image):
         expected_png, str(generate_plot_image), tol=0.001,
         in_decorator=False) is None
 
-def test_readme_final_position_thuban():
-    fin_pos = scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
-    assert str(fin_pos) == "{'Thuban': {'Declination': 88.92008161558574, 'RA': '00.03.103135755553'}}"
-
 def test_readme_final_position_thuban_vega():
     fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
-    assert str(fin_pos) == "{'Thuban': {'Declination': 87.7600158821428, 'RA': '02.43.168663798081'}, 'Vega': {'Declination': 45.59902976977015, 'RA': '15.24.9487696804'}}"
+    assert str(fin_pos) == "{'Thuban': {'Declination': 87.71930377133644, 'RA': '02.43.565884268673'}, 'Vega': {'Declination': 45.70083460323206, 'RA': '15.23.181614439801'}}"
 
 def test_readme_next_north_star_thuban():
     fin_pos = scsp.predict_pole_star(year_since_2000=-5000)
@@ -617,7 +613,7 @@ def test_readme_future_star_one_max_magnitude():
 
 def test_readme_final_position():
     fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
-    assert str(fin_pos) == "{'Thuban': {'Declination': 87.7600158821428, 'RA': '02.43.168663798081'}, 'Vega': {'Declination': 45.59902976977015, 'RA': '15.24.9487696804'}}"
+    assert str(fin_pos) == "{'Thuban': {'Declination': 87.71930377133644, 'RA': '02.43.565884268673'}, 'Vega': {'Declination': 45.70083460323206, 'RA': '15.23.181614439801'}}"
 
 def test_readme_position_over_time():
     fin_pos = scsp.position_over_time(star="Altair",
@@ -625,4 +621,4 @@ def test_readme_position_over_time():
                                     end_year_since_2000=20000,
                                     increment=10000,
                                     is_precession=True)
-    assert str(fin_pos) == "{2000: {'RA (radians)': -1.0874854843260338, 'RA (hours)': '19.50.460011519307', 'Dec (degrees)': 8.520199531975353}, 12000: {'RA (radians)': 1.4428565057434115, 'RA (hours)': '05.30.407011733018', 'Dec (degrees)': 52.1248474708539}, 22000: {'RA (radians)': -2.197776589553731, 'RA (hours)': '15.36.184025054197', 'Dec (degrees)': 13.075954490463758}}"
+    assert str(fin_pos) == "{2000: {'RA (radians)': -1.0907972465777118, 'RA (hours)': '19.50.4611519855', 'Dec (degrees)': 8.520199548428346}, 12000: {'RA (radians)': 1.4375977893307674, 'RA (hours)': '05.29.283886318377', 'Dec (degrees)': 52.15167008959445}, 22000: {'RA (radians)': -2.2007513306814537, 'RA (hours)': '15.35.374968785967', 'Dec (degrees)': 13.159743703293836}}"

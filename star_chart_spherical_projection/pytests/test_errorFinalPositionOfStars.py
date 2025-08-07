@@ -1,5 +1,6 @@
 # Pytest for final_position()
 # star_chart_spherical_projection/: python -m pytest
+# python -m pytest -k test_errorFinalPositionOfStars.py -xv
 import re
 import os
 
@@ -45,6 +46,20 @@ def test_finalPositionOfStars_includedStarsInvalidTypes(invalid_input, error_out
 def test_finalPositionOfStars_includedStarsInvalidStar():
     with pytest.raises(ValueError, match=re.escape(f"[included_stars]: 'Fake Star' not a star in current list of stars, please select one of the following: {all_common_names}")):
         scsp.final_position(included_stars=["Fake Star", "VEga"])
+
+def test_finalPositionOfStars_includedStars_lowerCase():
+    star_name_lower_case = "bake-Eo"
+    star_final_pos = scsp.final_position(included_stars=[star_name_lower_case],
+										year_since_2000=0, 
+										is_precession=True)
+    assert str(star_final_pos) == "{'Bake-eo': {'Declination': 2.42250215240932, 'RA': '17.47.531019035'}}"
+
+def test_finalPositionOfStars_includedStars_upperCase():
+    star_name_upper_case = "LANG-Exster"
+    star_final_pos = scsp.final_position(included_stars=[star_name_upper_case],
+										year_since_2000=0, 
+										is_precession=True)
+    assert str(star_final_pos) == "{'Lang-exster': {'Declination': -60.153403350899765, 'RA': '22.18.2994271648'}}"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)
 def test_finalPositionOfStars_declinationMinInvalidTypes(invalid_input, error_output):

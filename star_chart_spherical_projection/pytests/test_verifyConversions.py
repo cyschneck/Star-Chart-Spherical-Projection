@@ -32,7 +32,7 @@ def test_convertRAtoRadiansAndBack():
         try:
             assert data_s == star_s
         except Exception:
-			# check that any changes in seconds are minor
+            # check that any changes in seconds are minor
             data_s = float("0." + data_s)
             star_s = float("0." + star_s)
             assert (abs(data_s - star_s) < 0.000001)

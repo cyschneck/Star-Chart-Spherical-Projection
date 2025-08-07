@@ -4,6 +4,7 @@
 import logging
 import os
 from datetime import datetime
+import string
 
 import numpy as np
 import pandas as pd
@@ -39,7 +40,7 @@ def final_position(included_stars=[],
 
     if not only_added_stars:
         # show all stars
-        #included_stars = [x.title() for x in included_stars] # convert all names to capitalized
+        included_stars = [string.capwords(x) for x in included_stars]
         listOfStars = star_chart_spherical_projection._get_stars(included_stars)
         for star_object in added_stars:
             star_row = [star_object.star_name,

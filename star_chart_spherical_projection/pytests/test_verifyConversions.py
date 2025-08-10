@@ -22,11 +22,11 @@ def test_convertRAtoRadiansAndBack():
         star_ra = row["Right Ascension (HH.MM.SS)"]
         ra_in_radians = scsp._ra_to_radians([list(row)])[0]
         ra_in_hours = scsp._radians_to_ra(ra_in_radians[1])
-        
+
         data_h, data_m, data_s = star_ra.split(".")
         star_h, star_m, star_s = ra_in_hours.split(".")
-        
-        
+
+
         assert data_h == star_h
         assert data_m == star_m
         try:
@@ -49,9 +49,9 @@ def test_starting_year_0_with_builtin_data():
     for index, row in current_pos.iterrows():
         start = list(start_pos.iloc[index])
         current = list(current_pos.iloc[index])[:3]
-        
+
         assert start[0] == current[0] # compare Common Names
-        
+
         assert abs(start[2] - current[2]) < 0.0001 # compare Declination values
 
         # Compare Right Acensions

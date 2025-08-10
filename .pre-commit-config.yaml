@@ -6,6 +6,12 @@ repos:
         name: remove tabs
         exclude_types: [csv]
 
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace      # Checks for any tabs or spaces after the last non-whitespace character on the line
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.3.0
     hooks:

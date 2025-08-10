@@ -32,7 +32,7 @@ def _get_stars(selectStars=[]):
     # selectStars only returns a subset of all the stars saved, empty will return all in the star_data.csv file
     # stars: ["name", "RA: HH.MM.SS", Declination DD.SS, Proper Motion Speed (mas/yr), Proper Motion Angle (DD.SS), Magnitude (V, Visual)]
     star_data_list = []
-    star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
+    star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/stars_with_data.csv
     star_dataframe = pd.read_csv(star_csv_file)
     for index, row in star_dataframe.iterrows():
         if len(selectStars) > 0: # get only a subset of all stars
@@ -47,22 +47,22 @@ def _ra_to_radians(star_list):
     for star in star_list:
         # convert RA from hours to degrees
         ra_in_hr = star[1]
-        
-        ra_hr, ra_min, ra_sec = ra_in_hr.split('.')    
+
+        ra_hr, ra_min, ra_sec = ra_in_hr.split('.')
         ra_hr = int(ra_hr)
         ra_min = int(ra_min)
         prec_zero = len(ra_sec)-len(ra_sec.lstrip('0')) # count number of preceding zeroes (for example, 0.00868)
-        
+
         # if seconds have greater than 2 degrees of accuracy (for example: 07.46.519615)
         len_degrees = 0
-        if prec_zero >= 30: # account for measuring the length of a number in scientifiic notation
+        if prec_zero >= 30: # account for measuring the length of a number in scientific notation
             len_degrees = -1
         len_degrees += len(ra_sec)-prec_zero
         if len_degrees < 0: len_degrees = 0
-        second_degrees = 10**(len_degrees + prec_zero) 
+        second_degrees = 10**(len_degrees + prec_zero)
         ra_sec = int(ra_sec)
         ra_sec /= second_degrees # divide seconds by a multiple (for example, to convert: 519615 to 51.9615)
-        
+
         # convert minutes and seconds to decimals
         ra_min /= 60
         ra_sec /= 3600
@@ -72,7 +72,7 @@ def _ra_to_radians(star_list):
         ra_in_degrees = ra_total * 15
         ra_in_radians = np.deg2rad(ra_in_degrees)
         star[1] = ra_in_radians
- 
+
     return star_list
 
 def _radians_to_ra(ra_in_radians):
@@ -81,11 +81,11 @@ def _radians_to_ra(ra_in_radians):
 
     if ra_in_degree > 360 or ra_in_degree < 0: # lock degrees between 0 and 360, if negative, re-write as a positive degree
         ra_in_degree %= 360
-    
+
     hours = int(ra_in_degree / 15)
     minutes = int(((ra_in_degree / 15) - hours) * 60) # measured in minutes
     seconds = round(((((ra_in_degree / 15) - hours) * 60) - minutes) * 60, 10) # measured in seconds
-    
+
     precision = len(str(seconds).split(".")[1])
     if precision > 5:
         seconds = f"{seconds:.10f}".rstrip("0") #str(float(f"{seconds:.{precision}}"))# # account for scientific notation (for example, convert 8.68e-05 to 0.0000868)
@@ -95,20 +95,20 @@ def _radians_to_ra(ra_in_radians):
     if prec_seconds == "": prec_seconds = 0
 
     # count preceding zeroes
-    prec_zero = 0 
+    prec_zero = 0
     if int(prec_seconds) != 0:
         prec_zero = len(prec_seconds)-len(prec_seconds.lstrip('0')) # count number of preceding zeroes (for example, 0.00868)
-    
+
     # handle edge case to convert "0870314" to "870314" to "8.70314" when value is a long decimal
-    is_less_ten = False 
+    is_less_ten = False
     if float(seconds) < 10: is_less_ten = True
     if not float(seconds).is_integer(): # if float/decimal (for example, 54.47676 becomes 5447676, but 9.0 stays at 9)
-        # convert from decimal to whole number while maintaining precession
+        # convert from decimal to whole number while maintaining precision
         seconds = int(str(seconds).replace(".", ""))
     else:
         # convert float of integer to integer (9.0 = 9)
         seconds = int(float(seconds))
-    
+
     # handle edge case if seconds == 60, increment minutes by one
     if seconds == 60:
         minutes += 1
@@ -118,7 +118,7 @@ def _radians_to_ra(ra_in_radians):
     if hours < 10: hours = '0' + str(hours) # convert 6 to 06
     if minutes < 10: minutes = '0' + str(minutes) # convert 6 to 06
     if (seconds < 10 and seconds > 0) or is_less_ten:
-        seconds = ('0'*prec_zero) + str(seconds) # dynamically add zeroes to front of string 
+        seconds = ('0'*prec_zero) + str(seconds) # dynamically add zeroes to front of string
     if seconds == 0:
         seconds = "00" # add trailing zero when exactly 0
     if len(str(seconds)) == 1: # add trailing zero for 1 -> 10
@@ -134,7 +134,7 @@ def _ra_dec_via_pm(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_a
     logger.debug(f"Proper Motion for {years_since_2000} Years")
     logger.debug(f"Date {years_since_2000}, RA = {star_ra}, Dec = {star_dec}, PM Speed = {star_pm_speed}, PM Angle = {star_pm_angle}")
 
-    star_pm_speed_degrees = 0.00000027777776630942 * star_pm_speed # convert mas/yr to degrees/yr
+    star_pm_speed_degrees = (1/(3600*1000)) * star_pm_speed # convert mas/yr to degrees/yr
     star_pm_speed_radians = np.deg2rad(star_pm_speed_degrees) # radians/yr
     star_movement_radians_per_year = star_pm_speed_radians * years_since_2000
     logger.debug(f"Movement Over Time = {star_movement_radians_per_year} (rad), {star_movement_radians_per_year} (deg)")
@@ -152,7 +152,7 @@ def _ra_dec_via_pm(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_a
     if star_adjusted_declination > 0: # Positive declinations
         dec_x = star_adjusted_declination % 360
         # map from 0 to 90 (positive declinations)
-        if dec_x > 90 and dec_x <= 180: 
+        if dec_x > 90 and dec_x <= 180:
             dec_x = 90 + (90 - dec_x)
         # map from 0 to -90 (negative declinations)
         if dec_x <= 270 and dec_x > 180:
@@ -162,7 +162,7 @@ def _ra_dec_via_pm(years_since_2000, star_ra, star_dec, star_pm_speed, star_pm_a
     if star_adjusted_declination < -0: # Negative declinations
         dec_x = star_adjusted_declination % -360
         # map from 0 to -90 (negative declinations)
-        if dec_x < -90 and dec_x >= -180: 
+        if dec_x < -90 and dec_x >= -180:
             dec_x = -90 - (90 + dec_x)
         # map from 0 to 90 (positive declinations)
         if dec_x >= -270 and dec_x <= -180:
@@ -240,8 +240,8 @@ def _precession_vondrak(star_name, star_ra, star_dec, year_YYYY_since_2000):
     logger.debug(f"Precession for Star = {star_name}, Declination = {vondrak_dec}, RA = {vondrak_ra}")
     return vondrak_dec, vondrak_ra
 
-def _generate_stereographic_projection(starList=None, 
-                                    pole=None, 
+def _generate_stereographic_projection(starList=None,
+                                    pole=None,
                                     year_since_2000=None,
                                     is_precession=None,
                                     max_magnitude=None,
@@ -271,10 +271,10 @@ def _generate_stereographic_projection(starList=None,
 
             # Calculate position of star due to PROPER MOTION (changes RA and Declination over time)
             logger.debug(f"'{name}' original RA = {np.rad2deg(ra)} and Declination = {dec}")
-            star_ra, star_declination = _ra_dec_via_pm(year_since_2000, 
-                                                        ra, 
-                                                        dec, 
-                                                        pm_speed, 
+            star_ra, star_declination = _ra_dec_via_pm(year_since_2000,
+                                                        ra,
+                                                        dec,
+                                                        pm_speed,
                                                         pm_angle)
             logger.debug(f"Adjusted: {ra} RA (radians) = {star_ra}")
             logger.debug(f"Adjusted via Proper Motion: '{ra}': {dec} Declination (degrees) = {star_declination} ")
@@ -286,7 +286,7 @@ def _generate_stereographic_projection(starList=None,
                 logger.debug(f"Precession: {star_ra} RA (radians)\nPrecession: Declination (degrees) = {star_declination}")
 
                 # convert degree to position on radius
-                dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, pole) 
+                dec_ruler_position = star_chart_spherical_projection._calculate_length(star_declination, radius_of_circle, pole)
 
                 logger.debug(f"{name}: {star_declination} declination = {dec_ruler_position:.4f} cm")
 
@@ -321,8 +321,8 @@ def _generate_stereographic_projection(starList=None,
 
     return x_star_labels, x_ra_values, y_dec_values, finalPositionOfStarsDict
 
-def plot_stereographic_projection(included_stars=[], 
-                                pole=None, 
+def plot_stereographic_projection(included_stars=[],
+                                pole=None,
                                 declination_min=None,
                                 year_since_2000=0,
                                 display_labels=True,
@@ -342,12 +342,12 @@ def plot_stereographic_projection(included_stars=[],
     # Catch errors in given arguments before plotting and set default constants
     star_chart_spherical_projection.errorHandling(isPlotFunction=True,
                                                 included_stars=included_stars,
-                                                pole=pole, 
+                                                pole=pole,
                                                 declination_min=declination_min,
                                                 year_since_2000=year_since_2000,
                                                 display_labels=display_labels,
                                                 display_dec=display_dec,
-                                                increment=increment, 
+                                                increment=increment,
                                                 is_precession=is_precession,
                                                 max_magnitude=max_magnitude,
                                                 added_stars=added_stars,
@@ -409,7 +409,7 @@ def plot_stereographic_projection(included_stars=[],
     # Store the ruler positions based on degrees and the ratio of the ruler
     ruler_position_dict = star_chart_spherical_projection._calculate_ruler(declination_min,
                                                                         declination_max,
-                                                                        increment, 
+                                                                        increment,
                                                                         pole)
 
     # Display declination lines on the chart from -min to +max
@@ -440,8 +440,8 @@ def plot_stereographic_projection(included_stars=[],
     logger.debug(f"\n{pole}ern Range of Declination: {declination_min} to {declination_max}")
 
     # convert to x and y values for stars
-    x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars, 
-                                                                                        pole=pole, 
+    x_star_labels, x_ra_values, y_dec_values, star_dict = _generate_stereographic_projection(starList=listOfStars,
+                                                                                        pole=pole,
                                                                                         year_since_2000=year_since_2000,
                                                                                         is_precession=is_precession,
                                                                                         max_magnitude=max_magnitude,
@@ -449,22 +449,20 @@ def plot_stereographic_projection(included_stars=[],
                                                                                         declination_max=declination_max)
 
     # Set Right Ascension (astronomical 'longitude') as X (theta of polar plot)
-    angles_ra = np.array([0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150,
-                        165, 180, 195, 210, 225, 240, 255, 270, 285, 300,
-                        315, 330, 345])
+    angles_ra = np.arange(0, 360, 15)
     plt.xticks(angles_ra * np.pi / 180, fontsize=8)
     labels_ra = np.array(['$0^h$','$1^h$','$2^h$','$3^h$', '$4^h$','$5^h$',
                         '$6^h$','$7^h$', '$8^h$','$9^h$', '$10^h$',
                         '$11^h$','$12^h$','$13^h$','$14^h$','$15^h$',
-                        '$16^h$','$17^h$','$18^h$','$19^h$','$20^h$', 
+                        '$16^h$','$17^h$','$18^h$','$19^h$','$20^h$',
                         '$21^h$', '$22^h$','$23^h$'])
     ax.set_xticklabels(labels_ra, fontsize=10)
 
     # Optional: Label the stars with names
     if display_labels:
         for i, txt in enumerate(x_star_labels):
-            ax.annotate(txt, (x_ra_values[i], y_dec_values[i]), 
-                        horizontalalignment='center', verticalalignment='bottom', 
+            ax.annotate(txt, (x_ra_values[i], y_dec_values[i]),
+                        horizontalalignment='center', verticalalignment='bottom',
                         fontsize=8)
     for i, txt in enumerate(x_star_labels):
         logger.debug(f"{txt}: {np.rad2deg(x_ra_values[i]):05f} RA (degrees) and {y_dec_values[i]:05f} Declination (ruler)")
@@ -492,7 +490,7 @@ def plot_stereographic_projection(included_stars=[],
         ax.set_title(fig_plot_title)
 
     # Optional: Save plot with user-defined name/location
-    if save_plot_name is not None: 
+    if save_plot_name is not None:
         fig.savefig(save_plot_name)
 
     # Optional: Show the plot when it has been calculated

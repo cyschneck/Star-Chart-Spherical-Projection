@@ -10,7 +10,7 @@ import star_chart_spherical_projection
 
 def errorHandling(isPlotFunction=None,
                 included_stars=None,
-                pole=None, 
+                pole=None,
                 year_since_2000=None,
                 is_precession=None,
                 declination_max=None,
@@ -136,7 +136,7 @@ def errorHandlingStarClass(star_name=None,
                         pm_speed_ra=None,
                         pm_speed_dec=None,
                         magnitude=None):
-    
+
     if star_name is None:
         raise ValueError("[star_name]: star_name is required")
     else:
@@ -241,7 +241,7 @@ def errorHandlingPredictPoleStar(year_since_2000=None, pole=None):
     else:
         if type(year_since_2000) != int and type(year_since_2000) != float:
             raise ValueError(f"[year_since_2000]: Must be a int or float, current type = '{type(year_since_2000)}'")
-    
+
     if pole is not None:
         if type(pole) != str:
             raise ValueError(f"[pole]: Must be a str, current type = '{type(pole)}'")

@@ -50,15 +50,15 @@ def test_finalPositionOfStars_includedStarsInvalidStar():
 def test_finalPositionOfStars_includedStars_lowerCase():
     star_name_lower_case = "bake-Eo"
     star_final_pos = scsp.final_position(included_stars=[star_name_lower_case],
-										year_since_2000=0, 
-										is_precession=True)
+                                        year_since_2000=0,
+                                        is_precession=True)
     assert str(star_final_pos) == "{'Bake-eo': {'Declination': 2.42250215240932, 'RA': '17.47.531019035'}}"
 
 def test_finalPositionOfStars_includedStars_upperCase():
     star_name_upper_case = "LANG-Exster"
     star_final_pos = scsp.final_position(included_stars=[star_name_upper_case],
-										year_since_2000=0, 
-										is_precession=True)
+                                        year_since_2000=0,
+                                        is_precession=True)
     assert str(star_final_pos) == "{'Lang-exster': {'Declination': -60.153403350899765, 'RA': '22.18.2994271648'}}"
 
 @pytest.mark.parametrize("invalid_input, error_output", invalid_non_num_options)

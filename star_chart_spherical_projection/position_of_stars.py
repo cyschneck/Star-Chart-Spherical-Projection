@@ -18,7 +18,7 @@ logger.setLevel(logging.INFO)
 stream_handler = logging.StreamHandler()
 logger.addHandler(stream_handler)
 
-def final_position(included_stars=[], 
+def final_position(included_stars=[],
                     year_since_2000=0,
                     is_precession=True,
                     added_stars=[],
@@ -61,13 +61,13 @@ def final_position(included_stars=[],
                         star_object.pm_angle,
                         star_object.magnitude]
             listOfStars.append(star_row)
-    
+
     # Set declination min values when using the _generate_stereographic_projection() to capture all stars if not set
     declination_min = -90
     declination_max = 90
 
-    _, _, _, finalPositionOfStarsDict = star_chart_spherical_projection._generate_stereographic_projection(starList=listOfStars, 
-                                                                                                        pole="North", 
+    _, _, _, finalPositionOfStarsDict = star_chart_spherical_projection._generate_stereographic_projection(starList=listOfStars,
+                                                                                                        pole="North",
                                                                                                         declination_min=declination_min,
                                                                                                         year_since_2000=year_since_2000,
                                                                                                         is_precession=is_precession,
@@ -94,7 +94,7 @@ def position_over_time(star=None,
                         save_to_csv=None):
 
     if star is not None:
-        star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
+        star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/stars_with_data.csv
         star_dataframe = pd.read_csv(star_csv_file)
         star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name, star_ra, star_declination, star_mag, star_pm_speed, star_pm_angle, star_pm_ra, star_pm_dec, star_alt_names, star_url = star_data
@@ -110,17 +110,17 @@ def position_over_time(star=None,
     position_over_time = {}
     for year in years_to_calculate:
         star_row = [[star_name, star_ra, star_declination, star_pm_speed, star_pm_angle, star_mag]]
-        _, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row, 
+        _, star_radians, _, star_dict = star_chart_spherical_projection._generate_stereographic_projection(starList=star_row,
                                                                                             year_since_2000=year,
                                                                                             is_precession=is_precession,
                                                                                             pole="North",
                                                                                             declination_min=-90,
                                                                                             declination_max=90)
-        
-        position_over_time[year+2000] = {"RA (radians)": star_radians[0], 
-                                    "RA (hours)" : star_dict[star_name]["RA"], 
+
+        position_over_time[year+2000] = {"RA (radians)": star_radians[0],
+                                    "RA (hours)" : star_dict[star_name]["RA"],
                                     "Dec (degrees)" : star_dict[star_name]["Declination"]}
-    
+
     # Generate a .csv file with final positions of the star
     if save_to_csv is not None:
         header_options = ["Year", "Declination (DD.SS)", "Right Ascension (HH.MM.SS)", "Right Ascension (radians)"]
@@ -133,7 +133,7 @@ def position_over_time(star=None,
 
     return position_over_time
 
-def plot_position(star=None, 
+def plot_position(star=None,
                 added_star=None,
                 start_year_since_2000=None,
                 end_year_since_2000=None,
@@ -156,13 +156,13 @@ def plot_position(star=None,
                                                 is_precession=is_precession)
 
     if star is not None:
-        star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
+        star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/stars_with_data.csv
         star_dataframe = pd.read_csv(star_csv_file)
         star_data = star_dataframe.loc[star_dataframe["Common Name"] == star].values.flatten().tolist()
         star_name = star_data[0]
     if added_star is not None:
         star_name = added_star.star_name
-    
+
     fig = plt.figure(figsize=(figsize_n,figsize_n), dpi=figsize_dpi)
     ax = fig.subplots()
 
@@ -202,12 +202,12 @@ def plot_position(star=None,
     if year_lst[0] < -2000: startYear_bce_ce = f"{abs(year_lst[0])} B.C.E" # negative years for B.C.E
     if year_lst[-1] >= -2000: endYear_bce_ce = f"{year_lst[-1]} C.E" # positive years for C.E
     if year_lst[-1] < -2000: endYear_bce_ce = f"{abs(year_lst[-1])} B.C.E" # negative years for B.C.E
-    
+
     plt.title(f"{star_name}'s {title} {precession_label} from {startYear_bce_ce} to {endYear_bce_ce}, Every {increment} Years")
     plt.plot(year_lst, plot_y)
     plt.xlabel("Year")
     plt.ylabel(y_label)
-    
+
     ax.set_xticks(np.arange(year_lst[0], year_lst[-1]+1, x_increment))
     ax.set_yticks(np.linspace(min(plot_y), max(plot_y), y_increment))
 
@@ -235,9 +235,9 @@ def predict_pole_star(year_since_2000=0, pole="North", max_magnitude=None):
         pole_declination = 90
     if pole == "South":
         pole_declination = -90
-    
+
     # Collect data to check magnitude of each star
-    star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/4_all_stars_data.csv
+    star_csv_file = os.path.join(os.path.dirname(__file__), 'data', 'stars_with_data.csv')  # get file's directory, up one level, /data/stars_with_data.csv
     star_dataframe = pd.read_csv(star_csv_file)
 
     # Set max_magnitude to max magnitude in star data if set to None
@@ -257,5 +257,5 @@ def predict_pole_star(year_since_2000=0, pole="North", max_magnitude=None):
                 if abs(float(star_data["Declination"]) - pole_declination) < abs(closest_pole_declination - pole_declination):
                     closest_pole_star = star
                     closest_pole_declination = star_data["Declination"]
-        
+
     return closest_pole_star

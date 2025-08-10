@@ -30,7 +30,7 @@ scsp.plot_stereographic_projection(pole="South",
                 max_magnitude=3,
                 year_since_2000=25)
 ```
-![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_south_years.png) 
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_south_years.png)
 
 Plot a few built-in stars as well as two new user defined stars in the Northern Hemisphere for the year 1961 (2000-39) (with stars labels and in red). This uses both methods to define the proper motion for new stars: with a given proper motion and angle and with the proper motion speed in the declination and right ascension
 ```python
@@ -55,7 +55,7 @@ scsp.plot_stereographic_projection(pole="North",
                 fig_plot_color="red",
                 year_since_2000=-39)
 ```
-![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_newstar_example.png) 
+![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_newstar_example.png)
 
 Or, a simple chart with the Big Dipper
 ```python
@@ -67,7 +67,7 @@ scsp.plot_stereographic_projection(pole="North",
                                    year_since_2000=-39,
                                    declination_min=40)
 ```
-![quickstart_star_chart_big_dipper+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png) 
+![quickstart_star_chart_big_dipper+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_bigDipper.png)
 
 Return the final position of a Vega (can be a single star or a list of stars) after 11,500 years when Vega is the new North Pole Star (star closest to +90°)
 ```python
@@ -77,7 +77,7 @@ star_final_pos_dict = scsp.final_position(included_stars=["Vega"],
                         year_since_2000=11500,
                         save_to_csv="final_star_positions.csv")
 ```
-Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.02282965393113, 'RA': '05.07.57655389657'}}`
+Returns a dictionary with a star and its declination and right ascension: `{'Vega': {'Declination': 83.02282965393067, 'RA': '05.07.576553896631'}}`
 
 The final position of the stars are saved in `final_star_positions.csv` with the headers ["Star Name", "Right Ascension (HH.MM.SS)", "Declination (DD.SS)"]
 
@@ -88,9 +88,9 @@ This can be used to determine past and future pole stars. For example, [Wikipedi
 ```python
 import star_chart_spherical_projection as scsp
 
-scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000))
+scsp.final_position(included_stars=["Thuban"], year_since_2000=-5000)
 ```
-So, 5000 years ago, Thuban sat at a declination of `88.89649680362646` degrees, representing the nearest named star to the North Pole (90 degrees)
+So, 5000 years ago, Thuban sat at a declination of `88.89649680374434` degrees, representing the nearest named star to the North Pole (90 degrees)
 
 ## Install
 
@@ -115,7 +115,7 @@ The sphere is projected from the South Pole (via [Stereographic projection](http
 
 
 From the perspective of an observer on the Earth's surface, the stars appear to sit along the surface of the celestial sphere--an imaginary sphere of arbitrary radius with the Earth at its center. All objects in the sky will appear projected on the celestial sphere regardless of their true distance from Earth. Each star's position is given by two values. Declination is the angular distance from the celestial equator and right ascension is the distance from the position of the vernal equinox. During the course of a full 24-hour day, stars will appear to rotate across the sky as a result of the Earth's rotation, but their position is fixed. A star’s actual position does change over time as the combined result of the star’s small movement (proper motion) as well as the changing rotational axis of the Earth (precession).
- 
+
  <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Earth_within_celestial_sphere.gif" />
 </p>
@@ -128,7 +128,7 @@ north_hemisphere_declination = tan(45° + (original_declination / 2))
 # Projected from North Pole (Southern Hemisphere)
 south_hemisphere_declination = tan(45° - (original_declination / 2))
 ```
-Where in the Northern Hemisphere, projections are formed from the South Pole: 
+Where in the Northern Hemisphere, projections are formed from the South Pole:
 ![morrisons_astrolabe](https://user-images.githubusercontent.com/22159116/202336728-dc290bfa-44f5-4947-9a08-93f70286436e.jpg)
 
 ### Data
@@ -151,7 +151,7 @@ All IAU named stars are collected from the [IAU WSGN Star Catalog](https://exopl
 - Additional Info, e.g. language corruptions
 - Date of Adoption
 
-Data is collected via automatic web scrapping from [`in-the-sky.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/2_inthesky_star_data.csv) and [`wikipedia.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/3_backup_star_data.csv) (and some [manual additions](https://github.com/cyschneck/iau-star-names/blob/main/data/0_missing_manual.csv))
+Data is collected via automatic web scraping from [`in-the-sky.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/2_inthesky_star_data.csv) and [`wikipedia.org`](https://github.com/cyschneck/iau-star-names/blob/main/data/3_backup_star_data.csv) (and some [manual additions](https://github.com/cyschneck/iau-star-names/blob/main/data/0_missing_manual.csv))
 
 The [stars with relevant data](https://github.com/cyschneck/iau-star-names/blob/main/stars_with_data.csv) is collected as:
 
@@ -224,8 +224,8 @@ Important Note: RA/Dec proper motion will be converted from speed along the righ
 
 Plot stars on a Stereographic Polar Plot
 ```
-plot_stereographic_projection(pole=None, 
-            included_stars=[], 
+plot_stereographic_projection(pole=None,
+            included_stars=[],
             declination_min=None,
             year_since_2000=0,
             display_labels=True,
@@ -321,10 +321,10 @@ plot_stereographic_projection(pole=None,
 ## Return Final Position of Stars
 **final_position()**
 
-Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (int), "RA": RA (str)}
+Returns a dictionary for the final positions of the stars for a specific year in the format: {'Common Name': {"Declination" : Declination (float), "RA": RA (str)}}
 ```
 final_position(included_stars=[],
-        year_since_2000=0, 
+        year_since_2000=0,
         is_precession=True,
         added_stars=[],
         only_added_stars=False,
@@ -350,7 +350,7 @@ final_position(included_stars=[],
 ```python
 star_chart_spherical_projection.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
 ```
-Returns `{'Thuban': {'Declination': 87.71930377133644, 'RA': '02.43.565884268673'}, 'Vega': {'Declination': 45.70083460323206, 'RA': '15.23.181614439801'}}`
+Returns `{'Thuban': {'Declination': 87.71930377141014, 'RA': '02.43.565884224201'}, 'Vega': {'Declination': 45.70083460322807, 'RA': '15.23.181614439814'}}`
 
 ## Return A Star's Position over Time
 **position_over_time()**
@@ -388,7 +388,7 @@ star_chart_spherical_projection.position_over_time(star="Altair",
             increment=10000,
             is_precession=True)
 ```
-Returns `{2000: {'RA (radians)': -1.0907972465777118, 'RA (hours)': '19.50.4611519855', 'Dec (degrees)': 8.520199548428346}, 12000: {'RA (radians)': 1.4375977893307674, 'RA (hours)': '05.29.283886318377', 'Dec (degrees)': 52.15167008959445}, 22000: {'RA (radians)': -2.2007513306814537, 'RA (hours)': '15.35.374968785967', 'Dec (degrees)': 13.159743703293836}}`
+Returns `{2000: {'RA (radians)': -1.0907972465777118, 'RA (hours)': '19.50.4611519855', 'Dec (degrees)': 8.520199548428346}, 12000: {'RA (radians)': 1.4375977908040969, 'RA (hours)': '05.29.283886520974', 'Dec (degrees)': 52.15167014429936}, 22000: {'RA (radians)': -2.20075132830232, 'RA (hours)': '15.35.374969113121', 'Dec (degrees)': 13.159743774065063}}`
 
 ## Predict Past and Future Pole Stars
 **predict_pole_star**
@@ -407,7 +407,7 @@ import star_chart_spherical_projection as scsp
 
 scsp.predict_pole_star(year_since_2000=20000, pole="North")
 ```
-As a result, in 20,000 years, `Thuban` will be the North Pole, replacing Polaris. 
+As a result, in 20,000 years, `Thuban` will be the North Pole, replacing Polaris.
 
 ## Plot a Star's Position over Time
 **plot_position()**
@@ -415,7 +415,7 @@ As a result, in 20,000 years, `Thuban` will be the North Pole, replacing Polaris
 Plot a star's declination and right ascension position over time
 
 ```
-plot_position(star=None, 
+plot_position(star=None,
             added_star=None,
             start_year_since_2000=None,
             end_year_since_2000=None,
@@ -461,7 +461,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="D")
 ```
-![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_with_precession.png) 
+![plot_star_declination_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_with_precession.png)
 **Declination without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -472,7 +472,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="D")
 ```
-![plot_star_declination_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_without_precession.png) 
+![plot_star_declination_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_declination_without_precession.png)
 **Right Ascension with Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -483,7 +483,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="R")
 ```
-![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_with_precession.png) 
+![plot_star_RA_with_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_with_precession.png)
 **Right Ascension without Precession:**
 ```python
 star_chart_spherical_projection.plot_position(star="Vega",
@@ -494,7 +494,7 @@ star_chart_spherical_projection.plot_position(star="Vega",
                             increment=5,
                             dec_ra="R")
 ```
-![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_without_precession.png) 
+![plot_star_RA_without_precession+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/plot_star_vega_right_ascension_without_precession.png)
 
 ## Development Environment
 To run or test against `star-chart-spherical-projection` github repo/fork, a development environment can be created via conda/miniconda

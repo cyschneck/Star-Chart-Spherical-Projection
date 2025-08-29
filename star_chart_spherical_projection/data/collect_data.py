@@ -2,6 +2,8 @@ import pandas as pd
 
 csv_data_url = "https://raw.githubusercontent.com/cyschneck/iau-star-names/refs/heads/main/stars_with_data.csv"
 
+# Update README.md and run generate_examples_star_chart.py.py to update example plots
+
 if __name__ == '__main__':
     # Download a copy of star data for all named stars (via iau-star-names)
     print("Retrieving Star Data CSV. from iau-star-names..")

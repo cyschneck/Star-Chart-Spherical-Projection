@@ -5,7 +5,7 @@ requires = [ "setuptools" ]
 
 [project]
 name = "star-chart-spherical-projection"
-version = "v2.0.0"
+version = "v2.0.1"
 description = "A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with more than a hundred named stars accurate over 400,000 years with proper motion and precession of the equinoxes"
 readme = "README.md"
 keywords = [

@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Star-Chart-Spherical-Projection: Generate astronomy star charts that correct for distortions with stereographic projection"
-version: 2.0.0
+version: 2.0.1
 message: "Please acknowledge the use of this software in any publications by citing:"
 authors:
 - family-names: Schneck

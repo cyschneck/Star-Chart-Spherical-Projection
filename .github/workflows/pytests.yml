@@ -37,7 +37,7 @@ jobs:
         python -m pytest --cov=./star_chart_spherical_projection --cov-report=xml --junitxml=pytest.xml
 
     - name: Upload test results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: Test results for ${{ matrix.os }}-${{ matrix.python-version }}
         path: pytest.xml

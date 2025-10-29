@@ -8,7 +8,7 @@
 [![data-up-to-date](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/keep_data_up_to_date.yml/badge.svg)](https://github.com/cyschneck/Star-Chart-Spherical-Projection/actions/workflows/keep_data_up_to_date.yml)
 [![codecov](https://codecov.io/gh/cyschneck/Star-Chart-Spherical-Projection/graph/badge.svg?token=NUBO678KTO)](https://codecov.io/gh/cyschneck/Star-Chart-Spherical-Projection)
 
-A Python package to generate circular astronomy star charts (past, present, and future) with spherical projection to correct for distortions with all IAU named stars accurate over 400,000 years with proper motion and precession of the equinoxes
+A Python package to generate circular astronomy star charts (past, present, and future) using all IAU named stars. Each star chart uses spherical projection as well as proper motion and precession of the equinoxes, making it accurate for over 400,000 years with proper motion and precession of the equinoxes
 
 * **Plot Stars on a (Polar) Star Chart**
     * plot_stereographic_projection()

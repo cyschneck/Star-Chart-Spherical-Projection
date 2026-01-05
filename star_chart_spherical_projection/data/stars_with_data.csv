@@ -116,7 +116,7 @@ Bellatrix,05.25.07,6.2059,1.66,15.2,212.2,-8.0997,-12.8621,"Bellatrix, γ-Ori, G
 Berehynia,04.24.595350,39.2738313,12.41,17.0608,213.4619,14.233,-9.407,"Berehynia, Gaia DR3 179498266829041664, TYC 2883-1687-1, GSC 02883-01687, 2MASS J04245952+3927382",https://en.wikipedia.org/wiki/HAT-P-15
 Betelgeuse,05.55.10,7.2425,0.57,29.8,67.7,27.5712,11.3078,"Betelgeuse, α-Ori, Alpha Orionis, 58-Ori, 58 Orionis, HR 2061, HD 39801, HIP 27989, TYC 129-1873-1",https://in-the-sky.org/data/object.php?id=TYC129-1873-1
 Bharani,02.49.59,27.1537,3.59,134.3,150.2,66.7436,-116.5409,"c-Ari, c Arietis, 41-Ari, 41 Arietis, HR 838, HD 17573, NSV 951, HIP 13209, TYC 1789-1490-1",https://in-the-sky.org/data/object.php?id=TYC1789-1490-1
-Bibhā,09.56.0591853,-3.48303233,8.73,68.8847,13.43,-67.001,15.999,"Bibhā, BD−03 2815, HD 86081, HIP 48711, SAO 137236",https://en.wikipedia.org/wiki/HD_86081
+Bibhā,09.56.0591846,-3.48303259,8.73,68.8662,13.5869,-66.939,16.178,"Bibhā, BD−03 2815, HD 86081, HIP 48711, SAO 137236",https://en.wikipedia.org/wiki/HD_86081
 Biham,22.10.11,6.1152,3.53,283.8,83.8,282.14,30.6502,"Biham, θ-Peg, Theta Pegasi, 26-Peg, 26 Pegasi, HR 8450, HD 210418, NSV 14057, HIP 109427, TYC 565-1999-1",https://in-the-sky.org/data/object.php?id=TYC565-1999-1
 Blaze Star,15.59.301622,25.5512613,2.0,12.8174,69.6323,-4.461,12.016,"Blaze Star, T CrB, AAVSO 1555+26, BD+26°2765, HD 143454, HIP 78322, HR 5958, SAO 84129, 2MASS J15593015+2555126",https://en.wikipedia.org/wiki/T_Coronae_Borealis
 Bodu,18.01.3040868,21.35448121,4.83,39.5237,13.4603,9.2,38.438,"HD 164669, HR 6730, ADS 10993, TIC 424429430, TYC 1566-3674-1",https://en.wikipedia.org/wiki/95_Herculis
@@ -134,7 +134,7 @@ Castor,07.34.35,31.5318,1.58,240.3,232.8,-191.4061,-145.2852,"Castor, YY Gem, α
 Castula,00.56.39905,59.105181,4.62,103.1392,243.8864,-92.611,-45.397,"Castula, υ2 Cas, 28 Cassiopeiae, BD+58°138, HD 5395, HIP 4422, HR 265, SAO 21855",https://en.wikipedia.org/wiki/Upsilon2_Cassiopeiae
 Cebalrai,17.43.28,4.3404,2.75,164.8,345.3,-41.8193,159.4057,"Cebalrai, β-Oph, Beta Ophiuchi, 60-Oph, 60 Ophiuchi, HR 6603, HD 161096, HIP 86742, TYC 423-1724-1, Gaia EDR3- 4473334474604992384",https://in-the-sky.org/data/object.php?id=TYC423-1724-1
 Ceibo,07.39.2185290,-78.16443078,9.36,44.4581,206.0959,-19.556,-39.926,"Ceibo, CD−77°298, CPD−77°324, HD 63454, HIP 37284, TYC 9385-1045-1",https://en.wikipedia.org/wiki/HD_63454
-Celaeno,03.44.482154,24.1722093,5.448,48.6388,244.7732,20.73,-44.0,"16 Tauri, HR 1140, HD 23288, BD+23 505, HIP 17489, SAO 76126, GC 4475.",https://en.wikipedia.org/wiki/Celaeno_(star)
+Celaeno,03.44.482154,24.1722093,5.448,48.6388,244.7732,20.73,-44.0,"Celaeno, Celeno, 16 Tau, BD+23 505, GC 4475, HD 23288, HIP 17489, HR 1140, SAO 76126",https://en.wikipedia.org/wiki/Celaeno_(star)
 Cervantes,17.44.0870314,-51.50025916,5.15,191.4921,184.5029,-15.034,-190.901,"Cervantes, μ Arae, CD−51°11094, FK5 662, GC 24024, GJ 691, HD 160691, HIP 86796, HR 6585, SAO 244981, PPM 346258, LTT 7053",https://en.wikipedia.org/wiki/Mu_Arae
 Cexing,00.32.59992,62.555441,4.12,4.1961,209.5586,3.65,-2.07,"Cexing, κ Cas, 15 Cassiopeiae, BD+62°102, FK5 16, GC 645, HD 2905, HIP 2599, HR 130, SAO 11256",https://en.wikipedia.org/wiki/Kappa_Cassiopeiae
 Chalawan,10.59.279728,40.2548921,5.03,321.619,9.8791,-316.85,55.18,"Chalawan, 47 UMa, BD+41°2147, FK5 1282, GC 15087, GJ 407, HD 95128, HIP 53721, HR 4277, SAO 43557, LTT 12934, PLX 2556.00",https://en.wikipedia.org/wiki/47_Ursae_Majoris
@@ -151,6 +151,7 @@ Copernicus,08.52.408627,28.1958821,13.15,539.7519,243.0593,-481.176,-244.544,"Co
 Cor Caroli,12.56.01,38.1907,2.89,240.2,283.2,-233.8537,54.8499,"Cor Caroli, α²-CVn, Alpha2 Canum Venaticorum, 12-CVn, 12 Canum Venaticorum, HR 4915, HD 112413, HIP 63125, TYC 3021-2645-1, Gaia EDR3- 1517698716348324992",https://in-the-sky.org/data/object.php?id=TYC3021-2645-1
 Cujam,16.25.2495425,14.01597711,4.5821,72.3521,235.6159,40.86,-59.71,"Cujam, ω Her, 24 Her, 51 Ser, BD+14°3049, FK5 613, HD 148112, HIP 80463, HR 6117, SAO 102153, WDS J16254+1402AB",https://en.wikipedia.org/wiki/Omega_Herculis
 Cursa,05.07.51,-5.051,2.79,112.0,227.7,-82.8387,-75.3774,"Cursa, β-Eri, Beta Eridani, 67-Eri, 67 Eridani, HR 1666, HD 33111, NSV 1841, HIP 23875, TYC 4759-1671-1",https://in-the-sky.org/data/object.php?id=TYC4759-1671-1
+Custos,03.49.3127755,65.31335258,4.39,15.5963,268.828,0.319,-15.593,"Custos, BE Cam, BD+65°369, HD 23475, HIP 17884, HR 1155, SAO 12916",https://en.wikipedia.org/wiki/BE_Camelopardalis
 Dabih,20.21.00,-14.4653,3.07,45.5,80.7,44.9019,7.353,"Dabih, β-Cap, Beta Capricorni, 9-Cap, 9 Capricorni, HR 7776, HD 193495, HIP 100345, TYC 5753-2281-1",https://in-the-sky.org/data/object.php?id=TYC5753-2281-1
 Dajiangjunbei,01.43.3963792,50.41194328,4.06,28.301,209.6721,24.59,-14.01,"Dajiangjunbei, φ Per, 54 And, BD+49°444, FK5 57, GC 2102, HD 10516, HIP 8068, HR 496, SAO 22554, PPM 26670",https://en.wikipedia.org/wiki/Phi_Persei
 Dalim,03.12.04,-28.592,3.92,715.0,31.2,370.3893,611.5854,"α-For, Alpha Fornacis, HR 963, HD 20010, NSV 1074, HIP 14879, TYC 6445-990-1",https://in-the-sky.org/data/object.php?id=TYC6445-990-1
@@ -197,6 +198,7 @@ Furud,06.20.18,-30.0348,3.02,7.4,55.1,6.0691,4.2339,"Furud, ζ-CMa, Zeta Canis M
 Fuyue,17.49.51,-37.0235,3.19,48.9,56.1,40.5876,27.2737,"G-Sco, G Scorpii, HR 6630, HD 161892, HIP 87261, TYC 7389-2159-1",https://in-the-sky.org/data/object.php?id=TYC7389-2159-1
 Gacrux,12.31.09,-57.0645,1.65,266.6,173.9,28.33,-265.0905,"Gacrux, γ-Cru, Gamma Crucis, HR 4763, HD 108903, NSV 5672, HIP 61084, TYC 8654-3422-1",https://in-the-sky.org/data/object.php?id=TYC8654-3422-1
 Gakyid,08.39.15803,12.573735,8.23,147.7347,230.5923,-114.147,-93.787,"Gakyid, BD+13°1956, HD 73534, HIP 42446, SAO 98004, PPM 125542",https://en.wikipedia.org/wiki/HD_73534
+Gang,02.03.25,72.2517,3.95,49.3,297.2,-43.8482,22.5349,"50-Cas, 50 Cassiopeiae, HR 580, HD 12216, HIP 9598, TYC 4319-1847-1, Gaia EDR3- 546439965996109696",https://in-the-sky.org/data/object.php?id=TYC4319-1847-1
 Gar,12.47.5662457,9.45050357,11.395,1108.257,245.4746,-1008.267,-460.034,"Gar, GJ 486, HIP 62452, Wolf 437, TOI-1827, TYC 882-1111-1, 2MASS J12475664+0945050",https://en.wikipedia.org/wiki/Gliese_486
 Garnet Star,21.43.304609,58.4648166,4.08,6.5424,245.2408,2.74,-5.941,"Garnet Star, Herschel's Garnet Star, Erakis, μ Cep, BD+58°2316, HD 206936, HIP 107259, HR 8316, SAO 33693",https://en.wikipedia.org/wiki/Mu_Cephei
 Geminga,06.33.5415,17.46129,25.5,178.2,54.0,144.1668,104.7433,"Geminga, SN 437, PSR B0633+17, PSR J0633+1746","https://www.researchgate.net/publication/231130533_Timing_the_Geminga_Pulsar_with_Gamma-Ray_Observations, https://www.tevcat.org/?mode=1&showsrc=317"
@@ -224,6 +226,7 @@ Hoggar,04.31.2545,4.34311,8.38,9.6971,245.4436,4.03,-8.82,"Hoggar, HD 28678, TYC
 Homam,22.41.27,10.4953,3.42,78.1,98.4,77.2622,-11.4091,"Homam, ζ-Peg, Zeta Pegasi, 42-Peg, 42 Pegasi, HR 8634, HD 214923, HIP 112029, TYC 1155-2187-1",https://in-the-sky.org/data/object.php?id=TYC1155-2187-1
 Honores,23.12.33004,49.242235,4.52,131.3327,43.2213,89.939,95.704,"Honores, 7 And, BD+48°3964, FK5 3852, HD 219080, HIP 114570, HR 8830, SAO 52787, PPM 63927",https://en.wikipedia.org/wiki/7_Andromedae
 Horna,02.21.3198035,32.14460933,12.51,52.3338,204.3696,47.671,-21.594,"Horna, TOI-3681, TIC 285272237, GSC 02314-00559",https://en.wikipedia.org/wiki/HAT-P-38
+Huagai,02.29.0394780,67.2409,4.5,46.5628,55.1461,-26.61,38.21,"HR 707, HD 15089, HIP 11569, BD +66 00213, ADS 1860, CCDM 2292+6725, TYC 04058-1504 1, GSC 04058-1504",https://simbad.u-strasbg.fr/simbad/sim-basic?Ident=HR+707
 Hunahpú,11.17.4755306,-23.58314969,8.05,131.7852,262.6931,-130.715,-16.761,"Hunahpú, CD−23 9857, HD 98219, HIP 55174, SAO 179747",https://en.wikipedia.org/wiki/HD_98219
 Hunor,16.20.363576,41.0253107,8.71,30.7551,199.1284,-10.078,-29.057,"HAT-P-2, BD+41°2693, HD 147506, HIP 80076, SAO 46035",https://en.wikipedia.org/wiki/HD_147506
 Hydor,00.03.4438784,-17.20095719,4.483,26.785,199.9977,25.17,-9.16,"Hydor, 2 Cet, BD−18°6417, FK5 905, HD 225132, HIP 301, HR 9098, SAO 147059",https://en.wikipedia.org/wiki/2_Ceti
@@ -243,6 +246,7 @@ Kaewkosin,07.59.0583953,15.23292361,12.33,194.2551,252.9385,-185.706,-56.994,"Ka
 Kaffaljidhma,02.43.18,3.141,3.57,206.6,225.0,-146.0883,-146.0883,"γ-Cet, Gamma Ceti, 86-Cet, 86 Ceti, HR 804, HD 16970, HIP 12706, TYC 50-1721-1",https://in-the-sky.org/data/object.php?id=TYC50-1721-1
 Kaffalmusalsala,23.40.24508,44.200216,4.139,82.2259,193.368,79.998,-19.011,"Kaffalmusalsala, κ And, 19 Andromedae, BD+43°4522, FK5 1619, HD 222439, HIP 116805, HR 8976, SAO 53264, PPM 64525",https://en.wikipedia.org/wiki/Kappa_Andromedae
 Kalausi,09.37.118275,-43.1619934,8.23,122.0575,259.7091,21.805,-120.094,"Kalausi, CD–42°5452, GC 13300, HD 83443, HIP 47202, SAO 221348, 2MASS J09371182-4316198",https://en.wikipedia.org/wiki/HD_83443
+Kamelos,06.40.2887701,77.59448179,5.72,15.1135,202.1611,13.997,-5.701,"Kamelos, AG+78°144, BD+78°227, FK5 2507, GC 8574, HD 45866, HIP 31940, HR 2363, SAO 5919",https://en.wikipedia.org/wiki/HD_45866
 Kamuy,16.10.0391440,26.44338932,6.57,41.1732,63.5271,-18.354,36.856,"BD+27°2595, HD 145457, HIP 79219, SAO 84223",https://en.wikipedia.org/wiki/HD_145457
 Kang,14.12.5374538,-10.1625334,4.18,140.0678,2.967,7.25,139.88,"Kang, 98 Virginis, κ Vir, BD−09°3878, FK5 523, HD 124294, HIP 69427, HR 5315, SAO 158427",https://en.wikipedia.org/wiki/Kappa_Virginis
 Karaka,15.35.39921,-80.121654,8.7,64.4149,39.6871,-49.57,41.135,"Karaka, NSV 7116, CPD–79°844, Gaia DR2 5778418870846853888, HD 137388, HIP 76351, 2MASS J15353994-8012164",https://en.wikipedia.org/wiki/HD_137388
@@ -384,6 +388,7 @@ Quadrans,15.03.4729565,47.39146228,4.7,446.2821,2.5506,-445.84,19.86,"Quadrans, 
 Ramus,18.08.4549142,20.48524079,4.37,6.195,198.0547,-1.92,-5.89,"Ramus, 102 Her, BD+20°3674, FK5 3443, HD 166182, HIP 88886, HR 6787, SAO 85769, WDS J18088+2049",https://en.wikipedia.org/wiki/102_Herculis
 Ran,03.32.55,-9.2729,3.72,975.4,271.1,-975.2202,18.7252,"Ran, ε-Eri, Epsilon Eridani, 18-Eri, 18 Eridani, HR 1084, HD 22049, HIP 16537, TYC 5296-1533-1",https://in-the-sky.org/data/object.php?id=TYC5296-1533-1
 Rana,03.43.14,-9.4536,3.53,750.2,352.8,-94.025,744.2844,"δ-Eri, Delta Eridani, 23-Eri, 23 Eridani, HR 1136, HD 23249, HIP 17378, TYC 5303-1320-1, Gaia EDR3- 5164120762333028736",https://in-the-sky.org/data/object.php?id=TYC5303-1320-1
+Rangifer,02.05.55013,76.06542164,5.32,23.7129,209.8788,-11.813,-20.561,"Rangifer, 49 Cas, BD+75°86, GC 2475, HD 12339, HIP 9763, HR 592, SAO 4565, CCDM J02056+7607, GSC 04495-01881",https://en.wikipedia.org/wiki/49_Cassiopeiae
 Rapeto,17.04.3087068,-43.18351661,7.39,179.2172,231.8713,110.654,-140.977,"Rapeto, CD–43°11380, HIP 83547, SAO 227597, PPM 322565, LTT 6814, GSC 07881-00474, 2MASS J17043086-4318351",https://en.wikipedia.org/wiki/HD_153950
 Rasalas,09.52.45,26.0024,3.88,223.2,255.7,-216.2843,-55.1302,"Rasalas, μ-Leo, Mu Leonis, 24-Leo, 24 Leonis, HR 3905, HD 85503, HIP 48455, TYC 1964-1473-1, Gaia EDR3- 643819484617141504",https://in-the-sky.org/data/object.php?id=TYC1964-1473-1
 Rasalgethi,17.14.38,14.2325,3.34,36.8,348.5,-7.3367,36.0612,"Rasalgethi, Alp Her, α¹-Her, Alpha1 Herculis, 64-Her, 64 Herculis, HR 6406, HD 156014, HIP 84345, TYC 990-2133-1",https://in-the-sky.org/data/object.php?id=TYC990-2133-1
@@ -413,6 +418,7 @@ Salm,23.20.3824188,23.44252098,4.58,30.9536,197.9315,29.45,-9.53,"Salm, 62 Pega
 Sansuna,20.12.47,18.0618,10.16,20.8851,218.2785,16.395,-12.938,"Sansuna, HAT-P-34, HD 351766, TYC 1622-1261-1, BD +17 4250",https://www.wikidata.org/wiki/Q4039819
 Sargas,17.37.19,-42.5952,1.86,6.4,119.4,5.5758,-3.1418,"Sargas, θ-Sco, Theta Scorpii, HR 6553, HD 159532, NSV 9233, HIP 86228, TYC 7892-7679-1",https://in-the-sky.org/data/object.php?id=TYC7892-7679-1
 Sarin,17.15.01,24.5018,3.11,158.2,187.6,-20.923,-156.8103,"Sarin, δ-Her, Delta Herculis, 65-Her, 65 Herculis, HR 6410, HD 156164, NSV 8419, HIP 84379, TYC 2065-1930-1, Gaia EDR3- 4573412435280434560",https://in-the-sky.org/data/object.php?id=TYC2065-1930-1
+Sarvvis,03.42.55,47.4715,3.02,50.1,149.3,25.5782,-43.0786,"δ-Per, Delta Persei, 39-Per, 39 Persei, HR 1122, HD 22928, HIP 17358, TYC 3317-3034-1",https://in-the-sky.org/data/object.php?id=TYC3317-3034-1
 Sceptrum,04.38.10,-14.1814,3.9,192.7,203.4,-76.5304,-176.8513,"l-Eri, l Eridani, 53-Eri, 53 Eridani, HR 1481, HD 29503, HIP 21594, TYC 5327-1434-1",https://in-the-sky.org/data/object.php?id=TYC5327-1434-1
 Scheat,23.03.46,28.0458,2.48,232.3,53.9,187.6961,136.8703,"Scheat, β-Peg, Beta Pegasi, 53-Peg, 53 Pegasi, HR 8775, HD 217906, HIP 113881, TYC 2243-1831-1",https://in-the-sky.org/data/object.php?id=TYC2243-1831-1
 Schedar,00.40.30,56.3213,2.25,58.4,122.7,49.1442,-31.55,"Schedar, α-Cas, Alpha Cassiopeiae, 18-Cas, 18 Cassiopeiae, HR 168, HD 3712, HIP 3179, TYC 3663-2668-1, Gaia EDR3- 418551920284673408",https://in-the-sky.org/data/object.php?id=TYC3663-2668-1
@@ -421,7 +427,10 @@ Segin,01.54.23,63.4012,3.35,37.3,120.5,32.1388,-18.9312,"ε-Cas, Epsilon Cassiop
 Seginus,14.32.04,38.1828,3.04,190.4,322.6,-115.6444,151.2565,"Seginus, γ-Boo, Gamma Bootis, 27-Boo, 27 Bootis, HR 5435, HD 127762, HIP 71075, TYC 3036-1151-1",https://in-the-sky.org/data/object.php?id=TYC3036-1151-1
 Sham,19.40.0579185,18.00500046,4.38,24.9091,234.0318,14.63,-20.16,"Sham, Alsahm, α Sge, 5 Sagittae, BD+17°4042, FK5 1133, GC 27215, HD 185758, HIP 96757, HR 7479, SAO 105120, PPM 136737, CCDM J19401+1801A, WDS J19401+1801A",https://en.wikipedia.org/wiki/Alpha_Sagittae
 Shama,11.24.17359,-1.314467,9.1,239.539,228.2425,-178.689,-159.528,"Shama, BD−00°2437, HD 99109, HIP 55664, SAO 138182",https://en.wikipedia.org/wiki/HD_99109
+Shangcheng,03.11.5626916,74.23371699,4.85,87.9579,260.7372,14.158,-86.811,"Shangcheng, BD+73°168, FK5 2222, GC 3759, HD 19275, HIP 14862, HR 932, SAO 4840, GSC 04325-01562",https://en.wikipedia.org/wiki/HD_19275
+Shangwei,06.18.507809,69.1911176,4.76,108.2722,269.637,0.686,-108.27,"Shangwei, BD+69°371, FK5 234, HD 42818, HIP 29997, HR 2209, SAO 13788",https://en.wikipedia.org/wiki/HD_42818
 Shaomin,10.32.48,9.1823,3.82,7.2,242.5,-6.3865,-3.3246,"ρ-Leo, Rho Leonis, 47-Leo, 47 Leonis, HR 4133, HD 91316, HIP 51624, TYC 838-1485-1, Gaia EDR3- 3870025847369674624",https://in-the-sky.org/data/object.php?id=TYC838-1485-1
+Shaowei,03.50.21509,71.195616,4.66,45.8274,246.2798,18.435,-41.956,"Shaowei, γ Cam, BD+70°259, FK5 138, GC 4557, HD 23401, HIP 17959, HR 1148, SAO 5006, CCDM 03504+7120, WDS J03504+7120A",https://en.wikipedia.org/wiki/Gamma_Camelopardalis
 Sharjah,16.12.4177941,-18.52318117,11.34,217.1062,260.3356,36.447,-214.025,"Sharjah, HIP 79431, LP 804-27, NLTT 42226",https://en.wikipedia.org/wiki/HIP_79431
 Shatabhisha,22.52.36,-7.3446,3.75,36.0,24.6,14.9861,32.7325,"λ-Aqr, Lambda Aquarii, 73-Aqr, 73 Aquarii, HR 8698, HD 216386, HIP 112961, TYC 5813-1406-1, Gaia EDR3- 2610370969483589888",https://in-the-sky.org/data/object.php?id=TYC5813-1406-1
 Shaula,17.33.36,-37.0613,1.63,32.0,195.5,-8.5516,-30.8362,"Shaula, λ-Sco, Lambda Scorpii, 35-Sco, 35 Scorpii, HR 6527, HD 158926, HIP 85927, TYC 7388-1093-1",https://in-the-sky.org/data/object.php?id=TYC7388-1093-1
@@ -454,6 +463,7 @@ Tangra,23.09.5825,18.23459,11.58,25.6127,43.3041,17.567,18.639,"Tangra, TOI-5963
 Tania Australis,10.22.19,41.2958,3.04,88.8,293.5,-81.4349,35.4089,"Tania Australis, μ-UMa, Mu Ursae Majoris, 34-UMa, 34 Ursae Majoris, HR 4069, HD 89758, NSV 4829, HIP 50801, TYC 3004-1418-1",https://in-the-sky.org/data/object.php?id=TYC3004-1418-1
 Tania Borealis,10.17.05,42.5452,3.44,186.4,255.7,-180.6245,-46.0406,"Tania Borealis, λ-UMa, Lambda Ursae Majoris, 33-UMa, 33 Ursae Majoris, HR 4033, HD 89021, HIP 50372, TYC 3007-1286-1",https://in-the-sky.org/data/object.php?id=TYC3007-1286-1
 Tapecue,07.47.49720,-54.155092,8.1,315.9011,241.934,148.628,-278.753,"Tapecue, CD−53°2007, HD 63765, HIP 38041, SAO 235521, PPM 336398, LTT 2952, NLTT 18486",https://en.wikipedia.org/wiki/HD_63765
+Tarandus,01.08.4488005,86.1525524,4.244,81.4714,188.143,80.65,-11.54,"Tarandus, 2 UMi, BD+85°19, FK5 906, HD 5848, HIP 5372, HR 285, SAO 181",https://en.wikipedia.org/wiki/2_Ursae_Minoris
 Tarazed,19.46.15,10.3647,2.69,16.3,94.8,16.2428,-1.3639,"Tarazed, γ-Aql, Gamma Aquilae, 50-Aql, 50 Aquilae, HR 7525, HD 186791, HIP 97278, TYC 1061-2577-1, Gaia EDR3- 4302054339959905920",https://in-the-sky.org/data/object.php?id=TYC1061-2577-1
 Tarf,08.16.30,9.1107,3.52,67.4,222.7,-45.708,-49.5332,"β-Cnc, Beta Cancri, 17-Cnc, 17 Cancri, HR 3249, HD 69267, NSV 3973, HIP 40526, TYC 794-1622-1, Gaia EDR3- 3098404220680931968",https://in-the-sky.org/data/object.php?id=TYC794-1622-1
 Taygeta,03.45.1249578,24.28022097,4.3,45.7848,242.3604,21.24,-40.56,"q Tauri, 19 Tauri, HR 1145, HD 23338, BD+24°547, HIP 17531, SAO 76140, GC 4486, BDS 1848, CCDM 03452+2429",https://en.wikipedia.org/wiki/Taygeta
@@ -517,3 +527,4 @@ Zosma,11.14.06,20.3126,2.56,193.5,132.2,143.3457,-129.9779,"Zosma, δ-Leo, Delta
 Zubenelgenubi,14.50.52,-16.023,2.73,125.9,237.1,-105.7081,-68.3857,"Zubenelgenubi, α²-Lib, Alpha2 Librae, 9-Lib, 9 Librae, HR 5531, HD 130841, NSV 6827, HIP 72622, TYC 6155-1210-1",https://in-the-sky.org/data/object.php?id=TYC6155-1210-1
 Zubenelhakrabi,15.35.31,-14.4722,3.92,65.1,83.1,64.6285,7.8209,"γ-Lib, Gamma Librae, 38-Lib, 38 Librae, HR 5787, HD 138905, HIP 76333, TYC 5608-1381-1, Gaia EDR3- 6265374394490973184",https://in-the-sky.org/data/object.php?id=TYC5608-1381-1
 Zubeneschamali,15.17.00,-9.2258,2.61,100.0,258.7,-98.0615,-19.5946,"Zubeneschamali, β-Lib, Beta Librae, 27-Lib, 27 Librae, HR 5685, HD 135742, NSV 7009, HIP 74785, TYC 5585-1014-1",https://in-the-sky.org/data/object.php?id=TYC5585-1014-1
+Áldu,03.57.51,40.0036,2.91,27.6,149.4,14.0495,-23.7565,"ε-Per, Epsilon Persei, 45-Per, 45 Persei, HR 1220, HD 24760, HIP 18532, TYC 2868-1623-1",https://in-the-sky.org/data/object.php?id=TYC2868-1623-1

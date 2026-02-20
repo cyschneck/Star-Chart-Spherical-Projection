@@ -26,7 +26,7 @@ def test_readme_quickstart_plot_south(generate_plot_image):
     scsp.plot_stereographic_projection(pole="South",
                 display_labels=False,
                 max_magnitude=3,
-                year_since_2000=25,
+                year_since_2000=26,
                 show_plot=False,
                 save_plot_name=str(generate_plot_image))
 

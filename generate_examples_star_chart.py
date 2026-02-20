@@ -7,7 +7,7 @@ if __name__ == '__main__':
     startYear = -15000
     endYear = 15000
     increment = 5
-    year_since_example = 25  # 2025
+    year_since_example = 26  # 2026
     show_plt = False
 
     # compare stars_with_data.csv with a generated list for year 0 (to check RA and declination values)

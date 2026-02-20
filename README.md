@@ -21,14 +21,14 @@ A Python package to generate circular astronomy star charts (past, present, and 
     * add_new_star()
 
 ## Quickstart: Star-Chart-Spherical-Projection
-Plot stars in the Southern Hemisphere for the year 2025 (without stars labels)
+Plot stars in the Southern Hemisphere for the year 2026 (without stars labels)
 ```python
 import star_chart_spherical_projection as scsp
 
 scsp.plot_stereographic_projection(pole="South",
                 display_labels=False,
                 max_magnitude=3,
-                year_since_2000=25)
+                year_since_2000=26)
 ```
 ![quickstart_star_chart+png](https://raw.githubusercontent.com/cyschneck/Star-Chart-Spherical-Projection/main/star_chart_spherical_projection/pytests/examples/quickstart_south_years.png)
 

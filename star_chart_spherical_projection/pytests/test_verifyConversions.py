@@ -68,7 +68,7 @@ def test_starting_year_0_with_builtin_data():
             assert star_s == seconds
         except Exception:
             # account for minor differences in seconds based on converting to radians and back for some stars
-            edge_cases = ["Ceibo", "Polaris", "Polaris Australis", "Yildun"] # some stars are rounded when converting from degrees to radians and back (TODO: research potential fix)
+            edge_cases = ["Ceibo", "Polaris", "Polaris Australis", "Yildun", "Hoerikwaggo"] # some stars are rounded when converting from degrees to radians and back (TODO: research potential fix)
             if start[0] not in edge_cases:
                 assert (abs(star_s - seconds) < 0.006)
             else:

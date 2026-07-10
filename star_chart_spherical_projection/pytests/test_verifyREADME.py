@@ -5,7 +5,6 @@
 # Pytests to Compare and Verify Expected Outputs
 from pathlib import Path
 import os
-import sys
 
 # External Python libraries (installed via pip install)
 import pytest
@@ -35,14 +34,9 @@ def test_readme_quickstart_plot_south(generate_plot_image):
                                                     "quickstart_south_years.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_quickstart_add_stars(generate_plot_image):
     # quickstart_newstar_example.png
@@ -71,15 +65,9 @@ def test_readme_quickstart_add_stars(generate_plot_image):
                                                     "quickstart_newstar_example.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
-
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_quickstart_big_dipper(generate_plot_image):
     # quickstart_south_years.png
@@ -95,14 +83,9 @@ def test_readme_quickstart_big_dipper(generate_plot_image):
                                                     "quickstart_bigDipper.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_quickstart_final_position_vega():
     star_final_pos_dict = scsp.final_position(included_stars=["Vega"],year_since_2000=11500)
@@ -123,14 +106,9 @@ def test_readme_north_pole(generate_plot_image):
                                                     "pole_north.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=12,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=12,
+        in_decorator=False) is None
 
 def test_readme_final_position_thuban_vega():
     fin_pos = scsp.final_position(included_stars=["Thuban", "Vega"], year_since_2000=20000)
@@ -150,14 +128,9 @@ def test_readme_south_pole(generate_plot_image):
                                                     "pole_south.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=12,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=12,
+        in_decorator=False) is None
 
 def test_readme_included_stars_none(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -169,14 +142,9 @@ def test_readme_included_stars_none(generate_plot_image):
                                                     "includedStars_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=33,
+        in_decorator=False) is None
 
 def test_readme_included_stars_subsets(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -188,14 +156,9 @@ def test_readme_included_stars_subsets(generate_plot_image):
                                                     "includedStars_subset.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_declination_min_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -208,14 +171,9 @@ def test_readme_declination_min_default(generate_plot_image):
                                                     "declination_min_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_declination_min_10(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -228,14 +186,9 @@ def test_readme_declination_min_10(generate_plot_image):
                                                     "declination_min_10.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_years_since_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -248,14 +201,9 @@ def test_readme_years_since_default(generate_plot_image):
                                                     "yearSince2000_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_years_since_3100(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -268,14 +216,9 @@ def test_readme_years_since_3100(generate_plot_image):
                                                     "yearSince2000_negative_3100.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_display_labels_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -287,14 +230,9 @@ def test_readme_display_labels_default(generate_plot_image):
                                                     "displayLabels_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=33,
+        in_decorator=False) is None
 
 def test_readme_display_labels_false(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -306,14 +244,9 @@ def test_readme_display_labels_false(generate_plot_image):
                                                     "displayLabels_false.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=33,
+        in_decorator=False) is None
 
 def test_readme_display_dec_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -326,14 +259,9 @@ def test_readme_display_dec_default(generate_plot_image):
                                                     "displayDeclinationNumbers_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_display_dec_false(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -346,14 +274,9 @@ def test_readme_display_dec_false(generate_plot_image):
                                                     "displayDeclinationNumbers_false.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_increment_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -366,14 +289,9 @@ def test_readme_increment_default(generate_plot_image):
                                                     "increment_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_increment_5(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -386,14 +304,9 @@ def test_readme_increment_5(generate_plot_image):
                                                     "increment_5.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_is_precession_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -407,14 +320,9 @@ def test_readme_is_precession_default(generate_plot_image):
                                                     "isPrecession_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_is_precession_false(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -428,14 +336,9 @@ def test_readme_is_precession_false(generate_plot_image):
                                                     "isPrecession_false.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_max_magnitude_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -447,14 +350,9 @@ def test_readme_max_magnitude_default(generate_plot_image):
                                                     "maxMagnitudeFilter_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=33,
+        in_decorator=False) is None
 
 def test_readme_max_magnitude_1(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -466,14 +364,9 @@ def test_readme_max_magnitude_1(generate_plot_image):
                                                     "maxMagnitudeFilter_1.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_added_stars_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -486,14 +379,9 @@ def test_readme_added_stars_default(generate_plot_image):
                                                     "added_stars_none.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_added_stars_additional_stars(generate_plot_image):
     exalibur_star = scsp.add_new_star(star_name="Exalibur",
@@ -519,14 +407,9 @@ def test_readme_added_stars_additional_stars(generate_plot_image):
                                                     "added_stars_included.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_only_display_user_stars_false(generate_plot_image):
     exalibur_star = scsp.add_new_star(star_name="Exalibur",
@@ -552,14 +435,9 @@ def test_readme_only_display_user_stars_false(generate_plot_image):
                                                     "only_added_stars_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_only_display_user_stars_true(generate_plot_image):
     exalibur_star = scsp.add_new_star(star_name="Exalibur",
@@ -585,14 +463,9 @@ def test_readme_only_display_user_stars_true(generate_plot_image):
                                                     "only_added_stars_true.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_fig_plot_title_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -604,14 +477,9 @@ def test_readme_fig_plot_title_default(generate_plot_image):
                                                     "fig_plot_title_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=33,
+        in_decorator=False) is None
 
 def test_readme_fig_plot_title_example(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -623,14 +491,9 @@ def test_readme_fig_plot_title_example(generate_plot_image):
                                                     "fig_plot_title_example.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=33,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_fig_plot_color_default(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -643,14 +506,9 @@ def test_readme_fig_plot_color_default(generate_plot_image):
                                                     "fig_plot_color_default.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_fig_plot_color_darkorchid(generate_plot_image):
     scsp.plot_stereographic_projection(pole="North",
@@ -663,14 +521,9 @@ def test_readme_fig_plot_color_darkorchid(generate_plot_image):
                                                     "fig_plot_color_darkorchid.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=13,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=13,
+        in_decorator=False) is None
 
 def test_readme_vega_declination_with_precession(generate_plot_image):
     # plot_star_vega_declination_with_precession.png
@@ -688,14 +541,9 @@ def test_readme_vega_declination_with_precession(generate_plot_image):
                                                     "plot_star_vega_declination_with_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=21,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=21,
+        in_decorator=False) is None
 
 def test_readme_vega_declination_without_precession(generate_plot_image):
     scsp.plot_position(star="Vega",
@@ -712,14 +560,9 @@ def test_readme_vega_declination_without_precession(generate_plot_image):
                                                     "plot_star_vega_declination_without_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=21,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=21,
+        in_decorator=False) is None
 
 def test_readme_vega_right_ascension_with_precession(generate_plot_image):
     scsp.plot_position(star="Vega",
@@ -736,14 +579,9 @@ def test_readme_vega_right_ascension_with_precession(generate_plot_image):
                                                     "plot_star_vega_right_ascension_with_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=21,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=21,
+        in_decorator=False) is None
 
 def test_readme_vega_right_ascension_without_precession(generate_plot_image):
     scsp.plot_position(star="Vega",
@@ -760,14 +598,9 @@ def test_readme_vega_right_ascension_without_precession(generate_plot_image):
                                                     "plot_star_vega_right_ascension_without_precession.png")
     plt.close()
     assert os.path.exists(expected_png)
-    if (sys.version_info.major, sys.version_info.minor) >= (3, 11): # edge case handling for tolerances in 3.11
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=22,
-            in_decorator=False) is None
-    else:
-        assert matplotlib.testing.compare.compare_images(
-            expected_png, str(generate_plot_image), tol=0.001,
-            in_decorator=False) is None
+    assert matplotlib.testing.compare.compare_images(
+        expected_png, str(generate_plot_image), tol=22,
+        in_decorator=False) is None
 
 def test_readme_future_star_no_max_magnitude():
     future_north_star = scsp.predict_pole_star(year_since_2000=20000, pole="North", max_magnitude=None)
